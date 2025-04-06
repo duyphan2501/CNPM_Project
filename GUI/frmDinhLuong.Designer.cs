@@ -46,13 +46,13 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnXong = new Guna.UI2.WinForms.Guna2GradientButton();
             panel1 = new Panel();
             btnHuy = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -66,11 +66,11 @@
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             cboTenNguyenLieu = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            cboTenSp = new Guna.UI2.WinForms.Guna2ComboBox();
             label3 = new Label();
             gridDsDinhluong = new Guna.UI2.WinForms.Guna2DataGridView();
             btnUpdate = new DataGridViewImageColumn();
             btnThem = new Guna.UI2.WinForms.Guna2GradientButton();
+            txtTenSp = new Guna.UI2.WinForms.Guna2TextBox();
             panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoluongNL).BeginInit();
@@ -254,7 +254,7 @@
             // 
             // guna2Panel3
             // 
-            guna2Panel3.Controls.Add(cboTenSp);
+            guna2Panel3.Controls.Add(txtTenSp);
             guna2Panel3.Controls.Add(label3);
             guna2Panel3.CustomizableEdges = customizableEdges19;
             guna2Panel3.Location = new Point(37, 210);
@@ -263,24 +263,6 @@
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2Panel3.Size = new Size(410, 82);
             guna2Panel3.TabIndex = 12;
-            // 
-            // cboTenSp
-            // 
-            cboTenSp.BackColor = Color.Transparent;
-            cboTenSp.CustomizableEdges = customizableEdges17;
-            cboTenSp.DrawMode = DrawMode.OwnerDrawFixed;
-            cboTenSp.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTenSp.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboTenSp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTenSp.Font = new Font("Microsoft YaHei", 10F);
-            cboTenSp.ForeColor = Color.FromArgb(68, 88, 112);
-            cboTenSp.ItemHeight = 30;
-            cboTenSp.Location = new Point(143, 23);
-            cboTenSp.Margin = new Padding(3, 4, 3, 4);
-            cboTenSp.Name = "cboTenSp";
-            cboTenSp.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            cboTenSp.Size = new Size(251, 36);
-            cboTenSp.TabIndex = 2;
             // 
             // label3
             // 
@@ -384,6 +366,26 @@
             btnThem.Text = "Thêm";
             btnThem.Click += btnThem_Click;
             // 
+            // txtTenSp
+            // 
+            txtTenSp.CustomizableEdges = customizableEdges17;
+            txtTenSp.DefaultText = "";
+            txtTenSp.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtTenSp.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtTenSp.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtTenSp.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtTenSp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenSp.Font = new Font("Segoe UI", 9F);
+            txtTenSp.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenSp.Location = new Point(161, 19);
+            txtTenSp.Margin = new Padding(4, 5, 4, 5);
+            txtTenSp.Name = "txtTenSp";
+            txtTenSp.PlaceholderText = "";
+            txtTenSp.SelectedText = "";
+            txtTenSp.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtTenSp.Size = new Size(231, 39);
+            txtTenSp.TabIndex = 1;
+            // 
             // frmDinhLuong
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -433,7 +435,7 @@
         private Label label3;
         private Guna.UI2.WinForms.Guna2DataGridView gridDsDinhluong;
         private DataGridViewImageColumn btnUpdate;
-        private Guna.UI2.WinForms.Guna2ComboBox cboTenSp;
         private Guna.UI2.WinForms.Guna2GradientButton btnThem;
+        private Guna.UI2.WinForms.Guna2TextBox txtTenSp;
     }
 }

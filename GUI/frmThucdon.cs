@@ -51,6 +51,7 @@ namespace GUI
             gbThongtinsanpham.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
+            btnDinhluong.Enabled = false;
             btnTimkiem.Enabled = false;
             txtTimkiem.Enabled = false;
             btnThemmon.Enabled = true;
@@ -149,6 +150,7 @@ namespace GUI
 
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
+            btnDinhluong.Enabled = true;
             btnThemmon.Enabled = false;
         }
 
@@ -181,7 +183,7 @@ namespace GUI
 
         private void btnDinhluong_Click(object sender, EventArgs e)
         {
-            frmDinhLuong dinhluong = new frmDinhLuong();
+            frmDinhLuong dinhluong = new frmDinhLuong(txtMasanpham.Text,txtTensanpham.Text);  //truyền mã sản phẩm và tên sản phẩm vào form định lượng để thêm định lượng
             dinhluong.ShowDialog();
         }
 
