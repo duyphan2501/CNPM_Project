@@ -22,16 +22,21 @@ namespace BUS
             dinhluongbus.ThemDinhluong(masp,manl, soluong);
         }
 
+        public void SuaDinhluong(string masp, string manl, int soluong)
+        {
+            dinhluongbus.SuaDinhluong(masp, manl, soluong);
+        }
+
         //Tải danh sách định lượng
         public DataTable TaiDsDinhluong(string tensp)
         {
             return dinhluongbus.TaiDsDinhluong(tensp);
         }
 
-        //Tải tên sản phẩm lên combobox
-        public DataTable TaiTenSp()
+        //Tải tên nguyên liêu lên combobox
+        public DataTable TaiTenNL()
         {
-            return dinhluongbus.TaiTenSp();
+            return dinhluongbus.TaiTenNL();
         }
     }
 }

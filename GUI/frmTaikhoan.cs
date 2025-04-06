@@ -22,7 +22,7 @@ namespace GUI
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
             LoadTK();
-            cboTrangthai.Text = "Hoạt Động";
+            //cboTrangthai.Text = "Hoạt Động";
             gridDsTaikhoan.Columns["btnUpdate"].DisplayIndex = gridDsTaikhoan.Columns.Count - 1; //đưa button về cuối
         }
 
@@ -43,7 +43,7 @@ namespace GUI
             cboTrangthai.SelectedItem = "Vô Hiệu";
         }
 
-        //Khi clik tạo tài khoản thì chuyển form
+        //Khi click tạo tài khoản thì chuyển form
         private void btnTaotaikhoan_Click(object sender, EventArgs e)
         {
             frmThem_SuaTaiKhoan themtk = new frmThem_SuaTaiKhoan();
@@ -51,13 +51,13 @@ namespace GUI
             LoadTK();
         }
 
-        
 
-       
+
+
         //Hiển thị danh sách tài khoản theo trạng thái
         private void cboTrangthai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboTrangthai.Text == "Hoạt Động")
+            if (cboTrangthai.Text == "Hoạt Động")
             {
                 LoadTK();
             }
@@ -68,7 +68,7 @@ namespace GUI
 
         }
 
-        
+
 
         //private void gridDsTaikhoan_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         //{
@@ -86,6 +86,11 @@ namespace GUI
             frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(hangduocchon.Cells["Tên đăng nhập"].Value.ToString(), hangduocchon.Cells["Trạng thái"].Value.ToString(), hangduocchon.Cells["Vai trò"].Value.ToString(), hangduocchon.Cells["Họ tên"].Value.ToString(), hangduocchon.Cells["Email"].Value.ToString());
             capnhattk.ShowDialog();
             LoadTK();
+        }
+
+        private void gridDsTaikhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

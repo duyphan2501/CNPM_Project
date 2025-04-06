@@ -23,7 +23,7 @@ namespace GUI
             {
                 isUpdateMode = true;
                 txtTendangnhap.Text = tenDangNhap;
-                if(trangThai == "1")
+                if (trangThai == true.ToString())
                 {
                     btnToggleSwitchTrangThai.Checked = true;
                 }
@@ -65,7 +65,7 @@ namespace GUI
             taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
             if (isUpdateMode == false)  //Thêm tài khoản
             {
-                taikhoanbus.ThemTaiKhoan(txtTendangnhap.Text, txtMatkhau.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
+                taikhoanbus.ThemTaiKhoan(txtTendangnhap.Text, txtMatkhau.Text,trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
