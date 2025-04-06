@@ -30,12 +30,10 @@ namespace DAL
         }
 
         //Tải danh sách các tên loại lên combobox
-        public void TaiTenLoai(Guna2ComboBox cbo)
+        public DataTable TaiTenLoai()
         {
-            string query = "SELECT TenLoai FROM LoaiSanPham";
-            DataTable dt = DataProvider.ExecuteQuery(query);
-            cbo.DataSource = dt;
-            cbo.DisplayMember = "TenLoai";  // Hiển thị tên loại
+            string query = "select distinct TenLoai from LoaiSanPham";
+            return DataProvider.ExecuteQuery(query);
         }
 
         //Thêm sản phẩm mới vào database
@@ -46,14 +44,25 @@ namespace DAL
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
+        //Sửa thông tin sản phẩm
         public void SuaSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
-            string query = "UPDATE SanPham SET maloai = dbo.LayMaloaiTheoTenloai(@_MaLoai), tensp = @_TenSp, hinhanh = @_HinhAnh, giaban = @_GiaBan, trangthai = @_TrangThai where masp = @_MaSp";
+            string query = "update SanPham set maloai = dbo.LayMaloaiTheoTenloai(@_MaLoai), tensp = @_TenSp, hinhanh = @_HinhAnh, giaban = @_GiaBan, trangthai = @_TrangThai where masp = @_MaSp";
             object[] parem = new object[] { maloai, tensp, hinhanh, giaban, trangthai, masp};
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        
+
+        // lấy mã sp lớn nhất
+        public string MaspLonNhat()
+        {
+            string query = "select top 1 MaSp from SanPham order by Masp desc";
+            string maxMasp = (string)DataProvider.ExecuteScalar(query);
+            return maxMasp;
+        }
+
+       
+
     }
 
 }

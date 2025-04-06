@@ -22,5 +22,13 @@ namespace DAL
             object[] parem = new object[] { maloai, tenloai, };
             DataProvider.ExecuteNonQuery(query, parem);
         }
+
+        // lấy mã loại lớn nhất trong bảng LoaiSanPham
+        public string MaloaiSPLonNhat()
+        {
+            string query = "select top 1 MaLoai from LoaiSanPham order by Maloai desc";
+            string maxMaloaiSP = (string)DataProvider.ExecuteScalar(query);
+            return maxMaloaiSP;
+        }
     }
 }

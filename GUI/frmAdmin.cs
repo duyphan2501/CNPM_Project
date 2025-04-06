@@ -19,14 +19,15 @@ namespace GUI
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-
+            pnlKho.Height = btnDashboard.Height + 31;
+            pnlBaocaoTK.Height = btnDashboard.Height +31;
         }
 
         private bool isOpenKho = false;    //Biến cờ để biết trạng thái xổ menu
 
         private async void btnKho_Click(object sender, EventArgs e)
         {
-            if(pnlKho.Height > btnKho.Height + 25)
+            if(pnlKho.Height > btnKho.Height + 40)
             {
                 isOpenKho = true;
             }
@@ -34,7 +35,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) +25 ; i += 5)
+                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) +31 ; i += 5)
                 {
                     pnlKho.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -43,7 +44,7 @@ namespace GUI
             else
             {
                 isOpenKho = false;
-                pnlKho.Height = btnKho.Height + 15;
+                pnlKho.Height = btnKho.Height + 31;
                 //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
             }
         }
@@ -76,7 +77,7 @@ namespace GUI
         private bool isOpenBaocao = false;
         private async void btnBaocaoTK_Click(object sender, EventArgs e)
         {
-            if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 25)
+            if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 40)
             {
                 isOpenBaocao = true;
             }
@@ -84,7 +85,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 25; i += 5)
+                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
                 {
                     pnlBaocaoTK.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -93,7 +94,7 @@ namespace GUI
             else
             {
                 isOpenBaocao = false;
-                pnlBaocaoTK.Height = btnBaocaoTK.Height + 15;
+                pnlBaocaoTK.Height = btnBaocaoTK.Height + 31;
                 //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
             }
 

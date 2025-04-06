@@ -28,209 +28,246 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLuu = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnHuy = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtTenloai = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtMaloai = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.guna2Panel7.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            this.SuspendLayout();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            btnLuu = new Guna.UI2.WinForms.Guna2GradientButton();
+            panel1 = new Panel();
+            btnHuy = new Guna.UI2.WinForms.Guna2GradientButton();
+            label7 = new Label();
+            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            txtTenloai = new Guna.UI2.WinForms.Guna2TextBox();
+            label2 = new Label();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
+            txtMaloai = new Guna.UI2.WinForms.Guna2TextBox();
+            label1 = new Label();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            panel1.SuspendLayout();
+            guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            guna2Panel7.SuspendLayout();
+            guna2Panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // btnLuu
             // 
-            this.btnLuu.AutoRoundedCorners = true;
-            this.btnLuu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLuu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLuu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLuu.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLuu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLuu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(103)))), ((int)(((byte)(0)))));
-            this.btnLuu.FillColor2 = System.Drawing.Color.DarkOrange;
-            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(164, 15);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(174, 55);
-            this.btnLuu.TabIndex = 2;
-            this.btnLuu.Text = "LƯU";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            btnLuu.AutoRoundedCorners = true;
+            btnLuu.CustomizableEdges = customizableEdges17;
+            btnLuu.DisabledState.BorderColor = Color.DarkGray;
+            btnLuu.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnLuu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnLuu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnLuu.FillColor = Color.FromArgb(244, 103, 0);
+            btnLuu.FillColor2 = Color.DarkOrange;
+            btnLuu.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLuu.ForeColor = Color.White;
+            btnLuu.Location = new Point(182, 19);
+            btnLuu.Margin = new Padding(3, 5, 3, 5);
+            btnLuu.Name = "btnLuu";
+            btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnLuu.Size = new Size(193, 69);
+            btnLuu.TabIndex = 2;
+            btnLuu.Text = "LƯU";
+            btnLuu.Click += btnLuu_Click;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.btnHuy);
-            this.panel1.Controls.Add(this.btnLuu);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 536);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(796, 118);
-            this.panel1.TabIndex = 10;
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(btnHuy);
+            panel1.Controls.Add(btnLuu);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 670);
+            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(884, 148);
+            panel1.TabIndex = 10;
             // 
             // btnHuy
             // 
-            this.btnHuy.AutoRoundedCorners = true;
-            this.btnHuy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHuy.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHuy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(103)))), ((int)(((byte)(0)))));
-            this.btnHuy.FillColor2 = System.Drawing.Color.DarkOrange;
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold);
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(445, 15);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(174, 55);
-            this.btnHuy.TabIndex = 2;
-            this.btnHuy.Text = "HỦY";
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            btnHuy.AutoRoundedCorners = true;
+            btnHuy.CustomizableEdges = customizableEdges19;
+            btnHuy.DisabledState.BorderColor = Color.DarkGray;
+            btnHuy.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnHuy.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnHuy.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnHuy.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHuy.FillColor = Color.FromArgb(244, 103, 0);
+            btnHuy.FillColor2 = Color.DarkOrange;
+            btnHuy.Font = new Font("Times New Roman", 14F, FontStyle.Bold);
+            btnHuy.ForeColor = Color.White;
+            btnHuy.Location = new Point(494, 19);
+            btnHuy.Margin = new Padding(3, 5, 3, 5);
+            btnHuy.Name = "btnHuy";
+            btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnHuy.Size = new Size(193, 69);
+            btnHuy.TabIndex = 2;
+            btnHuy.Text = "HỦY";
+            btnHuy.Click += btnHuy_Click;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(252, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(306, 46);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "LOẠI SẢN PHẨM";
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ButtonHighlight;
+            label7.Location = new Point(280, 55);
+            label7.Name = "label7";
+            label7.Size = new Size(306, 46);
+            label7.TabIndex = 0;
+            label7.Text = "LOẠI SẢN PHẨM";
             // 
             // guna2Panel2
             // 
-            this.guna2Panel2.Controls.Add(this.txtTenloai);
-            this.guna2Panel2.Controls.Add(this.label2);
-            this.guna2Panel2.Location = new System.Drawing.Point(164, 326);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(455, 135);
-            this.guna2Panel2.TabIndex = 3;
+            guna2Panel2.Controls.Add(txtTenloai);
+            guna2Panel2.Controls.Add(label2);
+            guna2Panel2.CustomizableEdges = customizableEdges23;
+            guna2Panel2.Location = new Point(182, 408);
+            guna2Panel2.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel2.Name = "guna2Panel2";
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Panel2.Size = new Size(506, 169);
+            guna2Panel2.TabIndex = 3;
             // 
             // txtTenloai
             // 
-            this.txtTenloai.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenloai.DefaultText = "";
-            this.txtTenloai.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTenloai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTenloai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenloai.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenloai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenloai.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
-            this.txtTenloai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenloai.Location = new System.Drawing.Point(56, 69);
-            this.txtTenloai.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.txtTenloai.Name = "txtTenloai";
-            this.txtTenloai.PlaceholderText = "";
-            this.txtTenloai.SelectedText = "";
-            this.txtTenloai.Size = new System.Drawing.Size(338, 39);
-            this.txtTenloai.TabIndex = 1;
+            txtTenloai.Cursor = Cursors.IBeam;
+            txtTenloai.CustomizableEdges = customizableEdges21;
+            txtTenloai.DefaultText = "";
+            txtTenloai.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtTenloai.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtTenloai.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtTenloai.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtTenloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenloai.Font = new Font("Microsoft YaHei", 10F);
+            txtTenloai.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenloai.Location = new Point(62, 86);
+            txtTenloai.Margin = new Padding(6);
+            txtTenloai.Name = "txtTenloai";
+            txtTenloai.PlaceholderText = "";
+            txtTenloai.SelectedText = "";
+            txtTenloai.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtTenloai.Size = new Size(376, 49);
+            txtTenloai.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 27);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tên loại";
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(57, 29);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 27);
+            label2.TabIndex = 0;
+            label2.Text = "Tên loại";
             // 
             // guna2PictureBox1
             // 
-            this.guna2PictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(50, 12);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(139, 113);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 1;
-            this.guna2PictureBox1.TabStop = false;
+            guna2PictureBox1.BackColor = SystemColors.Control;
+            guna2PictureBox1.CustomizableEdges = customizableEdges25;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(56, 15);
+            guna2PictureBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2PictureBox1.Size = new Size(154, 141);
+            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox1.TabIndex = 1;
+            guna2PictureBox1.TabStop = false;
             // 
             // guna2Panel7
             // 
-            this.guna2Panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(103)))), ((int)(((byte)(0)))));
-            this.guna2Panel7.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel7.Controls.Add(this.label7);
-            this.guna2Panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel7.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(796, 137);
-            this.guna2Panel7.TabIndex = 9;
+            guna2Panel7.BackColor = Color.FromArgb(244, 103, 0);
+            guna2Panel7.Controls.Add(guna2PictureBox1);
+            guna2Panel7.Controls.Add(label7);
+            guna2Panel7.CustomizableEdges = customizableEdges27;
+            guna2Panel7.Dock = DockStyle.Top;
+            guna2Panel7.Location = new Point(0, 0);
+            guna2Panel7.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel7.Name = "guna2Panel7";
+            guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel7.Size = new Size(884, 171);
+            guna2Panel7.TabIndex = 9;
             // 
             // txtMaloai
             // 
-            this.txtMaloai.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaloai.DefaultText = "";
-            this.txtMaloai.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaloai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaloai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaloai.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaloai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaloai.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
-            this.txtMaloai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaloai.Location = new System.Drawing.Point(56, 69);
-            this.txtMaloai.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.txtMaloai.Name = "txtMaloai";
-            this.txtMaloai.PlaceholderText = "";
-            this.txtMaloai.SelectedText = "";
-            this.txtMaloai.Size = new System.Drawing.Size(338, 39);
-            this.txtMaloai.TabIndex = 1;
+            txtMaloai.Cursor = Cursors.IBeam;
+            txtMaloai.CustomizableEdges = customizableEdges29;
+            txtMaloai.DefaultText = "";
+            txtMaloai.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtMaloai.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtMaloai.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtMaloai.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtMaloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtMaloai.Font = new Font("Microsoft YaHei", 10F);
+            txtMaloai.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtMaloai.Location = new Point(62, 86);
+            txtMaloai.Margin = new Padding(6);
+            txtMaloai.Name = "txtMaloai";
+            txtMaloai.PlaceholderText = "";
+            txtMaloai.SelectedText = "";
+            txtMaloai.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            txtMaloai.Size = new Size(376, 49);
+            txtMaloai.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 27);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã loại";
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(57, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 27);
+            label1.TabIndex = 0;
+            label1.Text = "Mã loại";
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.txtMaloai);
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Location = new System.Drawing.Point(164, 185);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(455, 135);
-            this.guna2Panel1.TabIndex = 8;
+            guna2Panel1.Controls.Add(txtMaloai);
+            guna2Panel1.Controls.Add(label1);
+            guna2Panel1.CustomizableEdges = customizableEdges31;
+            guna2Panel1.Location = new Point(182, 231);
+            guna2Panel1.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2Panel1.Size = new Size(506, 169);
+            guna2Panel1.TabIndex = 8;
             // 
             // frmThemLoaiSanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(796, 654);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.guna2Panel2);
-            this.Controls.Add(this.guna2Panel7);
-            this.Controls.Add(this.guna2Panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmThemLoaiSanPham";
-            this.Text = "frmThemLoaiSanPham";
-            this.Load += new System.EventHandler(this.frmThemLoaiSanPham_Load);
-            this.panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.guna2Panel7.ResumeLayout(false);
-            this.guna2Panel7.PerformLayout();
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(884, 818);
+            Controls.Add(panel1);
+            Controls.Add(guna2Panel2);
+            Controls.Add(guna2Panel7);
+            Controls.Add(guna2Panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "frmThemLoaiSanPham";
+            Text = "frmThemLoaiSanPham";
+            Load += frmThemLoaiSanPham_Load;
+            panel1.ResumeLayout(false);
+            guna2Panel2.ResumeLayout(false);
+            guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            guna2Panel7.ResumeLayout(false);
+            guna2Panel7.PerformLayout();
+            guna2Panel1.ResumeLayout(false);
+            guna2Panel1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

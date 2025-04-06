@@ -19,5 +19,20 @@ namespace BUS
         {
             loaisanphambus.ThemLoaiSp(maloai, tenloai);
         }
+
+        public string PhatSinhMaLoai()
+        {
+            string maxMaloai = loaisanphambus.MaloaiSPLonNhat();
+            if (maxMaloai != null)
+            {
+                int ma = int.Parse(maxMaloai.Substring(2)) + 1;
+                string maloai = "ML" + ma.ToString("D3");
+                return maloai;
+            }
+            else
+            {
+                return "ML001";
+            }
+        }
     }
 }

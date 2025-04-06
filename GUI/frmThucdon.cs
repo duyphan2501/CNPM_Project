@@ -24,7 +24,7 @@ namespace GUI
         //Tải danh sách sản phẩm
         public void LoadSp()
         {
-            sanpham = new BUS_SanPham("","","", new byte[10], 0,"");
+            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
             gridThucDon.DataSource = sanpham.TaiSp();
         }
 
@@ -59,8 +59,8 @@ namespace GUI
             gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
         }
 
-        
 
+        //Xóa dữ liệu trong các textbox cần xóa
         private void ResetTextbox()
         {
             txtMasanpham.Clear();
@@ -73,22 +73,15 @@ namespace GUI
             btnLuu.Enabled = true;
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            frmThucdon_Load(sender, e);
-        }
+
 
         //chuyển hình ảnh sang byte[];
         public byte[] ImageToByteArray(Image img)
         {
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    img.Save(ms, img.RawFormat);
-            //    return ms.ToArray();
-            //}
+
             using (MemoryStream ms = new MemoryStream())
             {
-                img.Save(ms, ImageFormat.Png); 
+                img.Save(ms, ImageFormat.Png);
                 return ms.ToArray();
             }
         }
@@ -102,9 +95,68 @@ namespace GUI
             }
         }
 
+
+
+        //Tải tên loại lên combobox Tên loại
+        public void TaiTenLoai()
+        {
+            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
+            cboTenloai.DataSource = sanpham.TaiTenloai();
+            cboTenloai.DisplayMember = "TenLoai";
+        }
+
+        //Khi nhấn vào picture sẽ hiện form thêm loại
+        private void picThemLoai_Click(object sender, EventArgs e)
+        {
+            frmThemLoaiSanPham themloai = new frmThemLoaiSanPham();
+            themloai.ShowDialog();
+
+            TaiTenLoai();
+        }
+
+
+        //Khi click nút Thêm món
+        private void btnThemmon_Click(object sender, EventArgs e)
+        {
+            gbThongtinsanpham.Enabled = true;
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+            btnTim.Enabled = true;
+            txtTimkiem.Enabled = true;
+            ResetTextbox();
+
+            TaiTenLoai();
+            txtMasanpham.Text = sanpham.PhatSinhMaSp();
+            txtMasanpham.ReadOnly = true;
+        }
+
+        //Khi chọn dòng trong gridview
+        private void gridThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewRow hangduocchon = gridThucDon.SelectedRows[0];
+            txtMasanpham.Text = hangduocchon.Cells["Mã món"].Value.ToString();
+            cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
+            txtTensanpham.Text = hangduocchon.Cells["Tên món"].Value.ToString();
+            picAnhsanpham.Image = ByteArrayToImage((byte[])hangduocchon.Cells["Hình ảnh"].Value);
+            numGiaban.Value = Convert.ToDecimal(hangduocchon.Cells["Giá bán"].Value);
+            cboTrangthai.Text = hangduocchon.Cells["Trạng thái"].Value.ToString();
+
+            gbThongtinsanpham.Enabled = true;
+            txtMasanpham.Enabled = false;
+            //cboTenloai.Enabled = false;
+
+
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+            btnThemmon.Enabled = false;
+        }
+
+
+        //Nút lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtMasanpham.Enabled == false)
+            if (txtMasanpham.Enabled == false) //nếu không cho sửa mã thì trường hợp update
             {
                 sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
                 sanpham.SuaSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
@@ -117,49 +169,22 @@ namespace GUI
                 LoadSp();
             }
             frmThucdon_Load(sender, e);
+
         }
 
-        private void picThemLoai_Click(object sender, EventArgs e)
+
+
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-            frmThemLoaiSanPham themloai = new frmThemLoaiSanPham();
-            themloai.ShowDialog();
-            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
-            sanpham.TaiTenloai(cboTenloai);
+            frmThucdon_Load(sender, e);
         }
 
-        private void btnThemmon_Click(object sender, EventArgs e)
+        private void btnDinhluong_Click(object sender, EventArgs e)
         {
-            gbThongtinsanpham.Enabled = true;
-            btnLuu.Enabled = true;
-            btnHuy.Enabled = true;
-            btnTim.Enabled = true;
-            txtTimkiem.Enabled = true;
-            ResetTextbox();
-
-            //Tải tên loại từ database
-            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
-            sanpham.TaiTenloai(cboTenloai);
+            frmDinhLuong dinhluong = new frmDinhLuong();
+            dinhluong.ShowDialog();
         }
 
-        private void gridThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            DataGridViewRow hangduocchon = gridThucDon.SelectedRows[0];
-            txtMasanpham.Text = hangduocchon.Cells["Mã món"].Value.ToString();
-            cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
-            txtTensanpham.Text = hangduocchon.Cells["Tên món"].Value.ToString();
-            picAnhsanpham.Image = ByteArrayToImage((byte[])hangduocchon.Cells["Hình ảnh"].Value);
-            numGiaban.Value = Convert.ToDecimal(hangduocchon.Cells["Giá bán"].Value);
-            cboTrangthai.Text = hangduocchon.Cells["Trạng thái"].Value.ToString();
-
-            gbThongtinsanpham.Enabled = true;
-            txtMasanpham.Enabled = false;
-            cboTenloai.Enabled = false;
-
-            
-            btnLuu.Enabled = true;
-            btnHuy.Enabled = true;
-            btnThemmon.Enabled = false;
-        }
+        
     }
 }
