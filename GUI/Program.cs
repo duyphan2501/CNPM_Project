@@ -17,10 +17,10 @@ namespace cnpm
             //Env.Load();
             //Application.Run(new frmConfig());
             //Application.Run(new frmLogin());
-            //Application.Run(new frmTaiKhoan());
+            Application.Run(new frmTaiKhoan());
             //Application.Run(new frmAdmin());
             //Application.Run(new frmThemLoaiSanPham());
-            Application.Run(new frmThucdon());
+            //Application.Run(new frmThucdon());
             //Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmBanHang());
             //Application.Run(new frmDinhLuong());
