@@ -51,7 +51,7 @@ namespace GUI
             gbThongtinsanpham.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
-            btnTim.Enabled = false;
+            btnTimkiem.Enabled = false;
             txtTimkiem.Enabled = false;
             btnThemmon.Enabled = true;
 
@@ -121,7 +121,7 @@ namespace GUI
             gbThongtinsanpham.Enabled = true;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
-            btnTim.Enabled = true;
+            btnTimkiem.Enabled = true;
             txtTimkiem.Enabled = true;
             ResetTextbox();
 
@@ -185,6 +185,9 @@ namespace GUI
             dinhluong.ShowDialog();
         }
 
-        
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -25,6 +25,14 @@ namespace DAL
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
+        //Sửa thông tin định lượng
+        public void SuaDinhluong(string masp, string manl, int soluong)
+        {
+            string query = "update DinhLuong set masp = dbo.LayMaSpTheoTenSp(@_MaSp), manl = dbo.LayMaNlTheoTenNl(@_MaNL), soluong = @_SoLuong";
+            object[] parem = new object[] {masp, manl, soluong };
+            DataProvider.ExecuteNonQuery(query,parem);
+        }
+
         //Tải danh sách định lượng theo tên sản phẩm lên gridview theo tên sản phẩm
         public DataTable TaiDsDinhluong(string tensp)
         {

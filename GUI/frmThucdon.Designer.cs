@@ -93,7 +93,7 @@
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridThucDon = new Guna.UI2.WinForms.Guna2DataGridView();
             btnUpdate = new DataGridViewImageColumn();
-            btnTim = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnTimkiem = new Guna.UI2.WinForms.Guna2GradientButton();
             btnThemmon = new Guna.UI2.WinForms.Guna2GradientButton();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             btnLuu = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -488,27 +488,27 @@
             btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
             btnUpdate.Width = 50;
             // 
-            // btnTim
+            // btnTimkiem
             // 
-            btnTim.AutoRoundedCorners = true;
-            btnTim.CustomizableEdges = customizableEdges29;
-            btnTim.DisabledState.BorderColor = Color.DarkGray;
-            btnTim.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnTim.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnTim.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnTim.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTim.FillColor = Color.FromArgb(244, 103, 0);
-            btnTim.FillColor2 = Color.DarkOrange;
-            btnTim.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            btnTim.ForeColor = Color.White;
-            btnTim.Location = new Point(1099, 102);
-            btnTim.Margin = new Padding(3, 5, 3, 5);
-            btnTim.Name = "btnTim";
-            btnTim.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            btnTim.Size = new Size(130, 69);
-            btnTim.TabIndex = 19;
-            btnTim.Text = "Tìm";
-            btnTim.Click += btnThemmon_Click;
+            btnTimkiem.AutoRoundedCorners = true;
+            btnTimkiem.CustomizableEdges = customizableEdges29;
+            btnTimkiem.DisabledState.BorderColor = Color.DarkGray;
+            btnTimkiem.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnTimkiem.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnTimkiem.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnTimkiem.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnTimkiem.FillColor = Color.FromArgb(244, 103, 0);
+            btnTimkiem.FillColor2 = Color.DarkOrange;
+            btnTimkiem.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnTimkiem.ForeColor = Color.White;
+            btnTimkiem.Location = new Point(1099, 102);
+            btnTimkiem.Margin = new Padding(3, 5, 3, 5);
+            btnTimkiem.Name = "btnTimkiem";
+            btnTimkiem.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnTimkiem.Size = new Size(130, 69);
+            btnTimkiem.TabIndex = 19;
+            btnTimkiem.Text = "Tìm";
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // btnThemmon
             // 
@@ -619,7 +619,7 @@
             Controls.Add(btnDinhluong);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);
-            Controls.Add(btnTim);
+            Controls.Add(btnTimkiem);
             Controls.Add(btnThemmon);
             Controls.Add(guna2GroupBox1);
             Controls.Add(gbThongtinsanpham);
@@ -674,13 +674,12 @@
         private Guna.UI2.WinForms.Guna2PictureBox picThemLoai;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private Guna.UI2.WinForms.Guna2GradientButton btnThemmon;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTim;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTimkiem;
         private DataGridViewImageColumn btnUpdate;
-        //private Guna.UI2.WinForms.Guna2Button btnDinhluong;
+       
         private Guna.UI2.WinForms.Guna2GradientButton btnLuu;
         private Guna.UI2.WinForms.Guna2GradientButton btnHuy;
         private Guna.UI2.WinForms.Guna2GradientButton btnDinhluong;
-        //private Guna.UI2.WinForms.Guna2GradientButton btnDinhluong;
-        //private Guna.UI2.WinForms.Guna2GradientButton btnDinhluong;
+        
     }
 }
