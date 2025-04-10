@@ -18,18 +18,18 @@ namespace GUI
         public frmDinhLuong(string masp, string tensp)   //truyền mã sản phẩm và tên sản phẩm vào form định lượng
         {
             InitializeComponent();
-            txtTenSp.Text = tensp;  
+            txtTenSp.Text = tensp;
             txtTenSp.ReadOnly = true;
             Masp = masp;
         }
 
-        //Tải tên sản phẩm lên combobox
-        //public void TaitenSp()
-        //{
-        //    dinhluong = new BUS_DinhLuong("", "", 0);
-        //    cboTenSp.DataSource = dinhluong.TaiTenSp();
-        //    cboTenSp.DisplayMember = "TenSp";
-        //}
+        //Tải tên nguyên liệu lên combobox
+        public void TaitenNL()
+        {
+            dinhluong = new BUS_DinhLuong("", "", 0);
+            cboTenNguyenLieu.DataSource = dinhluong.TaiTenNL();
+            cboTenNguyenLieu.DisplayMember = "TenNL";
+        }
 
         //Load lại danh sách định lượng theo tên sản phẩm trên griview
         public void loadDsDinhluong()
@@ -43,6 +43,9 @@ namespace GUI
         private void frmDinhLuong_Load(object sender, EventArgs e)
         {
             loadDsDinhluong();
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            TaitenNL();
         }
 
         //Nút thêm để thêm định lượng vào database
@@ -64,10 +67,34 @@ namespace GUI
         }
 
         //Nút Hủy
-        private void btnHuy_Click(object sender, EventArgs e)
+        //private void btnHuy_Click(object sender, EventArgs e)
+        //{
+        //    this.DialogResult = DialogResult.Cancel;
+        //    this.Close();
+
+        //}
+
+        private void gridDsDinhluong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            dinhluong = new BUS_DinhLuong("", "", 0);
+            DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
+            cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
+            numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
+
+            btnThem.Enabled = false;
+            btnSua.Enabled = true;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            dinhluong = new BUS_DinhLuong("", "", 0);
+            dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
+            loadDsDinhluong();
+            frmDinhLuong_Load(sender, e);
+        }
+
+        private void gridDsDinhluong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

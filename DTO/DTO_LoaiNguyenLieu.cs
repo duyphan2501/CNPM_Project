@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class LoaiNguyenLieu
+    public class DTO_LoaiNguyenLieu
     {
         private string MaLoaiNL, TenLoai;
 
         public string _MaLoaiNL { get; set; }
         public string _TenLoai { get; set; }
-        public LoaiNguyenLieu(string maloainl, string tenloai)
+        public DTO_LoaiNguyenLieu(string maloainl, string tenloai)
         {
             this.MaLoaiNL = maloainl;
             this.TenLoai = tenloai;

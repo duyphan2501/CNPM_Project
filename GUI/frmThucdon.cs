@@ -19,13 +19,18 @@ namespace GUI
         public frmThucdon()
         {
             InitializeComponent();
+            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
         }
 
         //Tải danh sách sản phẩm
         public void LoadSp()
         {
-            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
             gridThucDon.DataSource = sanpham.TaiSp();
+            //gridThucDon.RowTemplate.Height = 50; //Chiều cao các hàng trong gridview
+            gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
+            DataGridViewImageColumn imgCol = (DataGridViewImageColumn)gridThucDon.Columns["Hình Ảnh"];
+            imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;  //tùy chỉnh ảnh về zoom
+            
         }
 
         private void btnThemAnh_Click(object sender, EventArgs e)
@@ -33,7 +38,7 @@ namespace GUI
             // Tạo hộp thoại chọn tệp
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            // Chỉ cho phép chọn ảnh (JPG, PNG, BMP, GIF)
+            // Chỉ cho phép chọn ảnh (JPG, PNG)
             openFileDialog.Filter = "Hình ảnh|*.jpg;*.png";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK) // Nếu người dùng chọn ảnh
@@ -57,7 +62,6 @@ namespace GUI
             btnThemmon.Enabled = true;
 
             LoadSp();
-            gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
         }
 
 
@@ -101,7 +105,6 @@ namespace GUI
         //Tải tên loại lên combobox Tên loại
         public void TaiTenLoai()
         {
-            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
             cboTenloai.DataSource = sanpham.TaiTenloai();
             cboTenloai.DisplayMember = "TenLoai";
         }
@@ -134,6 +137,11 @@ namespace GUI
         //Khi chọn dòng trong gridview
         private void gridThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
+            if (e.RowIndex < 0 || e.ColumnIndex != gridThucDon.Columns["btnUpdate"].Index)
+            {
+                return;
+            }
 
             DataGridViewRow hangduocchon = gridThucDon.SelectedRows[0];
             txtMasanpham.Text = hangduocchon.Cells["Mã món"].Value.ToString();
@@ -160,15 +168,15 @@ namespace GUI
         {
             if (txtMasanpham.Enabled == false) //nếu không cho sửa mã thì trường hợp update
             {
-                sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
                 sanpham.SuaSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
                 LoadSp();
+                
             }
             else
             {
-                sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
                 sanpham.ThemSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
                 LoadSp();
+               
             }
             frmThucdon_Load(sender, e);
 

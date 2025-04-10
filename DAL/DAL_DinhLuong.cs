@@ -28,8 +28,8 @@ namespace DAL
         //Sửa thông tin định lượng
         public void SuaDinhluong(string masp, string manl, int soluong)
         {
-            string query = "update DinhLuong set masp = dbo.LayMaSpTheoTenSp(@_MaSp), manl = dbo.LayMaNlTheoTenNl(@_MaNL), soluong = @_SoLuong";
-            object[] parem = new object[] {masp, manl, soluong };
+            string query = "update DinhLuong set manl = dbo.LayMaNlTheoTenNl(@_MaNL), soluong = @_SoLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp)";
+            object[] parem = new object[] {manl, soluong, masp};
             DataProvider.ExecuteNonQuery(query,parem);
         }
 
@@ -45,9 +45,9 @@ namespace DAL
         }
 
         //Tải tên sản phẩm lên combobox
-        public DataTable TaiTenSp()
+        public DataTable TaiTenNL()
         {
-            string query = "select distinct TenSp from SanPham";
+            string query = "select distinct TenNL from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
     }

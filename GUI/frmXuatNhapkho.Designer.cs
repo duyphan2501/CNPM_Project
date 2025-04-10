@@ -102,7 +102,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(209, 75);
-            comboBox1.Margin = new Padding(4, 4, 4, 4);
+            comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(245, 36);
             comboBox1.TabIndex = 17;
@@ -324,6 +324,7 @@
             guna2DateTimePicker1.Size = new Size(326, 56);
             guna2DateTimePicker1.TabIndex = 15;
             guna2DateTimePicker1.Value = new DateTime(2025, 4, 4, 16, 23, 16, 24);
+            guna2DateTimePicker1.ValueChanged += guna2DateTimePicker1_ValueChanged;
             // 
             // guna2DataGridView1
             // 
@@ -382,7 +383,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(32, 98);
-            comboBox2.Margin = new Padding(4, 4, 4, 4);
+            comboBox2.Margin = new Padding(4);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(245, 33);
             comboBox2.TabIndex = 17;
