@@ -500,11 +500,10 @@
             // 
             pnlFormcon.AutoSize = true;
             pnlFormcon.CustomizableEdges = customizableEdges37;
-            pnlFormcon.Dock = DockStyle.Fill;
-            pnlFormcon.Location = new Point(380, 90);
+            pnlFormcon.Location = new Point(554, 90);
             pnlFormcon.Name = "pnlFormcon";
             pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            pnlFormcon.Size = new Size(1557, 1028);
+            pnlFormcon.Size = new Size(1383, 1028);
             pnlFormcon.TabIndex = 3;
             // 
             // frmAdmin

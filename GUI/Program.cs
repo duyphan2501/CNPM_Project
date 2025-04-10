@@ -24,7 +24,8 @@ namespace cnpm
             ////Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmBanHang());
             //Application.Run(new frmDinhLuong());
-            Application.Run(new frmKho());
+            //Application.Run(new frmKho());
+            Application.Run(new frmXuatNhapKho());
         }
     }
 }
