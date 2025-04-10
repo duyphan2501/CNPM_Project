@@ -17,6 +17,7 @@ namespace GUI
         public frmTaiKhoan()
         {
             InitializeComponent();
+            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
         }
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)
@@ -30,16 +31,17 @@ namespace GUI
         //Load tài khoản có hiệu lực
         public void LoadTK()
         {
-            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
+            
             gridDsTaikhoan.DataSource = taikhoanbus.TaiTK();
+            gridDsTaikhoan.RowTemplate.Height = 50;   //Chiều cao các hàng trong gridview
             cboTrangthai.SelectedItem = "Hoạt Động";
         }
 
         //Load tài khoản vô hiệu hóa
         public void LoadTK1()
         {
-            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
             gridDsTaikhoan.DataSource = taikhoanbus.TaiTK1();
+            gridDsTaikhoan.RowTemplate.Height = 50;
             cboTrangthai.SelectedItem = "Vô Hiệu";
         }
 
@@ -81,9 +83,18 @@ namespace GUI
 
         private void gridDsTaikhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
+            // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
+            if (e.RowIndex < 0 || e.ColumnIndex != gridDsTaikhoan.Columns["btnUpdate"].Index)
+            {
+                return;
+            }
             DataGridViewRow hangduocchon = gridDsTaikhoan.SelectedRows[0];
-            frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(hangduocchon.Cells["Tên đăng nhập"].Value.ToString(), hangduocchon.Cells["Trạng thái"].Value.ToString(), hangduocchon.Cells["Vai trò"].Value.ToString(), hangduocchon.Cells["Họ tên"].Value.ToString(), hangduocchon.Cells["Email"].Value.ToString());
+            string tendangnhap = hangduocchon.Cells["Tên đăng nhập"].Value.ToString();
+            string trangthai = hangduocchon.Cells["Trạng thái"].Value.ToString();
+            string vaitro = hangduocchon.Cells["Vai trò"].Value.ToString();
+            string hoten = hangduocchon.Cells["Họ tên"].Value.ToString();
+            string email = hangduocchon.Cells["Email"].Value.ToString();
+            frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(tendangnhap, trangthai , vaitro, hoten, email);
             capnhattk.ShowDialog();
             LoadTK();
         }

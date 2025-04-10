@@ -65,6 +65,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlMenu = new Guna.UI2.WinForms.Guna2Panel();
             pnlBaocaoTK = new Guna.UI2.WinForms.Guna2Panel();
             btnMathangbanchay = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -82,7 +84,8 @@
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnDashboard = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            btnExit = new Guna.UI2.WinForms.Guna2Button();
+            pnlFormcon = new Guna.UI2.WinForms.Guna2Panel();
             pnlMenu.SuspendLayout();
             pnlBaocaoTK.SuspendLayout();
             guna2Panel3.SuspendLayout();
@@ -90,7 +93,6 @@
             guna2Panel5.SuspendLayout();
             guna2Panel1.SuspendLayout();
             guna2GradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -102,11 +104,12 @@
             pnlMenu.Controls.Add(guna2Panel5);
             pnlMenu.Controls.Add(guna2Panel1);
             pnlMenu.CustomizableEdges = customizableEdges31;
-            pnlMenu.Location = new Point(0, 99);
+            pnlMenu.Dock = DockStyle.Left;
+            pnlMenu.Location = new Point(0, 0);
             pnlMenu.Margin = new Padding(3, 2, 3, 2);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            pnlMenu.Size = new Size(396, 1161);
+            pnlMenu.Size = new Size(380, 1118);
             pnlMenu.TabIndex = 1;
             // 
             // pnlBaocaoTK
@@ -120,7 +123,7 @@
             pnlBaocaoTK.Margin = new Padding(3, 5, 3, 5);
             pnlBaocaoTK.Name = "pnlBaocaoTK";
             pnlBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            pnlBaocaoTK.Size = new Size(396, 119);
+            pnlBaocaoTK.Size = new Size(380, 119);
             pnlBaocaoTK.TabIndex = 3;
             // 
             // btnMathangbanchay
@@ -219,7 +222,7 @@
             guna2Panel3.Margin = new Padding(3, 5, 3, 5);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Panel3.Size = new Size(396, 119);
+            guna2Panel3.Size = new Size(380, 119);
             guna2Panel3.TabIndex = 4;
             // 
             // btnThuchi
@@ -262,7 +265,7 @@
             pnlKho.Margin = new Padding(3, 5, 3, 5);
             pnlKho.Name = "pnlKho";
             pnlKho.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            pnlKho.Size = new Size(396, 119);
+            pnlKho.Size = new Size(380, 119);
             pnlKho.TabIndex = 4;
             // 
             // btnKiemkekho
@@ -390,7 +393,7 @@
             guna2Panel5.Margin = new Padding(3, 5, 3, 5);
             guna2Panel5.Name = "guna2Panel5";
             guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            guna2Panel5.Size = new Size(396, 119);
+            guna2Panel5.Size = new Size(380, 119);
             guna2Panel5.TabIndex = 4;
             // 
             // btnMenu
@@ -420,6 +423,7 @@
             btnMenu.Text = "Menu";
             btnMenu.TextAlign = HorizontalAlignment.Left;
             btnMenu.TextOffset = new Point(20, 0);
+            btnMenu.Click += btnMenu_Click;
             // 
             // guna2Panel1
             // 
@@ -430,7 +434,7 @@
             guna2Panel1.Margin = new Padding(3, 5, 3, 5);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            guna2Panel1.Size = new Size(396, 119);
+            guna2Panel1.Size = new Size(380, 119);
             guna2Panel1.TabIndex = 0;
             // 
             // btnDashboard
@@ -463,38 +467,54 @@
             // 
             // guna2GradientPanel1
             // 
+            guna2GradientPanel1.AutoSize = true;
             guna2GradientPanel1.BackColor = Color.FromArgb(0, 208, 98);
-            guna2GradientPanel1.Controls.Add(guna2PictureBox1);
+            guna2GradientPanel1.Controls.Add(btnExit);
             guna2GradientPanel1.CustomizableEdges = customizableEdges35;
             guna2GradientPanel1.Dock = DockStyle.Top;
-            guna2GradientPanel1.Location = new Point(0, 0);
+            guna2GradientPanel1.Location = new Point(380, 0);
             guna2GradientPanel1.Margin = new Padding(3, 5, 3, 5);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            guna2GradientPanel1.Size = new Size(2011, 118);
+            guna2GradientPanel1.Size = new Size(1557, 90);
             guna2GradientPanel1.TabIndex = 2;
             // 
-            // guna2PictureBox1
+            // btnExit
             // 
-            guna2PictureBox1.BackColor = Color.Transparent;
-            guna2PictureBox1.CustomizableEdges = customizableEdges33;
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(13, 16);
-            guna2PictureBox1.Margin = new Padding(3, 5, 3, 5);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            guna2PictureBox1.Size = new Size(72, 75);
-            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2PictureBox1.TabIndex = 0;
-            guna2PictureBox1.TabStop = false;
-            guna2PictureBox1.UseTransparentBackground = true;
+            btnExit.CustomizableEdges = customizableEdges33;
+            btnExit.DisabledState.BorderColor = Color.DarkGray;
+            btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnExit.Font = new Font("Segoe UI", 9F);
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(1197, 31);
+            btnExit.Name = "btnExit";
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            btnExit.Size = new Size(173, 56);
+            btnExit.TabIndex = 1;
+            btnExit.Text = "exit";
+            btnExit.Click += btnExit_Click;
+            // 
+            // pnlFormcon
+            // 
+            pnlFormcon.AutoSize = true;
+            pnlFormcon.CustomizableEdges = customizableEdges37;
+            pnlFormcon.Dock = DockStyle.Fill;
+            pnlFormcon.Location = new Point(380, 90);
+            pnlFormcon.Name = "pnlFormcon";
+            pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            pnlFormcon.Size = new Size(1557, 1028);
+            pnlFormcon.TabIndex = 3;
             // 
             // frmAdmin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.White;
-            ClientSize = new Size(2011, 1259);
+            ClientSize = new Size(1937, 1118);
+            Controls.Add(pnlFormcon);
             Controls.Add(guna2GradientPanel1);
             Controls.Add(pnlMenu);
             FormBorderStyle = FormBorderStyle.None;
@@ -510,14 +530,13 @@
             guna2Panel5.ResumeLayout(false);
             guna2Panel1.ResumeLayout(false);
             guna2GradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2Panel pnlMenu;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2GradientButton btnDashboard;
         private Guna.UI2.WinForms.Guna2GradientButton btnMenu;
@@ -533,5 +552,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnMathangbanchay;
         private Guna.UI2.WinForms.Guna2GradientButton btnLoinhuan;
         private Guna.UI2.WinForms.Guna2GradientButton btnBaocaoTK;
+        private Guna.UI2.WinForms.Guna2Panel pnlFormcon;
+        private Guna.UI2.WinForms.Guna2Button btnExit;
     }
 }

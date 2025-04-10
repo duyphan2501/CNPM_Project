@@ -11,38 +11,33 @@ using BUS;
 
 namespace GUI
 {
-    public partial class frmThemLoaiSanPham : Form
+    public partial class frmThemLoaiNguyenLieu : Form
     {
-        BUS_LoaiSanPham loaisanphambus;
-        public frmThemLoaiSanPham()
+        BUS_LoaiNguyenLieu loainguyenlieubus;
+        public frmThemLoaiNguyenLieu()
         {
             InitializeComponent();
-            loaisanphambus = new BUS_LoaiSanPham("", "");
+            loainguyenlieubus = new BUS_LoaiNguyenLieu("", "");
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            
-            loaisanphambus.ThemLoaiSp(txtMaloai.Text, txtTenloai.Text);
+            loainguyenlieubus.ThemLoaiNguyenLieu(txtMaloai.Text, txtTenloai.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-
+        private void frmThemLoaiNguyenLieu_Load(object sender, EventArgs e)
+        {
+            txtMaloai.Text = loainguyenlieubus.PhatSinhMaLoaiNL();
+            txtMaloai.ReadOnly = true;
+        }
+        
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-    
-
-        private void frmThemLoaiSanPham_Load(object sender, EventArgs e)
-        {
-            txtMaloai.Text = loaisanphambus.PhatSinhMaLoai();
-            txtMaloai.ReadOnly = true;
-
         }
     }
 }

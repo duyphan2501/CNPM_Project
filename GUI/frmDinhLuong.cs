@@ -88,9 +88,14 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             dinhluong = new BUS_DinhLuong("", "", 0);
-            dinhluong.SuaDinhluong(txtTenSp.Text,cboTenNguyenLieu.Text,(int)numSoluongNL.Value);
+            dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
             loadDsDinhluong();
             frmDinhLuong_Load(sender, e);
+        }
+
+        private void gridDsDinhluong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

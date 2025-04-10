@@ -199,7 +199,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             btnUpdate.HeaderText = "";
             btnUpdate.Image = Properties.Resources.update;
             btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;

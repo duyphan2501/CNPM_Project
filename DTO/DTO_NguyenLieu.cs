@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class NguyenLieu
+    public class DTO_NguyenLieu
     {
         private string MaNL, MaLoaiNL, TenNL, DonVi;
         private int SoLuong;
@@ -17,7 +17,7 @@ namespace DTO
         public string _DonVi { get; set; }
         public int _SoLuong { get; set; }
 
-        public NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong)
+        public DTO_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong)
         {
             MaNL = manl;
             MaLoaiNL = maloainl;
