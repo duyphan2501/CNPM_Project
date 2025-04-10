@@ -10,19 +10,17 @@ using System.Windows.Forms;
 
 namespace GUI.components
 {
-    public partial class Widget : UserControl
+    public partial class ProductCategory : UserControl
     {
-        public Widget()
+        public ProductCategory()
         {
             InitializeComponent();
         }
 
-        public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham)
+        public ProductCategory(string tenloai)
         {
             InitializeComponent();
-            picSanPham.Image = General.ByteArrayToImage(hinhAnhSP);
-            lblTenSanPham.Text = tenSanPham;
-            lblGiaSanPham.Text = giaSanPham.ToString();
+            btnTenLoai.Text = tenloai;
         }
     }
 }

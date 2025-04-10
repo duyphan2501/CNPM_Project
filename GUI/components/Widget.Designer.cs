@@ -28,81 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.picProduct = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
-            this.SuspendLayout();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            picSanPham = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            lblGiaSanPham = new Label();
+            lblTenSanPham = new Label();
+            btnThemSanPham = new Guna.UI2.WinForms.Guna2Button();
+            ((System.ComponentModel.ISupportInitialize)picSanPham).BeginInit();
+            guna2ShadowPanel1.SuspendLayout();
+            SuspendLayout();
             // 
-            // lblName
+            // picSanPham
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.DimGray;
-            this.lblName.Location = new System.Drawing.Point(3, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(128, 31);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Capuchino";
+            picSanPham.CustomizableEdges = customizableEdges1;
+            picSanPham.Image = Properties.Resources.nuocam;
+            picSanPham.ImageRotate = 0F;
+            picSanPham.Location = new Point(4, 0);
+            picSanPham.Margin = new Padding(3, 4, 3, 4);
+            picSanPham.Name = "picSanPham";
+            picSanPham.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            picSanPham.Size = new Size(240, 151);
+            picSanPham.SizeMode = PictureBoxSizeMode.Zoom;
+            picSanPham.TabIndex = 1;
+            picSanPham.TabStop = false;
             // 
-            // lblPrice
+            // guna2ShadowPanel1
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
-            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(119)))), ((int)(((byte)(18)))));
-            this.lblPrice.Location = new System.Drawing.Point(19, 103);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(94, 31);
-            this.lblPrice.TabIndex = 0;
-            this.lblPrice.Text = "20000đ";
+            guna2ShadowPanel1.BackColor = Color.Transparent;
+            guna2ShadowPanel1.Controls.Add(lblGiaSanPham);
+            guna2ShadowPanel1.Controls.Add(lblTenSanPham);
+            guna2ShadowPanel1.Controls.Add(btnThemSanPham);
+            guna2ShadowPanel1.Controls.Add(picSanPham);
+            guna2ShadowPanel1.Dock = DockStyle.Fill;
+            guna2ShadowPanel1.FillColor = Color.White;
+            guna2ShadowPanel1.Location = new Point(0, 0);
+            guna2ShadowPanel1.Name = "guna2ShadowPanel1";
+            guna2ShadowPanel1.Radius = 3;
+            guna2ShadowPanel1.ShadowColor = Color.Black;
+            guna2ShadowPanel1.ShadowShift = 2;
+            guna2ShadowPanel1.Size = new Size(248, 237);
+            guna2ShadowPanel1.TabIndex = 4;
             // 
-            // picProduct
+            // lblGiaSanPham
             // 
-            this.picProduct.ImageRotate = 0F;
-            this.picProduct.Location = new System.Drawing.Point(137, 34);
-            this.picProduct.Name = "picProduct";
-            this.picProduct.Size = new System.Drawing.Size(129, 110);
-            this.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picProduct.TabIndex = 1;
-            this.picProduct.TabStop = false;
+            lblGiaSanPham.AutoSize = true;
+            lblGiaSanPham.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGiaSanPham.ForeColor = Color.DimGray;
+            lblGiaSanPham.Location = new Point(18, 189);
+            lblGiaSanPham.Name = "lblGiaSanPham";
+            lblGiaSanPham.Size = new Size(73, 25);
+            lblGiaSanPham.TabIndex = 6;
+            lblGiaSanPham.Text = "20000đ";
             // 
-            // guna2Panel1
+            // lblTenSanPham
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Gray;
-            this.guna2Panel1.BorderRadius = 3;
-            this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.lblName);
-            this.guna2Panel1.Controls.Add(this.picProduct);
-            this.guna2Panel1.Controls.Add(this.lblPrice);
-            this.guna2Panel1.Location = new System.Drawing.Point(3, 3);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(269, 147);
-            this.guna2Panel1.TabIndex = 2;
+            lblTenSanPham.AutoSize = true;
+            lblTenSanPham.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTenSanPham.ForeColor = Color.Black;
+            lblTenSanPham.Location = new Point(15, 155);
+            lblTenSanPham.Name = "lblTenSanPham";
+            lblTenSanPham.Size = new Size(192, 25);
+            lblTenSanPham.TabIndex = 5;
+            lblTenSanPham.Text = "Cafe Sua Da Sieu Cap";
+            // 
+            // btnThemSanPham
+            // 
+            btnThemSanPham.BorderRadius = 5;
+            btnThemSanPham.Cursor = Cursors.Hand;
+            btnThemSanPham.CustomizableEdges = customizableEdges3;
+            btnThemSanPham.DisabledState.BorderColor = Color.DarkGray;
+            btnThemSanPham.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnThemSanPham.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnThemSanPham.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnThemSanPham.FillColor = Color.FromArgb(244, 129, 17);
+            btnThemSanPham.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThemSanPham.ForeColor = Color.White;
+            btnThemSanPham.Image = Properties.Resources.icons8_plus_64;
+            btnThemSanPham.ImageAlign = HorizontalAlignment.Left;
+            btnThemSanPham.ImageSize = new Size(40, 40);
+            btnThemSanPham.Location = new Point(123, 187);
+            btnThemSanPham.Name = "btnThemSanPham";
+            btnThemSanPham.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnThemSanPham.Size = new Size(116, 35);
+            btnThemSanPham.TabIndex = 4;
+            btnThemSanPham.Text = "Thêm";
+            btnThemSanPham.TextAlign = HorizontalAlignment.Right;
             // 
             // Widget
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.guna2Panel1);
-            this.DoubleBuffered = true;
-            this.Name = "Widget";
-            this.Size = new System.Drawing.Size(275, 152);
-            ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            Controls.Add(guna2ShadowPanel1);
+            DoubleBuffered = true;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Widget";
+            Size = new Size(248, 237);
+            ((System.ComponentModel.ISupportInitialize)picSanPham).EndInit();
+            guna2ShadowPanel1.ResumeLayout(false);
+            guna2ShadowPanel1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        public System.Windows.Forms.Label lblName;
-        public System.Windows.Forms.Label lblPrice;
-        public Guna.UI2.WinForms.Guna2PictureBox picProduct;
+        public Guna.UI2.WinForms.Guna2PictureBox picSanPham;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2Button btnThemSanPham;
+        private Label lblTenSanPham;
+        private Label lblGiaSanPham;
     }
 }
