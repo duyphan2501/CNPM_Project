@@ -22,9 +22,9 @@ namespace cnpm
             //Application.Run(new frmThemLoaiSanPham());
             //Application.Run(new frmThucdon());
             ////Application.Run(new frmXuatNhapKho());
-            //Application.Run(new frmBanHang());
+            Application.Run(new frmBanHang());
             //Application.Run(new frmDinhLuong());
-            Application.Run(new frmKho());
+            //Application.Run(new frmKho());
         }
     }
 }

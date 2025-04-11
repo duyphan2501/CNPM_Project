@@ -35,9 +35,9 @@
             lblThanhtien = new Label();
             lblDongia = new Label();
             lblTenMon = new Label();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            picDeleteItem = new Guna.UI2.WinForms.Guna2PictureBox();
             numSoluong = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picDeleteItem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSoluong).BeginInit();
             SuspendLayout();
             // 
@@ -71,19 +71,20 @@
             lblTenMon.TabIndex = 0;
             lblTenMon.Text = "Lipton sữa chanh dây";
             // 
-            // guna2PictureBox1
+            // picDeleteItem
             // 
-            guna2PictureBox1.Cursor = Cursors.Hand;
-            guna2PictureBox1.CustomizableEdges = customizableEdges1;
-            guna2PictureBox1.Image = Properties.Resources.recyclebin1;
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(3, 11);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox1.Size = new Size(39, 38);
-            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2PictureBox1.TabIndex = 1;
-            guna2PictureBox1.TabStop = false;
+            picDeleteItem.Cursor = Cursors.Hand;
+            picDeleteItem.CustomizableEdges = customizableEdges1;
+            picDeleteItem.Image = Properties.Resources.recyclebin1;
+            picDeleteItem.ImageRotate = 0F;
+            picDeleteItem.Location = new Point(3, 11);
+            picDeleteItem.Name = "picDeleteItem";
+            picDeleteItem.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            picDeleteItem.Size = new Size(39, 38);
+            picDeleteItem.SizeMode = PictureBoxSizeMode.Zoom;
+            picDeleteItem.TabIndex = 1;
+            picDeleteItem.TabStop = false;
+            picDeleteItem.Click += picDeleteItem_Click;
             // 
             // numSoluong
             // 
@@ -104,13 +105,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(numSoluong);
-            Controls.Add(guna2PictureBox1);
+            Controls.Add(picDeleteItem);
             Controls.Add(lblTenMon);
             Controls.Add(lblDongia);
             Controls.Add(lblThanhtien);
             Name = "InvoiceItem";
             Size = new Size(479, 58);
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picDeleteItem).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSoluong).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -121,7 +122,7 @@
         private Label lblThanhtien;
         private Label lblDongia;
         private Label lblTenMon;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox picDeleteItem;
         private Guna.UI2.WinForms.Guna2NumericUpDown numSoluong;
     }
 }

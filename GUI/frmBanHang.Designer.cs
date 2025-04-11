@@ -83,7 +83,7 @@
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
-            pnlDonHangItem = new FlowLayoutPanel();
+            pnlInvoiceItem = new FlowLayoutPanel();
             guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             label13 = new Label();
             label5 = new Label();
@@ -96,7 +96,7 @@
             btnHuyDon = new Guna.UI2.WinForms.Guna2Button();
             btnTamLuu = new Guna.UI2.WinForms.Guna2Button();
             pnlProductCategory = new FlowLayoutPanel();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            txtTimMon = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             pnlThucDon = new FlowLayoutPanel();
             guna2Panel1.SuspendLayout();
@@ -369,7 +369,7 @@
             guna2ShadowPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             guna2ShadowPanel2.BackColor = Color.Transparent;
             guna2ShadowPanel2.Controls.Add(guna2ShadowPanel3);
-            guna2ShadowPanel2.Controls.Add(pnlDonHangItem);
+            guna2ShadowPanel2.Controls.Add(pnlInvoiceItem);
             guna2ShadowPanel2.Controls.Add(guna2Button6);
             guna2ShadowPanel2.Controls.Add(label13);
             guna2ShadowPanel2.Controls.Add(label5);
@@ -392,7 +392,7 @@
             guna2ShadowPanel3.Controls.Add(label7);
             guna2ShadowPanel3.Controls.Add(label6);
             guna2ShadowPanel3.FillColor = Color.Black;
-            guna2ShadowPanel3.Location = new Point(16, 73);
+            guna2ShadowPanel3.Location = new Point(16, 108);
             guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             guna2ShadowPanel3.Radius = 5;
             guna2ShadowPanel3.ShadowColor = Color.Black;
@@ -416,7 +416,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(295, 20);
+            label8.Location = new Point(299, 20);
             label8.Name = "label8";
             label8.Size = new Size(83, 23);
             label8.TabIndex = 0;
@@ -427,7 +427,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(227, 20);
+            label7.Location = new Point(231, 20);
             label7.Name = "label7";
             label7.Size = new Size(57, 23);
             label7.TabIndex = 0;
@@ -444,16 +444,16 @@
             label6.TabIndex = 0;
             label6.Text = "Tên Món";
             // 
-            // pnlDonHangItem
+            // pnlInvoiceItem
             // 
-            pnlDonHangItem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pnlDonHangItem.AutoScroll = true;
-            pnlDonHangItem.FlowDirection = FlowDirection.TopDown;
-            pnlDonHangItem.Location = new Point(16, 137);
-            pnlDonHangItem.Name = "pnlDonHangItem";
-            pnlDonHangItem.Size = new Size(522, 335);
-            pnlDonHangItem.TabIndex = 5;
-            pnlDonHangItem.WrapContents = false;
+            pnlInvoiceItem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pnlInvoiceItem.AutoScroll = true;
+            pnlInvoiceItem.FlowDirection = FlowDirection.TopDown;
+            pnlInvoiceItem.Location = new Point(16, 173);
+            pnlInvoiceItem.Name = "pnlInvoiceItem";
+            pnlInvoiceItem.Size = new Size(522, 299);
+            pnlInvoiceItem.TabIndex = 5;
+            pnlInvoiceItem.WrapContents = false;
             // 
             // guna2Button6
             // 
@@ -478,7 +478,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Black;
-            label13.Location = new Point(142, 39);
+            label13.Location = new Point(142, 45);
             label13.Name = "label13";
             label13.Size = new Size(29, 25);
             label13.TabIndex = 3;
@@ -500,7 +500,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(15, 39);
+            label11.Location = new Point(15, 45);
             label11.Name = "label11";
             label11.Size = new Size(74, 25);
             label11.TabIndex = 3;
@@ -622,27 +622,28 @@
             pnlProductCategory.Size = new Size(157, 697);
             pnlProductCategory.TabIndex = 6;
             // 
-            // guna2TextBox1
+            // txtTimMon
             // 
-            guna2TextBox1.BorderRadius = 5;
-            guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.IconLeft = Properties.Resources.search;
-            guna2TextBox1.Location = new Point(867, 104);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PlaceholderText = "Tìm món";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(305, 39);
-            guna2TextBox1.TabIndex = 7;
+            txtTimMon.BorderRadius = 5;
+            txtTimMon.CustomizableEdges = customizableEdges1;
+            txtTimMon.DefaultText = "";
+            txtTimMon.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtTimMon.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtTimMon.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtTimMon.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtTimMon.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTimMon.Font = new Font("Segoe UI", 9F);
+            txtTimMon.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTimMon.IconLeft = Properties.Resources.search;
+            txtTimMon.Location = new Point(867, 104);
+            txtTimMon.Margin = new Padding(3, 4, 3, 4);
+            txtTimMon.Name = "txtTimMon";
+            txtTimMon.PlaceholderText = "Tìm món";
+            txtTimMon.SelectedText = "";
+            txtTimMon.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtTimMon.Size = new Size(305, 39);
+            txtTimMon.TabIndex = 7;
+            txtTimMon.TextChanged += txtTimMon_TextChanged;
             // 
             // guna2Button7
             // 
@@ -662,6 +663,7 @@
             guna2Button7.Size = new Size(145, 36);
             guna2Button7.TabIndex = 4;
             guna2Button7.Text = "Chọn Số Chờ";
+            guna2Button7.Click += guna2Button7_Click;
             // 
             // pnlThucDon
             // 
@@ -678,7 +680,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1554, 851);
             Controls.Add(pnlThucDon);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(txtTimMon);
             Controls.Add(pnlProductCategory);
             Controls.Add(guna2Button7);
             Controls.Add(btnTamLuu);
@@ -739,7 +741,7 @@
         private Label label7;
         private Label label9;
         private Label label8;
-        private FlowLayoutPanel pnlDonHangItem;
+        private FlowLayoutPanel pnlInvoiceItem;
         private Label label10;
         private Label lblTongtien;
         private Label label12;
@@ -747,7 +749,7 @@
         private Guna.UI2.WinForms.Guna2Button btnHuyDon;
         private Guna.UI2.WinForms.Guna2Button btnTamLuu;
         private FlowLayoutPanel pnlProductCategory;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtTimMon;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Label label11;
         private Label label13;

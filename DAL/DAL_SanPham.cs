@@ -20,6 +20,11 @@ namespace DAL
             sanphamdto = new DTO_SanPham(masp,maloai,tensp,hinhanh,giaban,trangthai);
         }
 
+        public DAL_SanPham()
+        {
+            sanphamdto = new DTO_SanPham();
+        }
+
         //Tải danh sách sản phẩm lên gridview
         public DataTable TaiSp()
         {
@@ -61,8 +66,11 @@ namespace DAL
             return maxMasp;
         }
 
-       
-
+        // Lấy sản phẩm load lên pnlThucDon
+        public DataTable SelectOnSaleProduct()
+        {
+            string query = "select TenSp, HinhAnh, GiaBan from SanPham where TrangThai like '%Còn bán%'";
+            return DataProvider.ExecuteQuery(query);
+        }
     }
-
 }

@@ -12,6 +12,9 @@ namespace GUI.components
 {
     public partial class Widget : UserControl
     {
+        public event EventHandler ThemSanPhamClicked;
+        public string TenSanPham;
+        public int GiaSanPham;
         public Widget()
         {
             InitializeComponent();
@@ -23,6 +26,14 @@ namespace GUI.components
             picSanPham.Image = General.ByteArrayToImage(hinhAnhSP);
             lblTenSanPham.Text = tenSanPham;
             lblGiaSanPham.Text = giaSanPham.ToString();
+            TenSanPham = tenSanPham;
+            GiaSanPham = giaSanPham;
+        }
+
+        private void btnThemSanPham_Click(object sender, EventArgs e)
+        {
+            //Gọi event để báo về Form cha
+            ThemSanPhamClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

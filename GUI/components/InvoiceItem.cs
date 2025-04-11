@@ -13,6 +13,8 @@ namespace GUI.components
 {
     public partial class InvoiceItem : UserControl
     {
+        public string TenMon;
+        public event EventHandler XoaItemClicked;
         public InvoiceItem()
         {
             InitializeComponent();
@@ -29,6 +31,18 @@ namespace GUI.components
             lblDongia.Text = dongia.ToString();
             numSoluong.Value = soluong;
             lblThanhtien.Text = (dongia * soluong).ToString();
+            TenMon = tenmon;
+        }
+
+        public void IncreaseQuantity()
+        {
+            numSoluong.Value += 1;
+        }
+
+        private void picDeleteItem_Click(object sender, EventArgs e)
+        {
+            // Gọi sự kiện để báo về Form cha
+            XoaItemClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

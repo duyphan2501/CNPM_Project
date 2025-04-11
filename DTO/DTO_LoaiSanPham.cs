@@ -18,5 +18,7 @@ namespace DTO
             this.MaLoai = maloai;
             this.TenLoai = tenloai;
         }
+
+        public DTO_LoaiSanPham() { }    
     }
 }

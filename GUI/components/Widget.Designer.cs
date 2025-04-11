@@ -116,6 +116,7 @@
             btnThemSanPham.TabIndex = 4;
             btnThemSanPham.Text = "Thêm";
             btnThemSanPham.TextAlign = HorizontalAlignment.Right;
+            btnThemSanPham.Click += btnThemSanPham_Click;
             // 
             // Widget
             // 
