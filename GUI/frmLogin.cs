@@ -119,7 +119,6 @@ namespace GUI
             }
         }
 
-
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -130,7 +129,9 @@ namespace GUI
 
         private void lblForgotpassword_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmQuenMatKhau frmQuenMatKhau = new frmQuenMatKhau();
+            frmQuenMatKhau.Show();
         }
     }
 }

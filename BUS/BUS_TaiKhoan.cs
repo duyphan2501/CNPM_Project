@@ -22,6 +22,11 @@ namespace BUS
             taikhoandal = new DAL_TaiKhoan(tendangnhap, matkhau);
         }
 
+        public BUS_TaiKhoan(string tendangnhap)
+        {
+            taikhoandal = new DAL_TaiKhoan(tendangnhap);
+        }
+
         public DataTable TaiTK()
         {
             return taikhoandal.TaiTK();
@@ -43,10 +48,15 @@ namespace BUS
             taikhoandal.SuaTK(tendangnhap, trangthai, vaitro, hoten, email);
         }
 
+        public DataTable SelectOneAccount()
+        {
+            return taikhoandal.SelectOneAccount();
+        }
+
         public DataTable ValidateLoginAccount(string password)
         {
             // lấy tài khoản
-            DataTable account = taikhoandal.SelectOneAccount();
+            DataTable account = SelectOneAccount();
             // kiểm tra tài khoản có tồn tại
             if (account != null && account.Rows.Count > 0)
             {
@@ -61,6 +71,13 @@ namespace BUS
                 }
             }
             return null; // Sai username hoặc password
+        }
+
+        public void updatePassword(string username, string password)
+        {
+            string hashPassword = General.HashPassword(password);
+            taikhoandal = new DAL_TaiKhoan(username, hashPassword);
+            taikhoandal.updatePassword();
         }
     }
 }

@@ -116,7 +116,7 @@
             guna2GradientPanel1.Controls.Add(lblForgotpassword);
             guna2GradientPanel1.Controls.Add(label2);
             guna2GradientPanel1.CustomizableEdges = customizableEdges9;
-            guna2GradientPanel1.Location = new Point(388, 58);
+            guna2GradientPanel1.Location = new Point(364, 57);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientPanel1.Size = new Size(427, 403);
@@ -213,7 +213,7 @@
             pi.CustomizableEdges = customizableEdges13;
             pi.Image = Properties.Resources.banner_login;
             pi.ImageRotate = 0F;
-            pi.Location = new Point(25, -6);
+            pi.Location = new Point(12, -6);
             pi.Name = "pi";
             pi.ShadowDecoration.CustomizableEdges = customizableEdges14;
             pi.Size = new Size(343, 513);

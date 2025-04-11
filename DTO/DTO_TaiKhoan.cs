@@ -17,6 +17,10 @@
         Email = email;
     }
 
+    public DTO_TaiKhoan(string tendangnhap) { 
+        TenDangNhap = tendangnhap;
+    }
+
     public DTO_TaiKhoan(string tendangnhap, string matkhau)
     {
         TenDangNhap = tendangnhap;
