@@ -1,4 +1,5 @@
 ﻿using GUI;
+using System.Data;
 
 namespace cnpm
 {
@@ -7,6 +8,8 @@ namespace cnpm
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        public static DataTable account;
         [STAThread]
         static void Main()
         {
@@ -16,13 +19,13 @@ namespace cnpm
             // tải biến môi trường từ file .env
             //Env.Load();
             //Application.Run(new frmConfig());
-            //Application.Run(new frmLogin());
+            Application.Run(new frmLogin());
             //Application.Run(new frmTaiKhoan());
             //Application.Run(new frmAdmin());
             //Application.Run(new frmThemLoaiSanPham());
             //Application.Run(new frmThucdon());
             ////Application.Run(new frmXuatNhapKho());
-            Application.Run(new frmBanHang());
+            //Application.Run(new frmBanHang());
             //Application.Run(new frmDinhLuong());
             //Application.Run(new frmKho());
         }

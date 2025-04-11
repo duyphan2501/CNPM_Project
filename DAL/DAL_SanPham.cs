@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using DTO;
-using Guna.UI2.WinForms;    
 namespace DAL
 {
     public class DAL_SanPham
