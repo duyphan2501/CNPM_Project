@@ -28,38 +28,47 @@ namespace GUI
             taikhoan = new BUS_TaiKhoan(txtUsername.Text);
             string email = taikhoan.SelectOneAccount().Rows[0]["email"].ToString();
 
-            // tạo mã 6 chũ số
+            // Tạo mã 6 chữ số
             Random rand = new Random();
-            resetCode = (rand.Next(999999)).ToString();
+            resetCode = (rand.Next(100000, 999999)).ToString(); // Đảm bảo đủ 6 chữ số
 
-            // set up gửi mail
-            String from, to, pass, messageBody;
-            MailMessage message = new MailMessage();
-            from = "duyphan2501@gmail.com";
-            to = (email).Trim().ToString();
-            pass = "fhwmkqpzuysppsfm";
-            messageBody = "Mã xác thực là: " + resetCode;
-            message.From = new MailAddress(from);
-            message.To.Add(to);
-            message.Body = messageBody;
-            message.Subject = "Lấy lại mật khẩu";
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            smtp.EnableSsl = true;
-            smtp.Port = 587;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(from, pass);
-            // gửi mail
+            // Set up gửi mail
+            string from = "duyphan2501@gmail.com";
+            string to = email.Trim();
+            string pass = "fhwmkqpzuysppsfm";
+            string messageBody = "Mã xác thực là: " + resetCode;
+
+            MailMessage message = new MailMessage(from, to, "Lấy lại mật khẩu", messageBody);
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com")
+            {
+                EnableSsl = true,
+                Port = 587,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential(from, pass)
+            };
+
             try
             {
                 smtp.Send(message);
-                MessageBox.Show("Mã xác thực đã được gửi đến email của bạn");
+
+                messageDialog.Caption = "Thành công";
+                messageDialog.Text = "Mã xác thực đã được gửi đến email của bạn.";
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
+
                 grpStep2.Enabled = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                messageDialog.Caption = "Lỗi";
+                messageDialog.Text = ex.Message;
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
             }
         }
+
 
         private void btnVerifyCode_Click(object sender, EventArgs e)
         {
@@ -69,9 +78,14 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Mã xác thực không đúng");
+                messageDialog.Caption = "Sai mã xác thực";
+                messageDialog.Text = "Mã xác thực không đúng. Vui lòng kiểm tra lại.";
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
             }
         }
+
 
         private void frmQuenMatKhau_Load(object sender, EventArgs e)
         {
