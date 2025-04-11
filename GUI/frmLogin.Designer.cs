@@ -85,7 +85,7 @@
             lblForgotpassword.Cursor = Cursors.Hand;
             lblForgotpassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblForgotpassword.ForeColor = Color.DarkGray;
-            lblForgotpassword.Location = new Point(249, 228);
+            lblForgotpassword.Location = new Point(219, 231);
             lblForgotpassword.Name = "lblForgotpassword";
             lblForgotpassword.Size = new Size(195, 32);
             lblForgotpassword.TabIndex = 4;

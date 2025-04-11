@@ -15,11 +15,10 @@ namespace GUI
 {
     public partial class frmThucdon : Form
     {
-        BUS_SanPham sanpham;
+        BUS_SanPham sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
         public frmThucdon()
         {
             InitializeComponent();
-            sanpham = new BUS_SanPham("", "", "", new byte[10], 0, "");
         }
 
         //Tải danh sách sản phẩm
@@ -30,7 +29,7 @@ namespace GUI
             gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
             DataGridViewImageColumn imgCol = (DataGridViewImageColumn)gridThucDon.Columns["Hình Ảnh"];
             imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;  //tùy chỉnh ảnh về zoom
-            
+
         }
 
         private void btnThemAnh_Click(object sender, EventArgs e)
@@ -170,13 +169,13 @@ namespace GUI
             {
                 sanpham.SuaSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
                 LoadSp();
-                
+
             }
             else
             {
                 sanpham.ThemSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
                 LoadSp();
-               
+
             }
             frmThucdon_Load(sender, e);
 
@@ -191,7 +190,7 @@ namespace GUI
 
         private void btnDinhluong_Click(object sender, EventArgs e)
         {
-            frmDinhLuong dinhluong = new frmDinhLuong(txtMasanpham.Text,txtTensanpham.Text);  //truyền mã sản phẩm và tên sản phẩm vào form định lượng để thêm định lượng
+            frmDinhLuong dinhluong = new frmDinhLuong(txtMasanpham.Text, txtTensanpham.Text);  //truyền mã sản phẩm và tên sản phẩm vào form định lượng để thêm định lượng
             dinhluong.ShowDialog();
         }
 

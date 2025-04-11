@@ -19,12 +19,12 @@ namespace DTO
 
         public DTO_TaiKhoan(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email)
         {
-            this.TenDangNhap = tendangnhap;
-            this.MatKhau = matkhau;
-            this.TrangThai = trangthai;
-            this.VaiTro = vaitro;
-            this.HoTen = hoten;
-            this.Email = email;
+            this._TenDangNhap = tendangnhap;
+            this._MatKhau = matkhau;
+            this._TrangThai = trangthai;
+            this._VaiTro = vaitro;
+            this._HoTen = hoten;
+            this._Email = email;
         }
     }
 }

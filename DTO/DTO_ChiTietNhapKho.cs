@@ -20,7 +20,7 @@ namespace DTO
             this.MaPhieuNhap = maphieunhap;
             this.MaNL = manl;
             this.GiaNhap = gianhap;
-            this._SoLuong = soluong;
+            this.SoLuong = soluong;
         }
 
     }

@@ -13,11 +13,10 @@ namespace GUI
 {
     public partial class frmKho : Form
     {
-        BUS_NguyenLieu nguyenlieubus;
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0);
         public frmKho()
         {
             InitializeComponent();
-            nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0);
         }
 
         private void frmKho_Load(object sender, EventArgs e)
