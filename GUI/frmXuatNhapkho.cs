@@ -24,8 +24,6 @@ namespace GUI
             InitializeComponent();
         }
 
-
-
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
             TaiTenNguyenLieu();
@@ -36,6 +34,7 @@ namespace GUI
         {
             cboTenNguyenlieu.DataSource = phieunhap.TaiTenNguyenLieu();
             cboTenNguyenlieu.DisplayMember = "TenNL";
+            cboTenNguyenlieu.ValueMember = "MaNL";
         }
 
         public void LoadPhieu()
@@ -84,7 +83,6 @@ namespace GUI
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e) //Khi loại phiếu thay đổi thì tự phát sinh mã
         {
             PhatSinhMa();
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)

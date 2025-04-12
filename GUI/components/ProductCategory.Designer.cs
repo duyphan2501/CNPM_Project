@@ -58,6 +58,7 @@
             btnTenLoai.Size = new Size(149, 58);
             btnTenLoai.TabIndex = 0;
             btnTenLoai.Text = "Tất Cả";
+            btnTenLoai.Click += btnTenLoai_Click;
             // 
             // ProductCategory
             // 

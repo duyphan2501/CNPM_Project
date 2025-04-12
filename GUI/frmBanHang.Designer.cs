@@ -213,9 +213,9 @@
             lblThoiGian.ForeColor = Color.White;
             lblThoiGian.Location = new Point(490, 43);
             lblThoiGian.Name = "lblThoiGian";
-            lblThoiGian.Size = new Size(67, 25);
+            lblThoiGian.Size = new Size(89, 25);
             lblThoiGian.TabIndex = 3;
-            lblThoiGian.Text = "Mã Ca:";
+            lblThoiGian.Text = "Thời gian";
             // 
             // lblMaCaLam
             // 
@@ -671,13 +671,12 @@
             guna2Button7.FillColor = Color.FromArgb(244, 129, 17);
             guna2Button7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2Button7.ForeColor = Color.White;
-            guna2Button7.Location = new Point(1397, 104);
+            guna2Button7.Location = new Point(1397, 116);
             guna2Button7.Name = "guna2Button7";
             guna2Button7.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Button7.Size = new Size(145, 36);
             guna2Button7.TabIndex = 4;
             guna2Button7.Text = "Chọn Số Chờ";
-            guna2Button7.Click += guna2Button7_Click;
             // 
             // pnlThucDon
             // 

@@ -24,16 +24,16 @@ namespace BUS
         }
 
         //Tải tên loại lên combobox
-        public DataTable TaiTenloai()
+        public DataTable TaiLoaiSP()
         {
-            return sanphamdal.TaiTenLoai();
+            return sanphamdal.TaiLoaiSP();
         }
         
 
         //Thêm sản phẩm mới
-        public void ThemSp(string masp, string tenloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
+        public void ThemSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
-            sanphamdal.ThemSp(masp, tenloai, tensp, hinhanh, giaban, trangthai);
+            sanphamdal.ThemSp(masp, maloai, tensp, hinhanh, giaban, trangthai);
         }
 
         // phát sinh mã sản phẩm
@@ -54,9 +54,9 @@ namespace BUS
             }
         }
 
-        public void SuaSp(string masp, string tenloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
+        public void SuaSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
-            sanphamdal.SuaSp(masp, tenloai, tensp, hinhanh, giaban, trangthai);
+            sanphamdal.SuaSp(masp, maloai, tensp, hinhanh, giaban, trangthai);
         }
 
         // Lấy sản phẩm còn bán
