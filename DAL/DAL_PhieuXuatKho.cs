@@ -12,16 +12,15 @@ namespace DAL
     {
         DTO_PhieuXuatKho phieuxuatdto;
 
-        public DAL_PhieuXuatKho(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        public DAL_PhieuXuatKho(string maPhieuXuat, string tenDangXuat, DateTime ngayXuat, string ghiChu)
         {
-            phieuxuatdto = new DTO_PhieuXuatKho(maPhieuXuat,tenDangNhap,ngayXuat,ghiChu);
+            phieuxuatdto = new DTO_PhieuXuatKho(maPhieuXuat,tenDangXuat,ngayXuat,ghiChu);
         }
 
         public DataTable TaiPhieuxuat()
         {
-            string query = "SELECT ph.MaPhieuXuat AS N'Mã phiếu xuất', tk.TenDangNhap AS N'Người lập', nl.TenNL AS N'Nguyên liệu',    ct.SoLuong AS N'Số lượng xuất',    ph.NgayXuat AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
+            string query = "SELECT ph.MaPhieuXuat AS N'Mã phiếu xuất', nl.TenNL AS N'Nguyên liệu',    ct.SoLuong AS N'Số lượng xuất',    ph.NgayXuat AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
                             " FROM PhieuXuatKho ph " +
-                            "JOIN TaiKhoan tk ON ph.TenDangNhap = tk.TenDangNhap " +
                             "JOIN ChiTietXuatKho ct ON ph.MaPhieuXuat = ct.MaPhieuXuat " +
                             "JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL;";
             return DataProvider.ExecuteQuery(query);
@@ -37,6 +36,13 @@ namespace DAL
         {
             string query = "insert into PhieuXuatKho values (@_MaPhiepXuat,@_TenDangNhap,@_NgayXuat,@_GhiChu)";
             object[] parem = new object[] { maPhieuXuat, tenDangNhap, ngayXuat, ghiChu };
+            DataProvider.ExecuteNonQuery(query, parem);
+        }
+
+        public void SuaPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        {
+            string query = "update PhieuXuatKho set tenDangNhap = @_TenDangNhap, ngayXuat = @_NgayXuat, ghiChu = @_GhiChu where maPhieuXuat = @_MaPhieuXuat";
+            object[] parem = new object[] { tenDangNhap, ngayXuat, ghiChu, maPhieuXuat };
             DataProvider.ExecuteNonQuery(query, parem);
         }
 

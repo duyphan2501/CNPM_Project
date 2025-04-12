@@ -20,5 +20,10 @@ namespace BUS
         {
             chitietnhap.ThemChiTietNhap(maphieunhap, manl, gianhap, soluong);
         }
+
+        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, int soluong)
+        {
+            chitietnhap.UpdateDetailst(maphieunhap, manl, gianhap, soluong);
+        }
     }
 }

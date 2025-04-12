@@ -32,6 +32,11 @@ namespace BUS
             phieuxuatdal.ThemPhieuXuat(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
         }
 
+        public void SuaPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        {
+            phieuxuatdal.SuaPhieuXuat(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
+        }
+
         public string PhatSinhMaPhieuXuat()
         {
             // lấy mã phiếu xuất lớn nhất

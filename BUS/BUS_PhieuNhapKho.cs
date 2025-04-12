@@ -38,6 +38,11 @@ namespace BUS
             phieunhapkhodal.ThemPhieuNhap(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
 
+        public void SuaPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        {
+            phieunhapkhodal.SuaPhieuNhap(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
+        }
+
 
         // phát sinh mã phiếp nhập
         public string PhatSinhMaPhieuNhap()

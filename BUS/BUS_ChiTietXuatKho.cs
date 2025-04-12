@@ -18,7 +18,12 @@ namespace BUS
 
         public void ThemChiTietXuat(string maphieuxuat, string manl, int soluong)
         {
-            chitietxuat.ThemChiTietXuat(maphieuxuat,manl, soluong);
+            chitietxuat.ThemChiTietXuat(maphieuxuat, manl, soluong);
+        }
+
+        public void UpdateDetailst(string maphieuxuat, string manl, int soluong)
+        {
+            chitietxuat.UpdateDetailst(maphieuxuat, manl, soluong);
         }
     }
 }

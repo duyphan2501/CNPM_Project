@@ -26,6 +26,13 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
+        public void SuaPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        {
+            string query = "update PhieuNhapKho set tenDangNhap = @_TenDangNhap, ngayNhap = @_NgayNhap, ghiChu = @_GhiChu where maPhieuNhap = @_MaPhieuNhap";
+            object[] parem = new object[] {tenDangNhap, ngayNhap, ghiChu, maPhieuNhap};
+            DataProvider.ExecuteNonQuery(query, parem);
+        }
+
         public DataTable TaiMaPhieuNhap()
         {
             string query = "select distinct MaPhieuNhap from PhieuNhapKho";

@@ -23,5 +23,12 @@ namespace DAL
             object[] parem = new object[] { maphieunhap, manl, gianhap, soluong};
             DataProvider.ExecuteNonQuery(query, parem);
         }
+
+        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, int soluong)
+        {
+            string query = "update ChiTietNhapKho set manl = dbo.LayMaNlTheoTenNl(@_MaNL), gianhap = @_GiaNhap, soluong = @_SoLuong where maphieunhap = @_MaPhieuNhap";
+            object[] parem = new object[] {manl, gianhap, soluong, maphieunhap};
+            DataProvider.ExecuteNonQuery(query, parem);
+        }
     }
 }

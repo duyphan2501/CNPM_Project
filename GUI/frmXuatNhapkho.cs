@@ -29,7 +29,7 @@ namespace GUI
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
             TaiTenNguyenLieu();
-
+            cboLoaiphieu.Text = "Phiếu nhập";
         }
 
         public void TaiTenNguyenLieu()
@@ -41,7 +41,7 @@ namespace GUI
         public void LoadPhieu()
         {
 
-            if (cboLocLoaiphieu.Text == "Phiếu nhập")
+            if (cboLoaiphieu.Text == "Phiếu nhập")
             {
                 //BUS_PhieuNhapKho phieunhap = new BUS_PhieuNhapKho("", "", DateTime.Now, "");
                 //gridDsPhieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -57,7 +57,9 @@ namespace GUI
             }
         }
 
-        public void PhatSinhMa()
+      
+
+        public void PhatSinhMa()  //Phát sinh mã phiếu mới
         {
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
@@ -79,9 +81,10 @@ namespace GUI
 
         }
 
-        private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e) //Khi loại phiếu thay đổi thì tự phát sinh mã
         {
             PhatSinhMa();
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -96,8 +99,8 @@ namespace GUI
                 chitietnhap.ThemChiTietNhap(txtMaphieu.Text, cboTenNguyenlieu.Text, (int)numGianhap.Value, (int)numSoluong.Value);
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
-            
-                //LoadPhieu();
+
+                LocTheoMa();
             }
             else
             {
@@ -110,8 +113,9 @@ namespace GUI
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
 
-                //LoadPhieu();
+                LocTheoMa();
             }
+
         }
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
@@ -139,60 +143,45 @@ namespace GUI
                 // Người dùng chọn "Không", không làm gì cả hoặc xử lý khác
                 MessageBox.Show("Đã hủy thao tác lưu phiếu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            LocTheoMa();
         }
 
-        private void cboLocLoaiphieu_SelectedIndexChanged(object sender, EventArgs e)
+        //private void cboLocMaphieu_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    DataTable dt = (DataTable)gridDsPhieu.DataSource;
+        //    if (cboLocLoaiphieu.Text == "Phiếu nhập")
+        //    {
+        //        dt.DefaultView.RowFilter = $"[Mã phiếu nhập] LIKE '%{cboLocMaphieu.Text}%'";
+        //    }
+        //    else
+        //    {
+        //        dt.DefaultView.RowFilter = $"[Mã phiếu xuất] LIKE '%{cboLocMaphieu.Text}%'";
+        //    }
+        //}
+
+        public void LocTheoMa()
         {
             LoadPhieu();
-            if (cboLocLoaiphieu.Text == "Phiếu nhập")
-            {
-                cboLocMaphieu.DataSource = phieunhap.TaiMaPhieuNhap();
-                cboLocMaphieu.DisplayMember = "MaPhieuNhap";
-            }
-
-            else
-            {
-                cboLocMaphieu.DataSource = phieuxuat.TaiMaPhieuXuat();
-                cboLocMaphieu.DisplayMember = "MaPhieuXuat";
-            }
-        }
-
-        private void grbXuatNhapKho_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gridDsPhieu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow hangduocchon = gridDsPhieu.SelectedRows[0];
-            cboLoaiphieu.Text = cboLocLoaiphieu.Text;
-            cboLoaiphieu.Enabled = false;
-            cboTenNguyenlieu.Text = hangduocchon.Cells["Nguyên liệu"].Value.ToString();
-            txtGhichu.Text = hangduocchon.Cells["Ghi chú"].Value.ToString();
-            if (cboLocLoaiphieu.Text == "Phiếu nhập")
-            {
-                txtMaphieu.Text = hangduocchon.Cells["Mã phiếu nhập"].Value.ToString();
-                numSoluong.Value = Convert.ToDecimal(hangduocchon.Cells["Số lượng nhập"].Value);
-                numGianhap.Value = Convert.ToDecimal(hangduocchon.Cells["Giá nhập"].Value);
-            }
-            else
-            {
-                txtMaphieu.Text = hangduocchon.Cells["Mã phiếu xuất"].Value.ToString();
-                numSoluong.Value = Convert.ToDecimal(hangduocchon.Cells["Số lượng xuất"].Value);
-            }
-        }
-
-        private void cboLocMaphieu_SelectedIndexChanged(object sender, EventArgs e)
-        {
             DataTable dt = (DataTable)gridDsPhieu.DataSource;
-            if (cboLocLoaiphieu.Text == "Phiếu nhập")
+            if (cboLoaiphieu.Text == "Phiếu nhập")
             {
-                dt.DefaultView.RowFilter = $"[Mã phiếu nhập] LIKE '%{cboLocMaphieu.Text}%'";
+                dt.DefaultView.RowFilter = $"[Mã phiếu nhập] LIKE '%{txtMaphieu.Text}%'";
             }
             else
             {
-                dt.DefaultView.RowFilter = $"[Mã phiếu xuất] LIKE '%{cboLocMaphieu.Text}%'";
+                dt.DefaultView.RowFilter = $"[Mã phiếu xuất] LIKE '%{txtMaphieu.Text}%'";
             }
+
         }
+
+        private void btnLichSu_Click(object sender, EventArgs e)
+        {
+            frmLichSuXuatNhap lichsu = new frmLichSuXuatNhap();
+            General.ShowDialogWithBlur(lichsu);
+            
+        }
+
+
+        
     }
 }
