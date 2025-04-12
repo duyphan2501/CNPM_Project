@@ -13,11 +13,10 @@ namespace GUI
 {
     public partial class frmThemLoaiNguyenLieu : Form
     {
-        BUS_LoaiNguyenLieu loainguyenlieubus;
+        BUS_LoaiNguyenLieu loainguyenlieubus = new BUS_LoaiNguyenLieu("", "");
         public frmThemLoaiNguyenLieu()
         {
             InitializeComponent();
-            loainguyenlieubus = new BUS_LoaiNguyenLieu("", "");
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

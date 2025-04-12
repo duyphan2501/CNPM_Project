@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class PhieuNhapKho
+    public class DTO_PhieuNhapKho
     {
         private string MaPhieuNhap, TenDangNhap, GhiChu;
         private DateTime NgayNhap;
@@ -16,7 +16,7 @@ namespace DTO
         public string _GhiChu { get; set; }
         public DateTime _NgayNhap { get; set; }
 
-        public PhieuNhapKho(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        public DTO_PhieuNhapKho(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
         {
             this.MaPhieuNhap = maPhieuNhap;
             this.TenDangNhap = tenDangNhap;

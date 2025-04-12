@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmThem_SuaTaiKhoan : Form
     {
-        BUS_TaiKhoan taikhoanbus;
+        BUS_TaiKhoan taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
         private bool isUpdateMode;
         public frmThem_SuaTaiKhoan(string tenDangNhap = null, string trangThai = null, string vaiTro = null, string hoTen = null, string email = null)
         {
@@ -62,7 +62,6 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
             if (isUpdateMode == false)  //Thêm tài khoản
             {
                 taikhoanbus.ThemTaiKhoan(txtTendangnhap.Text, txtMatkhau.Text,trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);

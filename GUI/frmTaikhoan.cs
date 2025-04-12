@@ -13,11 +13,10 @@ namespace GUI
 {
     public partial class frmTaiKhoan : Form
     {
-        BUS_TaiKhoan taikhoanbus;
+        BUS_TaiKhoan taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
         public frmTaiKhoan()
         {
             InitializeComponent();
-            taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
         }
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)

@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmDinhLuong : Form
     {
-        BUS_DinhLuong dinhluong;
+        BUS_DinhLuong dinhluong = new BUS_DinhLuong("", "", 0);
         string Masp;
         public frmDinhLuong(string masp, string tensp)   //truyền mã sản phẩm và tên sản phẩm vào form định lượng
         {
@@ -26,7 +26,6 @@ namespace GUI
         //Tải tên nguyên liệu lên combobox
         public void TaitenNL()
         {
-            dinhluong = new BUS_DinhLuong("", "", 0);
             cboTenNguyenLieu.DataSource = dinhluong.TaiTenNL();
             cboTenNguyenLieu.DisplayMember = "TenNL";
         }
@@ -34,7 +33,6 @@ namespace GUI
         //Load lại danh sách định lượng theo tên sản phẩm trên griview
         public void loadDsDinhluong()
         {
-            dinhluong = new BUS_DinhLuong("", "", 0);
             gridDsDinhluong.DataSource = dinhluong.TaiDsDinhluong(txtTenSp.Text);
 
         }
@@ -51,7 +49,6 @@ namespace GUI
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
-            dinhluong = new BUS_DinhLuong("", "", 0);
             dinhluong.ThemDinhluong(Masp, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
 
             numSoluongNL.Value = 0;
@@ -76,7 +73,6 @@ namespace GUI
 
         private void gridDsDinhluong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dinhluong = new BUS_DinhLuong("", "", 0);
             DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
             cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
             numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
@@ -87,7 +83,6 @@ namespace GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            dinhluong = new BUS_DinhLuong("", "", 0);
             dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
             loadDsDinhluong();
             frmDinhLuong_Load(sender, e);

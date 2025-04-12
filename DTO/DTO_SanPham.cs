@@ -24,7 +24,7 @@ namespace DTO
             this.MaSp = masp;
             this.MaLoai = maloai;
             this.TenSp = tensp;
-            this._TrangThai = trangthai;
+            this.TrangThai = trangthai;
             this.HinhAnh = hinhanh;
             this.GiaBan = giaban;
         }

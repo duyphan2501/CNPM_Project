@@ -13,16 +13,15 @@ namespace GUI
 {
     public partial class frmThemLoaiSanPham : Form
     {
-        BUS_LoaiSanPham loaisanphambus;
+        BUS_LoaiSanPham loaisanphambus = new BUS_LoaiSanPham("", "");
         public frmThemLoaiSanPham()
         {
             InitializeComponent();
-            loaisanphambus = new BUS_LoaiSanPham("", "");
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            
+
             loaisanphambus.ThemLoaiSp(txtMaloai.Text, txtTenloai.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -36,7 +35,7 @@ namespace GUI
             this.Close();
         }
 
-    
+
 
         private void frmThemLoaiSanPham_Load(object sender, EventArgs e)
         {
