@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,47 @@ namespace DAL
 {
     public class DAL_CaLamViec
     {
-        DTO_CaLamViec calamViec;
+        DTO_CaLamViec caLamViec;
 
-        public DAL_CaLamViec(string maCaLam, DateTime tgBatDau, DateTime tgKetThuc, string ghiChu, int tienDauCa, int tienCuoiCa)
+        public DAL_CaLamViec(DateTime tgBatDau, DateTime? tgKetThuc, string ghiChu, int tienDauCa, int tienCuoiCa, string tenDangNhap)
         {
-            calamViec = new DTO_CaLamViec(maCaLam, tgBatDau, tgKetThuc, ghiChu, tienDauCa, tienCuoiCa);
+            caLamViec = new DTO_CaLamViec(tgBatDau, tgKetThuc, ghiChu, tienDauCa, tienCuoiCa, tenDangNhap);
         }
 
         public DAL_CaLamViec()
         {
-            calamViec = new DTO_CaLamViec();
+            caLamViec = new DTO_CaLamViec();
+        }
+
+        public DataTable SelectOpenShift(string tenDangNhap)
+        {
+            string query = "select * from CaLamViec where tgKetThuc is null and TenDangNhap = @TenDangNhap";
+            return DataProvider.ExecuteQuery(query, new object[] { tenDangNhap });
+        }
+
+        public string LayMaCaLonNhat()
+        {
+            string query = "Select top 1 MaCaLam from CaLamViec order by MaCaLam desc";
+            object result = DataProvider.ExecuteScalar(query);
+            return result != null ? result.ToString() : null;
+        }
+
+
+        public int InsertCaLamViec(string maCaLam)
+        {
+            string query = "INSERT INTO CaLamViec (MaCaLam, TgBatDau, TgKetThuc, GhiChu, TienDauCa, TienCuoiCa, TenDangNhap) " +
+                           "VALUES (@MaCaLam, @TgBatDau, @TgKetThuc, @GhiChu, @TienDauCa, @TienCuoiCa, @TenDangNhap)";
+            object[] parameters = new object[]
+            {
+                maCaLam,
+                caLamViec.TgBatDau,
+                caLamViec.TgKetThuc == null ? DBNull.Value : caLamViec.TgKetThuc,
+                caLamViec.GhiChu,
+                caLamViec.TienDauCa,
+                caLamViec.TienCuoiCa == 0 ? DBNull.Value : caLamViec.TienCuoiCa,
+                caLamViec.TenDangNhap
+            };
+            return DataProvider.ExecuteNonQuery(query, parameters);
         }
     }
 }

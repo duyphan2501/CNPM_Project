@@ -23,9 +23,12 @@ namespace GUI.components
         public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham)
         {
             InitializeComponent();
+            // Tăng hiệu năng vẽ control
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             picSanPham.Image = General.ByteArrayToImage(hinhAnhSP);
             lblTenSanPham.Text = tenSanPham;
-            lblGiaSanPham.Text = giaSanPham.ToString();
+            lblGiaSanPham.Text = giaSanPham.ToString("N0") + " đ";// thêm dấu thập phân
             TenSanPham = tenSanPham;
             GiaSanPham = giaSanPham;
         }

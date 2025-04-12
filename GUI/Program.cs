@@ -10,6 +10,8 @@ namespace cnpm
         /// </summary>
         /// 
         public static DataTable account;
+        public static DataTable shift;
+
         [STAThread]
         static void Main()
         {

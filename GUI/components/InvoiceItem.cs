@@ -28,9 +28,9 @@ namespace GUI.components
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             this.UpdateStyles();
             lblTenMon.Text = tenmon;
-            lblDongia.Text = dongia.ToString();
+            lblDongia.Text = dongia.ToString("N0"); // thêm dấu thập phân
             numSoluong.Value = soluong;
-            lblThanhtien.Text = (dongia * soluong).ToString();
+            lblThanhtien.Text = (dongia * soluong).ToString("N0");
             TenMon = tenmon;
         }
 

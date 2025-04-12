@@ -1,4 +1,5 @@
 ﻿using BUS;
+using cnpm;
 using GUI.components;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace GUI
 
         BUS_LoaiSanPham loaiSanphamBUS;
         BUS_SanPham sanPhamBUS;
+        BUS_CaLamViec calam;
         private void frmBanHang_Load(object sender, EventArgs e)
         {
             // fullscreen
@@ -30,14 +32,19 @@ namespace GUI
             this.Location = new Point(0, 0);
             this.Size = new Size(widthScreen, heightScreen);
 
+            //kiểm tra mở ca chưa
+            KiemTraMoCa();
+
             // giảm lag khi chứa nhiều item trong panel
             typeof(Panel).InvokeMember("DoubleBuffered",
             BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
             null, pnlInvoiceItem, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            null, pnlThucDon, new object[] { true });
 
             // lấy ra loại sản phẩm
             loaiSanphamBUS = new BUS_LoaiSanPham();
-            DataTable loaiSanPham = new DataTable();
             string[] categoryProductName = loaiSanphamBUS.GetAllCategoryProduct();
 
             //tải lên pnlProductCategory
@@ -51,7 +58,26 @@ namespace GUI
             DataTable onSaleProducts = sanPhamBUS.SelectOnSaleProduct();
 
             // Tải lên pnlThucDon
-            foreach (DataRow dr in onSaleProducts.Rows)
+            loadProduct(onSaleProducts);
+        }
+
+        private void KiemTraMoCa()
+        {
+            var calam = new BUS_CaLamViec();
+            string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
+            Program.shift = calam.selectOpenShift(tenDangNhap);
+
+            if (Program.shift.Rows.Count == 0)
+            {
+                frmMoCaLam frmMoCaLam = new frmMoCaLam();
+                General.ShowDialogWithBlur(frmMoCaLam);
+            }
+        }
+
+
+        private void loadProduct(DataTable products)
+        {
+            foreach (DataRow dr in products.Rows)
             {
                 // Lấy dữ liệu từ DataRow
                 string productName = dr["TenSp"].ToString();
@@ -71,17 +97,19 @@ namespace GUI
             Widget widget = sender as Widget;
             string tenmon = widget.TenSanPham;
             int dongia = widget.GiaSanPham;
-
+            // kiểm tra đã có trong pnlInvoiceItem chưa
             foreach (Control ctrl in pnlInvoiceItem.Controls)
             {
                 if (ctrl is InvoiceItem existingItem && existingItem.TenMon == tenmon)
                 {
+                    // có thì tăg số lượng
                     existingItem.IncreaseQuantity();
                     return;
                 }
             }
-
+            // ko thì thêm vào
             InvoiceItem newItem = new InvoiceItem(tenmon, dongia, 1);
+            // thêm event click để gửi dữ liệu cho frm cha
             newItem.XoaItemClicked += InvoiceItem_XoaItemClicked;
             pnlInvoiceItem.Controls.Add(newItem);
         }
