@@ -68,7 +68,7 @@ namespace DAL
         // Lấy sản phẩm load lên pnlThucDon
         public DataTable SelectOnSaleProduct()
         {
-            string query = "select TenSp, HinhAnh, GiaBan from SanPham where TrangThai like '%Còn bán%'";
+            string query = "select TenSp, HinhAnh, GiaBan, MaLoai from SanPham where TrangThai like '%Còn bán%'";
             return DataProvider.ExecuteQuery(query);
         }
     }

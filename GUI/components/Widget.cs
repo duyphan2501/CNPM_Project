@@ -13,14 +13,14 @@ namespace GUI.components
     public partial class Widget : UserControl
     {
         public event EventHandler ThemSanPhamClicked;
-        public string TenSanPham;
+        public string TenSanPham, MaLoai;
         public int GiaSanPham;
         public Widget()
         {
             InitializeComponent();
         }
 
-        public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham)
+        public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham, string category)
         {
             InitializeComponent();
             // Tăng hiệu năng vẽ control
@@ -31,6 +31,7 @@ namespace GUI.components
             lblGiaSanPham.Text = giaSanPham.ToString("N0") + " đ";// thêm dấu thập phân
             TenSanPham = tenSanPham;
             GiaSanPham = giaSanPham;
+            MaLoai = category;
         }
 
         private void btnThemSanPham_Click(object sender, EventArgs e)

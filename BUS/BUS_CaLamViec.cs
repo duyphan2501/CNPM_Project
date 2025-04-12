@@ -24,7 +24,7 @@ namespace BUS
             calamViec = new DAL_CaLamViec();
         }
 
-        public DataTable selectOpenShift(string tenDangNhap)
+        public DataTable SelectOpenShift(string tenDangNhap)
         {
             return calamViec.SelectOpenShift(tenDangNhap);
         }

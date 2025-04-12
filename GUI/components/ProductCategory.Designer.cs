@@ -37,6 +37,8 @@
             // 
             btnTenLoai.BorderColor = Color.FromArgb(244, 129, 17);
             btnTenLoai.BorderRadius = 5;
+            btnTenLoai.CheckedState.FillColor = Color.FromArgb(244, 129, 17);
+            btnTenLoai.CheckedState.FillColor2 = Color.FromArgb(244, 129, 17);
             btnTenLoai.CustomizableEdges = customizableEdges1;
             btnTenLoai.DisabledState.BorderColor = Color.DarkGray;
             btnTenLoai.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -53,9 +55,9 @@
             btnTenLoai.Location = new Point(2, 3);
             btnTenLoai.Name = "btnTenLoai";
             btnTenLoai.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnTenLoai.Size = new Size(157, 58);
+            btnTenLoai.Size = new Size(149, 58);
             btnTenLoai.TabIndex = 0;
-            btnTenLoai.Text = "Trà Sữa";
+            btnTenLoai.Text = "Tất Cả";
             // 
             // ProductCategory
             // 

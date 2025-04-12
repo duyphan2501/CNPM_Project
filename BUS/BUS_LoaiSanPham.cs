@@ -39,21 +39,10 @@ namespace BUS
             }
         }
 
-        public string[] GetAllCategoryProduct()
+        public DataTable SelectAllCategoryProduct()
         {
             // Tải dữ liệu loại sản phẩm từ DAL
-            DataTable dataTable = loaiSanPham.SelectAllCategory();
-
-            // Khởi tạo mảng với số phần tử bằng số dòng trong DataTable
-            string[] categoryName = new string[dataTable.Rows.Count];
-
-            // Duyệt qua từng dòng và gán tên loại sản phẩm vào mảng
-            for (int i = 0; i < dataTable.Rows.Count; i++)
-            {
-                categoryName[i] = dataTable.Rows[i]["TenLoai"].ToString();
-            }
-
-            return categoryName;
+           return loaiSanPham.SelectAllCategory();
         }
 
     }

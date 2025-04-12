@@ -63,11 +63,12 @@
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             label2 = new Label();
-            lblUserID = new Label();
+            lblVaiTro = new Label();
             label3 = new Label();
-            lblUserName = new Label();
+            lblHoTen = new Label();
             lblThoiGian = new Label();
             lblMaCaLam = new Label();
+            lb1 = new Label();
             label1 = new Label();
             lblCafeLogo = new Label();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -99,6 +100,7 @@
             txtTimMon = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             pnlThucDon = new FlowLayoutPanel();
+            timer = new System.Windows.Forms.Timer(components);
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
@@ -120,6 +122,7 @@
             guna2Panel1.Controls.Add(guna2Panel2);
             guna2Panel1.Controls.Add(lblThoiGian);
             guna2Panel1.Controls.Add(lblMaCaLam);
+            guna2Panel1.Controls.Add(lb1);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(lblCafeLogo);
             guna2Panel1.Controls.Add(guna2CirclePictureBox1);
@@ -136,9 +139,9 @@
             guna2Panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             guna2Panel2.Controls.Add(guna2CirclePictureBox2);
             guna2Panel2.Controls.Add(label2);
-            guna2Panel2.Controls.Add(lblUserID);
+            guna2Panel2.Controls.Add(lblVaiTro);
             guna2Panel2.Controls.Add(label3);
-            guna2Panel2.Controls.Add(lblUserName);
+            guna2Panel2.Controls.Add(lblHoTen);
             guna2Panel2.CustomizableEdges = customizableEdges24;
             guna2Panel2.Location = new Point(1204, 12);
             guna2Panel2.Name = "guna2Panel2";
@@ -164,22 +167,22 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(23, 40);
+            label2.Location = new Point(3, 40);
             label2.Name = "label2";
-            label2.Size = new Size(69, 25);
+            label2.Size = new Size(73, 25);
             label2.TabIndex = 3;
-            label2.Text = "Vai Trò";
+            label2.Text = "Vai Trò:";
             // 
-            // lblUserID
+            // lblVaiTro
             // 
-            lblUserID.AutoSize = true;
-            lblUserID.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUserID.ForeColor = Color.White;
-            lblUserID.Location = new Point(97, 40);
-            lblUserID.Name = "lblUserID";
-            lblUserID.Size = new Size(78, 25);
-            lblUserID.TabIndex = 3;
-            lblUserID.Text = "NV0002";
+            lblVaiTro.AutoSize = true;
+            lblVaiTro.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVaiTro.ForeColor = Color.White;
+            lblVaiTro.Location = new Point(82, 40);
+            lblVaiTro.Name = "lblVaiTro";
+            lblVaiTro.Size = new Size(78, 25);
+            lblVaiTro.TabIndex = 3;
+            lblVaiTro.Text = "NV0002";
             // 
             // label3
             // 
@@ -188,20 +191,20 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(2, 6);
             label3.Name = "label3";
-            label3.Size = new Size(89, 25);
+            label3.Size = new Size(74, 25);
             label3.TabIndex = 3;
-            label3.Text = "Tên User:";
+            label3.Text = "Họ Tên:";
             // 
-            // lblUserName
+            // lblHoTen
             // 
-            lblUserName.AutoSize = true;
-            lblUserName.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUserName.ForeColor = Color.White;
-            lblUserName.Location = new Point(97, 6);
-            lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(91, 25);
-            lblUserName.TabIndex = 3;
-            lblUserName.Text = "Duy Phan";
+            lblHoTen.AutoSize = true;
+            lblHoTen.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHoTen.ForeColor = Color.White;
+            lblHoTen.Location = new Point(82, 6);
+            lblHoTen.Name = "lblHoTen";
+            lblHoTen.Size = new Size(91, 25);
+            lblHoTen.TabIndex = 3;
+            lblHoTen.Text = "Duy Phan";
             // 
             // lblThoiGian
             // 
@@ -219,11 +222,22 @@
             lblMaCaLam.AutoSize = true;
             lblMaCaLam.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMaCaLam.ForeColor = Color.White;
-            lblMaCaLam.Location = new Point(490, 12);
+            lblMaCaLam.Location = new Point(563, 12);
             lblMaCaLam.Name = "lblMaCaLam";
             lblMaCaLam.Size = new Size(67, 25);
             lblMaCaLam.TabIndex = 3;
             lblMaCaLam.Text = "Mã Ca:";
+            // 
+            // lb1
+            // 
+            lb1.AutoSize = true;
+            lb1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb1.ForeColor = Color.White;
+            lb1.Location = new Point(490, 12);
+            lb1.Name = "lb1";
+            lb1.Size = new Size(67, 25);
+            lb1.TabIndex = 3;
+            lb1.Text = "Mã Ca:";
             // 
             // label1
             // 
@@ -635,7 +649,7 @@
             txtTimMon.Font = new Font("Segoe UI", 9F);
             txtTimMon.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTimMon.IconLeft = Properties.Resources.search;
-            txtTimMon.Location = new Point(867, 104);
+            txtTimMon.Location = new Point(867, 116);
             txtTimMon.Margin = new Padding(3, 4, 3, 4);
             txtTimMon.Name = "txtTimMon";
             txtTimMon.PlaceholderText = "Tìm món";
@@ -669,10 +683,16 @@
             // 
             pnlThucDon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlThucDon.AutoScroll = true;
-            pnlThucDon.Location = new Point(867, 150);
+            pnlThucDon.Location = new Point(867, 164);
             pnlThucDon.Name = "pnlThucDon";
-            pnlThucDon.Size = new Size(672, 689);
+            pnlThucDon.Size = new Size(672, 675);
             pnlThucDon.TabIndex = 2;
+            // 
+            // timer
+            // 
+            timer.Enabled = true;
+            timer.Interval = 1000;
+            timer.Tick += timer_Tick;
             // 
             // frmBanHang
             // 
@@ -722,9 +742,9 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private Label label2;
         private Label label3;
-        private Label lblUserID;
-        private Label lblUserName;
-        private Label lblMaCaLam;
+        private Label lblVaiTro;
+        private Label lblHoTen;
+        private Label lb1;
         private Label lblThoiGian;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlSidebar;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
@@ -755,5 +775,7 @@
         private Label label13;
         private Guna.UI2.WinForms.Guna2Button guna2Button7;
         private FlowLayoutPanel pnlThucDon;
+        private Label lblMaCaLam;
+        private System.Windows.Forms.Timer timer;
     }
 }
