@@ -29,6 +29,6 @@ namespace DTO
             this.GiaBan = giaban;
         }
 
-
+        public DTO_SanPham() { }
     }
 }

@@ -17,6 +17,16 @@ namespace DAL
             taikhoandto = new DTO_TaiKhoan(tendangnhap, matkhau, trangthai, vaitro, hoten, email);
         }
 
+        public DAL_TaiKhoan(string tendangnhap, string matkhau)
+        {
+            taikhoandto = new DTO_TaiKhoan(tendangnhap, matkhau);
+        }
+
+        public DAL_TaiKhoan(string tendangnhap)
+        {
+            taikhoandto = new DTO_TaiKhoan(tendangnhap);
+        }
+
         //Tải danh sách tài khoản có hiệu lực 
         public DataTable TaiTK()
         {
@@ -47,8 +57,19 @@ namespace DAL
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        
+        // Lấy tài khoản để kiểm tra 
+        public DataTable SelectOneAccount()
+        {
+            string tenDangNhap = taikhoandto.TenDangNhap;
+            string query = "select * from TaiKhoan where TenDangNhap = @TenDangNhap and TrangThai != 0";
+            return DataProvider.ExecuteQuery(query, new object[] { tenDangNhap });
+        }
 
-
+        public void updatePassword()
+        {
+            string query = "update TaiKhoan set matkhau = @matkhau where tendangnhap = @tendangnhap";
+            object[] param = new object[] { taikhoandto.MatKhau, taikhoandto.TenDangNhap };
+            DataProvider.ExecuteNonQuery(query, param);
+        }
     }
 }

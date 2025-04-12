@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using cnpm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,6 +58,80 @@ namespace GUI
         private void guna2ControlBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        BUS_TaiKhoan taikhoan;
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
+        private void Login()
+        {
+            string userName = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            // Kiểm tra đầu vào
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            {
+                messageDialog.Caption = "Thiếu thông tin";
+                messageDialog.Text = "Vui lòng nhập đầy đủ Tên đăng nhập và Mật khẩu!";
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
+
+                txtUsername.Focus();
+                return;
+            }
+
+            // Khởi tạo BUS và gọi kiểm tra đăng nhập
+            taikhoan = new BUS_TaiKhoan(userName, password);
+            Program.account = taikhoan.ValidateLoginAccount(password);
+
+            // Kiểm tra kết quả
+            if (Program.account != null)
+            {
+                string vaitro = Program.account.Rows[0]["VaiTro"].ToString();
+
+                // Điều hướng theo vai trò
+                if (vaitro.ToLower() == "thu ngân")
+                {
+                    frmBanHang frmBanHang = new frmBanHang();
+                    frmBanHang.Show();
+                }
+                else
+                {
+                    frmAdmin frmAdmin = new frmAdmin();
+                    frmAdmin.Show();
+                }
+
+                this.Hide(); // Ẩn form login
+            }
+            else
+            {
+                messageDialog.Caption = "Đăng nhập thất bại";
+                messageDialog.Text = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Error;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
+
+                txtPassword.Clear();
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
+        }
+
+        private void lblForgotpassword_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmQuenMatKhau frmQuenMatKhau = new frmQuenMatKhau();
+            frmQuenMatKhau.Show();
         }
     }
 }

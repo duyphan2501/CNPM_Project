@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using DTO;
-using Guna.UI2.WinForms;    
 namespace DAL
 {
     public class DAL_SanPham
@@ -18,6 +17,11 @@ namespace DAL
         public DAL_SanPham(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
             sanphamdto = new DTO_SanPham(masp,maloai,tensp,hinhanh,giaban,trangthai);
+        }
+
+        public DAL_SanPham()
+        {
+            sanphamdto = new DTO_SanPham();
         }
 
         //Tải danh sách sản phẩm lên gridview
@@ -61,8 +65,11 @@ namespace DAL
             return maxMasp;
         }
 
-       
-
+        // Lấy sản phẩm load lên pnlThucDon
+        public DataTable SelectOnSaleProduct()
+        {
+            string query = "select TenSp, HinhAnh, GiaBan from SanPham where TrangThai like '%Còn bán%'";
+            return DataProvider.ExecuteQuery(query);
+        }
     }
-
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    public class General
+    public static class General
     {
         //chuyển hình ảnh sang byte[];
         public static byte[] ImageToByteArray(Image img)
@@ -67,5 +67,6 @@ namespace GUI
 
             return result;
         }
+
     }
 }

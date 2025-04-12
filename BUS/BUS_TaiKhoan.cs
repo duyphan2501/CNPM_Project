@@ -18,6 +18,15 @@ namespace BUS
             taikhoandal = new DAL_TaiKhoan(tendangnhap, matkhau, trangthai, vaitro, hoten, email);
         }
 
+        public BUS_TaiKhoan(string tendangnhap, string matkhau) {
+            taikhoandal = new DAL_TaiKhoan(tendangnhap, matkhau);
+        }
+
+        public BUS_TaiKhoan(string tendangnhap)
+        {
+            taikhoandal = new DAL_TaiKhoan(tendangnhap);
+        }
+
         public DataTable TaiTK()
         {
             return taikhoandal.TaiTK();
@@ -30,6 +39,7 @@ namespace BUS
 
         public void ThemTaiKhoan(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email) 
         {
+            matkhau = General.HashPassword(matkhau);
             taikhoandal.ThemTK(tendangnhap, matkhau, trangthai, vaitro, hoten, email); 
         }
 
@@ -38,5 +48,36 @@ namespace BUS
             taikhoandal.SuaTK(tendangnhap, trangthai, vaitro, hoten, email);
         }
 
+        public DataTable SelectOneAccount()
+        {
+            return taikhoandal.SelectOneAccount();
+        }
+
+        public DataTable ValidateLoginAccount(string password)
+        {
+            // lấy tài khoản
+            DataTable account = SelectOneAccount();
+            // kiểm tra tài khoản có tồn tại
+            if (account != null && account.Rows.Count > 0)
+            {
+                // password từ db
+                string hashedPasswordFromDb = account.Rows[0]["MatKhau"].ToString();
+                // Hash mật khẩu người dùng nhập vào
+                string hashedInputPassword = General.HashPassword(password);
+                // So sánh
+                if (hashedPasswordFromDb == hashedInputPassword)
+                {
+                    return account;
+                }
+            }
+            return null; // Sai username hoặc password
+        }
+
+        public void updatePassword(string username, string password)
+        {
+            string hashPassword = General.HashPassword(password);
+            taikhoandal = new DAL_TaiKhoan(username, hashPassword);
+            taikhoandal.updatePassword();
+        }
     }
 }

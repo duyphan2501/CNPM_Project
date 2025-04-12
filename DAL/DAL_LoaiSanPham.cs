@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace DAL
     public class DAL_LoaiSanPham
     {
         DTO_LoaiSanPham loaisanphamdal;
+
+        public DAL_LoaiSanPham()
+        {
+            loaisanphamdal = new DTO_LoaiSanPham();
+        }
         public DAL_LoaiSanPham(string maloai, string tenloai)
         {
             loaisanphamdal = new DTO_LoaiSanPham(maloai, tenloai);
@@ -29,6 +35,12 @@ namespace DAL
             string query = "select top 1 MaLoai from LoaiSanPham order by Maloai desc";
             string maxMaloaiSP = (string)DataProvider.ExecuteScalar(query);
             return maxMaloaiSP;
+        }
+
+        public DataTable SelectAllCategory()
+        {
+            string query = "select * from LoaiSanPham";
+            return DataProvider.ExecuteQuery(query);
         }
     }
 }

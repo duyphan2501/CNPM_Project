@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-using Guna.UI2.WinForms;
 
 namespace BUS
 {
@@ -16,7 +15,7 @@ namespace BUS
         {
             sanphamdal = new DAL_SanPham(masp, maloai, tensp, hinhanh, giaban, trangthai);
         }
-
+        public BUS_SanPham() { sanphamdal = new DAL_SanPham(); }
        
         //Tải sản phẩm lên datagridview
         public DataTable TaiSp()
@@ -58,6 +57,12 @@ namespace BUS
         public void SuaSp(string masp, string tenloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
             sanphamdal.SuaSp(masp, tenloai, tensp, hinhanh, giaban, trangthai);
+        }
+
+        // Lấy sản phẩm còn bán
+        public DataTable SelectOnSaleProduct()
+        {
+            return sanphamdal.SelectOnSaleProduct();
         }
 
     }

@@ -6,27 +6,29 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class CaLamViec
+    public class DTO_CaLamViec
     {
-        private string MoCaLam, GhiChu;
+        private string MaCaLam, GhiChu;
         private int TienDauCa, TienCuoiCa;
         private DateTime TgBatDau, TgKetThuc;
 
-        public string _MoCaLam { get; set; }
+        public string _MaCaLam { get; set; }
         public string _GhiChu { get; set; }
         public int _TienDauCa { get; set; }
         public int _TienCuoiCa { get; set; }
         public DateTime _TgBatDau { get; set; }
         public DateTime _TGKetThuc { get; set; }
 
-        public CaLamViec(string moCaLam, DateTime tgBatDau, DateTime tgKetThuc, string ghiChu, int tienDauCa, int tienCuoiCa)
+        public DTO_CaLamViec(string maCaLam, DateTime tgBatDau, DateTime tgKetThuc, string ghiChu, int tienDauCa, int tienCuoiCa)
         {
-            this.MoCaLam = moCaLam;
+            this.MaCaLam = maCaLam;
             this.GhiChu = ghiChu;
             this.TienDauCa = tienDauCa;
             this.TienCuoiCa = tienCuoiCa;
             this.TgBatDau = tgBatDau;
             this.TgKetThuc = tgKetThuc;
         }
+
+        public DTO_CaLamViec() { }
     }
 }
