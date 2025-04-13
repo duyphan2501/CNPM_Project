@@ -677,7 +677,7 @@
             guna2Button7.Size = new Size(145, 36);
             guna2Button7.TabIndex = 4;
             guna2Button7.Text = "Chọn Số Chờ";
-            guna2Button7.Click += guna2Button7_Click;
+           
             // 
             // pnlThucDon
             // 

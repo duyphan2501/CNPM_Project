@@ -66,7 +66,7 @@
             label2.ForeColor = Color.FromArgb(244, 103, 0);
             label2.Location = new Point(122, 19);
             label2.Name = "label2";
-            label2.Size = new Size(197, 41);
+            label2.Size = new Size(238, 48);
             label2.TabIndex = 10;
             label2.Text = "USER LOGIN";
             // 
@@ -78,7 +78,7 @@
             lblForgotpassword.ForeColor = Color.DarkGray;
             lblForgotpassword.Location = new Point(219, 231);
             lblForgotpassword.Name = "lblForgotpassword";
-            lblForgotpassword.Size = new Size(162, 28);
+            lblForgotpassword.Size = new Size(195, 32);
             lblForgotpassword.TabIndex = 4;
             lblForgotpassword.Text = "Quên mật khẩu?";
             lblForgotpassword.Click += lblForgotpassword_Click;
@@ -237,7 +237,7 @@
             // 
             // frmLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;

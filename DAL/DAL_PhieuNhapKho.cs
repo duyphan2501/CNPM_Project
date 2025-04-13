@@ -39,6 +39,22 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
+        public string TaiDonvi(string tennl)
+        {
+            string query = "SELECT DonVi FROM NguyenLieu WHERE TenNL = @TenNL";
+            DataTable result = DataProvider.ExecuteQuery(query, new object[] { tennl });
+
+            if (result.Rows.Count > 0)
+            {
+                return result.Rows[0]["DonVi"].ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         public DataTable TaiTenNguyenLieu()
         {
             string query = "select distinct TenNL from NguyenLieu";

@@ -43,6 +43,11 @@ namespace BUS
             phieunhapkhodal.SuaPhieuNhap(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
 
+        public string TaiDonvi(string tennl)
+        {
+            return phieunhapkhodal.TaiDonvi(tennl);
+        }
+
 
         // phát sinh mã phiếp nhập
         public string PhatSinhMaPhieuNhap()

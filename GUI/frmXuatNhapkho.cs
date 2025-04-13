@@ -29,7 +29,9 @@ namespace GUI
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
             TaiTenNguyenLieu();
-            cboLoaiphieu.Text = "Phiếu nhập";
+            txtTongtien.ReadOnly = true;
+            txtDonvi.ReadOnly = true;
+            //cboLoaiphieu.Text = "Phiếu nhập";
         }
 
         public void TaiTenNguyenLieu()
@@ -57,7 +59,7 @@ namespace GUI
             }
         }
 
-      
+
 
         public void PhatSinhMa()  //Phát sinh mã phiếu mới
         {
@@ -87,33 +89,44 @@ namespace GUI
 
         }
 
+        int tong = 0; //tạo biến lưu tổng tiền
         private void btnThem_Click(object sender, EventArgs e)
         {
+
+            DataTable dataTable = new DataTable();
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
                 if (cboLoaiphieu.Enabled == true)
                 {
-                    phieunhap.ThemPhieuNhap(txtMaphieu.Text, "haivo", DateTime.Now, txtGhichu.Text);
+                    gridDsPhieu.Columns.Add("nguyenlieu", "Nguyên liệu");
+                    gridDsPhieu.Columns.Add("soluong", "Số lượng nhập");
+                    gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
+                    gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
+                    gridDsPhieu.Columns.Add("ghichu", "Ghi chú");
                 }
                 cboLoaiphieu.Enabled = false;
-                chitietnhap.ThemChiTietNhap(txtMaphieu.Text, cboTenNguyenlieu.Text, (int)numGianhap.Value, (int)numSoluong.Value);
+                gridDsPhieu.Rows.Add(cboTenNguyenlieu.Text, (int)numSoluong.Value, (int)numGianhap.Value, (int)numSoluong.Value * (int)numGianhap.Value, txtGhichu.Text);
+
+                tong += (int)numSoluong.Value * (int)numGianhap.Value;
+                txtTongtien.Text = tong.ToString();
+
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
 
-                LocTheoMa();
             }
             else
             {
                 if (cboLoaiphieu.Enabled == true)
                 {
-                    phieuxuat.ThemPhieuXuat(txtMaphieu.Text, "haivo", DateTime.Now, txtGhichu.Text);
+                    gridDsPhieu.Columns.Add("nguyenlieu", "Nguyên liệu");
+                    gridDsPhieu.Columns.Add("soluong", "Số lượng nhập");
+                    gridDsPhieu.Columns.Add("ghichu", "Ghi chú"); ;
                 }
                 cboLoaiphieu.Enabled = false;
-                chitietxuat.ThemChiTietXuat(txtMaphieu.Text, cboTenNguyenlieu.Text, (int)numSoluong.Value);
+                gridDsPhieu.Rows.Add(cboTenNguyenlieu.Text, (int)numSoluong.Value, txtGhichu.Text);
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
 
-                LocTheoMa();
             }
 
         }
@@ -129,12 +142,65 @@ namespace GUI
 
             if (result == DialogResult.Yes)
             {
-                // Thực hiện lưu phiếu
+                cboLoaiphieu.Enabled = true; //hoạt động như biến cờ để insert phiếu 1 lần
+                if (cboLoaiphieu.Text == "Phiếu nhập")
+                {
+                    foreach (DataGridViewRow row in gridDsPhieu.Rows) //Thêm tất cả các dòng từ gridview vào database
+                    {
+                        if (!row.IsNewRow) // Chỉ xử lý các dòng không phải dòng trống
+                        {
+                            string nguyenLieu = row.Cells["nguyenlieu"].Value?.ToString();
+                            int soLuong = (int)row.Cells["soluong"].Value;
+                            int giaNhap = (int)row.Cells["gianhap"].Value;
+                            string ghiChu = row.Cells["ghichu"].Value?.ToString();
+                            if (cboLoaiphieu.Enabled == true)
+                            {
+                                phieunhap.ThemPhieuNhap(txtMaphieu.Text, "haivo", DateTime.Now, ghiChu);
+                                chitietnhap.ThemChiTietNhap(txtMaphieu.Text, nguyenLieu, giaNhap, soLuong);
+                                cboLoaiphieu.Enabled = false;
+                            }
+                            else  //1 phiếu có nhiều nguyên liệu, các dòng sau chỉ thêm chi tiết
+                            {
+                                chitietnhap.ThemChiTietNhap(txtMaphieu.Text, nguyenLieu, giaNhap, soLuong);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in gridDsPhieu.Rows)
+                    {
+                        string nguyenLieu = row.Cells["nguyenlieu"].Value?.ToString();
+                        int soLuong = (int)row.Cells["soluong"].Value;
+                        string ghiChu = row.Cells["ghichu"].Value?.ToString();
+                        if (cboLoaiphieu.Enabled == true)
+                        {
+                            phieuxuat.ThemPhieuXuat(txtMaphieu.Text, "haivo", DateTime.Now, ghiChu);
+                            chitietxuat.ThemChiTietXuat(txtMaphieu.Text, nguyenLieu, soLuong);
+                            cboLoaiphieu.Enabled = false;
+                        }
+                        else
+                        {
+                            chitietxuat.ThemChiTietXuat(txtMaphieu.Text, nguyenLieu, soLuong);
+                        }
+                    }
+
+                }
+
+                //Phát sinh mã mới
                 cboLoaiphieu.Enabled = true;
                 PhatSinhMa();
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
                 txtGhichu.Clear();
+
+                //Xóa sạch gridview sau khi Lưu phiếu
+                gridDsPhieu.Rows.Clear();
+                gridDsPhieu.Columns.Clear();
+
+                //biến tổng lại bằng 0
+                tong = 0;
+                txtTongtien.Text = tong.ToString();
 
                 MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -143,7 +209,7 @@ namespace GUI
                 // Người dùng chọn "Không", không làm gì cả hoặc xử lý khác
                 MessageBox.Show("Đã hủy thao tác lưu phiếu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            LocTheoMa();
+
         }
 
         //private void cboLocMaphieu_SelectedIndexChanged(object sender, EventArgs e)
@@ -178,10 +244,12 @@ namespace GUI
         {
             frmLichSuXuatNhap lichsu = new frmLichSuXuatNhap();
             General.ShowDialogWithBlur(lichsu);
-            
+
         }
 
-
-        
+        private void cboTenNguyenlieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
+        }
     }
 }
