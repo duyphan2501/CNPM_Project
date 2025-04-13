@@ -109,7 +109,7 @@
             txtTimkiem.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTimkiem.Font = new Font("Microsoft YaHei", 10F);
             txtTimkiem.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTimkiem.Location = new Point(681, 27);
+            txtTimkiem.Location = new Point(684, 45);
             txtTimkiem.Margin = new Padding(6);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.PlaceholderText = "Nhập mã sản phẩm";
@@ -293,7 +293,7 @@
             btnHuy.FillColor2 = Color.DarkOrange;
             btnHuy.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnHuy.ForeColor = Color.White;
-            btnHuy.Location = new Point(1534, 936);
+            btnHuy.Location = new Point(1537, 954);
             btnHuy.Margin = new Padding(2, 5, 2, 5);
             btnHuy.Name = "btnHuy";
             btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges10;
@@ -315,7 +315,7 @@
             btnLuu.FillColor2 = Color.DarkOrange;
             btnLuu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(1385, 936);
+            btnLuu.Location = new Point(1388, 954);
             btnLuu.Margin = new Padding(2, 5, 2, 5);
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges12;
@@ -333,7 +333,7 @@
             guna2GroupBox1.CustomizableEdges = customizableEdges13;
             guna2GroupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2GroupBox1.ForeColor = Color.Black;
-            guna2GroupBox1.Location = new Point(24, 105);
+            guna2GroupBox1.Location = new Point(27, 123);
             guna2GroupBox1.Margin = new Padding(2, 5, 2, 5);
             guna2GroupBox1.Name = "guna2GroupBox1";
             guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
@@ -363,7 +363,7 @@
             btnTimkiem.FillColor2 = Color.DarkOrange;
             btnTimkiem.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnTimkiem.ForeColor = Color.White;
-            btnTimkiem.Location = new Point(1091, 15);
+            btnTimkiem.Location = new Point(1094, 33);
             btnTimkiem.Margin = new Padding(2, 5, 2, 5);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.ShadowDecoration.CustomizableEdges = customizableEdges16;
@@ -384,7 +384,7 @@
             btnThemNguyenlieu.FillColor2 = Color.DarkOrange;
             btnThemNguyenlieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemNguyenlieu.ForeColor = Color.White;
-            btnThemNguyenlieu.Location = new Point(90, 15);
+            btnThemNguyenlieu.Location = new Point(93, 33);
             btnThemNguyenlieu.Margin = new Padding(2, 5, 2, 5);
             btnThemNguyenlieu.Name = "btnThemNguyenlieu";
             btnThemNguyenlieu.ShadowDecoration.CustomizableEdges = customizableEdges18;
@@ -425,7 +425,7 @@
             gbThongtinnguyenlieu.Controls.Add(pnlTenloai);
             gbThongtinnguyenlieu.Controls.Add(pnlTensanpham);
             gbThongtinnguyenlieu.Controls.Add(pnlMasanpham);
-            gbThongtinnguyenlieu.Location = new Point(1385, 105);
+            gbThongtinnguyenlieu.Location = new Point(1388, 123);
             gbThongtinnguyenlieu.Margin = new Padding(2, 4, 2, 4);
             gbThongtinnguyenlieu.Name = "gbThongtinnguyenlieu";
             gbThongtinnguyenlieu.Padding = new Padding(2, 4, 2, 4);
@@ -520,7 +520,8 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1885, 1091);
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1900, 1100);
             Controls.Add(txtTimkiem);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);

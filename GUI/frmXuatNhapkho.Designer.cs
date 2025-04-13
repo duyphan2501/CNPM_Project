@@ -454,7 +454,6 @@
             gridDsPhieu.Location = new Point(18, 339);
             gridDsPhieu.Margin = new Padding(2, 5, 2, 5);
             gridDsPhieu.Name = "gridDsPhieu";
-            gridDsPhieu.ReadOnly = true;
             gridDsPhieu.RowHeadersVisible = false;
             gridDsPhieu.RowHeadersWidth = 51;
             gridDsPhieu.RowTemplate.Height = 100;
@@ -473,7 +472,7 @@
             gridDsPhieu.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             gridDsPhieu.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             gridDsPhieu.ThemeStyle.HeaderStyle.Height = 40;
-            gridDsPhieu.ThemeStyle.ReadOnly = true;
+            gridDsPhieu.ThemeStyle.ReadOnly = false;
             gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
             gridDsPhieu.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             gridDsPhieu.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -481,6 +480,7 @@
             gridDsPhieu.ThemeStyle.RowsStyle.Height = 100;
             gridDsPhieu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsPhieu.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            gridDsPhieu.CellValueChanged += gridDsPhieu_CellValueChanged;
             // 
             // frmXuatNhapKho
             // 

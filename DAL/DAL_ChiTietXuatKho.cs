@@ -18,7 +18,7 @@ namespace DAL
 
         public void ThemChiTietXuat(string maphieuxuat, string manl, int soluong)
         {
-            string query = "insert into ChiTietXuatKho values (@_MaPhieuXuat,dbo.LayMaNlTheoTenNl(@_MaNL),@_SoLuong)";
+            string query = "insert into ChiTietXuatKho values (@_MaPhieuXuat,@_MaNL,@_SoLuong)";
             object[] parem = new object[] { maphieuxuat, manl, soluong };
             DataProvider.ExecuteNonQuery(query, parem);
         }
