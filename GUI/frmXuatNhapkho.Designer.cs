@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -45,11 +45,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             grbXuatNhapKho = new Guna.UI2.WinForms.Guna2GroupBox();
+            label8 = new Label();
             cboTenNguyenlieu = new ComboBox();
             btnLichSu = new Guna.UI2.WinForms.Guna2GradientButton();
             cboLoaiphieu = new ComboBox();
@@ -59,11 +64,14 @@
             numSoluong = new Guna.UI2.WinForms.Guna2NumericUpDown();
             txtMaphieu = new Guna.UI2.WinForms.Guna2TextBox();
             label2 = new Label();
+            label5 = new Label();
             label4 = new Label();
             label7 = new Label();
             label1 = new Label();
-            label5 = new Label();
+            txtDonvi = new Guna.UI2.WinForms.Guna2TextBox();
+            txtTongtien = new Guna.UI2.WinForms.Guna2TextBox();
             txtGhichu = new Guna.UI2.WinForms.Guna2TextBox();
+            label6 = new Label();
             label3 = new Label();
             gridDsPhieu = new Guna.UI2.WinForms.Guna2DataGridView();
             grbXuatNhapKho.SuspendLayout();
@@ -80,6 +88,7 @@
             // 
             // grbXuatNhapKho
             // 
+            grbXuatNhapKho.Controls.Add(label8);
             grbXuatNhapKho.Controls.Add(cboTenNguyenlieu);
             grbXuatNhapKho.Controls.Add(btnLichSu);
             grbXuatNhapKho.Controls.Add(cboLoaiphieu);
@@ -89,23 +98,39 @@
             grbXuatNhapKho.Controls.Add(numSoluong);
             grbXuatNhapKho.Controls.Add(txtMaphieu);
             grbXuatNhapKho.Controls.Add(label2);
+            grbXuatNhapKho.Controls.Add(label5);
             grbXuatNhapKho.Controls.Add(label4);
             grbXuatNhapKho.Controls.Add(label7);
             grbXuatNhapKho.Controls.Add(label1);
-            grbXuatNhapKho.Controls.Add(label5);
+            grbXuatNhapKho.Controls.Add(txtDonvi);
+            grbXuatNhapKho.Controls.Add(txtTongtien);
             grbXuatNhapKho.Controls.Add(txtGhichu);
+            grbXuatNhapKho.Controls.Add(label6);
             grbXuatNhapKho.Controls.Add(label3);
             grbXuatNhapKho.CustomBorderColor = Color.FromArgb(239, 119, 18);
-            grbXuatNhapKho.CustomizableEdges = customizableEdges15;
+            grbXuatNhapKho.CustomizableEdges = customizableEdges19;
             grbXuatNhapKho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbXuatNhapKho.ForeColor = Color.White;
             grbXuatNhapKho.Location = new Point(18, 14);
             grbXuatNhapKho.Margin = new Padding(4, 5, 4, 5);
             grbXuatNhapKho.Name = "grbXuatNhapKho";
-            grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            grbXuatNhapKho.Size = new Size(1486, 283);
+            grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            grbXuatNhapKho.Size = new Size(1486, 302);
             grbXuatNhapKho.TabIndex = 0;
             grbXuatNhapKho.Text = "Thông tin phiếu";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.FromArgb(244, 103, 0);
+            label8.Location = new Point(1132, 234);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(125, 28);
+            label8.TabIndex = 19;
+            label8.Text = "TỔNG TIỀN:";
             // 
             // cboTenNguyenlieu
             // 
@@ -115,6 +140,7 @@
             cboTenNguyenlieu.Name = "cboTenNguyenlieu";
             cboTenNguyenlieu.Size = new Size(245, 36);
             cboTenNguyenlieu.TabIndex = 17;
+            cboTenNguyenlieu.SelectedIndexChanged += cboTenNguyenlieu_SelectedIndexChanged;
             // 
             // btnLichSu
             // 
@@ -162,7 +188,7 @@
             btnLuuphieu.FillColor2 = Color.DarkOrange;
             btnLuuphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnLuuphieu.ForeColor = Color.White;
-            btnLuuphieu.Location = new Point(1117, 76);
+            btnLuuphieu.Location = new Point(1198, 126);
             btnLuuphieu.Margin = new Padding(4, 5, 4, 5);
             btnLuuphieu.Name = "btnLuuphieu";
             btnLuuphieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -187,7 +213,7 @@
             btnThem.FillColor2 = Color.Transparent;
             btnThem.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThem.ForeColor = Color.FromArgb(239, 119, 18);
-            btnThem.Location = new Point(1103, 190);
+            btnThem.Location = new Point(1018, 131);
             btnThem.Margin = new Padding(4, 5, 4, 5);
             btnThem.Name = "btnThem";
             btnThem.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -203,7 +229,7 @@
             numGianhap.Cursor = Cursors.IBeam;
             numGianhap.CustomizableEdges = customizableEdges7;
             numGianhap.Font = new Font("Segoe UI", 9F);
-            numGianhap.Location = new Point(828, 206);
+            numGianhap.Location = new Point(676, 204);
             numGianhap.Margin = new Padding(4, 6, 4, 6);
             numGianhap.Name = "numGianhap";
             numGianhap.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -217,7 +243,7 @@
             numSoluong.Cursor = Cursors.IBeam;
             numSoluong.CustomizableEdges = customizableEdges9;
             numSoluong.Font = new Font("Segoe UI", 9F);
-            numSoluong.Location = new Point(441, 204);
+            numSoluong.Location = new Point(351, 204);
             numSoluong.Margin = new Padding(4, 6, 4, 6);
             numSoluong.Name = "numSoluong";
             numSoluong.ShadowDecoration.CustomizableEdges = customizableEdges10;
@@ -237,7 +263,7 @@
             txtMaphieu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMaphieu.Font = new Font("Segoe UI", 9F);
             txtMaphieu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtMaphieu.Location = new Point(441, 95);
+            txtMaphieu.Location = new Point(351, 95);
             txtMaphieu.Margin = new Padding(4, 6, 4, 6);
             txtMaphieu.Name = "txtMaphieu";
             txtMaphieu.PlaceholderText = "";
@@ -252,12 +278,25 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(244, 103, 0);
-            label2.Location = new Point(441, 59);
+            label2.Location = new Point(351, 59);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(106, 30);
             label2.TabIndex = 10;
             label2.Text = "Mã Phiếu";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(244, 103, 0);
+            label5.Location = new Point(676, 160);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(101, 30);
+            label5.TabIndex = 10;
+            label5.Text = "Giá nhập";
             // 
             // label4
             // 
@@ -265,7 +304,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(244, 103, 0);
-            label4.Location = new Point(441, 160);
+            label4.Location = new Point(351, 160);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(103, 30);
@@ -278,7 +317,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(244, 103, 0);
-            label7.Location = new Point(828, 61);
+            label7.Location = new Point(676, 59);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(89, 30);
@@ -298,23 +337,52 @@
             label1.TabIndex = 10;
             label1.Text = "Loại Phiếu";
             // 
-            // label5
+            // txtDonvi
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.FromArgb(244, 103, 0);
-            label5.Location = new Point(828, 162);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(101, 30);
-            label5.TabIndex = 10;
-            label5.Text = "Giá nhập";
+            txtDonvi.Cursor = Cursors.IBeam;
+            txtDonvi.CustomizableEdges = customizableEdges13;
+            txtDonvi.DefaultText = "";
+            txtDonvi.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtDonvi.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtDonvi.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtDonvi.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtDonvi.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDonvi.Font = new Font("Segoe UI", 9F);
+            txtDonvi.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDonvi.Location = new Point(134, 250);
+            txtDonvi.Margin = new Padding(4, 6, 4, 6);
+            txtDonvi.Name = "txtDonvi";
+            txtDonvi.PlaceholderText = "";
+            txtDonvi.SelectedText = "";
+            txtDonvi.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtDonvi.Size = new Size(94, 43);
+            txtDonvi.TabIndex = 11;
+            // 
+            // txtTongtien
+            // 
+            txtTongtien.Cursor = Cursors.IBeam;
+            txtTongtien.CustomizableEdges = customizableEdges15;
+            txtTongtien.DefaultText = "";
+            txtTongtien.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtTongtien.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtTongtien.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtTongtien.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtTongtien.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTongtien.Font = new Font("Segoe UI", 9F);
+            txtTongtien.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTongtien.Location = new Point(1265, 231);
+            txtTongtien.Margin = new Padding(4, 6, 4, 6);
+            txtTongtien.Name = "txtTongtien";
+            txtTongtien.PlaceholderText = "";
+            txtTongtien.SelectedText = "";
+            txtTongtien.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtTongtien.Size = new Size(128, 50);
+            txtTongtien.TabIndex = 11;
             // 
             // txtGhichu
             // 
             txtGhichu.Cursor = Cursors.IBeam;
-            txtGhichu.CustomizableEdges = customizableEdges13;
+            txtGhichu.CustomizableEdges = customizableEdges17;
             txtGhichu.DefaultText = "";
             txtGhichu.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtGhichu.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -323,14 +391,27 @@
             txtGhichu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtGhichu.Font = new Font("Segoe UI", 9F);
             txtGhichu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtGhichu.Location = new Point(828, 97);
+            txtGhichu.Location = new Point(676, 95);
             txtGhichu.Margin = new Padding(4, 6, 4, 6);
             txtGhichu.Name = "txtGhichu";
             txtGhichu.PlaceholderText = "";
             txtGhichu.SelectedText = "";
-            txtGhichu.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtGhichu.ShadowDecoration.CustomizableEdges = customizableEdges18;
             txtGhichu.Size = new Size(236, 50);
             txtGhichu.TabIndex = 11;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.FromArgb(244, 103, 0);
+            label6.Location = new Point(50, 253);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(76, 28);
+            label6.TabIndex = 10;
+            label6.Text = "đơn vị:";
             // 
             // label3
             // 
@@ -370,14 +451,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsPhieu.DefaultCellStyle = dataGridViewCellStyle3;
             gridDsPhieu.GridColor = Color.White;
-            gridDsPhieu.Location = new Point(18, 307);
+            gridDsPhieu.Location = new Point(18, 339);
             gridDsPhieu.Margin = new Padding(2, 5, 2, 5);
             gridDsPhieu.Name = "gridDsPhieu";
             gridDsPhieu.ReadOnly = true;
             gridDsPhieu.RowHeadersVisible = false;
             gridDsPhieu.RowHeadersWidth = 51;
             gridDsPhieu.RowTemplate.Height = 100;
-            gridDsPhieu.Size = new Size(1486, 785);
+            gridDsPhieu.Size = new Size(1486, 753);
             gridDsPhieu.TabIndex = 18;
             gridDsPhieu.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridDsPhieu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -431,7 +512,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2NumericUpDown numSoluong;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2GradientButton btnThem;
         private Guna.UI2.WinForms.Guna2GradientButton btnLichSu;
         private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
@@ -442,5 +522,10 @@
         private Label label7;
         private Guna.UI2.WinForms.Guna2TextBox txtGhichu;
         private Guna.UI2.WinForms.Guna2DataGridView gridDsPhieu;
+        private Label label5;
+        private Label label6;
+        private Label label8;
+        private Guna.UI2.WinForms.Guna2TextBox txtTongtien;
+        private Guna.UI2.WinForms.Guna2TextBox txtDonvi;
     }
 }

@@ -35,6 +35,8 @@ namespace BUS
         {
             nguyenlieudal.SuathongtinNL(manl,maloainl,tennl,donvi,soluong);
         }
+
+        
         // phát sinh mã nguyên liệu
         public string PhatSinhMaNL()
         {
