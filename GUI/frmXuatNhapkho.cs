@@ -204,7 +204,7 @@ namespace GUI
                             int giaNhap = Convert.ToInt32(row.Cells["gianhap"].Value);
                             if (cboLoaiphieu.Enabled == true)
                             {
-                                phieunhap.ThemPhieuNhap(txtMaphieu.Text, "haivo", DateTime.Now, txtGhichu.Text);
+                                phieunhap.ThemPhieuNhap(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
                                 chitietnhap.ThemChiTietNhap(txtMaphieu.Text, manguyenlieu, giaNhap, soLuong);
                                 cboLoaiphieu.Enabled = false;
                             }
@@ -224,7 +224,7 @@ namespace GUI
                         string manl = row.Cells["manl"].Value?.ToString();
                         if (cboLoaiphieu.Enabled == true)
                         {
-                            phieuxuat.ThemPhieuXuat(txtMaphieu.Text, "haivo", DateTime.Now, txtGhichu.Text);
+                            phieuxuat.ThemPhieuXuat(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
                             chitietxuat.ThemChiTietXuat(txtMaphieu.Text, manguyenlieu, soLuong);
                             cboLoaiphieu.Enabled = false;
                         }

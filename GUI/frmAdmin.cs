@@ -23,43 +23,17 @@ namespace GUI
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
         }
 
-        private bool isOpenKho = false;    //Biến cờ để biết trạng thái xổ menu
-        private frmKho kho;
+
         private async void btnKho_Click(object sender, EventArgs e)
         {
-            if (kho == null || kho.IsDisposed)
-            {
-                pnlFormcon.Controls.Clear();
-                kho = new frmKho();
-                kho.TopLevel = false;
-                pnlFormcon.Controls.Add(kho);
-                kho.BringToFront();
-                kho.Show();
-                isOpenKho = false;
-            }
-            else
-            {
-                if (pnlKho.Height > btnKho.Height + 40)
-                {
-                    isOpenKho = true;
-                }
-                if (isOpenKho == false)
-                {
-                    //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
-                    isOpenKho = true;
-                    for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 31; i += 5)
-                    {
-                        pnlKho.Height = i;
-                        await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
-                    }
-                }
-                else
-                {
-                    isOpenKho = false;
-                    pnlKho.Height = btnKho.Height + 31;
-                    //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
-                }
-            }
+
+            pnlFormcon.Controls.Clear();
+            frmKho frm = new frmKho();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+
         }
 
         private void btnLoinhuan_Click(object sender, EventArgs e)
@@ -87,29 +61,29 @@ namespace GUI
 
         }
 
-        private bool isOpenBaocao = false;
+
         private async void btnBaocaoTK_Click(object sender, EventArgs e)
         {
-            if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 40)
-            {
-                isOpenBaocao = true;
-            }
-            if (isOpenBaocao == false)
-            {
-                //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
-                isOpenKho = true;
-                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
-                {
-                    pnlBaocaoTK.Height = i;
-                    await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
-                }
-            }
-            else
-            {
-                isOpenBaocao = false;
-                pnlBaocaoTK.Height = btnBaocaoTK.Height + 31;
-                //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
-            }
+            //if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 40)
+            //{
+            //    isOpenBaocao = true;
+            //}
+            //if (isOpenBaocao == false)
+            //{
+            //    //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
+            //    isOpenKho = true;
+            //    for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
+            //    {
+            //        pnlBaocaoTK.Height = i;
+            //        await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
+            //    }
+            //}
+            //else
+            //{
+            //    isOpenBaocao = false;
+            //    pnlBaocaoTK.Height = btnBaocaoTK.Height + 31;
+            //    //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
+            //}
 
         }
 
@@ -135,12 +109,74 @@ namespace GUI
 
         }
 
+        private void btnXuatnhapkho_Click_1(object sender, EventArgs e)
+        {
+            pnlFormcon.Controls.Clear();
+            frmXuatNhapKho frm = new frmXuatNhapKho();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+
+        }
+
 
 
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private bool isOpenKho = false;    //Biến cờ để biết trạng thái xổ menu
+        private async void picXokho_Click(object sender, EventArgs e)
+        {
+            if (pnlKho.Height > btnKho.Height + 40)
+            {
+                isOpenKho = true;
+            }
+            if (isOpenKho == false)
+            {
+                //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
+                isOpenKho = true;
+                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 31; i += 5)
+                {
+                    pnlKho.Height = i;
+                    await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
+                }
+            }
+            else
+            {
+                isOpenKho = false;
+                pnlKho.Height = btnKho.Height + 31;
+                //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
+            }
+        }
+
+        private bool isOpenBaocao = false;
+        private async void picXoBaocao_Click(object sender, EventArgs e)
+        {
+            if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 40)
+            {
+                isOpenBaocao = true;
+            }
+            if (isOpenBaocao == false)
+            {
+                //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
+                isOpenKho = true;
+                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
+                {
+                    pnlBaocaoTK.Height = i;
+                    await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
+                }
+            }
+            else
+            {
+                isOpenBaocao = false;
+                pnlBaocaoTK.Height = btnBaocaoTK.Height + 31;
+                //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
+            }
+
         }
 
         

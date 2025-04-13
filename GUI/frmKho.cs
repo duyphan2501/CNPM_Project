@@ -46,7 +46,7 @@ namespace GUI
         private void picThemLoai_Click(object sender, EventArgs e)
         {
             frmThemLoaiNguyenLieu loainguyenlieu = new frmThemLoaiNguyenLieu();
-            loainguyenlieu.ShowDialog();
+            General.ShowDialogWithBlur(loainguyenlieu);
 
             TaiTenLoai();
         }

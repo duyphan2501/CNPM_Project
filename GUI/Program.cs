@@ -22,9 +22,9 @@ namespace cnpm
             // tải biến môi trường từ file .env
             //Env.Load();
             //Application.Run(new frmConfig());
-            //Application.Run(new frmLogin());
+            Application.Run(new frmLogin());
             //Application.Run(new frmTaiKhoan());
-            Application.Run(new frmAdmin());
+            //Application.Run(new frmAdmin());
             //Application.Run(new frmThemLoaiSanPham());
             //Application.Run(new frmThucdon());
             ////Application.Run(new frmXuatNhapKho());
