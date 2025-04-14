@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class LoaiThuChi
+    public class DTO_LoaiThuChi
     {
-        private string MaLoaiThuChi, TenLoai;
+        private string MaLoaiThuChi, TenLoai, Loai;
 
         public string _MaLoaiThuChi { get; set; }
         public string _TenLoai { get; set; }
+        public string _Loai { get; set; }
 
-        public LoaiThuChi(string maloaithuchi, string tenloai)
+        public DTO_LoaiThuChi(string maloaithuchi, string tenloai, string loai)
         {
             this.MaLoaiThuChi = maloaithuchi;
             this.TenLoai = tenloai;
+            this.Loai = loai;
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace DTO
 {
-    public class PhieuThuChi
+    public class DTO_PhieuThuChi
     {
         private string MaPhieuThuChi, TenDangNhap, MaLoaiThuChi, GhiChu;
         private long SoTien;
@@ -20,7 +20,7 @@ namespace DTO
         public string _MaLoaiThuChi { get; set; }
         public string _GhiChu { get; set; }
 
-        public PhieuThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public DTO_PhieuThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
         {
             this.MaPhieuThuChi = maphieuthuchi;
             this.TenDangNhap = tendangnhap;

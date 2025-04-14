@@ -32,6 +32,7 @@ namespace cnpm
             //Application.Run(new frmKho());
             //Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmTheRung());
+            Application.Run(new frmThuChi());
 
         }
     }
