@@ -36,7 +36,6 @@ namespace GUI
         {
             cboTenNguyenlieu.DataSource = phieunhap.TaiTenNguyenLieu();
             cboTenNguyenlieu.DisplayMember = "TenNL";
-            cboTenNguyenlieu.ValueMember = "MaNL";
         }
 
         public void LoadPhieu()
@@ -124,9 +123,7 @@ namespace GUI
                 gridDsPhieu.Rows.Add(cboTenNguyenlieu.Text, (int)numSoluong.Value, txtGhichu.Text);
                 numGianhap.Value = 0;
                 numSoluong.Value = 0;
-
             }
-
         }
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
@@ -242,7 +239,6 @@ namespace GUI
         {
             frmLichSuXuatNhap lichsu = new frmLichSuXuatNhap();
             General.ShowDialogWithBlur(lichsu);
-
         }
 
         private void cboTenNguyenlieu_SelectedIndexChanged(object sender, EventArgs e)

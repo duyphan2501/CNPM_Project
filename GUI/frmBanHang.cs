@@ -19,19 +19,19 @@ namespace GUI
         public frmBanHang()
         {
             InitializeComponent();
-            loaiSanphamBUS = new BUS_LoaiSanPham();  
-            sanPhamBUS = new BUS_SanPham();  
+            loaiSanphamBUS = new BUS_LoaiSanPham();
+            sanPhamBUS = new BUS_SanPham();
             calam = new BUS_CaLamViec();
         }
 
         private void frmBanHang_Load(object sender, EventArgs e)
         {
-            SetFullScreen();  
+            SetFullScreen();
             EnableDoubleBuffering();
-            CheckShiftOpening();  
-            LoadProductCateGory(); 
-            LoadProducts(); 
-            SetUserDetails(); 
+            CheckShiftOpening();
+            LoadProductCateGory();
+            LoadProducts();
+            SetUserDetails();
         }
 
         private void SetFullScreen()
@@ -168,5 +168,17 @@ namespace GUI
             lblThoiGian.Text = now.ToString("dddd, dd/MM/yyyy - HH:mm", culture);
         }
 
+        private void btnChonSoCho_Click(object sender, EventArgs e)
+        {
+            frmTheRung frmTheRung = new frmTheRung();
+            General.ShowDialogWithBlur(frmTheRung);
+
+            if (frmTheRung.DialogResult == DialogResult.OK && frmTheRung.SelectedTheRung != null)
+            {
+                var theDuocChon = frmTheRung.SelectedTheRung;
+                // Xử lý với thẻ rung đã chọn ở đây
+                lblSoCho.Text = theDuocChon.SoThe;
+            }
+        }
     }
 }
