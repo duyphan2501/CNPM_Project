@@ -24,8 +24,6 @@ namespace GUI
             InitializeComponent();
         }
 
-
-
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
             TaiTenNguyenLieu();
@@ -84,7 +82,6 @@ namespace GUI
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e) //Khi loại phiếu thay đổi thì tự phát sinh mã
         {
             PhatSinhMa();
-
         }
 
         int tong = 0; //tạo biến lưu tổng tiền
@@ -294,7 +291,6 @@ namespace GUI
         {
             frmLichSuXuatNhap lichsu = new frmLichSuXuatNhap();
             General.ShowDialogWithBlur(lichsu);
-
         }
 
         private void cboTenNguyenlieu_SelectedIndexChanged(object sender, EventArgs e)

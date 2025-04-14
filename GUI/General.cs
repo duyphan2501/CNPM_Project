@@ -12,7 +12,6 @@ namespace GUI
         //chuyển hình ảnh sang byte[];
         public static byte[] ImageToByteArray(Image img)
         {
-
             using (MemoryStream ms = new MemoryStream())
             {
                 img.Save(ms, ImageFormat.Png);
@@ -23,10 +22,15 @@ namespace GUI
         //chuyển byte[] sang hình ảnh;
         public static Image ByteArrayToImage(byte[] byteArray)
         {
-            using (MemoryStream ms = new MemoryStream(byteArray))
+            if (byteArray != null)
             {
-                return Image.FromStream(ms);
+                using (MemoryStream ms = new MemoryStream(byteArray))
+                {
+                    return Image.FromStream(ms);
+                }
             }
+            return null;
+            
         }
 
         private class BlurBackgroundForm : Form

@@ -34,25 +34,31 @@ namespace DAL
         }
 
         //Tải danh sách các tên loại lên combobox
-        public DataTable TaiTenLoai()
+        public DataTable TaiLoaiSP()
         {
-            string query = "select distinct TenLoai from LoaiSanPham";
+            string query = "select * from LoaiSanPham";
             return DataProvider.ExecuteQuery(query);
         }
 
-        //Thêm sản phẩm mới vào database
-        public void ThemSp(string masp, string tenloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
+        // Thêm sản phẩm mới vào database (Ảnh có thể NULL)
+        public void ThemSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
-            string query = "insert into SanPham values (@_MaSp,dbo.LayMaloaiTheoTenloai(@_MaLoai),@_TenSp,@_HinhAnh,@_GiaBan,@_TrangThai)";
-            object[] parem = new object[] { masp, tenloai, tensp, hinhanh, giaban, trangthai };
+            string query = "INSERT INTO SanPham (MaSp, MaLoai, TenSp, HinhAnh, GiaBan, TrangThai) " +
+                           "VALUES (@MaSP, @MaLoai, @TenSp, @HinhAnh, @GiaBan, @TrangThai)";
+
+            object[] parem = new object[] { masp, maloai, tensp, hinhanh ?? (object)DBNull.Value, giaban, trangthai };
+
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        //Sửa thông tin sản phẩm
+        // Sửa thông tin sản phẩm (Ảnh có thể NULL)
         public void SuaSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
-            string query = "update SanPham set maloai = dbo.LayMaloaiTheoTenloai(@_MaLoai), tensp = @_TenSp, hinhanh = @_HinhAnh, giaban = @_GiaBan, trangthai = @_TrangThai where masp = @_MaSp";
-            object[] parem = new object[] { maloai, tensp, hinhanh, giaban, trangthai, masp};
+            string query = "UPDATE SanPham SET MaLoai = @MaLoai, TenSp = @TenSp, HinhAnh = @HinhAnh, GiaBan = @GiaBan, " +
+                           "TrangThai = @TrangThai WHERE MaSp = @MaSp";
+
+            object[] parem = new object[] { maloai, tensp, hinhanh ?? (object)DBNull.Value, giaban, trangthai, masp };
+
             DataProvider.ExecuteNonQuery(query, parem);
         }
 

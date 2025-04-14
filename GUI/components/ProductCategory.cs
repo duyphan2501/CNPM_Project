@@ -31,5 +31,10 @@ namespace GUI.components
         {
             btnTenLoai.Checked = isActive;
         }
+
+        private void btnTenLoai_Click(object sender, EventArgs e)
+        {
+            LoaiSPClicked?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

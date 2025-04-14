@@ -59,7 +59,7 @@ namespace GUI
             btnTimkiem.Enabled = false;
             txtTimkiem.Enabled = false;
             btnThemmon.Enabled = true;
-
+            TaiTenLoai();
             LoadSp();
         }
 
@@ -77,35 +77,12 @@ namespace GUI
             btnLuu.Enabled = true;
         }
 
-
-
-        //chuyển hình ảnh sang byte[];
-        public byte[] ImageToByteArray(Image img)
-        {
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, ImageFormat.Png);
-                return ms.ToArray();
-            }
-        }
-
-        //chuyển byte[] sang hình ảnh;
-        public Image ByteArrayToImage(byte[] byteArray)
-        {
-            using (MemoryStream ms = new MemoryStream(byteArray))
-            {
-                return Image.FromStream(ms);
-            }
-        }
-
-
-
         //Tải tên loại lên combobox Tên loại
         public void TaiTenLoai()
         {
-            cboTenloai.DataSource = sanpham.TaiTenloai();
+            cboTenloai.DataSource = sanpham.TaiLoaiSP();
             cboTenloai.DisplayMember = "TenLoai";
+            cboTenloai.ValueMember = "MaLoai";
         }
 
         //Khi nhấn vào picture sẽ hiện form thêm loại
@@ -136,24 +113,35 @@ namespace GUI
         //Khi chọn dòng trong gridview
         private void gridThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
+            // Kiểm tra nếu click vào đúng cột btnUpdate và không phải header
             if (e.RowIndex < 0 || e.ColumnIndex != gridThucDon.Columns["btnUpdate"].Index)
             {
                 return;
             }
 
+            // Lấy dữ liệu từ dòng được chọn
             DataGridViewRow hangduocchon = gridThucDon.SelectedRows[0];
-            txtMasanpham.Text = hangduocchon.Cells["Mã món"].Value.ToString();
-            cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
-            txtTensanpham.Text = hangduocchon.Cells["Tên món"].Value.ToString();
-            picAnhsanpham.Image = ByteArrayToImage((byte[])hangduocchon.Cells["Hình ảnh"].Value);
-            numGiaban.Value = Convert.ToDecimal(hangduocchon.Cells["Giá bán"].Value);
-            cboTrangthai.Text = hangduocchon.Cells["Trạng thái"].Value.ToString();
 
+            // Cập nhật thông tin vào các điều khiển
+            txtMasanpham.Text = hangduocchon.Cells["Mã món"].Value?.ToString();
+            cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value?.ToString();
+            txtTensanpham.Text = hangduocchon.Cells["Tên món"].Value?.ToString();
+            numGiaban.Value = Convert.ToDecimal(hangduocchon.Cells["Giá bán"].Value);
+            cboTrangthai.Text = hangduocchon.Cells["Trạng thái"].Value?.ToString();
+
+            // Xử lý ảnh, nếu null thì gán ảnh mặc định hoặc để null
+            var hinhAnh = hangduocchon.Cells["Hình ảnh"].Value as byte[];
+            picAnhsanpham.Image = hinhAnh != null ? General.ByteArrayToImage(hinhAnh) : null;
+
+            // Cập nhật giao diện
+            EnableProductFields();
+        }
+
+        private void EnableProductFields()
+        {
             gbThongtinsanpham.Enabled = true;
             txtMasanpham.Enabled = false;
-            //cboTenloai.Enabled = false;
-
+            //cboTenloai.Enabled = false; // Nếu cần thì có thể bật lại
 
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
@@ -162,25 +150,38 @@ namespace GUI
         }
 
 
+
         //Nút lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtMasanpham.Enabled == false) //nếu không cho sửa mã thì trường hợp update
-            {
-                sanpham.SuaSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
-                LoadSp();
+            // Lấy thông tin từ form
+            string maSanPham = txtMasanpham.Text;
+            string maLoai = cboTenloai.SelectedValue.ToString();
+            string tenSanPham = txtTensanpham.Text;
+            int giaBan = (int)numGiaban.Value;
+            string trangThai = cboTrangthai.Text;
 
-            }
-            else
+            // Kiểm tra xem có ảnh không
+            byte[] anhSanPham = null;
+            if (picAnhsanpham.Image != null)
             {
-                sanpham.ThemSp(txtMasanpham.Text, cboTenloai.Text, txtTensanpham.Text, ImageToByteArray(picAnhsanpham.Image), (int)numGiaban.Value, cboTrangthai.Text);
-                LoadSp();
-
+                anhSanPham = General.ImageToByteArray(picAnhsanpham.Image);
             }
+
+            // Kiểm tra nếu không cho sửa mã sản phẩm (trường hợp cập nhật)
+            if (txtMasanpham.Enabled == false)  // Cập nhật sản phẩm
+            {
+                sanpham.SuaSp(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+            }
+            else  // Thêm sản phẩm mới
+            {
+                sanpham.ThemSp(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+            }
+
+            // Tải lại dữ liệu sau khi thêm/sửa
+            LoadSp();
             frmThucdon_Load(sender, e);
-
         }
-
 
 
         private void btnHuy_Click(object sender, EventArgs e)

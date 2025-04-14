@@ -19,19 +19,19 @@ namespace GUI
         public frmBanHang()
         {
             InitializeComponent();
-            loaiSanphamBUS = new BUS_LoaiSanPham();  
-            sanPhamBUS = new BUS_SanPham();  
+            loaiSanphamBUS = new BUS_LoaiSanPham();
+            sanPhamBUS = new BUS_SanPham();
             calam = new BUS_CaLamViec();
         }
 
         private void frmBanHang_Load(object sender, EventArgs e)
         {
-            SetFullScreen();  
+            SetFullScreen();
             EnableDoubleBuffering();
-            KiemTraMoCa();  
-            LoadProductCateGory(); 
-            LoadProducts(); 
-            SetUserDetails(); 
+            CheckShiftOpening();
+            LoadProductCateGory();
+            LoadProducts();
+            SetUserDetails();
         }
 
         private void SetFullScreen()
@@ -51,7 +51,7 @@ namespace GUI
         }
 
         // Kiểm tra xem đã mở ca làm việc chưa, nếu chưa thì yêu cầu mở ca
-        private void KiemTraMoCa()
+        private void CheckShiftOpening()
         {
             var calam = new BUS_CaLamViec();
             string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
@@ -75,13 +75,9 @@ namespace GUI
         private void LoadProductCateGory()
         {
             // Tạo nút "Tất cả" để chọn tất cả sản phẩm
-            var allCategory = new ProductCategory
-            {
-                Text = "Tất cả",
-                MaLoai = null
-            };
+            var allCategory = new ProductCategory("Tất cả", null);
             allCategory.SetActive(true);
-            allCategory.Click += ProductCategory_Clicked;
+            allCategory.LoaiSPClicked += ProductCategory_Clicked;
             pnlProductCategory.Controls.Add(allCategory);
 
             // Tải các loại sản phẩm và hiển thị lên panel
@@ -108,6 +104,7 @@ namespace GUI
         {
             // Xử lý sự kiện click chọn loại sản phẩm, thay đổi trạng thái nút 
             var selectedCategory = sender as ProductCategory;
+            MessageBox.Show("Click");
             foreach (ProductCategory category in pnlProductCategory.Controls.OfType<ProductCategory>())
             {
                 category.SetActive(category == selectedCategory);
@@ -163,9 +160,25 @@ namespace GUI
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            // Cập nhật thời gian hiện tại mỗi khi tick
+            // Thiết lập văn hóa Việt Nam để ngày trong tuần hiển thị tiếng Việt
+            var culture = new System.Globalization.CultureInfo("vi-VN");
             DateTime now = DateTime.Now;
-            lblThoiGian.Text = $"{now:dddd}, {now:dd/MM/yyyy - HH:mm}";
+
+            // Cập nhật thời gian dạng
+            lblThoiGian.Text = now.ToString("dddd, dd/MM/yyyy - HH:mm", culture);
+        }
+
+        private void btnChonSoCho_Click(object sender, EventArgs e)
+        {
+            frmTheRung frmTheRung = new frmTheRung();
+            General.ShowDialogWithBlur(frmTheRung);
+
+            if (frmTheRung.DialogResult == DialogResult.OK && frmTheRung.SelectedTheRung != null)
+            {
+                var theDuocChon = frmTheRung.SelectedTheRung;
+                // Xử lý với thẻ rung đã chọn ở đây
+                lblSoCho.Text = theDuocChon.SoThe;
+            }
         }
     }
 }
