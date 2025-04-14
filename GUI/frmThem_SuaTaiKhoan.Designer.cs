@@ -122,7 +122,7 @@
             txtHoten.Font = new Font("Microsoft YaHei", 10F);
             txtHoten.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtHoten.Location = new Point(62, 86);
-            txtHoten.Margin = new Padding(6, 6, 6, 6);
+            txtHoten.Margin = new Padding(6);
             txtHoten.Name = "txtHoten";
             txtHoten.PlaceholderText = "";
             txtHoten.SelectedText = "";
@@ -165,7 +165,7 @@
             txtTendangnhap.Font = new Font("Microsoft YaHei", 10F);
             txtTendangnhap.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTendangnhap.Location = new Point(62, 86);
-            txtTendangnhap.Margin = new Padding(6, 6, 6, 6);
+            txtTendangnhap.Margin = new Padding(6);
             txtTendangnhap.Name = "txtTendangnhap";
             txtTendangnhap.PlaceholderText = "";
             txtTendangnhap.SelectedText = "";
@@ -208,7 +208,7 @@
             txtMatkhau.Font = new Font("Microsoft YaHei", 10F);
             txtMatkhau.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMatkhau.Location = new Point(62, 86);
-            txtMatkhau.Margin = new Padding(6, 6, 6, 6);
+            txtMatkhau.Margin = new Padding(6);
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.PlaceholderText = "";
             txtMatkhau.SelectedText = "";
@@ -251,7 +251,7 @@
             txtEmail.Font = new Font("Microsoft YaHei", 10F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Location = new Point(89, 86);
-            txtEmail.Margin = new Padding(6, 6, 6, 6);
+            txtEmail.Margin = new Padding(6);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "";
             txtEmail.SelectedText = "";
@@ -356,11 +356,11 @@
             cboVaitro.ForeColor = Color.FromArgb(68, 88, 112);
             cboVaitro.ItemHeight = 30;
             cboVaitro.Items.AddRange(new object[] { "quản lý", "thu ngân" });
-            cboVaitro.Location = new Point(76, 79);
+            cboVaitro.Location = new Point(89, 79);
             cboVaitro.Margin = new Padding(3, 4, 3, 4);
             cboVaitro.Name = "cboVaitro";
             cboVaitro.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            cboVaitro.Size = new Size(400, 36);
+            cboVaitro.Size = new Size(376, 36);
             cboVaitro.TabIndex = 1;
             // 
             // label6

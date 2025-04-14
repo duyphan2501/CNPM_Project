@@ -48,8 +48,9 @@ namespace GUI
         private void btnTaotaikhoan_Click(object sender, EventArgs e)
         {
             frmThem_SuaTaiKhoan themtk = new frmThem_SuaTaiKhoan();
-            themtk.ShowDialog();
+            General.ShowDialogWithBlur(themtk);
             LoadTK();
+
         }
 
 

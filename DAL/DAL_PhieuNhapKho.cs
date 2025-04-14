@@ -57,7 +57,7 @@ namespace DAL
 
         public DataTable TaiTenNguyenLieu()
         {
-            string query = "select distinct TenNL from NguyenLieu";
+            string query = "select * from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
 

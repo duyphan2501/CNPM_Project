@@ -89,7 +89,8 @@ namespace GUI
         private void picThemLoai_Click(object sender, EventArgs e)
         {
             frmThemLoaiSanPham themloai = new frmThemLoaiSanPham();
-            themloai.ShowDialog();
+            General.ShowDialogWithBlur(themloai);
+
             TaiTenLoai();
         }
 
