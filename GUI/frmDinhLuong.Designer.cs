@@ -55,6 +55,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnXong = new Guna.UI2.WinForms.Guna2GradientButton();
             panel1 = new Panel();
             label7 = new Label();
@@ -74,6 +76,7 @@
             btnThem = new Guna.UI2.WinForms.Guna2GradientButton();
             btnSua = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            btnXoa = new Guna.UI2.WinForms.Guna2GradientButton();
             panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSoluongNL).BeginInit();
@@ -360,11 +363,11 @@
             btnThem.FillColor2 = Color.DarkOrange;
             btnThem.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(198, 554);
+            btnThem.Location = new Point(126, 554);
             btnThem.Margin = new Padding(3, 5, 3, 5);
             btnThem.Name = "btnThem";
             btnThem.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnThem.Size = new Size(119, 53);
+            btnThem.Size = new Size(103, 53);
             btnThem.TabIndex = 2;
             btnThem.Text = "Thêm";
             btnThem.Click += btnThem_Click;
@@ -382,11 +385,11 @@
             btnSua.FillColor2 = Color.DarkOrange;
             btnSua.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(328, 554);
+            btnSua.Location = new Point(340, 554);
             btnSua.Margin = new Padding(3, 5, 3, 5);
             btnSua.Name = "btnSua";
             btnSua.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            btnSua.Size = new Size(119, 53);
+            btnSua.Size = new Size(89, 53);
             btnSua.TabIndex = 2;
             btnSua.Text = "Sửa";
             btnSua.Click += btnSua_Click;
@@ -406,6 +409,28 @@
             guna2GroupBox1.Text = "DANH SÁCH ĐỊNH LƯỢNG";
             guna2GroupBox1.TextAlign = HorizontalAlignment.Center;
             // 
+            // btnXoa
+            // 
+            btnXoa.AutoRoundedCorners = true;
+            btnXoa.CustomizableEdges = customizableEdges25;
+            btnXoa.DisabledState.BorderColor = Color.DarkGray;
+            btnXoa.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnXoa.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnXoa.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnXoa.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnXoa.FillColor = Color.FromArgb(244, 103, 0);
+            btnXoa.FillColor2 = Color.DarkOrange;
+            btnXoa.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Location = new Point(237, 554);
+            btnXoa.Margin = new Padding(3, 5, 3, 5);
+            btnXoa.Name = "btnXoa";
+            btnXoa.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btnXoa.Size = new Size(96, 53);
+            btnXoa.TabIndex = 2;
+            btnXoa.Text = "Xóa";
+            btnXoa.Click += btnXoa_Click;
+            // 
             // frmDinhLuong
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -413,6 +438,7 @@
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1005, 761);
             Controls.Add(guna2GroupBox1);
+            Controls.Add(btnXoa);
             Controls.Add(btnSua);
             Controls.Add(btnThem);
             Controls.Add(panel1);
@@ -461,5 +487,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTenSp;
         private Guna.UI2.WinForms.Guna2GradientButton btnSua;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnXoa;
     }
 }

@@ -19,7 +19,7 @@ namespace BUS
         //Thêm định lượng
         public void ThemDinhluong(string masp, string manl, int soluong)
         {
-            dinhluongbus.ThemDinhluong(masp,manl, soluong);
+            dinhluongbus.ThemDinhluong(masp, manl, soluong);
         }
 
         public void SuaDinhluong(string masp, string manl, int soluong)
@@ -37,6 +37,11 @@ namespace BUS
         public DataTable TaiTenNL()
         {
             return dinhluongbus.TaiTenNL();
+        }
+
+        public void XoaDinhLuong(string masp, string manl)
+        {
+            dinhluongbus.XoaDinhLuong(masp , manl);
         }
     }
 }

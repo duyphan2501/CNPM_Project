@@ -33,7 +33,9 @@ namespace GUI
         //Load lại danh sách định lượng theo tên sản phẩm trên griview
         public void loadDsDinhluong()
         {
+            gridDsDinhluong.RowTemplate.Height = 50;
             gridDsDinhluong.DataSource = dinhluong.TaiDsDinhluong(txtTenSp.Text);
+            gridDsDinhluong.Columns["btnUpdate"].DisplayIndex = gridDsDinhluong.Columns.Count - 1; //đưa button về cuối
 
         }
 
@@ -43,17 +45,35 @@ namespace GUI
             loadDsDinhluong();
             btnThem.Enabled = true;
             btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             TaitenNL();
         }
 
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
-            dinhluong.ThemDinhluong(Masp, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
 
-            numSoluongNL.Value = 0;
-            loadDsDinhluong();
+            // Kiểm tra xem nguyên liệu được định lượng chưa
+            bool daTonTai = false;
+            foreach (DataGridViewRow row in gridDsDinhluong.Rows)
+            {
+                if (row.Cells["Tên nguyên liệu"].Value != null && row.Cells["Tên nguyên liệu"].Value.ToString() == cboTenNguyenLieu.Text)
+                {
+                    // Hiển thị thông báo nếu nguyên liệu đã tồn tại
+                    MessageBox.Show("Đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    daTonTai = true;
+                    break;
+                }
+            }
 
+            // Thêm mới nếu chưa tồn tại
+            if (!daTonTai)
+            {
+                dinhluong.ThemDinhluong(Masp, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
+
+                numSoluongNL.Value = 0;
+                loadDsDinhluong();
+            }
         }
 
         //Nhấn nút xong khi đã thêm đủ danh sách định lượng
@@ -73,24 +93,41 @@ namespace GUI
 
         private void gridDsDinhluong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
+            if (e.RowIndex < 0 || e.ColumnIndex != gridDsDinhluong.Columns["btnUpdate"].Index)
+            {
+                return;
+            }
             DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
             cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
             numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
 
             btnThem.Enabled = false;
             btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            cboTenNguyenLieu.Enabled = false; //Không cho sưa tên nguyên liệu
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, (int)numSoluongNL.Value);
+
+            dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
+            cboTenNguyenLieu.Enabled = true;
             loadDsDinhluong();
             frmDinhLuong_Load(sender, e);
+
         }
 
         private void gridDsDinhluong_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            dinhluong.XoaDinhLuong(txtTenSp.Text, cboTenNguyenLieu.Text);
+            loadDsDinhluong();
+            frmDinhLuong_Load(sender, e);
         }
     }
 }

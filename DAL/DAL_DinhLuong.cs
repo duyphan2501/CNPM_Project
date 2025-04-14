@@ -28,9 +28,17 @@ namespace DAL
         //Sửa thông tin định lượng
         public void SuaDinhluong(string masp, string manl, int soluong)
         {
-            string query = "update DinhLuong set manl = dbo.LayMaNlTheoTenNl(@_MaNL), soluong = @_SoLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp)";
-            object[] parem = new object[] {manl, soluong, masp};
+            string query = "update DinhLuong set soluong = @_SoLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp) and manl = dbo.LayMaNlTheoTenNl(@_MaNL)"; 
+            object[] parem = new object[] {soluong, masp, manl};
             DataProvider.ExecuteNonQuery(query,parem);
+        }
+
+        //Xóa định lượng
+        public void XoaDinhLuong(string masp, string manl)
+        {
+            string query = "delete from DinhLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp) and manl = dbo.LayMaNlTheoTenNl(@_MaNL)";
+            object[] parem = new object[] {masp, manl };
+            DataProvider.ExecuteNonQuery(query, parem);
         }
 
         //Tải danh sách định lượng theo tên sản phẩm lên gridview theo tên sản phẩm

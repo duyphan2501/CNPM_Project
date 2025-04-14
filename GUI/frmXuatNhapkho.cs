@@ -118,7 +118,7 @@ namespace GUI
                     if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
                     {
                         // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Nguyên liệu này đã tồn tại! Không thể thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         daTonTai = true;
                         break;
                     }
@@ -160,7 +160,7 @@ namespace GUI
                     if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
                     {
                         // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Nguyên liệu này đã tồn tại! Không thể thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Đã có nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         daTonTai = true;
                         break;
                     }
