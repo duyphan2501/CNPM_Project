@@ -318,6 +318,7 @@
             numGianhap.Font = new Font("Segoe UI", 9F);
             numGianhap.Location = new Point(34, 657);
             numGianhap.Margin = new Padding(4, 6, 4, 6);
+            numGianhap.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numGianhap.Name = "numGianhap";
             numGianhap.ShadowDecoration.CustomizableEdges = customizableEdges14;
             numGianhap.Size = new Size(236, 50);
@@ -377,6 +378,7 @@
             numSoluong.Font = new Font("Segoe UI", 9F);
             numSoluong.Location = new Point(32, 530);
             numSoluong.Margin = new Padding(4, 6, 4, 6);
+            numSoluong.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             numSoluong.Name = "numSoluong";
             numSoluong.ShadowDecoration.CustomizableEdges = customizableEdges18;
             numSoluong.Size = new Size(236, 50);

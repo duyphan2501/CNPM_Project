@@ -12,15 +12,15 @@ namespace DAL
     {
         DTO_NguyenLieu nguyenlieudto;
 
-        public DAL_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong)
+        public DAL_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong,int muctoithieu)
         {
-            nguyenlieudto = new DTO_NguyenLieu(manl,maloainl,tennl,donvi,soluong);
+            nguyenlieudto = new DTO_NguyenLieu(manl,maloainl,tennl,donvi,soluong,muctoithieu);
         }
 
         //Tải nguyên liệu lên datagridview
-        public DataTable Tainguyenlieu()
+        public DataTable LoadIngredients()
         {
-            string query = "select nl.MaNL as 'Mã nguyên liệu',lnl.TenLoai as 'Tên loại',nl.TenNL as 'Tên nguyên liệu',nl.DonVi as 'Đơn vị tính',nl.SoLuong as 'Số lượng' from NguyenLieu nl,LoaiNguyenLieu lnl " +
+            string query = "select nl.MaNL as 'Mã nguyên liệu',lnl.TenLoai as 'Tên loại',nl.TenNL as 'Tên nguyên liệu',nl.DonVi as 'Đơn vị tính' from NguyenLieu nl,LoaiNguyenLieu lnl " +
                             "where nl.MaLoaiNL = lnl.MaLoaiNL";
             return DataProvider.ExecuteQuery(query);
         }
@@ -30,18 +30,18 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
-        public void ThemNguyenlieu(string manl, string tenloainl, string tennl, string donvi, int soluong)
+        public void AddIngredients(string manl, string tenloainl, string tennl, string donvi)
         {
-            string query = "insert into NguyenLieu values (@_MaNL,dbo.LayMaloaiNLTheoTenloaiNL(@_MaLoaiNL),@_TenNL,@_DonVi,@_SoLuong)";
-            object[] parem = new object[] { manl, tenloainl, tennl, donvi, soluong};
+            string query = "insert into NguyenLieu values (@_MaNL,dbo.LayMaloaiNLTheoTenloaiNL(@_MaLoaiNL),@_TenNL,@_DonVi)";
+            object[] parem = new object[] { manl, tenloainl, tennl, donvi};
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
         //Sửa thông tin nguyên liệu
-        public void SuathongtinNL(string manl, string maloainl, string tennl, string donvi, int soluong)
+        public void UpdateIngredients(string manl, string maloainl, string tennl, string donvi)
         {
-            string query = "update NguyenLieu set maloainl = dbo.LayMaloaiNLTheoTenloaiNL(@_MaLoaiNL), tennl = @_TenNL, donvi = @_DonVi, soluong = @_SoLuong  where manl = @_MaNL";
-            object[] parem = new object[] { maloainl, tennl, donvi, soluong, manl };
+            string query = "update NguyenLieu set maloainl = dbo.LayMaloaiNLTheoTenloaiNL(@_MaLoaiNL), tennl = @_TenNL, donvi = @_DonVi where manl = @_MaNL";
+            object[] parem = new object[] { maloainl, tennl, donvi, manl };
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
@@ -51,6 +51,15 @@ namespace DAL
             string query = "select top 1 MaNL from NguyenLieu order by MaNL desc";
             string maxMaNL = (string)DataProvider.ExecuteScalar(query);
             return maxMaNL;
+        }
+
+        public DataTable LoadWarehouse()
+        {
+            string query = "SELECT nl.TenNL AS 'Tên Nguyên Liệu', ctnk.SoLuong AS 'Số Lượng Nhập', ctnk.GiaNhap AS 'Giá Nhập', nl.DonVi AS 'Đơn Vị Tính', pnk.NgayNhap AS 'Ngày Nhập' " +
+                            "FROM NguyenLieu nl " +
+                            "JOIN ChiTietNhapKho ctnk ON nl.MaNL = ctnk.MaNL " +
+                            "JOIN PhieuNhapKho pnk ON ctnk.MaPhieuNhap = pnk.MaPhieuNhap;";
+            return DataProvider.ExecuteQuery(query);
         }
     }
 }

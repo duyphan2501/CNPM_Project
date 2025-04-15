@@ -158,7 +158,7 @@ namespace GUI
             string maSanPham = txtMasanpham.Text;
             string maLoai = cboTenloai.SelectedValue.ToString();
             string tenSanPham = txtTensanpham.Text;
-            int giaBan = (int)numGiaban.Value;
+            int giaBan = Convert.ToInt32(numGiaban.Value);
             string trangThai = cboTrangthai.Text;
 
             // Kiểm tra xem có ảnh không
@@ -192,7 +192,7 @@ namespace GUI
         private void btnDinhluong_Click(object sender, EventArgs e)
         {
             frmDinhLuong dinhluong = new frmDinhLuong(txtMasanpham.Text, txtTensanpham.Text);  //truyền mã sản phẩm và tên sản phẩm vào form định lượng để thêm định lượng
-            dinhluong.ShowDialog();
+            General.ShowDialogWithBlur(dinhluong);
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)

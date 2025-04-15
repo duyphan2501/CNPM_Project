@@ -130,6 +130,16 @@ namespace GUI
             frm.Show();
         }
 
+        private void btnTonkho_Click_1(object sender, EventArgs e)
+        {
+            pnlFormcon.Controls.Clear();
+            frmTonKho frm = new frmTonKho();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
+
 
 
         private void btnExit_Click(object sender, EventArgs e)

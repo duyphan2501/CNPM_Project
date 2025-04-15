@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmKho : Form
     {
-        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0);
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0);
         public frmKho()
         {
             InitializeComponent();
@@ -27,12 +27,13 @@ namespace GUI
             btnThemNguyenlieu.Enabled = true;
             btnHuy.Enabled = false;
             btnLuu.Enabled = false;
+            btnTonkho.Enabled = false;
         }
 
         public void LoadNguyenLieu()
         {
             gridDsNguyenlieu.RowTemplate.Height = 50;
-            gridDsNguyenlieu.DataSource = nguyenlieubus.TaiNguyenlieu();
+            gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
             gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1; //đưa button về cuối
 
         }
@@ -59,7 +60,6 @@ namespace GUI
             btnLuu.Enabled = true;
             txtTenNguyenLieu.Clear();
             txtDonvitinh.Clear();
-            numSoluong.Value = 0;
 
             txtMaNguyenLieu.Text = nguyenlieubus.PhatSinhMaNL();
             txtMaNguyenLieu.ReadOnly = true;
@@ -68,19 +68,19 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmKho_Load(sender, e);
-            btnThemNguyenlieu.Enabled = true;   
+            btnThemNguyenlieu.Enabled = true;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (txtMaNguyenLieu.Enabled == true)
             {
-                nguyenlieubus.ThemNguyenLieu(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, (int)numSoluong.Value);
+                nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
                 LoadNguyenLieu();
             }
             else
             {
-                nguyenlieubus.SuathongtinNL(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, (int)numSoluong.Value);
+                nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
                 LoadNguyenLieu();
             }
             frmKho_Load(sender, e);
@@ -98,7 +98,6 @@ namespace GUI
             txtMaNguyenLieu.Text = hangduocchon.Cells["Mã nguyên liệu"].Value.ToString();
             cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
             txtTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
-            numSoluong.Value = Convert.ToDecimal(hangduocchon.Cells["Số lượng"].Value);
             txtDonvitinh.Text = hangduocchon.Cells["Đơn vị tính"].Value.ToString();
 
             gbThongtinnguyenlieu.Enabled = true;
@@ -108,6 +107,13 @@ namespace GUI
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
+            btnTonkho.Enabled = true;
+        }
+
+        private void btnTonkho_Click(object sender, EventArgs e)
+        {
+            frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text,txtTenNguyenLieu.Text);  //truyền mã nl và tên nl để thêm thông tin tồn kho
+            General.ShowDialogWithBlur(tonkho);
         }
     }
 }
