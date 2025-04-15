@@ -27,25 +27,29 @@ namespace BUS
             taikhoandal = new DAL_TaiKhoan(tendangnhap);
         }
 
-        public DataTable TaiTK()
+        //Tải tài khoản có hiệu lực
+        public DataTable LoadAccount()
         {
-            return taikhoandal.TaiTK();
+            return taikhoandal.LoadAccount();
         }
 
-        public DataTable TaiTK1()
+        //Tải tài khoản vô hiệu hóa
+        public DataTable LoadDisabledAccounts()
         {
-            return taikhoandal.TaiTK1();
+            return taikhoandal.LoadDisabledAccounts();
         }
 
-        public void ThemTaiKhoan(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email) 
+        //Thêm tài khaonr
+        public void AddAccount(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email) 
         {
             matkhau = General.HashPassword(matkhau);
-            taikhoandal.ThemTK(tendangnhap, matkhau, trangthai, vaitro, hoten, email); 
+            taikhoandal.AddAccount(tendangnhap, matkhau, trangthai, vaitro, hoten, email); 
         }
 
-        public void SuaTaiKhoan(string tendangnhap, string trangthai, string vaitro, string hoten, string email)
+        //Sửa tài khoản
+        public void UpdateAccount(string tendangnhap, string trangthai, string vaitro, string hoten, string email)
         {
-            taikhoandal.SuaTK(tendangnhap, trangthai, vaitro, hoten, email);
+            taikhoandal.UpdateAccount(tendangnhap, trangthai, vaitro, hoten, email);
         }
 
         public DataTable SelectOneAccount()

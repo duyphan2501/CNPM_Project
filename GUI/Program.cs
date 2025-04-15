@@ -24,7 +24,7 @@ namespace cnpm
             //Application.Run(new frmConfig());
             //Application.Run(new frmLogin());
             //Application.Run(new frmTaiKhoan());
-            //Application.Run(new frmAdmin());
+            Application.Run(new frmAdmin());
             //Application.Run(new frmThemLoaiSanPham());
             //Application.Run(new frmThucdon());
             //Application.Run(new frmXuatNhapKho());
@@ -32,7 +32,7 @@ namespace cnpm
             //Application.Run(new frmKho());
             //Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmTheRung());
-            Application.Run(new frmThuChi());
+            //Application.Run(new frmThuChi());
 
         }
     }

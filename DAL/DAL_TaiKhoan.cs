@@ -28,14 +28,14 @@ namespace DAL
         }
 
         //Tải danh sách tài khoản có hiệu lực 
-        public DataTable TaiTK()
+        public DataTable LoadAccount()
         {
             string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Trạng thái', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '1'";
             return DataProvider.ExecuteQuery(query);
         }
 
         //Tải danh sách tài khoản vô hiệu hóa
-        public DataTable TaiTK1()
+        public DataTable LoadDisabledAccounts()
         {
             string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Trạng thái', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '0'";
             return DataProvider.ExecuteQuery(query);
@@ -43,14 +43,15 @@ namespace DAL
 
 
         //Thêm tài khoản
-        public void ThemTK(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email)
+        public void AddAccount(string tendangnhap, string matkhau, string trangthai, string vaitro, string hoten, string email)
         {
             string query = "INSERT INTO TaiKhoan VALUES (@_TenDangNhap, @_MatKhau, @_TrangThai, @_VaiTro, @_HoTen, @_Email)";
             object[] parem = new object[] { tendangnhap, matkhau, trangthai, vaitro, hoten, email };
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        public void SuaTK(string tendangnhap, string trangthai, string vaitro, string hoten, string email)
+        //Sửa thông tin tài khoản
+        public void UpdateAccount(string tendangnhap, string trangthai, string vaitro, string hoten, string email)
         {
             string query = "UPDATE TaiKhoan SET trangthai = @_TrangThai, vaitro = @_VaiTro, hoten = @_HoTen, email = @_Email WHERE tendangnhap = @_TenDangNhap";
             object[] parem = new object[] {trangthai, vaitro, hoten, email, tendangnhap };

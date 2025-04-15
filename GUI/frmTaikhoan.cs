@@ -21,25 +21,25 @@ namespace GUI
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
-            LoadTK();
+            LoadAccount();
             //cboTrangthai.Text = "Hoạt Động";
             gridDsTaikhoan.Columns["btnUpdate"].DisplayIndex = gridDsTaikhoan.Columns.Count - 1; //đưa button về cuối
         }
 
 
         //Load tài khoản có hiệu lực
-        public void LoadTK()
+        public void LoadAccount()
         {
             
-            gridDsTaikhoan.DataSource = taikhoanbus.TaiTK();
+            gridDsTaikhoan.DataSource = taikhoanbus.LoadAccount();
             gridDsTaikhoan.RowTemplate.Height = 50;   //Chiều cao các hàng trong gridview
             cboTrangthai.SelectedItem = "Hoạt Động";
         }
 
         //Load tài khoản vô hiệu hóa
-        public void LoadTK1()
+        public void LoadDisabledAccounts()
         {
-            gridDsTaikhoan.DataSource = taikhoanbus.TaiTK1();
+            gridDsTaikhoan.DataSource = taikhoanbus.LoadDisabledAccounts();
             gridDsTaikhoan.RowTemplate.Height = 50;
             cboTrangthai.SelectedItem = "Vô Hiệu";
         }
@@ -49,7 +49,7 @@ namespace GUI
         {
             frmThem_SuaTaiKhoan themtk = new frmThem_SuaTaiKhoan();
             General.ShowDialogWithBlur(themtk);
-            LoadTK();
+            LoadAccount();
 
         }
 
@@ -61,11 +61,11 @@ namespace GUI
         {
             if (cboTrangthai.Text == "Hoạt Động")
             {
-                LoadTK();
+                LoadAccount();
             }
             else
             {
-                LoadTK1();
+                LoadDisabledAccounts();
             }
 
         }
@@ -78,7 +78,7 @@ namespace GUI
         //    DataGridViewRow hangduocchon = gridDsTaikhoan.SelectedRows[0];
         //    frmThemTaiKhoan capnhattk = new frmThemTaiKhoan(hangduocchon.Cells[1].Value.ToString(), hangduocchon.Cells[2].Value.ToString(), hangduocchon.Cells[3].Value.ToString(), hangduocchon.Cells[0].Value.ToString(), hangduocchon.Cells[4].Value.ToString());
         //    capnhattk.ShowDialog();
-        //    LoadTK();
+        //    LoadAccount();
         //}
 
         private void gridDsTaikhoan_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -96,7 +96,7 @@ namespace GUI
             string email = hangduocchon.Cells["Email"].Value.ToString();
             frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(tendangnhap, trangthai , vaitro, hoten, email);
             capnhattk.ShowDialog();
-            LoadTK();
+            LoadAccount();
         }
 
         private void gridDsTaikhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)

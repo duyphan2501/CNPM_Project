@@ -25,7 +25,7 @@ namespace DAL
         }
 
         //Tải danh sách sản phẩm lên gridview
-        public DataTable TaiSp()
+        public DataTable LoadProduct()
         {
             string query = "select MaSp as 'Mã món',TenLoai as 'Tên loại',TenSp as 'Tên món',HinhAnh as 'Hình ảnh',GiaBan as 'Giá bán',TrangThai as 'Trạng thái' " +
                            "from SanPham,LoaiSanPham " +
@@ -41,7 +41,7 @@ namespace DAL
         }
 
         // Thêm sản phẩm mới vào database (Ảnh có thể NULL)
-        public void ThemSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
+        public void AddProduct(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
             string query = "INSERT INTO SanPham (MaSp, MaLoai, TenSp, HinhAnh, GiaBan, TrangThai) " +
                            "VALUES (@MaSP, @MaLoai, @TenSp, @HinhAnh, @GiaBan, @TrangThai)";
@@ -52,7 +52,7 @@ namespace DAL
         }
 
         // Sửa thông tin sản phẩm (Ảnh có thể NULL)
-        public void SuaSp(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
+        public void UpdateProduct(string masp, string maloai, string tensp, byte[] hinhanh, int giaban, string trangthai)
         {
             string query = "UPDATE SanPham SET MaLoai = @MaLoai, TenSp = @TenSp, HinhAnh = @HinhAnh, GiaBan = @GiaBan, " +
                            "TrangThai = @TrangThai WHERE MaSp = @MaSp";

@@ -258,6 +258,7 @@
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtEmail.Size = new Size(376, 49);
             txtEmail.TabIndex = 1;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label4
             // 

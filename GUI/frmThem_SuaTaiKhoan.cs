@@ -34,7 +34,7 @@ namespace GUI
                 cboVaitro.Text = vaiTro;
                 txtHoten.Text = hoTen;
                 txtEmail.Text = email;
-                txtTendangnhap.Enabled = false; // Không cho sửa tên đăng nhập khi cập nhật
+                txtTendangnhap.ReadOnly = true; // Không cho sửa tên đăng nhập khi cập nhật
                 txtMatkhau.Enabled = false; // Không cho sửa tài khoản khi cập nhật
             }
             else
@@ -43,15 +43,16 @@ namespace GUI
             }
         }
 
-       
+
 
         //Biến cập nhật giá trị trạng thái
-        string trangthai;
+        string trangthai = "0";
 
         //Nếu công tắc bậc thì trạng thái là 1
         private void btnToggleSwitchTrangThai_CheckedChanged(object sender, EventArgs e)
         {
-            if (btnToggleSwitchTrangThai.Checked == true) {
+            if (btnToggleSwitchTrangThai.Checked == true)
+            {
                 trangthai = "1";
             }
             else
@@ -60,17 +61,45 @@ namespace GUI
             }
         }
 
+
+        //Kiểm tra định dạng email
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var mail = new System.Net.Mail.MailAddress(email);
+                return mail.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (isUpdateMode == false)  //Thêm tài khoản
+            if (string.IsNullOrEmpty(txtHoten.Text) ||  //check thông tin nhập vào không được bỏ trống
+                string.IsNullOrEmpty(cboVaitro.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text))
             {
-                taikhoanbus.ThemTaiKhoan(txtTendangnhap.Text, txtMatkhau.Text,trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
+                MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!IsValidEmail(txtEmail.Text))  //check định dạng email
+            {
+                MessageBox.Show("Email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if ((string.IsNullOrEmpty(txtTendangnhap.Text) || string.IsNullOrEmpty(txtMatkhau.Text)) && isUpdateMode == false) //Trường hợp  thêm tài khoản thì check thêm tên đăng nhập và mật khẩu
+            {
+                MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (isUpdateMode == false)  //Thêm tài khoản
+            {
+                taikhoanbus.AddAccount(txtTendangnhap.Text, txtMatkhau.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else   //Cập nhật tài khoản
             {
-                taikhoanbus.SuaTaiKhoan(txtTendangnhap.Text,trangthai,cboVaitro.Text,txtHoten.Text,txtEmail.Text);
+                taikhoanbus.UpdateAccount(txtTendangnhap.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -86,6 +115,19 @@ namespace GUI
         private void frmThemTaiKhoan_Load(object sender, EventArgs e)
         {
 
+        }
+
+        //gợi ý nhập email
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            string input = txtEmail.Text;
+
+            // Kiểm tra xem chuỗi hiện tại có chứa "@gmail.com" hay không
+            if (!input.Contains("@") && input.Length > 0)
+            {
+                txtEmail.Text = input + "@gmail.com"; // Thêm "@gmail.com"
+                txtEmail.SelectionStart = input.Length; // Đặt con trỏ sau phần vừa nhập
+            }
         }
     }
 }

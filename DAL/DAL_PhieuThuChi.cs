@@ -24,5 +24,21 @@ namespace DAL
                             "where ptc.MaLoaiThuChi = ltc.MaLoaiThuChi";
             return DataProvider.ExecuteQuery(query);
         }
+
+        public void ThemThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        {
+            string query = "insert into PhieuThuChi values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_MaLoaiThuChi,@_GhiChu)";
+            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu };
+            DataProvider.ExecuteNonQuery(query, parem);
+        }
+
+        // lấy mã phiếu thu cho lớn nhất
+        public string MaphieuLonNhat()
+        {
+            string query = "select top 1 MaPhieu from PhieuThuChi order by MaPhieu desc";
+            string maxMaphieu = (string)DataProvider.ExecuteScalar(query);
+            return maxMaphieu;
+        }
+
     }
 }

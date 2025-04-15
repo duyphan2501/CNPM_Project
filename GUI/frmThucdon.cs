@@ -22,10 +22,10 @@ namespace GUI
         }
 
         //Tải danh sách sản phẩm
-        public void LoadSp()
+        public void LoadProduct()
         {
             gridThucDon.RowTemplate.Height = 150; //Chiều cao các hàng trong gridview
-            gridThucDon.DataSource = sanpham.TaiSp();
+            gridThucDon.DataSource = sanpham.LoadProduct();
             gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
             DataGridViewImageColumn imgCol = (DataGridViewImageColumn)gridThucDon.Columns["Hình Ảnh"];
             imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;  //tùy chỉnh ảnh về zoom
@@ -60,7 +60,7 @@ namespace GUI
             txtTimkiem.Enabled = false;
             btnThemmon.Enabled = true;
             TaiTenLoai();
-            LoadSp();
+            LoadProduct();
         }
 
 
@@ -171,15 +171,15 @@ namespace GUI
             // Kiểm tra nếu không cho sửa mã sản phẩm (trường hợp cập nhật)
             if (txtMasanpham.Enabled == false)  // Cập nhật sản phẩm
             {
-                sanpham.SuaSp(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                sanpham.UpdateProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
             }
             else  // Thêm sản phẩm mới
             {
-                sanpham.ThemSp(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                sanpham.AddProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
             }
 
             // Tải lại dữ liệu sau khi thêm/sửa
-            LoadSp();
+            LoadProduct();
             frmThucdon_Load(sender, e);
         }
 
@@ -198,6 +198,28 @@ namespace GUI
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboLoctrangthai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboLoctrangthai.Text == "Tất cả")
+            {
+                LoadProduct();
+            }
+            else if (cboLoctrangthai.Text == "Còn bán")
+            {
+                LoadProduct();
+                DataView dv = ((DataTable)gridThucDon.DataSource).DefaultView;
+                dv.RowFilter = $"[Trạng thái] LIKE '%Còn bán%'";
+                gridThucDon.DataSource = dv;
+            }
+            else
+            {
+                LoadProduct();
+                DataView dv = ((DataTable)gridThucDon.DataSource).DefaultView;
+                dv.RowFilter = $"[Trạng thái] LIKE '%Ngưng bán%'";
+                gridThucDon.DataSource = dv;
+            }
         }
     }
 }

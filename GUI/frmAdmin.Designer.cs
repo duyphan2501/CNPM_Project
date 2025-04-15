@@ -324,6 +324,7 @@
             btnThuchi.Text = "Thu chi";
             btnThuchi.TextAlign = HorizontalAlignment.Left;
             btnThuchi.TextOffset = new Point(20, 0);
+            btnThuchi.Click += btnThuchi_Click;
             // 
             // pnlKho
             // 

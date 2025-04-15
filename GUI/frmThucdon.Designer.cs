@@ -69,6 +69,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             txtMasanpham = new TextBox();
             label1 = new Label();
@@ -99,6 +101,8 @@
             btnLuu = new Guna.UI2.WinForms.Guna2GradientButton();
             btnHuy = new Guna.UI2.WinForms.Guna2GradientButton();
             btnDinhluong = new Guna.UI2.WinForms.Guna2GradientButton();
+            label5 = new Label();
+            cboLoctrangthai = new Guna.UI2.WinForms.Guna2ComboBox();
             pnlMasanpham.SuspendLayout();
             pnlTenloai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picThemLoai).BeginInit();
@@ -415,11 +419,11 @@
             guna2GroupBox1.CustomizableEdges = customizableEdges27;
             guna2GroupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2GroupBox1.ForeColor = Color.Black;
-            guna2GroupBox1.Location = new Point(12, 100);
+            guna2GroupBox1.Location = new Point(12, 169);
             guna2GroupBox1.Margin = new Padding(2, 5, 2, 5);
             guna2GroupBox1.Name = "guna2GroupBox1";
             guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2GroupBox1.Size = new Size(1322, 936);
+            guna2GroupBox1.Size = new Size(1322, 867);
             guna2GroupBox1.TabIndex = 18;
             guna2GroupBox1.Text = "Thực đơn";
             // 
@@ -615,6 +619,37 @@
             btnDinhluong.Text = "Định lượng";
             btnDinhluong.Click += btnDinhluong_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft YaHei", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(755, 108);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(108, 27);
+            label5.TabIndex = 0;
+            label5.Text = "Trạng thái";
+            // 
+            // cboLoctrangthai
+            // 
+            cboLoctrangthai.BackColor = Color.Transparent;
+            cboLoctrangthai.CustomizableEdges = customizableEdges39;
+            cboLoctrangthai.DrawMode = DrawMode.OwnerDrawFixed;
+            cboLoctrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboLoctrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
+            cboLoctrangthai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboLoctrangthai.Font = new Font("Segoe UI", 10F);
+            cboLoctrangthai.ForeColor = Color.FromArgb(68, 88, 112);
+            cboLoctrangthai.ItemHeight = 30;
+            cboLoctrangthai.Items.AddRange(new object[] { "Tất cả", "Còn bán", "Ngưng bán" });
+            cboLoctrangthai.Location = new Point(881, 108);
+            cboLoctrangthai.Margin = new Padding(2, 4, 2, 4);
+            cboLoctrangthai.Name = "cboLoctrangthai";
+            cboLoctrangthai.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            cboLoctrangthai.Size = new Size(328, 36);
+            cboLoctrangthai.TabIndex = 2;
+            cboLoctrangthai.SelectedIndexChanged += cboLoctrangthai_SelectedIndexChanged;
+            // 
             // frmThucdon
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -623,6 +658,8 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1900, 1100);
+            Controls.Add(cboLoctrangthai);
+            Controls.Add(label5);
             Controls.Add(txtTimkiem);
             Controls.Add(btnDinhluong);
             Controls.Add(btnHuy);
@@ -655,6 +692,7 @@
             guna2GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridThucDon).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -689,5 +727,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnHuy;
         private Guna.UI2.WinForms.Guna2GradientButton btnDinhluong;
         private DataGridViewImageColumn btnUpdate;
+        private Label label5;
+        private Guna.UI2.WinForms.Guna2ComboBox cboLoctrangthai;
     }
 }

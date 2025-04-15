@@ -120,6 +120,15 @@ namespace GUI
 
         }
 
+        private void btnThuchi_Click(object sender, EventArgs e)
+        {
+            pnlFormcon.Controls.Clear();
+            frmThuChi frm = new frmThuChi();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
 
 
 

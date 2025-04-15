@@ -49,23 +49,25 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridDsThuchi = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnUpdate = new DataGridViewImageColumn();
             label1 = new Label();
             cboLoaiPhieu = new Guna.UI2.WinForms.Guna2ComboBox();
             grbXuatNhapKho = new Guna.UI2.WinForms.Guna2GroupBox();
             picThemLoai = new Guna.UI2.WinForms.Guna2PictureBox();
-            btnLuuphieu = new Guna.UI2.WinForms.Guna2GradientButton();
             label4 = new Label();
             txtMaphieu = new Guna.UI2.WinForms.Guna2TextBox();
-            btnThem = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnHuy = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnLuu = new Guna.UI2.WinForms.Guna2GradientButton();
             txtGhichu = new Guna.UI2.WinForms.Guna2TextBox();
             label2 = new Label();
             label7 = new Label();
             cboLoaithuchi = new ComboBox();
             numSotien = new Guna.UI2.WinForms.Guna2NumericUpDown();
             label9 = new Label();
+            btnThemphieu = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridDsThuchi).BeginInit();
             grbXuatNhapKho.SuspendLayout();
@@ -106,7 +108,6 @@
             gridDsThuchi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             gridDsThuchi.ColumnHeadersHeight = 40;
             gridDsThuchi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            gridDsThuchi.Columns.AddRange(new DataGridViewColumn[] { btnUpdate });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -123,7 +124,7 @@
             gridDsThuchi.RowHeadersVisible = false;
             gridDsThuchi.RowHeadersWidth = 51;
             gridDsThuchi.RowTemplate.Height = 24;
-            gridDsThuchi.Size = new Size(1262, 845);
+            gridDsThuchi.Size = new Size(1291, 845);
             gridDsThuchi.TabIndex = 0;
             gridDsThuchi.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridDsThuchi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -146,19 +147,6 @@
             gridDsThuchi.ThemeStyle.RowsStyle.Height = 24;
             gridDsThuchi.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsThuchi.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            btnUpdate.HeaderText = "";
-            btnUpdate.Image = Properties.Resources.update;
-            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnUpdate.MinimumWidth = 50;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Resizable = DataGridViewTriState.True;
-            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
-            btnUpdate.Width = 50;
             // 
             // label1
             // 
@@ -183,21 +171,22 @@
             cboLoaiPhieu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             cboLoaiPhieu.ForeColor = Color.Black;
             cboLoaiPhieu.ItemHeight = 30;
-            cboLoaiPhieu.Items.AddRange(new object[] { "Hoạt Động", "Vô Hiệu" });
+            cboLoaiPhieu.Items.AddRange(new object[] { "Tất cả", "Phiếu thu", "Phiếu chi" });
             cboLoaiPhieu.Location = new Point(1113, 82);
             cboLoaiPhieu.Margin = new Padding(3, 5, 3, 5);
             cboLoaiPhieu.Name = "cboLoaiPhieu";
             cboLoaiPhieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboLoaiPhieu.Size = new Size(235, 36);
             cboLoaiPhieu.TabIndex = 9;
+            cboLoaiPhieu.SelectedIndexChanged += cboLoaiPhieu_SelectedIndexChanged;
             // 
             // grbXuatNhapKho
             // 
             grbXuatNhapKho.Controls.Add(picThemLoai);
-            grbXuatNhapKho.Controls.Add(btnLuuphieu);
             grbXuatNhapKho.Controls.Add(label4);
             grbXuatNhapKho.Controls.Add(txtMaphieu);
-            grbXuatNhapKho.Controls.Add(btnThem);
+            grbXuatNhapKho.Controls.Add(btnHuy);
+            grbXuatNhapKho.Controls.Add(btnLuu);
             grbXuatNhapKho.Controls.Add(txtGhichu);
             grbXuatNhapKho.Controls.Add(label2);
             grbXuatNhapKho.Controls.Add(label7);
@@ -208,11 +197,11 @@
             grbXuatNhapKho.CustomizableEdges = customizableEdges17;
             grbXuatNhapKho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbXuatNhapKho.ForeColor = Color.White;
-            grbXuatNhapKho.Location = new Point(1499, 161);
+            grbXuatNhapKho.Location = new Point(1499, 144);
             grbXuatNhapKho.Margin = new Padding(4, 5, 4, 5);
             grbXuatNhapKho.Name = "grbXuatNhapKho";
             grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            grbXuatNhapKho.Size = new Size(377, 896);
+            grbXuatNhapKho.Size = new Size(377, 748);
             grbXuatNhapKho.TabIndex = 11;
             grbXuatNhapKho.Text = "Thông tin phiếu";
             // 
@@ -231,28 +220,6 @@
             picThemLoai.TabStop = false;
             picThemLoai.Click += picThemLoai_Click;
             // 
-            // btnLuuphieu
-            // 
-            btnLuuphieu.AutoRoundedCorners = true;
-            btnLuuphieu.BackColor = Color.Transparent;
-            btnLuuphieu.CustomizableEdges = customizableEdges7;
-            btnLuuphieu.DisabledState.BorderColor = Color.DarkGray;
-            btnLuuphieu.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnLuuphieu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnLuuphieu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnLuuphieu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLuuphieu.FillColor = Color.FromArgb(244, 103, 0);
-            btnLuuphieu.FillColor2 = Color.DarkOrange;
-            btnLuuphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            btnLuuphieu.ForeColor = Color.White;
-            btnLuuphieu.Location = new Point(170, 792);
-            btnLuuphieu.Margin = new Padding(4, 5, 4, 5);
-            btnLuuphieu.Name = "btnLuuphieu";
-            btnLuuphieu.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnLuuphieu.Size = new Size(150, 69);
-            btnLuuphieu.TabIndex = 13;
-            btnLuuphieu.Text = "Lưu Phiếu";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -269,7 +236,7 @@
             // txtMaphieu
             // 
             txtMaphieu.Cursor = Cursors.IBeam;
-            txtMaphieu.CustomizableEdges = customizableEdges9;
+            txtMaphieu.CustomizableEdges = customizableEdges7;
             txtMaphieu.DefaultText = "";
             txtMaphieu.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtMaphieu.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -283,34 +250,61 @@
             txtMaphieu.Name = "txtMaphieu";
             txtMaphieu.PlaceholderText = "";
             txtMaphieu.SelectedText = "";
-            txtMaphieu.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtMaphieu.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtMaphieu.Size = new Size(236, 50);
             txtMaphieu.TabIndex = 11;
             // 
-            // btnThem
+            // btnHuy
             // 
-            btnThem.AutoRoundedCorners = true;
-            btnThem.BackColor = Color.Transparent;
-            btnThem.BorderColor = Color.FromArgb(239, 119, 18);
-            btnThem.BorderThickness = 1;
-            btnThem.CustomizableEdges = customizableEdges11;
-            btnThem.DisabledState.BorderColor = Color.DarkGray;
-            btnThem.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnThem.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnThem.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnThem.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnThem.FillColor = Color.Transparent;
-            btnThem.FillColor2 = Color.Transparent;
-            btnThem.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            btnThem.ForeColor = Color.FromArgb(239, 119, 18);
-            btnThem.Location = new Point(34, 788);
-            btnThem.Margin = new Padding(4, 5, 4, 5);
-            btnThem.Name = "btnThem";
-            btnThem.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnThem.Size = new Size(115, 64);
-            btnThem.TabIndex = 13;
-            btnThem.Text = "Thêm";
-            btnThem.TextAlign = HorizontalAlignment.Left;
+            btnHuy.AutoRoundedCorners = true;
+            btnHuy.BackColor = Color.Transparent;
+            btnHuy.BorderColor = Color.FromArgb(239, 119, 18);
+            btnHuy.BorderThickness = 1;
+            btnHuy.CustomizableEdges = customizableEdges9;
+            btnHuy.DisabledState.BorderColor = Color.DarkGray;
+            btnHuy.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnHuy.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnHuy.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnHuy.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHuy.FillColor = Color.Transparent;
+            btnHuy.FillColor2 = Color.Transparent;
+            btnHuy.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnHuy.ForeColor = Color.FromArgb(239, 119, 18);
+            btnHuy.Location = new Point(187, 599);
+            btnHuy.Margin = new Padding(4, 5, 4, 5);
+            btnHuy.Name = "btnHuy";
+            btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnHuy.Size = new Size(115, 64);
+            btnHuy.TabIndex = 13;
+            btnHuy.Text = "Hủy";
+            btnHuy.TextAlign = HorizontalAlignment.Left;
+            btnHuy.Click += btnHuy_Click;
+            // 
+            // btnLuu
+            // 
+            btnLuu.AutoRoundedCorners = true;
+            btnLuu.BackColor = Color.Transparent;
+            btnLuu.BorderColor = Color.FromArgb(239, 119, 18);
+            btnLuu.BorderThickness = 1;
+            btnLuu.CustomizableEdges = customizableEdges11;
+            btnLuu.DisabledState.BorderColor = Color.DarkGray;
+            btnLuu.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnLuu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnLuu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnLuu.FillColor = Color.Transparent;
+            btnLuu.FillColor2 = Color.Transparent;
+            btnLuu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnLuu.ForeColor = Color.FromArgb(239, 119, 18);
+            btnLuu.Location = new Point(38, 599);
+            btnLuu.Margin = new Padding(4, 5, 4, 5);
+            btnLuu.Name = "btnLuu";
+            btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnLuu.Size = new Size(115, 64);
+            btnLuu.TabIndex = 13;
+            btnLuu.Text = "Lưu";
+            btnLuu.TextAlign = HorizontalAlignment.Left;
+            btnLuu.Click += btnLuu_Click;
             // 
             // txtGhichu
             // 
@@ -362,7 +356,6 @@
             // cboLoaithuchi
             // 
             cboLoaithuchi.FormattingEnabled = true;
-            cboLoaithuchi.Items.AddRange(new object[] { "Phiếu nhập", "Phiếu xuất" });
             cboLoaithuchi.Location = new Point(34, 264);
             cboLoaithuchi.Margin = new Padding(4);
             cboLoaithuchi.Name = "cboLoaithuchi";
@@ -396,12 +389,36 @@
             label9.TabIndex = 10;
             label9.Text = "Số tiền";
             // 
+            // btnThemphieu
+            // 
+            btnThemphieu.AutoRoundedCorners = true;
+            btnThemphieu.BackColor = Color.Transparent;
+            btnThemphieu.CustomizableEdges = customizableEdges19;
+            btnThemphieu.DisabledState.BorderColor = Color.DarkGray;
+            btnThemphieu.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnThemphieu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnThemphieu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnThemphieu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnThemphieu.FillColor = Color.FromArgb(244, 103, 0);
+            btnThemphieu.FillColor2 = Color.DarkOrange;
+            btnThemphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnThemphieu.ForeColor = Color.White;
+            btnThemphieu.Location = new Point(217, 33);
+            btnThemphieu.Margin = new Padding(4, 5, 4, 5);
+            btnThemphieu.Name = "btnThemphieu";
+            btnThemphieu.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnThemphieu.Size = new Size(150, 69);
+            btnThemphieu.TabIndex = 13;
+            btnThemphieu.Text = "Thêm Phiếu";
+            btnThemphieu.Click += btnThemphieu_Click;
+            // 
             // frmThuChi
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1900, 1100);
             Controls.Add(grbXuatNhapKho);
+            Controls.Add(btnThemphieu);
             Controls.Add(label1);
             Controls.Add(cboLoaiPhieu);
             Controls.Add(guna2GroupBox1);
@@ -423,14 +440,13 @@
 
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2DataGridView gridDsThuchi;
-        private DataGridViewImageColumn btnUpdate;
         private Label label1;
         private Guna.UI2.WinForms.Guna2ComboBox cboLoaiPhieu;
         private Guna.UI2.WinForms.Guna2GroupBox grbXuatNhapKho;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLuuphieu;
+        private Guna.UI2.WinForms.Guna2GradientButton btnThemphieu;
         private Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtMaphieu;
-        private Guna.UI2.WinForms.Guna2GradientButton btnThem;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLuu;
         private Guna.UI2.WinForms.Guna2TextBox txtGhichu;
         private Label label2;
         private Label label7;
@@ -438,5 +454,6 @@
         private Guna.UI2.WinForms.Guna2NumericUpDown numSotien;
         private Label label9;
         private Guna.UI2.WinForms.Guna2PictureBox picThemLoai;
+        private Guna.UI2.WinForms.Guna2GradientButton btnHuy;
     }
 }

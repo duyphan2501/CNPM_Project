@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace BUS
         public void ThemLoai(string maloaithuchi, string tenloai, string loai)
         {
             loaithuchidal.ThemLoai(maloaithuchi, tenloai, loai);
+        }
+
+        public DataTable TaiLoaiPhieu()
+        {
+            return loaithuchidal.TaiLoaiPhieu();
         }
 
         //Phát sinh mã loại thu chi

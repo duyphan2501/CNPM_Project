@@ -143,7 +143,7 @@
             guna2Panel2.Controls.Add(txtTenloai);
             guna2Panel2.Controls.Add(label2);
             guna2Panel2.CustomizableEdges = customizableEdges7;
-            guna2Panel2.Location = new Point(104, 392);
+            guna2Panel2.Location = new Point(104, 569);
             guna2Panel2.Margin = new Padding(3, 4, 3, 4);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -257,7 +257,7 @@
             guna2Panel3.Controls.Add(cboLoai);
             guna2Panel3.Controls.Add(label3);
             guna2Panel3.CustomizableEdges = customizableEdges19;
-            guna2Panel3.Location = new Point(104, 569);
+            guna2Panel3.Location = new Point(104, 392);
             guna2Panel3.Margin = new Padding(3, 4, 3, 4);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges20;
