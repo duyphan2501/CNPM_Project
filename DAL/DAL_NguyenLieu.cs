@@ -53,13 +53,5 @@ namespace DAL
             return maxMaNL;
         }
 
-        public DataTable LoadWarehouse()
-        {
-            string query = "SELECT nl.TenNL AS 'Tên Nguyên Liệu', ctnk.SoLuong AS 'Số Lượng Nhập', ctnk.GiaNhap AS 'Giá Nhập', nl.DonVi AS 'Đơn Vị Tính', pnk.NgayNhap AS 'Ngày Nhập' " +
-                            "FROM NguyenLieu nl " +
-                            "JOIN ChiTietNhapKho ctnk ON nl.MaNL = ctnk.MaNL " +
-                            "JOIN PhieuNhapKho pnk ON ctnk.MaPhieuNhap = pnk.MaPhieuNhap;";
-            return DataProvider.ExecuteQuery(query);
-        }
     }
 }

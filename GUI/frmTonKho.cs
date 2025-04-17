@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmTonKho : Form
     {
-        BUS_NguyenLieu nguyenlieu = new BUS_NguyenLieu("","","","",0,0);
+        BUS_TonKho tonkho = new BUS_TonKho("","",0,0,0);
         public frmTonKho()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace GUI
         public void LoadWarehouse()
         {
             gridDsTonkho.RowTemplate.Height = 50;
-            gridDsTonkho.DataSource = nguyenlieu.LoadWarehouse();
+            gridDsTonkho.DataSource = tonkho.LoadWarehouse();
         }
     }
 }

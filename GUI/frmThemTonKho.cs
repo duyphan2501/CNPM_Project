@@ -17,14 +17,26 @@ namespace GUI
         BUS_TonKho tonkho = new BUS_TonKho("","",0,0,0);
         string Manl;
         bool isUpdate;
-        public frmThemTonKho(string manl, string tennl)
+        public frmThemTonKho(string manl, string tennl, int muctoithieu, int mucondinh)
         {
             InitializeComponent();
-            txtnNguyenlieu.Text = tennl;
-            txtnNguyenlieu.ReadOnly = true;
-            Manl = manl;
-            txtMaton.Text = tonkho.PhatSinhMaTon();
-            txtMaton.ReadOnly = true;
+            txtMaton.Enabled = true;
+            if (muctoithieu == 0) {
+                txtnNguyenlieu.Text = tennl;
+                txtnNguyenlieu.ReadOnly = true;
+                Manl = manl;
+                txtMaton.Text = tonkho.PhatSinhMaTon();
+                txtMaton.ReadOnly = true;
+            }
+            else
+            {
+                numMuctoithieu.Value = muctoithieu;
+                numMucondinh.Value = mucondinh;
+                txtnNguyenlieu.Text = tennl;
+                txtnNguyenlieu.ReadOnly = true;
+                Manl = manl;
+                txtMaton.Enabled = false;
+            }
         }
 
 
@@ -41,9 +53,20 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            tonkho.AddInventory(txtMaton.Text,Manl, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMuctoida.Value));
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (txtMaton.Enabled == true) {
+                tonkho.AddInventory(txtMaton.Text, Manl, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
+                MessageBox.Show("Lưu thông tin tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                
+            }
+            else
+            {
+                tonkho.UpdateInventory(Manl, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
+                MessageBox.Show("Cập nhật tin tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }

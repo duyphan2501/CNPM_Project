@@ -14,9 +14,11 @@ namespace GUI
     public partial class frmKho : Form
     {
         BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0);
+        BUS_TonKho nltonkho = new BUS_TonKho("","",0,0,0);
         public frmKho()
         {
             InitializeComponent();
+            
         }
 
         private void frmKho_Load(object sender, EventArgs e)
@@ -112,8 +114,31 @@ namespace GUI
 
         private void btnTonkho_Click(object sender, EventArgs e)
         {
-            frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text,txtTenNguyenLieu.Text);  //truyền mã nl và tên nl để thêm thông tin tồn kho
-            General.ShowDialogWithBlur(tonkho);
+            DataTable dt = nltonkho.LoadWarehouse();
+            DataRow ketQua = null;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["Nguyên liệu"].ToString() == txtTenNguyenLieu.Text)
+                {
+                    ketQua = row;
+                    break; // Dừng lại khi tìm thấy
+                }
+            }
+            if (ketQua == null) //nếu chưa có thì truyền mã nl và tên nl để thêm thông tin tồn kho
+            {
+                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text,0,0); 
+                General.ShowDialogWithBlur(tonkho);
+
+            }
+            else  //truyền mã thông tin để chỉnh sửa
+            {       
+                // Nếu tìm thấy nguyên liệu, lấy giá trị "Mức tối thiểu" và "Mức ổn định"
+                int muctoithieu = Convert.ToInt32(ketQua["Mức tối thiểu"]);
+                int mucondinh = Convert.ToInt32(ketQua["Mức ổn định"]);
+                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, muctoithieu, mucondinh);  
+                General.ShowDialogWithBlur(tonkho);
+            }
         }
     }
 }

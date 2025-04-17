@@ -51,12 +51,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             gridDsNguyenlieu = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -76,11 +76,11 @@
             label1 = new Label();
             pnlMasanpham = new Guna.UI2.WinForms.Guna2Panel();
             gbThongtinnguyenlieu = new GroupBox();
+            btnTonkho = new Guna.UI2.WinForms.Guna2GradientButton();
             pnlTenloai = new Guna.UI2.WinForms.Guna2Panel();
             picThemLoai = new Guna.UI2.WinForms.Guna2PictureBox();
             cboTenloai = new Guna.UI2.WinForms.Guna2ComboBox();
             label2 = new Label();
-            btnTonkho = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)gridDsNguyenlieu).BeginInit();
             pnlTrangthai.SuspendLayout();
             pnlTensanpham.SuspendLayout();
@@ -401,13 +401,12 @@
             // gbThongtinnguyenlieu
             // 
             gbThongtinnguyenlieu.Controls.Add(pnlTrangthai);
-            gbThongtinnguyenlieu.Controls.Add(btnTonkho);
             gbThongtinnguyenlieu.Controls.Add(btnHuy);
             gbThongtinnguyenlieu.Controls.Add(pnlTenloai);
             gbThongtinnguyenlieu.Controls.Add(btnLuu);
             gbThongtinnguyenlieu.Controls.Add(pnlTensanpham);
             gbThongtinnguyenlieu.Controls.Add(pnlMasanpham);
-            gbThongtinnguyenlieu.Location = new Point(1388, 123);
+            gbThongtinnguyenlieu.Location = new Point(1388, 164);
             gbThongtinnguyenlieu.Margin = new Padding(2, 4, 2, 4);
             gbThongtinnguyenlieu.Name = "gbThongtinnguyenlieu";
             gbThongtinnguyenlieu.Padding = new Padding(2, 4, 2, 4);
@@ -416,29 +415,51 @@
             gbThongtinnguyenlieu.TabStop = false;
             gbThongtinnguyenlieu.Text = "Thông tin nguyên liệu";
             // 
+            // btnTonkho
+            // 
+            btnTonkho.AutoRoundedCorners = true;
+            btnTonkho.CustomizableEdges = customizableEdges25;
+            btnTonkho.DisabledState.BorderColor = Color.DarkGray;
+            btnTonkho.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnTonkho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnTonkho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnTonkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnTonkho.FillColor = Color.FromArgb(244, 103, 0);
+            btnTonkho.FillColor2 = Color.DarkOrange;
+            btnTonkho.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnTonkho.ForeColor = Color.White;
+            btnTonkho.Location = new Point(1510, 45);
+            btnTonkho.Margin = new Padding(2, 5, 2, 5);
+            btnTonkho.Name = "btnTonkho";
+            btnTonkho.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btnTonkho.Size = new Size(209, 69);
+            btnTonkho.TabIndex = 24;
+            btnTonkho.Text = "Thông tin tồn kho";
+            btnTonkho.Click += btnTonkho_Click;
+            // 
             // pnlTenloai
             // 
             pnlTenloai.BackColor = Color.Silver;
             pnlTenloai.Controls.Add(picThemLoai);
             pnlTenloai.Controls.Add(cboTenloai);
             pnlTenloai.Controls.Add(label2);
-            pnlTenloai.CustomizableEdges = customizableEdges25;
+            pnlTenloai.CustomizableEdges = customizableEdges23;
             pnlTenloai.Location = new Point(24, 189);
             pnlTenloai.Margin = new Padding(2, 4, 2, 4);
             pnlTenloai.Name = "pnlTenloai";
-            pnlTenloai.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            pnlTenloai.ShadowDecoration.CustomizableEdges = customizableEdges24;
             pnlTenloai.Size = new Size(448, 139);
             pnlTenloai.TabIndex = 10;
             // 
             // picThemLoai
             // 
-            picThemLoai.CustomizableEdges = customizableEdges21;
+            picThemLoai.CustomizableEdges = customizableEdges19;
             picThemLoai.Image = Properties.Resources.them;
             picThemLoai.ImageRotate = 0F;
             picThemLoai.Location = new Point(379, 64);
             picThemLoai.Margin = new Padding(2, 4, 2, 4);
             picThemLoai.Name = "picThemLoai";
-            picThemLoai.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            picThemLoai.ShadowDecoration.CustomizableEdges = customizableEdges20;
             picThemLoai.Size = new Size(50, 51);
             picThemLoai.SizeMode = PictureBoxSizeMode.Zoom;
             picThemLoai.TabIndex = 2;
@@ -448,7 +469,7 @@
             // cboTenloai
             // 
             cboTenloai.BackColor = Color.Transparent;
-            cboTenloai.CustomizableEdges = customizableEdges23;
+            cboTenloai.CustomizableEdges = customizableEdges21;
             cboTenloai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTenloai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTenloai.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -459,7 +480,7 @@
             cboTenloai.Location = new Point(26, 70);
             cboTenloai.Margin = new Padding(2, 4, 2, 4);
             cboTenloai.Name = "cboTenloai";
-            cboTenloai.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            cboTenloai.ShadowDecoration.CustomizableEdges = customizableEdges22;
             cboTenloai.Size = new Size(328, 36);
             cboTenloai.TabIndex = 1;
             // 
@@ -474,28 +495,6 @@
             label2.TabIndex = 0;
             label2.Text = "Tên Loại";
             // 
-            // btnTonkho
-            // 
-            btnTonkho.AutoRoundedCorners = true;
-            btnTonkho.CustomizableEdges = customizableEdges19;
-            btnTonkho.DisabledState.BorderColor = Color.DarkGray;
-            btnTonkho.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnTonkho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnTonkho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnTonkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTonkho.FillColor = Color.FromArgb(244, 103, 0);
-            btnTonkho.FillColor2 = Color.DarkOrange;
-            btnTonkho.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            btnTonkho.ForeColor = Color.White;
-            btnTonkho.Location = new Point(130, 776);
-            btnTonkho.Margin = new Padding(2, 5, 2, 5);
-            btnTonkho.Name = "btnTonkho";
-            btnTonkho.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnTonkho.Size = new Size(209, 69);
-            btnTonkho.TabIndex = 24;
-            btnTonkho.Text = "Thông tin tồn kho";
-            btnTonkho.Click += btnTonkho_Click;
-            // 
             // frmKho
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -503,6 +502,7 @@
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1900, 1100);
             Controls.Add(txtTimkiem);
+            Controls.Add(btnTonkho);
             Controls.Add(guna2GroupBox1);
             Controls.Add(btnTimkiem);
             Controls.Add(btnThemNguyenlieu);

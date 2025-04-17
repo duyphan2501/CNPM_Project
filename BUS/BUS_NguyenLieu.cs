@@ -36,10 +36,6 @@ namespace BUS
             nguyenlieudal.UpdateIngredients(manl,maloainl,tennl,donvi);
         }
 
-        public DataTable LoadWarehouse()
-        {
-            return nguyenlieudal.LoadWarehouse();
-        }
 
 
         // phát sinh mã nguyên liệu

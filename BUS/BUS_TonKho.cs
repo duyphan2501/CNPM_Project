@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,16 @@ namespace BUS
         public void AddInventory(string maton, string manl, int muctoithieu, int mucondinh)
         {
             tonkhodal.AddInventory(maton,manl,muctoithieu,mucondinh);
+        }
+
+        public void UpdateInventory(string manl, int muctoithieu, int mucondinh)
+        {
+            tonkhodal.UpdateInventory(manl, muctoithieu, mucondinh);
+        }
+
+        public DataTable LoadWarehouse()
+        {
+            return tonkhodal.LoadWarehouse();
         }
 
         // phát sinh mã tồn kho
