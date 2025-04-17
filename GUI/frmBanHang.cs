@@ -16,6 +16,7 @@ namespace GUI
         private BUS_LoaiSanPham loaiSanphamBUS;
         private BUS_SanPham sanPhamBUS;
         private BUS_CaLamViec calam;
+        private BUS_DonHang donhangBUS;
         public frmBanHang()
         {
             InitializeComponent();
@@ -104,7 +105,6 @@ namespace GUI
         {
             // Xử lý sự kiện click chọn loại sản phẩm, thay đổi trạng thái nút 
             var selectedCategory = sender as ProductCategory;
-            MessageBox.Show("Click");
             foreach (ProductCategory category in pnlProductCategory.Controls.OfType<ProductCategory>())
             {
                 category.SetActive(category == selectedCategory);
@@ -122,20 +122,51 @@ namespace GUI
             Widget widget = sender as Widget;
             string tenmon = widget.TenSanPham;
             int dongia = widget.GiaSanPham;
-            // kiểm tra có hay ko
+
+            // Kiểm tra sản phẩm đã có trong hóa đơn chưa
             foreach (Control ctrl in pnlInvoiceItem.Controls)
             {
                 if (ctrl is InvoiceItem existingItem && existingItem.TenMon == tenmon)
                 {
-                    // có thì tăng số lượng
+                    // Nếu có, tăng số lượng sản phẩm
                     existingItem.IncreaseQuantity();
+                    // Cập nhật lại tổng tiền khi số lượng thay đổi
+                    UpdateTotalAmount();
                     return;
                 }
             }
-            // ko có thì thêm item mới
+
+            // Nếu không có, thêm item mới vào hóa đơn
             InvoiceItem newItem = new InvoiceItem(tenmon, dongia, 1);
             newItem.XoaItemClicked += InvoiceItem_XoaItemClicked;
+            newItem.SoLuongChanged += InvoiceItem_SoLuongChanged;  // Đăng ký sự kiện khi số lượng thay đổi
             pnlInvoiceItem.Controls.Add(newItem);
+
+            // Cập nhật lại tổng tiền khi thêm sản phẩm mới
+            UpdateTotalAmount();
+        }
+
+        private void InvoiceItem_SoLuongChanged(object sender, EventArgs e)
+        {
+            // Cập nhật lại tổng tiền khi số lượng thay đổi
+            UpdateTotalAmount();
+        }
+
+        private void UpdateTotalAmount()
+        {
+            int total = 0;
+
+            // Lặp qua tất cả các InvoiceItem trong pnlInvoiceItem
+            foreach (var control in pnlInvoiceItem.Controls)
+            {
+                if (control is InvoiceItem invoiceItem)
+                {
+                    total += invoiceItem.ThanhTien();  // Tính tổng tiền từ tất cả các InvoiceItem
+                }
+            }
+
+            // Cập nhật lblTongtien
+            lblTongtien.Text = General.FormatMoney(total);  // Định dạng số theo kiểu tiền tệ
         }
 
         private void InvoiceItem_XoaItemClicked(object sender, EventArgs e)
@@ -179,6 +210,19 @@ namespace GUI
                 // Xử lý với thẻ rung đã chọn ở đây
                 lblSoCho.Text = theDuocChon.SoThe;
             }
+        }
+
+        private void btnNewOrder_Click(object sender, EventArgs e)
+        {
+            // phát sinh mã đơn hàng
+            donhangBUS = new BUS_DonHang();
+            lblMaDonHang.Text = donhangBUS.PhatSinhMaDonHang();
+        }
+
+        private void btnThanhtoan_Click(object sender, EventArgs e)
+        {
+            frmThanhToan frmThanhToan = new frmThanhToan(lblTongtien.Text);
+            General.ShowDialogWithBlur(frmThanhToan);
         }
     }
 }

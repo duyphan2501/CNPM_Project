@@ -15,6 +15,8 @@ namespace GUI.components
     {
         public string TenMon;
         public event EventHandler XoaItemClicked;
+        public event EventHandler SoLuongChanged;
+
         public InvoiceItem()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace GUI.components
             lblTenMon.Text = tenmon;
             lblDongia.Text = dongia.ToString("N0"); // thêm dấu thập phân
             numSoluong.Value = soluong;
-            lblThanhtien.Text = (dongia * soluong).ToString("N0");
+            lblThanhtien.Text = ThanhTien().ToString("N0");
             TenMon = tenmon;
         }
 
@@ -43,6 +45,29 @@ namespace GUI.components
         {
             // Gọi sự kiện để báo về Form cha
             XoaItemClicked?.Invoke(this, EventArgs.Empty);
+
+            // Gọi sự kiện khi số lượng thay đổi
+            SoLuongChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        private void numSoluong_ValueChanged(object sender, EventArgs e)
+        {
+            // Tính thành tiền và hiển thị theo định dạng "N0" (hàng nghìn)
+            lblThanhtien.Text = ThanhTien().ToString("N0");
+
+            // Gọi sự kiện khi số lượng thay đổi
+            SoLuongChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public int ThanhTien()
+        {
+            int soluong = (int)numSoluong.Value;
+
+            // Loại bỏ dấu phân cách hàng nghìn (dấu ,)
+            int dongia = Int32.Parse(lblDongia.Text.Replace(",", ""));
+
+            return dongia * soluong;
+        }
+
     }
 }

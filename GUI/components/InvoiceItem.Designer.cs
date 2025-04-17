@@ -99,6 +99,7 @@
             numSoluong.Size = new Size(63, 35);
             numSoluong.TabIndex = 2;
             numSoluong.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
+            numSoluong.ValueChanged += numSoluong_ValueChanged;
             // 
             // InvoiceItem
             // 

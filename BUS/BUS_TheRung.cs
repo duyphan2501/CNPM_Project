@@ -33,8 +33,6 @@ namespace BUS
         public string PhatSinhMaThe()
         {
             string maTheHienTai = therung.LayMaTheLonNhat();
-            if (maTheHienTai == null)
-                return "T001";
             // Lấy phần số sau chữ T
             int so = int.Parse(maTheHienTai.Substring(1));
             // Tăng lên 1

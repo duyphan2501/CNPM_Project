@@ -38,7 +38,8 @@ namespace DAL
         public string LayMaTheLonNhat()
         {
             string query = "select top 1 MaThe from TheRung order by mathe desc";
-            return DataProvider.ExecuteScalar(query).ToString();
+            object result = DataProvider.ExecuteScalar(query);
+            return result != null ? result.ToString(): "T001" ;
         }
 
         public int UpdateTheRung()

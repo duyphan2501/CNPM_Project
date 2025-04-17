@@ -45,16 +45,18 @@ namespace GUI
 
                 if (result == DialogResult.Yes)
                 {
+                    string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
                     BUS_CaLamViec calamBUS = new BUS_CaLamViec(
                         DateTime.Now,            // TgBatDau
                         null,                    // TgKetThuc = null
                         "",                      // GhiChu
                         soTien,               // TienDauCa
                         0,                       // TienCuoiCa
-                        Program.account.Rows[0]["TenDangNhap"].ToString()
+                        tenDangNhap
                     );
 
                     calamBUS.InsertCaLamViec();
+                    Program.shift = calamBUS.SelectOpenShift(tenDangNhap);
                     this.Close();
                 }
             }
