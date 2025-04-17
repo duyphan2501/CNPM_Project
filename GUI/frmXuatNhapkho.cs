@@ -19,6 +19,7 @@ namespace GUI
         BUS_PhieuXuatKho phieuxuat = new BUS_PhieuXuatKho("", "", DateTime.Now, "");
         BUS_ChiTietNhapKho chitietnhap = new BUS_ChiTietNhapKho("", "", 0, 0);
         BUS_ChiTietXuatKho chitietxuat = new BUS_ChiTietXuatKho("", "", 0);
+        BUS_TonKho tonkho = new BUS_TonKho("","",0,0,0);
         public frmXuatNhapKho()
         {
             InitializeComponent();
@@ -110,6 +111,7 @@ namespace GUI
 
                 // Kiểm tra sự tồn tại của nguyên liệu
                 bool daTonTai = false;
+
                 foreach (DataGridViewRow row in gridDsPhieu.Rows)
                 {
                     if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
@@ -141,14 +143,14 @@ namespace GUI
                 {
                     gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
                     gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
-                    gridDsPhieu.Columns.Add("soluong", "Số lượng nhập");
+                    gridDsPhieu.Columns.Add("soluong", "Số lượng xuất");
                 }
                 cboLoaiphieu.Enabled = false;
 
                 // Lấy thông tin nguyên liệu hiện tại
                 string manl = cboTenNguyenlieu.SelectedValue.ToString();
                 string nguyenlieu = cboTenNguyenlieu.Text;
-                int soluong = Convert.ToInt32(numSoluong.Value);
+                int soluongxuat = Convert.ToInt32(numSoluong.Value);  //số lượng xuất
 
                 // Kiểm tra sự tồn tại của nguyên liệu
                 bool daTonTai = false;
@@ -163,10 +165,32 @@ namespace GUI
                     }
                 }
 
-                // Thêm mới nếu chưa tồn tại
-                if (!daTonTai)
+                bool loi = false;
+                DataTable dt = tonkho.LoadWarehouse(); //tạo datatable tồn kho
+                DataRow[] filteredRows = dt.Select($"[Nguyên liệu] = '{nguyenlieu}'"); //lấy ra dòng nguyên liệu tương ứng
+
+
+                foreach (DataRow row in filteredRows)
                 {
-                    gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong);
+                    string NL = row["Nguyên liệu"].ToString();
+                    int slTon = Convert.ToInt32(row["Số lượng tồn"]);
+                    int slTonMin = Convert.ToInt32(row["Mức tối thiểu"]);
+                    if (NL == nguyenlieu && soluongxuat > slTon)
+                    {
+                        MessageBox.Show("Số lượng xuất quá số lượng tồn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loi = true;
+                        break ;
+                    }else if(NL == nguyenlieu && soluongxuat < slTon && (slTon - soluongxuat) < slTonMin)
+                    {
+                        MessageBox.Show("Xuất quá mức tối thiểu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }    
+                    
+                }
+
+                // Thêm mới nếu chưa tồn tại
+                if (!daTonTai && !loi)
+                {
+                    gridDsPhieu.Rows.Add(manl, nguyenlieu, soluongxuat);
 
                     // Reset các input
                     numGianhap.Value = 0;
@@ -214,11 +238,24 @@ namespace GUI
                 }
                 else
                 {
+                    //DataTable dt = tonkho.LoadWarehouse(); //tạo datatable tồn kho
+
                     foreach (DataGridViewRow row in gridDsPhieu.Rows)
                     {
                         string manguyenlieu = row.Cells["manl"].Value?.ToString();
                         int soLuong = Convert.ToInt32(row.Cells["soluong"].Value);
-                        string manl = row.Cells["manl"].Value?.ToString();
+                        string tennnl = row.Cells["nguyenlieu"].Value?.ToString();
+
+
+                        //foreach (DataGridViewRow row2 in dt.Rows)
+                        //{
+                        //    string nlTon = row2.Cells["Nguyên liệu"].Value?.ToString();
+                        //    int slTon = Convert.ToInt32(row2.Cells["Số lượng tồn"].Value?.ToString());
+                        //    if (tennnl == nlTon && soLuong < slTon)
+                        //    {
+
+                        //    }
+                        //}
                         if (cboLoaiphieu.Enabled == true)
                         {
                             phieuxuat.ThemPhieuXuat(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);

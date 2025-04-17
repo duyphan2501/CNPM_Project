@@ -79,12 +79,16 @@ namespace GUI
             {
                 nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
                 LoadNguyenLieu();
+
+                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, 0, 0); // thêm định lượng ngay sau khi thêm nguyên liệu
+                General.ShowDialogWithBlur(tonkho);
             }
             else
             {
                 nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
                 LoadNguyenLieu();
             }
+            
             frmKho_Load(sender, e);
 
         }
