@@ -224,5 +224,11 @@ namespace GUI
             frmThanhToan frmThanhToan = new frmThanhToan(lblTongtien.Text);
             General.ShowDialogWithBlur(frmThanhToan);
         }
+
+        private void btnGhiChu_Click(object sender, EventArgs e)
+        {
+            frmGhiChu frmGhiChu = new frmGhiChu();
+            General.ShowDialogWithBlur(frmGhiChu);
+        }
     }
 }
