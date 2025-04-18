@@ -12,13 +12,13 @@ namespace BUS
     {
         DAL_NguyenLieu nguyenlieudal;
         
-        public BUS_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong)
+        public BUS_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong, int muctoithieu)
         {
-            nguyenlieudal = new DAL_NguyenLieu(manl,maloainl,tennl,donvi,soluong);
+            nguyenlieudal = new DAL_NguyenLieu(manl,maloainl,tennl,donvi,soluong, muctoithieu);
         }
-        public DataTable TaiNguyenlieu()
+        public DataTable LoadIngredients()
         {
-            return nguyenlieudal.Tainguyenlieu();
+            return nguyenlieudal.LoadIngredients();
         }
 
         public DataTable TaiLoaiNguyenLieu()
@@ -26,17 +26,24 @@ namespace BUS
             return nguyenlieudal.TaiLoaiNguyenlieu();
         }
 
-        public void ThemNguyenLieu(string manl, string tenloainl, string tennl, string donvi, int soluong)
+        //Tải tên nguyên liệu
+        public DataTable LoadIngredients_name()
         {
-            nguyenlieudal.ThemNguyenlieu(manl,tenloainl,tennl,donvi,soluong);
+            return nguyenlieudal.LoadIngredients_name();
         }
 
-        public void SuathongtinNL(string manl, string maloainl, string tennl, string donvi, int soluong)
+        public void AddIngredients(string manl, string tenloainl, string tennl, string donvi)
         {
-            nguyenlieudal.SuathongtinNL(manl,maloainl,tennl,donvi,soluong);
+            nguyenlieudal.AddIngredients(manl, tenloainl, tennl, donvi);
         }
 
-        
+        public void UpdateIngredients(string manl, string maloainl, string tennl, string donvi)
+        {
+            nguyenlieudal.UpdateIngredients(manl,maloainl,tennl,donvi);
+        }
+
+
+
         // phát sinh mã nguyên liệu
         public string PhatSinhMaNL()
         {

@@ -13,10 +13,12 @@ namespace GUI
 {
     public partial class frmKho : Form
     {
-        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0);
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0);
+        BUS_TonKho nltonkho = new BUS_TonKho("","",0,0,0);
         public frmKho()
         {
             InitializeComponent();
+            
         }
 
         private void frmKho_Load(object sender, EventArgs e)
@@ -27,12 +29,13 @@ namespace GUI
             btnThemNguyenlieu.Enabled = true;
             btnHuy.Enabled = false;
             btnLuu.Enabled = false;
+            btnTonkho.Enabled = false;
         }
 
         public void LoadNguyenLieu()
         {
             gridDsNguyenlieu.RowTemplate.Height = 50;
-            gridDsNguyenlieu.DataSource = nguyenlieubus.TaiNguyenlieu();
+            gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
             gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1; //đưa button về cuối
 
         }
@@ -59,7 +62,6 @@ namespace GUI
             btnLuu.Enabled = true;
             txtTenNguyenLieu.Clear();
             txtDonvitinh.Clear();
-            numSoluong.Value = 0;
 
             txtMaNguyenLieu.Text = nguyenlieubus.PhatSinhMaNL();
             txtMaNguyenLieu.ReadOnly = true;
@@ -68,20 +70,40 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmKho_Load(sender, e);
-            btnThemNguyenlieu.Enabled = true;   
+            btnThemNguyenlieu.Enabled = true;
         }
 
+        
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtMaNguyenLieu.Enabled == true)
+            DataTable dt = nguyenlieubus.LoadIngredients_name(); //tải danh sách tên nguyên liêu
+            bool tontai = false;
+            foreach (DataRow row in dt.Rows)
             {
-                nguyenlieubus.ThemNguyenLieu(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, (int)numSoluong.Value);
-                LoadNguyenLieu();
+                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text)
+                {
+                    tontai = true;
+                }
+            }
+            if (tontai == true)
+            {
+                MessageBox.Show("Đã tồn tại tên nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                nguyenlieubus.SuathongtinNL(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, (int)numSoluong.Value);
-                LoadNguyenLieu();
+                if (txtMaNguyenLieu.Enabled == true)
+                {
+                    nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    LoadNguyenLieu();
+
+                    frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, 0, 0); // thêm định lượng ngay sau khi thêm nguyên liệu
+                    General.ShowDialogWithBlur(tonkho);
+                }
+                else
+                {
+                    nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    LoadNguyenLieu();
+                }
             }
             frmKho_Load(sender, e);
 
@@ -98,7 +120,6 @@ namespace GUI
             txtMaNguyenLieu.Text = hangduocchon.Cells["Mã nguyên liệu"].Value.ToString();
             cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
             txtTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
-            numSoluong.Value = Convert.ToDecimal(hangduocchon.Cells["Số lượng"].Value);
             txtDonvitinh.Text = hangduocchon.Cells["Đơn vị tính"].Value.ToString();
 
             gbThongtinnguyenlieu.Enabled = true;
@@ -108,6 +129,38 @@ namespace GUI
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
+            btnTonkho.Enabled = true;
+        }
+
+        private void btnTonkho_Click(object sender, EventArgs e)
+        {
+            DataTable dt = nltonkho.LoadWarehouse();
+            DataRow ketQua = null;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["Nguyên liệu"].ToString() == txtTenNguyenLieu.Text)
+                {
+                    ketQua = row;
+                    break; // Dừng lại khi tìm thấy
+                }
+            }
+            if (ketQua == null) //nếu chưa có thì truyền mã nl và tên nl để thêm thông tin tồn kho
+            {
+                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text,0,0); 
+                General.ShowDialogWithBlur(tonkho);
+
+            }
+            else  //truyền mã thông tin để chỉnh sửa
+            {       
+                // Nếu tìm thấy nguyên liệu, lấy giá trị "Mức tối thiểu" và "Mức ổn định"
+                int muctoithieu = Convert.ToInt32(ketQua["Mức tối thiểu"]);
+                int mucondinh = Convert.ToInt32(ketQua["Mức ổn định"]);
+                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, muctoithieu, mucondinh);  
+                General.ShowDialogWithBlur(tonkho);
+            }
+
+            frmKho_Load(sender, e);
         }
     }
 }

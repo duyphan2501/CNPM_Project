@@ -441,6 +441,7 @@
             btnTonkho.Text = "Tồn kho";
             btnTonkho.TextAlign = HorizontalAlignment.Left;
             btnTonkho.TextOffset = new Point(20, 0);
+            btnTonkho.Click += btnTonkho_Click_1;
             // 
             // btnKho
             // 
