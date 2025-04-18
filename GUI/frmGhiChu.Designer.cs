@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             label1 = new Label();
@@ -55,12 +55,12 @@
             // guna2ControlBox1
             // 
             guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2ControlBox1.CustomizableEdges = customizableEdges9;
+            guna2ControlBox1.CustomizableEdges = customizableEdges7;
             guna2ControlBox1.FillColor = Color.Transparent;
             guna2ControlBox1.IconColor = Color.Black;
             guna2ControlBox1.Location = new Point(431, 12);
             guna2ControlBox1.Name = "guna2ControlBox1";
-            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2ControlBox1.Size = new Size(40, 28);
             guna2ControlBox1.TabIndex = 0;
             // 
@@ -76,8 +76,8 @@
             // 
             // txtGhiChu
             // 
-            txtGhiChu.CustomizableEdges = customizableEdges11;
-            txtGhiChu.DefaultText = "";
+            txtGhiChu.CustomizableEdges = customizableEdges5;
+            txtGhiChu.DefaultText = "asdfdd";
             txtGhiChu.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtGhiChu.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtGhiChu.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -87,17 +87,18 @@
             txtGhiChu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtGhiChu.Location = new Point(23, 59);
             txtGhiChu.Margin = new Padding(4, 5, 4, 5);
+            txtGhiChu.Multiline = true;
             txtGhiChu.Name = "txtGhiChu";
             txtGhiChu.PlaceholderText = "";
             txtGhiChu.SelectedText = "";
-            txtGhiChu.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtGhiChu.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtGhiChu.Size = new Size(433, 165);
             txtGhiChu.TabIndex = 2;
             // 
             // btnLuu
             // 
             btnLuu.BorderRadius = 5;
-            btnLuu.CustomizableEdges = customizableEdges13;
+            btnLuu.CustomizableEdges = customizableEdges3;
             btnLuu.DisabledState.BorderColor = Color.DarkGray;
             btnLuu.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -107,28 +108,30 @@
             btnLuu.ForeColor = Color.White;
             btnLuu.Location = new Point(342, 244);
             btnLuu.Name = "btnLuu";
-            btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnLuu.Size = new Size(114, 42);
             btnLuu.TabIndex = 3;
             btnLuu.Text = "Lưu";
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnHuy
             // 
             btnHuy.BorderRadius = 5;
-            btnHuy.CustomizableEdges = customizableEdges15;
+            btnHuy.CustomizableEdges = customizableEdges1;
             btnHuy.DisabledState.BorderColor = Color.DarkGray;
             btnHuy.DisabledState.CustomBorderColor = Color.DarkGray;
             btnHuy.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnHuy.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnHuy.FillColor = Color.FromArgb(183, 68, 70);
+            btnHuy.FillColor = Color.SteelBlue;
             btnHuy.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             btnHuy.ForeColor = Color.White;
             btnHuy.Location = new Point(209, 244);
             btnHuy.Name = "btnHuy";
-            btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnHuy.Size = new Size(114, 42);
             btnHuy.TabIndex = 3;
             btnHuy.Text = "Huỷ";
+            btnHuy.Click += btnHuy_Click;
             // 
             // frmGhiChu
             // 

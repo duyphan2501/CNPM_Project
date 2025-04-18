@@ -7,23 +7,31 @@ namespace DTO
         public string MaDonHang { get; set; }
         public string TenDangNhap { get; set; }
         public string MaCaLam { get; set; }
-        public string TrangThai { get; set; }
-        public string LoaiThanhToan { get; set; }
+        public string MaCaThanhToan { get; set; }
+        public int TrangThai { get; set; }
+        public int GiamGia { get; set; }
+        public string MaThe { get; set; }   
+        public int LoaiThanhToan { get; set; }
         public string GhiChu { get; set; }
-        public DateTime NgayLap { get; set; }
-        public DateTime TgCapNhat { get; set; }
 
-        public DTO_DonHang(string maDonHang, string tenDangNhap, string maCaLam, DateTime ngayLap,
-                           string trangThai, string loaiThanhToan, DateTime tgCapNhat, string ghiChu)
+        public DTO_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
+                           int trangThai, string maThe, string ghiChu)
         {
             MaDonHang = maDonHang;
             TenDangNhap = tenDangNhap;
             MaCaLam = maCaLam;
-            NgayLap = ngayLap;
             TrangThai = trangThai;
-            LoaiThanhToan = loaiThanhToan;
-            TgCapNhat = tgCapNhat;
+            MaThe = maThe;
             GhiChu = ghiChu;
+        }
+
+        public DTO_DonHang(string maDonHang, string maCaThanhToan, int giamGia,
+                           int loaiThanhToan)
+        {
+            MaDonHang = maDonHang;
+            MaCaThanhToan = maCaThanhToan;
+            GiamGia = giamGia;
+            LoaiThanhToan = loaiThanhToan;
         }
 
         public DTO_DonHang() { } // constructor rỗng nếu cần khởi tạo không tham số

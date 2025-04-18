@@ -13,7 +13,11 @@ namespace GUI.components
 {
     public partial class InvoiceItem : UserControl
     {
-        public string TenMon;
+        public string MaSanPham { get; set; }
+        public string TenMon { get; set; }
+        public int DonGia { get; set; }
+        public int SoLuong { get; set; }
+
         public event EventHandler XoaItemClicked;
         public event EventHandler SoLuongChanged;
 
@@ -22,7 +26,7 @@ namespace GUI.components
             InitializeComponent();
         }
 
-        public InvoiceItem(string tenmon, int dongia, int soluong)
+        public InvoiceItem(string tenmon, int dongia, int soluong, string masp)
         {
             InitializeComponent();
             // Tăng hiệu năng vẽ control
@@ -34,6 +38,9 @@ namespace GUI.components
             numSoluong.Value = soluong;
             lblThanhtien.Text = ThanhTien().ToString("N0");
             TenMon = tenmon;
+            DonGia = dongia;
+            SoLuong = soluong;
+            MaSanPham = masp;
         }
 
         public void IncreaseQuantity()

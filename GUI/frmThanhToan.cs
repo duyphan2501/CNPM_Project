@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,21 +8,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
+using DTO;
+using cnpm;
 
 namespace GUI
 {
     public partial class frmThanhToan : Form
     {
+        private List<InvoiceItem> invoiceItemList;
+        private string maDonhang;
+        private string maThe;
+        private string ghiChu;
+
+        public event EventHandler ThanhToanThanhCong;
+
         public frmThanhToan()
         {
             InitializeComponent();
         }
 
-        public frmThanhToan(string tongTien)
+        public frmThanhToan(string tongtien, string madon, string mathe, List<InvoiceItem> itemList, string ghichu)
         {
             InitializeComponent();
-            lblTongTien.Text = tongTien;
-            lblKhachCanTra.Text = tongTien;
+            lblTongTien.Text = tongtien;
+            lblKhachCanTra.Text = tongtien;
+            invoiceItemList = itemList;
+            maDonhang = madon;
+            maThe = mathe;
+            ghiChu = ghichu;
         }
 
         private void frmThanhToan_Load(object sender, EventArgs e)
@@ -109,18 +124,10 @@ namespace GUI
                     // 0: tiền mặt mới enable pnl
                     pnlTienMat.Enabled = (loai == 0);
                     txtKhachDua.Enabled = (loai == 0);
-                    if (loai == 0)
-                    {
-                        // Tiền mặt: reset lại các trường tiền mặt
-                        txtKhachDua.Text = lblKhachCanTra.Text.Replace("đ", "");
-                        lblTienThua.Text = "0đ";
-                    }
-                    else
-                    {
-                        // Chuyển khoản: không cần nhập tiền khách đưa, thiết lập lại lblTienThua
-                        txtKhachDua.Clear();  // Xóa nội dung txtKhachDua
-                        lblTienThua.Text = "0đ";  // Cập nhật lại tiền thừa
-                    }
+
+                    //  reset lại các trường tiền mặt
+                    txtKhachDua.Text = "";  // Xóa nội dung txtKhachDua
+                    lblTienThua.Text = "0đ";  // Cập nhật lại tiền thừa
                 }
             }
         }
@@ -133,8 +140,9 @@ namespace GUI
             // Lấy phần trăm giảm giá từ NumericUpDown
             int percent = (int)numGiamGia.Value;
 
-            // Tính số tiền giảm và làm tròn xuống
-            int tienGiam = (int)Math.Floor((double)tongTienGoc * percent / 100);
+            int tienGiam = (int)(tongTienGoc * percent / 100);
+            // Làm tròn xuống bậc 1.000
+            tienGiam = tienGiam / 1000 * 1000;
 
             // Tính tổng tiền sau khi giảm
             int tongTienSauGiam = tongTienGoc - tienGiam;
@@ -152,18 +160,98 @@ namespace GUI
             else
             {
                 // Nếu đang chọn tiền mặt, tính tiền thừa
-                int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text); // Parse tiền khách đưa
-                lblTienThua.Text = General.FormatMoney(tienKhachDua - tongTienSauGiam); // Hiển thị tiền thừa
+                if (txtKhachDua.Text != "")
+                {
+                    // Parse tiền khách đưa
+                    int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text);
+                    // Hiển thị tiền thừa
+                    lblTienThua.Text = General.FormatMoney(tienKhachDua - tongTienSauGiam);
+                }
             }
         }
 
-
         private void txtKhachDua_TextChanged(object sender, EventArgs e)
         {
-            int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text);
-            int tienCanTra = General.FormatMoneyToInt(lblKhachCanTra.Text);
-            lblTienThua.Text = General.FormatMoney(tienKhachDua - tienCanTra);
+            if (txtKhachDua.Text != "" && txtKhachDua.Text != ",")
+            {
+                // cập nhật lại tiền thừa
+                int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text);
+                int tienCanTra = General.FormatMoneyToInt(lblKhachCanTra.Text);
+                lblTienThua.Text = General.FormatMoney(tienKhachDua - tienCanTra);
+            }
         }
 
+        private void txtKhachDua_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Cho phép: số, dấu phẩy, phím backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // chặn ký tự không hợp lệ
+            }
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (cboLoaiThanhToan.SelectedIndex != 1)
+            {
+                if (txtKhachDua.Text == "")
+                {
+                    MessageBox.Show("Hãy nhập tiền khách đưa!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text); // Tiền khách đưa
+                int tienCanTra = General.FormatMoneyToInt(lblKhachCanTra.Text);
+                // 2. Tính tổng tiền sau khi giảm
+
+                // 3. Kiểm tra xem tiền khách đưa có đủ không
+                if (tienKhachDua < tienCanTra)
+                {
+                    MessageBox.Show("Tiền khách đưa không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
+            string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
+            int giamGia = (int)numGiamGia.Value;
+            int loaiThanhToan = cboLoaiThanhToan.SelectedIndex;
+
+            // 4. Tạo đối tượng đơn hàng
+            BUS_DonHang donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, 0, maThe, ghiChu);
+            if (!donHang.isExistedOrder(maDonhang))
+            {
+                donHang.InsertNewOrder();
+            }
+            donHang = new BUS_DonHang(maDonhang, maCaLam, giamGia, loaiThanhToan);
+            int affectedRows = donHang.ThanhToanDonHang();
+            if (affectedRows != 0)
+            {
+                // 6. Thêm chi tiết đơn hàng
+                foreach (var item in invoiceItemList)
+                {
+                    // Tạo chi tiết đơn hàng
+                    BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
+
+                    // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
+                    int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+                    if (isDetailAdded == 0)
+                    {
+                        MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // 7. Thông báo thành công
+                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 8. Xử lý các bước tiếp theo, ví dụ: đóng form, in hóa đơn, vv.
+                ThanhToanThanhCong?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -53,13 +53,13 @@
             label7 = new Label();
             txtKhachDua = new Guna.UI2.WinForms.Guna2TextBox();
             label8 = new Label();
-            lblTienThua = new Label();
             label9 = new Label();
             label10 = new Label();
-            btnThanhtoan = new Guna.UI2.WinForms.Guna2Button();
+            btnThanhToan = new Guna.UI2.WinForms.Guna2Button();
             numGiamGia = new Guna.UI2.WinForms.Guna2NumericUpDown();
             lblKhachCanTra = new Label();
             label3 = new Label();
+            lblTienThua = new Label();
             ((System.ComponentModel.ISupportInitialize)numGiamGia).BeginInit();
             SuspendLayout();
             // 
@@ -143,9 +143,9 @@
             label5.ForeColor = Color.FromArgb(244, 129, 17);
             label5.Location = new Point(34, 197);
             label5.Name = "label5";
-            label5.Size = new Size(121, 25);
+            label5.Size = new Size(145, 25);
             label5.TabIndex = 1;
-            label5.Text = "Khách cần trả";
+            label5.Text = "Khách cần trả (1)";
             // 
             // label6
             // 
@@ -191,9 +191,9 @@
             label7.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.Location = new Point(30, 367);
             label7.Name = "label7";
-            label7.Size = new Size(155, 25);
+            label7.Size = new Size(162, 25);
             label7.TabIndex = 1;
-            label7.Text = "Khách thanh toán";
+            label7.Text = "Tiền khách đưa (2)";
             // 
             // txtKhachDua
             // 
@@ -219,6 +219,7 @@
             txtKhachDua.TabIndex = 4;
             txtKhachDua.TextAlign = HorizontalAlignment.Right;
             txtKhachDua.TextChanged += txtKhachDua_TextChanged;
+            txtKhachDua.KeyPress += txtKhachDua_KeyPress;
             // 
             // label8
             // 
@@ -226,21 +227,9 @@
             label8.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.Location = new Point(30, 410);
             label8.Name = "label8";
-            label8.Size = new Size(169, 25);
+            label8.Size = new Size(250, 25);
             label8.TabIndex = 1;
-            label8.Text = "Tiền thừa trả khách";
-            // 
-            // lblTienThua
-            // 
-            lblTienThua.Anchor = AnchorStyles.Right;
-            lblTienThua.AutoSize = true;
-            lblTienThua.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTienThua.Location = new Point(554, 410);
-            lblTienThua.Name = "lblTienThua";
-            lblTienThua.Size = new Size(33, 25);
-            lblTienThua.TabIndex = 1;
-            lblTienThua.Text = "0đ";
-            lblTienThua.TextAlign = ContentAlignment.MiddleRight;
+            label8.Text = "Tiền thừa trả khách = (2) - (1)";
             // 
             // label9
             // 
@@ -263,24 +252,25 @@
             label10.TabIndex = 1;
             label10.Text = "%";
             // 
-            // btnThanhtoan
+            // btnThanhToan
             // 
-            btnThanhtoan.Anchor = AnchorStyles.Left;
-            btnThanhtoan.BorderRadius = 10;
-            btnThanhtoan.CustomizableEdges = customizableEdges3;
-            btnThanhtoan.DisabledState.BorderColor = Color.DarkGray;
-            btnThanhtoan.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnThanhtoan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnThanhtoan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnThanhtoan.FillColor = Color.FromArgb(113, 181, 108);
-            btnThanhtoan.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThanhtoan.ForeColor = Color.White;
-            btnThanhtoan.Location = new Point(34, 449);
-            btnThanhtoan.Name = "btnThanhtoan";
-            btnThanhtoan.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnThanhtoan.Size = new Size(555, 67);
-            btnThanhtoan.TabIndex = 6;
-            btnThanhtoan.Text = "Thanh Toán";
+            btnThanhToan.Anchor = AnchorStyles.Left;
+            btnThanhToan.BorderRadius = 10;
+            btnThanhToan.CustomizableEdges = customizableEdges3;
+            btnThanhToan.DisabledState.BorderColor = Color.DarkGray;
+            btnThanhToan.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnThanhToan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnThanhToan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnThanhToan.FillColor = Color.FromArgb(113, 181, 108);
+            btnThanhToan.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThanhToan.ForeColor = Color.White;
+            btnThanhToan.Location = new Point(34, 449);
+            btnThanhToan.Name = "btnThanhToan";
+            btnThanhToan.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnThanhToan.Size = new Size(555, 67);
+            btnThanhToan.TabIndex = 6;
+            btnThanhToan.Text = "Thanh Toán";
+            btnThanhToan.Click += btnThanhToan_Click;
             // 
             // numGiamGia
             // 
@@ -289,11 +279,11 @@
             numGiamGia.BorderRadius = 5;
             numGiamGia.CustomizableEdges = customizableEdges1;
             numGiamGia.Font = new Font("Segoe UI", 9F);
-            numGiamGia.Location = new Point(472, 150);
+            numGiamGia.Location = new Point(481, 150);
             numGiamGia.Margin = new Padding(3, 4, 3, 4);
             numGiamGia.Name = "numGiamGia";
             numGiamGia.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            numGiamGia.Size = new Size(88, 34);
+            numGiamGia.Size = new Size(79, 34);
             numGiamGia.TabIndex = 7;
             numGiamGia.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
             numGiamGia.ValueChanged += numGiamGia_ValueChanged;
@@ -321,6 +311,18 @@
             label3.TabIndex = 8;
             label3.Text = "đ";
             // 
+            // lblTienThua
+            // 
+            lblTienThua.Anchor = AnchorStyles.Right;
+            lblTienThua.AutoSize = true;
+            lblTienThua.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTienThua.Location = new Point(555, 410);
+            lblTienThua.Name = "lblTienThua";
+            lblTienThua.Size = new Size(33, 25);
+            lblTienThua.TabIndex = 1;
+            lblTienThua.Text = "0đ";
+            lblTienThua.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // frmThanhToan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -328,12 +330,11 @@
             ClientSize = new Size(626, 543);
             Controls.Add(label3);
             Controls.Add(numGiamGia);
-            Controls.Add(btnThanhtoan);
+            Controls.Add(btnThanhToan);
             Controls.Add(txtKhachDua);
             Controls.Add(pnlTienMat);
             Controls.Add(cboLoaiThanhToan);
             Controls.Add(label6);
-            Controls.Add(lblTienThua);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label5);
@@ -343,6 +344,7 @@
             Controls.Add(label2);
             Controls.Add(lblNgayLap);
             Controls.Add(label10);
+            Controls.Add(lblTienThua);
             Controls.Add(lblKhachCanTra);
             Controls.Add(lblTongTien);
             Controls.Add(guna2ControlBox1);
@@ -371,12 +373,12 @@
         private Label label7;
         private Guna.UI2.WinForms.Guna2TextBox txtKhachDua;
         private Label label8;
-        private Label lblTienThua;
         private Label label9;
         private Label label10;
-        private Guna.UI2.WinForms.Guna2Button btnThanhtoan;
+        private Guna.UI2.WinForms.Guna2Button btnThanhToan;
         private Guna.UI2.WinForms.Guna2NumericUpDown numGiamGia;
         private Label lblKhachCanTra;
         private Label label3;
+        private Label lblTienThua;
     }
 }

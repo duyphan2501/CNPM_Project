@@ -11,10 +11,16 @@ namespace BUS
     {
         DAL_DonHang donhang;
 
-        public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaLam, DateTime ngayLap,
-                           string trangThai, string loaiThanhToan, DateTime tgCapNhat, string ghiChu)
+        public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
+                           int trangThai, string maThe, string ghiChu)
         {
-            donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaLam, ngayLap, trangThai, loaiThanhToan, tgCapNhat, ghiChu);
+            donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaLam, trangThai, maThe, ghiChu);
+        }
+
+        public BUS_DonHang(string maDonHang, string maCaThanhToan, int giamGia,
+                           int loaiThanhToan)
+        {
+            donhang = new DAL_DonHang(maDonHang, maCaThanhToan, giamGia, loaiThanhToan);
         }
 
         public BUS_DonHang() { donhang = new DAL_DonHang(); }
@@ -28,6 +34,21 @@ namespace BUS
             so++;
             // Trả về mã mới với định dạng DH + 5 chữ số
             return "DH" + so.ToString("D5");
+        }
+
+        public int InsertNewOrder()
+        {
+            return donhang.InsertNewOrder();
+        }
+
+        public int ThanhToanDonHang()
+        {
+            return donhang.ThanhToanDonHang();
+        }
+
+        public bool isExistedOrder(string maDonHang)
+        {
+            return donhang.isExistedOrder(maDonHang);
         }
     } 
 }

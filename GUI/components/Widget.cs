@@ -13,14 +13,16 @@ namespace GUI.components
     public partial class Widget : UserControl
     {
         public event EventHandler ThemSanPhamClicked;
-        public string TenSanPham, MaLoai;
-        public int GiaSanPham;
+        public string TenSanPham { get; set; }
+        public string MaLoai { get; set; }
+        public string MaSanPham { get; set; }
+        public int GiaSanPham { get; set; }
         public Widget()
         {
             InitializeComponent();
         }
 
-        public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham, string category)
+        public Widget(byte[] hinhAnhSP, string tenSanPham, int giaSanPham, string category, string maSanPham)
         {
             InitializeComponent();
             // Tăng hiệu năng vẽ control
@@ -32,6 +34,7 @@ namespace GUI.components
             TenSanPham = tenSanPham;
             GiaSanPham = giaSanPham;
             MaLoai = category;
+            MaSanPham = maSanPham;
         }
 
         private void btnThemSanPham_Click(object sender, EventArgs e)

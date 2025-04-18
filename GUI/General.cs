@@ -79,7 +79,8 @@ namespace GUI
 
         public static int FormatMoneyToInt(string money)
         {
-            return Int32.Parse(money.Replace(",", "").Replace("đ", "").Trim());
+            money = money.Replace(",", "").Replace("đ", "").Trim();
+            return Int32.Parse(money);
         }
     }
 }

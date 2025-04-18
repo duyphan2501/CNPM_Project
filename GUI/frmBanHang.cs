@@ -95,7 +95,13 @@ namespace GUI
             // Lấy sản phẩm và hiển thị lên giao diện
             foreach (DataRow dr in sanPhamBUS.SelectOnSaleProduct().Rows)
             {
-                Widget widget = new Widget(dr["HinhAnh"] as byte[], dr["TenSp"].ToString(), Convert.ToInt32(dr["GiaBan"]), dr["MaLoai"].ToString());
+                byte[] hinhAnh = dr["HinhAnh"] as byte[];
+                string tenSp = dr["TenSp"].ToString();
+                int giaBan = Convert.ToInt32(dr["GiaBan"]);
+                string maLoai = dr["MaLoai"].ToString();
+                string maSp = dr["MaSp"].ToString();
+
+                Widget widget = new Widget(hinhAnh, tenSp, giaBan, maLoai, maSp);
                 widget.ThemSanPhamClicked += Widget_ThemSanPhamClicked;
                 pnlThucDon.Controls.Add(widget);
             }
@@ -122,7 +128,7 @@ namespace GUI
             Widget widget = sender as Widget;
             string tenmon = widget.TenSanPham;
             int dongia = widget.GiaSanPham;
-
+            string maSanPham = widget.MaSanPham;
             // Kiểm tra sản phẩm đã có trong hóa đơn chưa
             foreach (Control ctrl in pnlInvoiceItem.Controls)
             {
@@ -137,7 +143,7 @@ namespace GUI
             }
 
             // Nếu không có, thêm item mới vào hóa đơn
-            InvoiceItem newItem = new InvoiceItem(tenmon, dongia, 1);
+            InvoiceItem newItem = new InvoiceItem(tenmon, dongia, 1, maSanPham);
             newItem.XoaItemClicked += InvoiceItem_XoaItemClicked;
             newItem.SoLuongChanged += InvoiceItem_SoLuongChanged;  // Đăng ký sự kiện khi số lượng thay đổi
             pnlInvoiceItem.Controls.Add(newItem);
@@ -199,6 +205,8 @@ namespace GUI
             lblThoiGian.Text = now.ToString("dddd, dd/MM/yyyy - HH:mm", culture);
         }
 
+        private string ghiChu = "", maThe = "";
+
         private void btnChonSoCho_Click(object sender, EventArgs e)
         {
             frmTheRung frmTheRung = new frmTheRung();
@@ -207,8 +215,8 @@ namespace GUI
             if (frmTheRung.DialogResult == DialogResult.OK && frmTheRung.SelectedTheRung != null)
             {
                 var theDuocChon = frmTheRung.SelectedTheRung;
-                // Xử lý với thẻ rung đã chọn ở đây
                 lblSoCho.Text = theDuocChon.SoThe;
+                maThe = theDuocChon.MaThe;
             }
         }
 
@@ -221,14 +229,39 @@ namespace GUI
 
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
-            frmThanhToan frmThanhToan = new frmThanhToan(lblTongtien.Text);
-            General.ShowDialogWithBlur(frmThanhToan);
+            if (maThe != "" && lblMaDonHang.Text != "" && pnlInvoiceItem.Controls.Count > 0)
+            {
+                List<InvoiceItem> danhSachItem = pnlInvoiceItem.Controls
+                .OfType<InvoiceItem>()
+                .ToList();
+                frmThanhToan frmThanhToan = new frmThanhToan(lblTongtien.Text, lblMaDonHang.Text, maThe, danhSachItem, ghiChu);
+                frmThanhToan.ThanhToanThanhCong += (s, ev) => {
+                    ClearFormSauThanhToan(); // Viết hàm này để reset UI, giỏ hàng, panel sản phẩm...
+                };
+                General.ShowDialogWithBlur(frmThanhToan);
+            }
         }
+        public void ClearFormSauThanhToan()
+        {
+            pnlInvoiceItem.Controls.Clear();
+            lblTongtien.Text = "";
+            lblSoCho.Text = "";
+            lblMaDonHang.Text = "";
+            ghiChu = "";
+        }
+
 
         private void btnGhiChu_Click(object sender, EventArgs e)
         {
-            frmGhiChu frmGhiChu = new frmGhiChu();
-            General.ShowDialogWithBlur(frmGhiChu);
+            frmGhiChu frmGhiChu = new frmGhiChu(ghiChu); // Truyền ghi chú hiện tại vào
+
+            DialogResult result = General.ShowDialogWithBlur(frmGhiChu);
+
+            if (result == DialogResult.OK)
+            {
+                ghiChu = frmGhiChu.GhiChu; // Lấy ghi chú từ frmGhiChu 
+            }
         }
+
     }
 }
