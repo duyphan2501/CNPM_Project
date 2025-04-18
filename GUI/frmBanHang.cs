@@ -211,7 +211,7 @@ namespace GUI
         {
             frmTheRung frmTheRung = new frmTheRung();
             General.ShowDialogWithBlur(frmTheRung);
-
+            // lấy kết quả từ form dialog
             if (frmTheRung.DialogResult == DialogResult.OK && frmTheRung.SelectedTheRung != null)
             {
                 var theDuocChon = frmTheRung.SelectedTheRung;
@@ -225,23 +225,29 @@ namespace GUI
             // phát sinh mã đơn hàng
             donhangBUS = new BUS_DonHang();
             lblMaDonHang.Text = donhangBUS.PhatSinhMaDonHang();
+            lblSoCho.Text = "";
         }
 
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
             if (maThe != "" && lblMaDonHang.Text != "" && pnlInvoiceItem.Controls.Count > 0)
             {
+                // lấy list từ pnlInvoice Item để tuyền vào frmThanhToan
                 List<InvoiceItem> danhSachItem = pnlInvoiceItem.Controls
                 .OfType<InvoiceItem>()
                 .ToList();
+                // tạo đối tượng frmThanhToán
                 frmThanhToan frmThanhToan = new frmThanhToan(lblTongtien.Text, lblMaDonHang.Text, maThe, danhSachItem, ghiChu);
-                frmThanhToan.ThanhToanThanhCong += (s, ev) => {
-                    ClearFormSauThanhToan(); // Viết hàm này để reset UI, giỏ hàng, panel sản phẩm...
+                // reset UI, giỏ hàng, panel sản phẩm... nếu thanh toán thành công
+                frmThanhToan.ThanhToanThanhCong += (s, ev) =>
+                {
+                    ClearFormBanHang();
                 };
+                // hiện frm
                 General.ShowDialogWithBlur(frmThanhToan);
             }
         }
-        public void ClearFormSauThanhToan()
+        public void ClearFormBanHang()
         {
             pnlInvoiceItem.Controls.Clear();
             lblTongtien.Text = "";
@@ -249,7 +255,6 @@ namespace GUI
             lblMaDonHang.Text = "";
             ghiChu = "";
         }
-
 
         private void btnGhiChu_Click(object sender, EventArgs e)
         {
@@ -263,5 +268,9 @@ namespace GUI
             }
         }
 
+        private void btnHuyDon_Click(object sender, EventArgs e)
+        {
+            ClearFormBanHang();
+        }
     }
 }

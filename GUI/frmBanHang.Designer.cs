@@ -620,6 +620,7 @@
             btnHuyDon.Size = new Size(225, 76);
             btnHuyDon.TabIndex = 5;
             btnHuyDon.Text = "Huỷ Đơn";
+            btnHuyDon.Click += btnHuyDon_Click;
             // 
             // btnTamLuu
             // 

@@ -16,7 +16,11 @@ namespace GUI.components
         public string MaSanPham { get; set; }
         public string TenMon { get; set; }
         public int DonGia { get; set; }
-        public int SoLuong { get; set; }
+        public int SoLuong
+        {
+            get { return (int)numSoluong.Value; }
+            set { numSoluong.Value = value; }
+        }
 
         public event EventHandler XoaItemClicked;
         public event EventHandler SoLuongChanged;
@@ -39,7 +43,6 @@ namespace GUI.components
             lblThanhtien.Text = ThanhTien().ToString("N0");
             TenMon = tenmon;
             DonGia = dongia;
-            SoLuong = soluong;
             MaSanPham = masp;
         }
 

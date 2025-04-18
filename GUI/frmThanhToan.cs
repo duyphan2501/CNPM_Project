@@ -221,6 +221,8 @@ namespace GUI
             if (!donHang.isExistedOrder(maDonhang))
             {
                 donHang.InsertNewOrder();
+                BUS_TheRung therung = new BUS_TheRung();
+                therung.UpdateStateTheRung(1, maThe);
             }
             donHang = new BUS_DonHang(maDonhang, maCaLam, giamGia, loaiThanhToan);
             int affectedRows = donHang.ThanhToanDonHang();

@@ -49,6 +49,13 @@ namespace DAL
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
 
+        public int UpdateStateTheRung(int trangthai, string maThe)
+        {
+            string query = "update therung set trangthai = @trangthai where mathe = @mathe";
+            object[] parameters = new object[] { trangthai, maThe };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
+
         public int DeleteTheRung(string mathe)
         {
             string query = "delete from therung where mathe = "+mathe;

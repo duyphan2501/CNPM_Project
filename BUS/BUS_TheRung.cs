@@ -50,5 +50,10 @@ namespace BUS
         {
             return therung.DeleteTheRung(mathe);
         }
+
+        public int UpdateStateTheRung(int trangthai, string maThe)
+        {
+            return therung.UpdateStateTheRung(trangthai, maThe);
+        }
     }
 }
