@@ -73,22 +73,38 @@ namespace GUI
             btnThemNguyenlieu.Enabled = true;
         }
 
+        
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtMaNguyenLieu.Enabled == true)
+            DataTable dt = nguyenlieubus.LoadIngredients_name(); //tải danh sách tên nguyên liêu
+            bool tontai = false;
+            foreach (DataRow row in dt.Rows)
             {
-                nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
-                LoadNguyenLieu();
-
-                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, 0, 0); // thêm định lượng ngay sau khi thêm nguyên liệu
-                General.ShowDialogWithBlur(tonkho);
+                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text)
+                {
+                    tontai = true;
+                }
+            }
+            if (tontai == true)
+            {
+                MessageBox.Show("Đã tồn tại tên nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
-                LoadNguyenLieu();
+                if (txtMaNguyenLieu.Enabled == true)
+                {
+                    nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    LoadNguyenLieu();
+
+                    frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, 0, 0); // thêm định lượng ngay sau khi thêm nguyên liệu
+                    General.ShowDialogWithBlur(tonkho);
+                }
+                else
+                {
+                    nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    LoadNguyenLieu();
+                }
             }
-            
             frmKho_Load(sender, e);
 
         }
@@ -143,6 +159,8 @@ namespace GUI
                 frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, muctoithieu, mucondinh);  
                 General.ShowDialogWithBlur(tonkho);
             }
+
+            frmKho_Load(sender, e);
         }
     }
 }

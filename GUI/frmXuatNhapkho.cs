@@ -117,7 +117,7 @@ namespace GUI
                     if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
                     {
                         // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Phiếu đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         daTonTai = true;
                         break;
                     }
@@ -152,25 +152,24 @@ namespace GUI
                 string nguyenlieu = cboTenNguyenlieu.Text;
                 int soluongxuat = Convert.ToInt32(numSoluong.Value);  //số lượng xuất
 
-                // Kiểm tra sự tồn tại của nguyên liệu
-                bool daTonTai = false;
+                bool daTonTai = false; // Kiểm tra trong phiếu có trùng nguyên liệu không
                 foreach (DataGridViewRow row in gridDsPhieu.Rows)
                 {
                     if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
                     {
                         // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Đã có nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Phiếu đã có nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         daTonTai = true;
                         break;
                     }
                 }
 
-                bool loi = false;
+                bool loi = false; //lỗi khi số lượng xuất lớn hơn số lượng tồn
                 DataTable dt = tonkho.LoadWarehouse(); //tạo datatable tồn kho
-                DataRow[] filteredRows = dt.Select($"[Nguyên liệu] = '{nguyenlieu}'"); //lấy ra dòng nguyên liệu tương ứng
+                DataRow[] LoctheoNL = dt.Select($"[Nguyên liệu] = '{nguyenlieu}'"); //lấy ra dòng nguyên liệu tương ứng
 
 
-                foreach (DataRow row in filteredRows)
+                foreach (DataRow row in LoctheoNL)
                 {
                     string NL = row["Nguyên liệu"].ToString();
                     int slTon = Convert.ToInt32(row["Số lượng tồn"]);
@@ -179,12 +178,25 @@ namespace GUI
                     {
                         MessageBox.Show("Số lượng xuất quá số lượng tồn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         loi = true;
+                        //cboLoaiphieu.Enabled = true;
                         break ;
                     }else if(NL == nguyenlieu && soluongxuat < slTon && (slTon - soluongxuat) < slTonMin)
                     {
-                        MessageBox.Show("Xuất quá mức tối thiểu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }    
-                    
+                        loi = true;
+                        DialogResult result = MessageBox.Show(
+                        "Xuất quá mức tối thiểu?",
+                        "Xác nhận thêm phiếu",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            loi = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đã bỏ nguyên liệu vừa thêm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }        
                 }
 
                 // Thêm mới nếu chưa tồn tại
@@ -195,9 +207,10 @@ namespace GUI
                     // Reset các input
                     numGianhap.Value = 0;
                     numSoluong.Value = 0;
+                    txtGhichu.Enabled = false;
                 }
             }
-            txtGhichu.Enabled = false;
+            
 
 
         }

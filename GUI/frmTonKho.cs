@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmTonKho : Form
     {
-        BUS_TonKho tonkho = new BUS_TonKho("","",0,0,0);
+        BUS_TonKho tonkho = new BUS_TonKho("", "", 0, 0, 0);
         public frmTonKho()
         {
             InitializeComponent();
@@ -28,6 +28,21 @@ namespace GUI
         {
             gridDsTonkho.RowTemplate.Height = 50;
             gridDsTonkho.DataSource = tonkho.LoadWarehouse();
+        }
+
+        private void cboLoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboLoc.Text == "Tất cả")
+            {
+                LoadWarehouse();
+            }
+            else
+            {
+                LoadWarehouse();
+                DataView dv = ((DataTable)gridDsTonkho.DataSource).DefaultView;
+                dv.RowFilter = "[Số lượng tồn] < [Mức tối thiểu]";
+                gridDsTonkho.DataSource = dv;
+            }
         }
     }
 }

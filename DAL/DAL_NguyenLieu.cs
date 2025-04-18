@@ -30,6 +30,12 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
+        public DataTable LoadIngredients_name()
+        {
+            string query = "select distinct TenNL from NguyenLieu";
+            return DataProvider.ExecuteQuery(query);
+        }
+
         public void AddIngredients(string manl, string tenloainl, string tennl, string donvi)
         {
             string query = "insert into NguyenLieu values (@_MaNL,dbo.LayMaloaiNLTheoTenloaiNL(@_MaLoaiNL),@_TenNL,@_DonVi)";

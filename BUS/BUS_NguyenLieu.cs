@@ -26,6 +26,12 @@ namespace BUS
             return nguyenlieudal.TaiLoaiNguyenlieu();
         }
 
+        //Tải tên nguyên liệu
+        public DataTable LoadIngredients_name()
+        {
+            return nguyenlieudal.LoadIngredients_name();
+        }
+
         public void AddIngredients(string manl, string tenloainl, string tennl, string donvi)
         {
             nguyenlieudal.AddIngredients(manl, tenloainl, tennl, donvi);
