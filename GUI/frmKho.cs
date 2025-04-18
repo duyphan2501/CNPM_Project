@@ -13,12 +13,11 @@ namespace GUI
 {
     public partial class frmKho : Form
     {
-        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0);
-        BUS_TonKho nltonkho = new BUS_TonKho("","",0,0,0);
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0, 0);
         public frmKho()
         {
             InitializeComponent();
-            
+
         }
 
         private void frmKho_Load(object sender, EventArgs e)
@@ -29,7 +28,7 @@ namespace GUI
             btnThemNguyenlieu.Enabled = true;
             btnHuy.Enabled = false;
             btnLuu.Enabled = false;
-            btnTonkho.Enabled = false;
+
         }
 
         public void LoadNguyenLieu()
@@ -73,14 +72,14 @@ namespace GUI
             btnThemNguyenlieu.Enabled = true;
         }
 
-        
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             DataTable dt = nguyenlieubus.LoadIngredients_name(); //tải danh sách tên nguyên liêu
             bool tontai = false;
             foreach (DataRow row in dt.Rows)
             {
-                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text)
+                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text && txtMaNguyenLieu.Enabled == true)
                 {
                     tontai = true;
                 }
@@ -93,15 +92,13 @@ namespace GUI
             {
                 if (txtMaNguyenLieu.Enabled == true)
                 {
-                    nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
                     LoadNguyenLieu();
 
-                    frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, 0, 0); // thêm định lượng ngay sau khi thêm nguyên liệu
-                    General.ShowDialogWithBlur(tonkho);
                 }
                 else
                 {
-                    nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text);
+                    nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
                     LoadNguyenLieu();
                 }
             }
@@ -121,6 +118,8 @@ namespace GUI
             cboTenloai.Text = hangduocchon.Cells["Tên loại"].Value.ToString();
             txtTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
             txtDonvitinh.Text = hangduocchon.Cells["Đơn vị tính"].Value.ToString();
+            numMuctoithieu.Value = Convert.ToDecimal(hangduocchon.Cells["Mức tối thiểu"].Value);
+            numMucondinh.Value = Convert.ToDecimal(hangduocchon.Cells["Mức ổn định"].Value);
 
             gbThongtinnguyenlieu.Enabled = true;
             txtMaNguyenLieu.Enabled = false;
@@ -129,38 +128,12 @@ namespace GUI
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
-            btnTonkho.Enabled = true;
+
         }
 
-        private void btnTonkho_Click(object sender, EventArgs e)
+        private void gridDsNguyenlieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = nltonkho.LoadWarehouse();
-            DataRow ketQua = null;
 
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row["Nguyên liệu"].ToString() == txtTenNguyenLieu.Text)
-                {
-                    ketQua = row;
-                    break; // Dừng lại khi tìm thấy
-                }
-            }
-            if (ketQua == null) //nếu chưa có thì truyền mã nl và tên nl để thêm thông tin tồn kho
-            {
-                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text,0,0); 
-                General.ShowDialogWithBlur(tonkho);
-
-            }
-            else  //truyền mã thông tin để chỉnh sửa
-            {       
-                // Nếu tìm thấy nguyên liệu, lấy giá trị "Mức tối thiểu" và "Mức ổn định"
-                int muctoithieu = Convert.ToInt32(ketQua["Mức tối thiểu"]);
-                int mucondinh = Convert.ToInt32(ketQua["Mức ổn định"]);
-                frmThemTonKho tonkho = new frmThemTonKho(txtMaNguyenLieu.Text, txtTenNguyenLieu.Text, muctoithieu, mucondinh);  
-                General.ShowDialogWithBlur(tonkho);
-            }
-
-            frmKho_Load(sender, e);
         }
     }
 }

@@ -196,7 +196,6 @@
             picXoBaocao.SizeMode = PictureBoxSizeMode.Zoom;
             picXoBaocao.TabIndex = 0;
             picXoBaocao.TabStop = false;
-            picXoBaocao.Click += picXoBaocao_Click;
             // 
             // btnMathangbanchay
             // 
@@ -355,7 +354,6 @@
             picXokho.SizeMode = PictureBoxSizeMode.Zoom;
             picXokho.TabIndex = 0;
             picXokho.TabStop = false;
-            picXokho.Click += picXokho_Click;
             // 
             // btnKiemkekho
             // 
@@ -441,7 +439,7 @@
             btnTonkho.Text = "Tồn kho";
             btnTonkho.TextAlign = HorizontalAlignment.Left;
             btnTonkho.TextOffset = new Point(20, 0);
-            btnTonkho.Click += btnTonkho_Click_1;
+            btnTonkho.Click += btnTonkho_Click;
             // 
             // btnKho
             // 
