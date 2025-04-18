@@ -1,6 +1,7 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Text;
@@ -69,6 +70,13 @@ namespace DAL
             string query = "SELECT 1 FROM DonHang WHERE MaDonHang = @MaDonHang";
             object result = DataProvider.ExecuteScalar(query, new object[] { maDonHang });
             return result != null;
+        }
+
+        // lấy đơn hàng cho thu ngân
+        public DataTable SelectOrderForCashier(string maCaLam)
+        {
+            string query = "select * from DonHang where MaCaLam = @MaCaLam or MaCaThanhToan is null";
+            return DataProvider.ExecuteQuery(query, new object[] { maCaLam });
         }
     }
 }

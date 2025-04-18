@@ -272,5 +272,11 @@ namespace GUI
         {
             ClearFormBanHang();
         }
+
+        private void btnDonHang_Click(object sender, EventArgs e)
+        {
+            frmOrderList frmDonHang = new frmOrderList();
+            General.ShowDialogWithBlur(frmDonHang);
+        }
     }
 }

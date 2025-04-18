@@ -1,4 +1,5 @@
 ﻿using DAL;
+using System.Data;
 
 namespace BUS
 {
@@ -10,9 +11,21 @@ namespace BUS
             ctDonHang = new DAL_ChiTietDonHang(maDonHang, maSp, donGia, soLuong);
         }
 
+        public BUS_ChiTietDonHang() { ctDonHang = new DAL_ChiTietDonHang(); }
+
         public int InsertOrderDetail()
         {
             return ctDonHang.InsertOrderDetail();
+        }
+
+        public int TinhTongTien(string maDonHang)
+        {
+            return ctDonHang.TinhTongTien(maDonHang);
+        }
+
+        public DataTable SelectChiTietByMaDon(string maDonHang)
+        {
+            return ctDonHang.SelectChiTietByMaDon(maDonHang);
         }
     }
 }

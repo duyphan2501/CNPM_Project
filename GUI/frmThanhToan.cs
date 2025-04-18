@@ -228,7 +228,7 @@ namespace GUI
             int affectedRows = donHang.ThanhToanDonHang();
             if (affectedRows != 0)
             {
-                // 6. Thêm chi tiết đơn hàng
+                // Thêm chi tiết đơn hàng
                 foreach (var item in invoiceItemList)
                 {
                     // Tạo chi tiết đơn hàng
@@ -243,10 +243,10 @@ namespace GUI
                     }
                 }
 
-                // 7. Thông báo thành công
+                // Thông báo thành công
                 MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 8. Xử lý các bước tiếp theo, ví dụ: đóng form, in hóa đơn, vv.
+                // Xử lý các bước tiếp theo
                 ThanhToanThanhCong?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }

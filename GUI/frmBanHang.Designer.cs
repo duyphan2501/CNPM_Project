@@ -78,7 +78,7 @@
             guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            btnDonHang = new Guna.UI2.WinForms.Guna2Button();
             guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             label9 = new Label();
@@ -287,7 +287,7 @@
             pnlSidebar.Controls.Add(guna2Button4);
             pnlSidebar.Controls.Add(guna2Button3);
             pnlSidebar.Controls.Add(guna2Button2);
-            pnlSidebar.Controls.Add(guna2Button1);
+            pnlSidebar.Controls.Add(btnDonHang);
             pnlSidebar.FillColor = Color.White;
             pnlSidebar.Location = new Point(0, 87);
             pnlSidebar.Name = "pnlSidebar";
@@ -365,22 +365,23 @@
             guna2Button2.TabIndex = 0;
             guna2Button2.Text = "guna2Button1";
             // 
-            // guna2Button1
+            // btnDonHang
             // 
-            guna2Button1.BorderRadius = 10;
-            guna2Button1.CustomizableEdges = customizableEdges22;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(13, 17);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            guna2Button1.Size = new Size(78, 84);
-            guna2Button1.TabIndex = 0;
-            guna2Button1.Text = "guna2Button1";
+            btnDonHang.BorderRadius = 10;
+            btnDonHang.CustomizableEdges = customizableEdges22;
+            btnDonHang.DisabledState.BorderColor = Color.DarkGray;
+            btnDonHang.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnDonHang.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnDonHang.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDonHang.Font = new Font("Segoe UI", 9F);
+            btnDonHang.ForeColor = Color.White;
+            btnDonHang.Location = new Point(13, 17);
+            btnDonHang.Name = "btnDonHang";
+            btnDonHang.ShadowDecoration.CustomizableEdges = customizableEdges23;
+            btnDonHang.Size = new Size(78, 84);
+            btnDonHang.TabIndex = 0;
+            btnDonHang.Text = "Đơn Hàng";
+            btnDonHang.Click += btnDonHang_Click;
             // 
             // guna2ShadowPanel2
             // 
@@ -513,6 +514,7 @@
             btnChonSoCho.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChonSoCho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnChonSoCho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnChonSoCho.FillColor = Color.DodgerBlue;
             btnChonSoCho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnChonSoCho.ForeColor = Color.White;
             btnChonSoCho.Location = new Point(393, 53);
@@ -762,7 +764,7 @@
         private Label lb1;
         private Label lblThoiGian;
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlSidebar;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnDonHang;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;

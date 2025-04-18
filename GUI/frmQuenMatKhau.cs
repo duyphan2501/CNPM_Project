@@ -135,7 +135,7 @@ namespace GUI
                 messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
                 messageDialog.Show();
                 // update lại trong db
-                taikhoan.updatePassword(txtUsername.Text, password);
+                taikhoan.UpdatePassword(txtUsername.Text, password);
                 // trở về login
                 this.Close();
                 frmLogin frmLogin = new frmLogin();

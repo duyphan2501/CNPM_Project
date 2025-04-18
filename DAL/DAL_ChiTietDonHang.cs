@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace DAL
         {
             ctDonHang = new DTO_ChiTietDonHang(maDonHang, maSp, donGia, soLuong);
         }
+
+        public DAL_ChiTietDonHang() { ctDonHang = new DTO_ChiTietDonHang(); }   
 
         // InsertOrderDetail: Chèn chi tiết đơn hàng vào cơ sở dữ liệu
         public int InsertOrderDetail()
@@ -34,5 +37,21 @@ namespace DAL
             // Thực thi câu lệnh SQL và trả về số dòng bị ảnh hưởng
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
+
+        public int TinhTongTien(string maHoaDon)
+        {
+            string query = "SELECT SUM(SoLuong * DonGia) AS TongTien FROM ChiTietDonHang WHERE MaDonHang = @MaDonHang";
+            return (int)DataProvider.ExecuteScalar(query, new object[] { maHoaDon });
+        }
+
+        public DataTable SelectChiTietByMaDon(string maDonHang)
+        {
+            string query = @"SELECT ct.MaSp, sp.TenSp, ct.SoLuong, ct.DonGia
+                     FROM ChiTietDonHang ct
+                     JOIN SanPham sp ON ct.MaSp = sp.MaSp
+                     WHERE ct.MaDonHang = @MaDonHang";
+            return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
+        }
+
     }
 }

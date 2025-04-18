@@ -26,6 +26,10 @@ namespace DAL
         {
             taikhoandto = new DTO_TaiKhoan(tendangnhap);
         }
+        public DAL_TaiKhoan()
+        {
+            taikhoandto = new DTO_TaiKhoan();
+        }
 
         //Tải danh sách tài khoản có hiệu lực 
         public DataTable LoadAccount()
@@ -66,11 +70,18 @@ namespace DAL
             return DataProvider.ExecuteQuery(query, new object[] { tenDangNhap });
         }
 
-        public void updatePassword()
+        public void UpdatePassword()
         {
             string query = "update TaiKhoan set matkhau = @matkhau where tendangnhap = @tendangnhap";
             object[] param = new object[] { taikhoandto.MatKhau, taikhoandto.TenDangNhap };
             DataProvider.ExecuteNonQuery(query, param);
+        }
+
+        // Lấy tên người dùng từ ca làm
+        public string GetUserNameByShiftID(string shiftID)
+        {
+            string query = "select HoTen from TaiKhoan where TenDangNhap = (select TenDangNhap from CaLamViec where MaCaLam = @MaCaLam)";
+            return DataProvider.ExecuteScalar(query, new object[] { shiftID }).ToString();
         }
     }
 }

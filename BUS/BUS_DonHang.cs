@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using System.Data;
 using DTO;
 namespace BUS
 {
@@ -49,6 +50,11 @@ namespace BUS
         public bool isExistedOrder(string maDonHang)
         {
             return donhang.isExistedOrder(maDonHang);
+        }
+
+        public DataTable SelectOrderForCashier(string maCaLam)
+        {
+            return donhang.SelectOrderForCashier(maCaLam);
         }
     } 
 }
