@@ -19,7 +19,7 @@ namespace GUI
         BUS_PhieuXuatKho phieuxuat = new BUS_PhieuXuatKho("", "", DateTime.Now, "");
         BUS_ChiTietNhapKho chitietnhap = new BUS_ChiTietNhapKho("", "", 0, 0);
         BUS_ChiTietXuatKho chitietxuat = new BUS_ChiTietXuatKho("", "", 0);
-        BUS_TonKho tonkho = new BUS_TonKho("","",0,0,0);
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("","","","",0,0,0);
         public frmXuatNhapKho()
         {
             InitializeComponent();
@@ -123,7 +123,7 @@ namespace GUI
                     }
                 }
 
-                // Thêm mới nếu chưa tồn tại
+                 // Thêm mới nếu chưa tồn tại
                 if (!daTonTai)
                 {
                     gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
@@ -163,42 +163,38 @@ namespace GUI
                         break;
                     }
                 }
-
                 bool loi = false; //lỗi khi số lượng xuất lớn hơn số lượng tồn
-                DataTable dt = tonkho.LoadWarehouse(); //tạo datatable tồn kho
-                DataRow[] LoctheoNL = dt.Select($"[Nguyên liệu] = '{nguyenlieu}'"); //lấy ra dòng nguyên liệu tương ứng
-
-
-                foreach (DataRow row in LoctheoNL)
-                {
-                    string NL = row["Nguyên liệu"].ToString();
-                    int slTon = Convert.ToInt32(row["Số lượng tồn"]);
-                    int slTonMin = Convert.ToInt32(row["Mức tối thiểu"]);
-                    if (NL == nguyenlieu && soluongxuat > slTon)
+                if (daTonTai == false) {
+                    DataTable dt = nguyenlieubus.LoadIngredients();
+                    foreach (DataRow row in dt.Rows)
                     {
-                        MessageBox.Show("Số lượng xuất quá số lượng tồn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        loi = true;
-                        //cboLoaiphieu.Enabled = true;
-                        break ;
-                    }else if(NL == nguyenlieu && soluongxuat < slTon && (slTon - soluongxuat) < slTonMin)
-                    {
-                        loi = true;
-                        DialogResult result = MessageBox.Show(
-                        "Xuất quá mức tối thiểu?",
-                        "Xác nhận thêm phiếu",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
+                        string tennl = row["Tên nguyên liệu"].ToString();
+                        int soluongton = Convert.ToInt32(row["Số lượng tồn"]);
+                        int muctoithieu = Convert.ToInt32(row["Mức tối thiểu"]);
+
+                        if (tennl == nguyenlieu && soluongxuat > soluongton)
                         {
-                            loi = false;
+                            MessageBox.Show("Xuất quá số lượng tồn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            loi = true;
                         }
-                        else
+                        else if (tennl == nguyenlieu && (soluongton - soluongxuat) < muctoithieu)
                         {
-                            MessageBox.Show("Đã bỏ nguyên liệu vừa thêm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DialogResult result = MessageBox.Show(   //Thông báo xuất quá mức tối thiểu
+                                "Xuất quá mức tối thiểu?",
+                                "Xác nhận lưu phiếu",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+                            if (result == DialogResult.Yes) {  //nếu chọn yes vẫn thêm nl vào phiếu xuất
+                                loi = false;
+                            }
+                            else      //chọn no thì không thêm nl đó vào phiếu
+                            {
+                                MessageBox.Show("Đã xóa nguyên liệu vừa thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                loi = true;
+                            }
                         }
-                    }        
+                    }
                 }
-
                 // Thêm mới nếu chưa tồn tại
                 if (!daTonTai && !loi)
                 {
@@ -210,7 +206,7 @@ namespace GUI
                     txtGhichu.Enabled = false;
                 }
             }
-            
+
 
 
         }
@@ -251,8 +247,7 @@ namespace GUI
                 }
                 else
                 {
-                    //DataTable dt = tonkho.LoadWarehouse(); //tạo datatable tồn kho
-
+                    
                     foreach (DataGridViewRow row in gridDsPhieu.Rows)
                     {
                         string manguyenlieu = row.Cells["manl"].Value?.ToString();
@@ -260,15 +255,7 @@ namespace GUI
                         string tennnl = row.Cells["nguyenlieu"].Value?.ToString();
 
 
-                        //foreach (DataGridViewRow row2 in dt.Rows)
-                        //{
-                        //    string nlTon = row2.Cells["Nguyên liệu"].Value?.ToString();
-                        //    int slTon = Convert.ToInt32(row2.Cells["Số lượng tồn"].Value?.ToString());
-                        //    if (tennnl == nlTon && soLuong < slTon)
-                        //    {
-
-                        //    }
-                        //}
+                        
                         if (cboLoaiphieu.Enabled == true)
                         {
                             phieuxuat.ThemPhieuXuat(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);

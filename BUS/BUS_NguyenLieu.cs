@@ -12,9 +12,9 @@ namespace BUS
     {
         DAL_NguyenLieu nguyenlieudal;
         
-        public BUS_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong, int muctoithieu)
+        public BUS_NguyenLieu(string manl, string maloainl, string tennl, string donvi, int soluong, int muctoithieu, int mucondinh)
         {
-            nguyenlieudal = new DAL_NguyenLieu(manl,maloainl,tennl,donvi,soluong, muctoithieu);
+            nguyenlieudal = new DAL_NguyenLieu(manl,maloainl,tennl,donvi,soluong, muctoithieu, mucondinh);
         }
         public DataTable LoadIngredients()
         {
@@ -32,14 +32,14 @@ namespace BUS
             return nguyenlieudal.LoadIngredients_name();
         }
 
-        public void AddIngredients(string manl, string tenloainl, string tennl, string donvi)
+        public void AddIngredients(string manl, string tenloainl, string tennl, string donvi, int muctoithieu, int mucondinh)
         {
-            nguyenlieudal.AddIngredients(manl, tenloainl, tennl, donvi);
+            nguyenlieudal.AddIngredients(manl, tenloainl, tennl, donvi,muctoithieu,mucondinh);
         }
 
-        public void UpdateIngredients(string manl, string maloainl, string tennl, string donvi)
+        public void UpdateIngredients(string manl, string maloainl, string tennl, string donvi, int muctoithieu, int mucondinh)
         {
-            nguyenlieudal.UpdateIngredients(manl,maloainl,tennl,donvi);
+            nguyenlieudal.UpdateIngredients(manl,maloainl,tennl,donvi, muctoithieu, mucondinh);
         }
 
 
