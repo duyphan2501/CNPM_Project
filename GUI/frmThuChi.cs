@@ -24,6 +24,7 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
+            grbXuatNhapKho.Visible = false;
             gridDsThuchi.RowTemplate.Height = 50;
             TaiPhieu();
             TaiLoaiPhieu();
@@ -52,6 +53,7 @@ namespace GUI
 
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
+            grbXuatNhapKho.Visible = true;
             txtMaphieu.Text = phieu.PhatSinhMaPhieu();
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;

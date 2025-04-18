@@ -22,9 +22,10 @@ namespace GUI
 
         private void frmKho_Load(object sender, EventArgs e)
         {
+            pnlThongtinNL.Visible = false;
             LoadNguyenLieu();
             TaiTenLoai();
-            gbThongtinnguyenlieu.Enabled = false;
+            pnlThongtinNL.Enabled = false;
             btnThemNguyenlieu.Enabled = true;
             btnHuy.Enabled = false;
             btnLuu.Enabled = false;
@@ -55,7 +56,8 @@ namespace GUI
 
         private void btnThemNguyenlieu_Click(object sender, EventArgs e)
         {
-            gbThongtinnguyenlieu.Enabled = true;
+            pnlThongtinNL.Visible = true;
+            pnlThongtinNL.Enabled = true;
             txtMaNguyenLieu.Enabled = true;
             btnHuy.Enabled = true;
             btnLuu.Enabled = true;
@@ -121,19 +123,25 @@ namespace GUI
             numMuctoithieu.Value = Convert.ToDecimal(hangduocchon.Cells["Mức tối thiểu"].Value);
             numMucondinh.Value = Convert.ToDecimal(hangduocchon.Cells["Mức ổn định"].Value);
 
-            gbThongtinnguyenlieu.Enabled = true;
+            pnlThongtinNL.Enabled = true;
             txtMaNguyenLieu.Enabled = false;
 
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
-
+            pnlThongtinNL.Visible = true;
         }
 
         private void gridDsNguyenlieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pnlThongtinNL.Visible = false;
+            btnThemNguyenlieu.Enabled = true;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 31; i += 5)
+                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 31; i += 10)
                 {
                     pnlKho.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -84,7 +84,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
+                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 10)
                 {
                     pnlBaocaoTK.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt

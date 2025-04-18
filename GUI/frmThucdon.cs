@@ -52,15 +52,18 @@ namespace GUI
 
         private void frmThucdon_Load(object sender, EventArgs e)
         {
-            gbThongtinsanpham.Enabled = false;
+            pnlThongtinSP.Visible = false;
+            pnlThongtinSP.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             btnDinhluong.Enabled = false;
-            btnTimkiem.Enabled = false;
-            txtTimkiem.Enabled = false;
+            //btnTimkiem.Enabled = false;
+            //txtTimkiem.Enabled = false;
             btnThemmon.Enabled = true;
             TaiTenLoai();
             LoadProduct();
+
+            
         }
 
 
@@ -98,7 +101,8 @@ namespace GUI
         //Khi click nút Thêm món
         private void btnThemmon_Click(object sender, EventArgs e)
         {
-            gbThongtinsanpham.Enabled = true;
+            pnlThongtinSP.Visible = true;
+            pnlThongtinSP.Enabled = true;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
             btnTimkiem.Enabled = true;
@@ -135,11 +139,12 @@ namespace GUI
 
             // Cập nhật giao diện
             EnableProductFields();
+            pnlThongtinSP.Visible = true;
         }
 
         private void EnableProductFields()
         {
-            gbThongtinsanpham.Enabled = true;
+            pnlThongtinSP.Enabled = true;
             txtMasanpham.Enabled = false;
             //cboTenloai.Enabled = false; // Nếu cần thì có thể bật lại
 
@@ -220,6 +225,12 @@ namespace GUI
                 dv.RowFilter = $"[Trạng thái] LIKE '%Ngưng bán%'";
                 gridThucDon.DataSource = dv;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            pnlThongtinSP.Visible = false;
+            btnThemmon.Enabled = true;
         }
     }
 }
