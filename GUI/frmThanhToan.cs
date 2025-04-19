@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
-using cnpm;
 
 namespace GUI
 {
@@ -216,7 +215,7 @@ namespace GUI
             int giamGia = (int)numGiamGia.Value;
             int loaiThanhToan = cboLoaiThanhToan.SelectedIndex;
 
-            // 4. Tạo đối tượng đơn hàng
+            // Tạo đối tượng đơn hàng
             BUS_DonHang donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, 0, maThe, ghiChu);
             if (!donHang.isExistedOrder(maDonhang))
             {
@@ -224,7 +223,7 @@ namespace GUI
                 BUS_TheRung therung = new BUS_TheRung();
                 therung.UpdateStateTheRung(1, maThe);
             }
-            donHang = new BUS_DonHang(maDonhang, maCaLam, giamGia, loaiThanhToan);
+            donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, giamGia, loaiThanhToan);
             int affectedRows = donHang.ThanhToanDonHang();
             if (affectedRows != 0)
             {
@@ -233,7 +232,6 @@ namespace GUI
                 {
                     // Tạo chi tiết đơn hàng
                     BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
-
                     // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
                     int isDetailAdded = chiTietDonHang.InsertOrderDetail();
                     if (isDetailAdded == 0)

@@ -39,7 +39,7 @@ namespace DAL
         {
             string query = "select top 1 MaThe from TheRung order by mathe desc";
             object result = DataProvider.ExecuteScalar(query);
-            return result != null ? result.ToString(): "T001" ;
+            return result != null ? result.ToString(): "" ;
         }
 
         public int UpdateTheRung()

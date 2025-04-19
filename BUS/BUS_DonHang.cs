@@ -12,16 +12,18 @@ namespace BUS
     {
         DAL_DonHang donhang;
 
+        // Lập đơn hàng
         public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
                            int trangThai, string maThe, string ghiChu)
         {
             donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaLam, trangThai, maThe, ghiChu);
         }
 
-        public BUS_DonHang(string maDonHang, string maCaThanhToan, int giamGia,
+        // Thanh toán đơn hàng
+        public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaThanhToan, int giamGia,
                            int loaiThanhToan)
         {
-            donhang = new DAL_DonHang(maDonHang, maCaThanhToan, giamGia, loaiThanhToan);
+            donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaThanhToan, giamGia, loaiThanhToan);
         }
 
         public BUS_DonHang() { donhang = new DAL_DonHang(); }
@@ -30,6 +32,10 @@ namespace BUS
         {
             string maDonHienTai = donhang.LayMaDonHangLonNhat();
             // Lấy phần số sau chữ DH
+            if (maDonHienTai == "")
+            {
+                return "DH00001";
+            }
             int so = int.Parse(maDonHienTai.Substring(2));
             // Tăng lên 1
             so++;
@@ -56,5 +62,15 @@ namespace BUS
         {
             return donhang.SelectOrderForCashier(maCaLam);
         }
+
+        public int UpdateTongTien(string maDonHang)
+        {
+            return donhang.UpdateTongTien(maDonHang);
+        }
+
+        public string LayGhiChu(string maDonHang)
+        {
+            return donhang.LayGhiChu(maDonHang);
+        }   
     } 
 }

@@ -12,16 +12,17 @@ namespace DAL
     public class DAL_DonHang
     {
         DTO_DonHang donhang;
+        // Lập đơn hàng
         public DAL_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
                            int trangThai, string maThe, string ghiChu)
         {
             donhang = new DTO_DonHang(maDonHang, tenDangNhap, maCaLam, trangThai, maThe, ghiChu);
         }
-
-        public DAL_DonHang(string maDonHang, string maCaThanhToan, int giamGia,
+        // Thanh toán đơn hàng
+        public DAL_DonHang(string maDonHang, string tenDangNhap, string maCaThanhToan, int giamGia,
                            int loaiThanhToan)
         {
-            donhang = new DTO_DonHang(maDonHang, maCaThanhToan, giamGia, loaiThanhToan);
+            donhang = new DTO_DonHang(maDonHang, tenDangNhap, maCaThanhToan, giamGia, loaiThanhToan);
         }
 
         public DAL_DonHang() { donhang = new DTO_DonHang(); }
@@ -30,19 +31,19 @@ namespace DAL
         {
             string query = "select top 1 madonhang from donhang order by madonhang desc";
             object result = DataProvider.ExecuteScalar(query);
-            return result != null ? result.ToString() : "DH00001";
+            return result != null ? result.ToString() : "";
         }
 
         public int InsertNewOrder()
         {
-            string query = "INSERT INTO DonHang (MaDonHang, TenDangNhap, MaCaLam, TrangThai, MaThe, GhiChu) " +
+            string query = "INSERT INTO DonHang (MaDonHang, NguoiLap, MaCaLap, TrangThai, MaThe, GhiChu) " +
                            "VALUES (@MaDonHang, @TenDangNhap, @MaCaLam, @TrangThai, @MaThe, @GhiChu)";
 
             object[] parameters = new object[]
             {
                 donhang.MaDonHang,
-                donhang.TenDangNhap,
-                donhang.MaCaLam,
+                donhang.NguoiLap,
+                donhang.MaCaLap,
                 donhang.TrangThai,
                 donhang.MaThe,
                 donhang.GhiChu
@@ -53,9 +54,10 @@ namespace DAL
 
         public int ThanhToanDonHang()
         {
-            string query = "UPDATE DonHang SET MaCaThanhToan = @MaCaThanhToan, GiamGia = @GiamGia, LoaiThanhToan = @LoaiThanhToan WHERE MaDonHang = @MaDonHang";
+            string query = "UPDATE DonHang SET NguoiThanhToan = @TenDangNhap, MaCaThanhToan = @MaCaThanhToan, GiamGia = @GiamGia, LoaiThanhToan = @LoaiThanhToan WHERE MaDonHang = @MaDonHang";
             object[] parameters = new object[]
             {
+                donhang.NguoiThanhToan,
                 donhang.MaCaThanhToan,
                 donhang.GiamGia,
                 donhang.LoaiThanhToan,
@@ -75,8 +77,26 @@ namespace DAL
         // lấy đơn hàng cho thu ngân
         public DataTable SelectOrderForCashier(string maCaLam)
         {
-            string query = "select * from DonHang where MaCaLam = @MaCaLam or MaCaThanhToan is null";
+            string query = "select * from DonHang where MaCaLap = @MaCaLap or MaCaThanhToan is null";
             return DataProvider.ExecuteQuery(query, new object[] { maCaLam });
+        }
+
+        public int UpdateTongTien(string maDonHang)
+        {
+            string query = "UPDATE DonHang SET TongTien = (SELECT SUM(SoLuong * DonGia) FROM ChiTietDonHang WHERE MaDonHang = @MaDonHang) WHERE MaDonHang = @MaDon";
+            object[] parameters = new object[]
+            {
+                maDonHang,
+                maDonHang
+            };
+            return (int)DataProvider.ExecuteNonQuery(query, parameters);
+        }
+
+        public string LayGhiChu(string maDonHang)
+        {
+            string query = "SELECT GhiChu FROM DonHang WHERE MaDonHang = @MaDonHang";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maDonHang });
+            return result != null ? result.ToString() : "";
         }
     }
 }

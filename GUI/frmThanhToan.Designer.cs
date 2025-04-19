@@ -87,7 +87,7 @@
             lblTongTien.Anchor = AnchorStyles.Right;
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTongTien.Location = new Point(503, 110);
+            lblTongTien.Location = new Point(503, 127);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(85, 25);
             lblTongTien.TabIndex = 1;
@@ -119,7 +119,7 @@
             lblNgayLap.Anchor = AnchorStyles.Right;
             lblNgayLap.AutoSize = true;
             lblNgayLap.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNgayLap.Location = new Point(503, 70);
+            lblNgayLap.Location = new Point(503, 87);
             lblNgayLap.Name = "lblNgayLap";
             lblNgayLap.Size = new Size(85, 25);
             lblNgayLap.TabIndex = 1;
@@ -180,16 +180,16 @@
             // 
             pnlTienMat.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             pnlTienMat.AutoSize = true;
-            pnlTienMat.Location = new Point(33, 281);
+            pnlTienMat.Location = new Point(33, 274);
             pnlTienMat.Name = "pnlTienMat";
-            pnlTienMat.Size = new Size(554, 71);
+            pnlTienMat.Size = new Size(554, 115);
             pnlTienMat.TabIndex = 3;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(30, 367);
+            label7.Location = new Point(30, 403);
             label7.Name = "label7";
             label7.Size = new Size(162, 25);
             label7.TabIndex = 1;
@@ -209,7 +209,7 @@
             txtKhachDua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtKhachDua.ForeColor = Color.Black;
             txtKhachDua.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtKhachDua.Location = new Point(430, 358);
+            txtKhachDua.Location = new Point(428, 397);
             txtKhachDua.Margin = new Padding(4, 5, 4, 5);
             txtKhachDua.Name = "txtKhachDua";
             txtKhachDua.PlaceholderText = "";
@@ -225,7 +225,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(30, 410);
+            label8.Location = new Point(34, 444);
             label8.Name = "label8";
             label8.Size = new Size(250, 25);
             label8.TabIndex = 1;
@@ -246,7 +246,7 @@
             label10.Anchor = AnchorStyles.Right;
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(561, 154);
+            label10.Location = new Point(561, 171);
             label10.Name = "label10";
             label10.Size = new Size(27, 25);
             label10.TabIndex = 1;
@@ -264,7 +264,7 @@
             btnThanhToan.FillColor = Color.FromArgb(113, 181, 108);
             btnThanhToan.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThanhToan.ForeColor = Color.White;
-            btnThanhToan.Location = new Point(34, 449);
+            btnThanhToan.Location = new Point(30, 490);
             btnThanhToan.Name = "btnThanhToan";
             btnThanhToan.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnThanhToan.Size = new Size(555, 67);
@@ -279,7 +279,7 @@
             numGiamGia.BorderRadius = 5;
             numGiamGia.CustomizableEdges = customizableEdges1;
             numGiamGia.Font = new Font("Segoe UI", 9F);
-            numGiamGia.Location = new Point(481, 150);
+            numGiamGia.Location = new Point(481, 167);
             numGiamGia.Margin = new Padding(3, 4, 3, 4);
             numGiamGia.Name = "numGiamGia";
             numGiamGia.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -293,7 +293,7 @@
             lblKhachCanTra.Anchor = AnchorStyles.Right;
             lblKhachCanTra.AutoSize = true;
             lblKhachCanTra.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblKhachCanTra.Location = new Point(503, 197);
+            lblKhachCanTra.Location = new Point(503, 214);
             lblKhachCanTra.Name = "lblKhachCanTra";
             lblKhachCanTra.Size = new Size(85, 25);
             lblKhachCanTra.TabIndex = 1;
@@ -305,7 +305,7 @@
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(564, 367);
+            label3.Location = new Point(564, 407);
             label3.Name = "label3";
             label3.Size = new Size(23, 25);
             label3.TabIndex = 8;
@@ -316,7 +316,7 @@
             lblTienThua.Anchor = AnchorStyles.Right;
             lblTienThua.AutoSize = true;
             lblTienThua.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTienThua.Location = new Point(555, 410);
+            lblTienThua.Location = new Point(552, 444);
             lblTienThua.Name = "lblTienThua";
             lblTienThua.Size = new Size(33, 25);
             lblTienThua.TabIndex = 1;
@@ -327,7 +327,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(626, 543);
+            ClientSize = new Size(626, 576);
             Controls.Add(label3);
             Controls.Add(numGiamGia);
             Controls.Add(btnThanhToan);

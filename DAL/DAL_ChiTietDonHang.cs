@@ -40,7 +40,7 @@ namespace DAL
 
         public int TinhTongTien(string maHoaDon)
         {
-            string query = "SELECT SUM(SoLuong * DonGia) AS TongTien FROM ChiTietDonHang WHERE MaDonHang = @MaDonHang";
+            string query = "SELECT TongTien FROM DonHang WHERE MaDonHang = @MaDonHang";
             return (int)DataProvider.ExecuteScalar(query, new object[] { maHoaDon });
         }
 

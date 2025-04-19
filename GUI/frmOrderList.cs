@@ -1,5 +1,4 @@
 ﻿using BUS;
-using cnpm;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -18,6 +17,10 @@ namespace GUI
         private BUS_DonHang donhang;
         private BUS_ChiTietDonHang ctDonHang;
         private BUS_TaiKhoan taikhoan;
+        bool isEditing = false;
+        string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
+        string tenNhanVien = Program.account.Rows[0]["HoTen"].ToString();
+
         public frmOrderList()
         {
             InitializeComponent();
@@ -28,40 +31,38 @@ namespace GUI
 
         private void frmOrderList_Load(object sender, EventArgs e)
         {
-            LoadOrderList();
+            LoadOrderList(donhang.SelectOrderForCashier(maCaLam));
+            gridOrderDetail.Columns["TenSp"].ReadOnly = true;
+            gridOrderDetail.Columns["DonGia"].ReadOnly = true;
             pnlOrderDetail.Visible = false;
+            EnableEditing(false); 
         }
 
-        private void LoadOrderList()
+        private void EnableEditing(bool enable)
         {
-            string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
-            string tenNhanVien = Program.account.Rows[0]["HoTen"].ToString();
+            numGiamGia.Enabled = enable;
+            txtGhiChu.Enabled = enable;
+            gridOrderDetail.Columns["SoLuong"].ReadOnly = !enable;
+            btnChinhSua.Text = enable ? "Huỷ" : "Chỉnh sửa";
+        }
 
-            DataTable orderList = donhang.SelectOrderForCashier(maCaLam);
+        private void LoadOrderList(DataTable orderList)
+        {
 
-            gridOrderList.Rows.Clear(); // nếu không dùng DataBinding
+            gridOrderList.Rows.Clear();
 
             foreach (DataRow row in orderList.Rows)
             {
                 string maDon = row["MaDonHang"].ToString();
-                string NVLap = tenNhanVien;
-                string maCaLap = row["MaCaLam"].ToString();
-                string maCaThanhToan = row["MaCaThanhToan"].ToString();
-
-                string NVThanhToan = "";
-                if (maCaLap.Equals(MaCaThanhToan))
-                {
-                    NVThanhToan = NVLap;
-                }
-                else
-                {
-                    NVThanhToan = taikhoan.GetUserNameByShiftID(maCaThanhToan);
-                }
+                string NVLap = row["NguoiLap"].ToString();
+                string NVThanhToan = row["NguoiThanhToan"].ToString();
+                string giamGia = row["GiamGia"].ToString();
+                string tongTien = General.FormatMoney((int)row["TongTien"]);
                 string thanhToanStr = ConvertLoaiThanhToan(Convert.ToInt32(row["LoaiThanhToan"]));
                 string trangThaiStr = ConvertTrangThai(Convert.ToInt32(row["TrangThai"]));
-                string ngayLap = Convert.ToDateTime(row["NgayLap"]).ToString("dd/MM/yyyy HH:mm");
-
-                gridOrderList.Rows.Add(maDon, maCaLap, NVLap, maCaThanhToan, NVThanhToan, thanhToanStr, trangThaiStr, ngayLap);
+                string ngayLap = Convert.ToDateTime(row["NgayLap"]).ToString("dd/MM/yyyy HH:mm:ss");
+                gridOrderList.Rows.Add(maDon, NVLap, NVThanhToan, giamGia, tongTien, thanhToanStr, trangThaiStr, ngayLap);
+                gridOrderList.ResumeLayout(); // Kích hoạt lại UI
             }
         }
 
@@ -85,6 +86,7 @@ namespace GUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             pnlOrderDetail.Visible = false;
+            EnableEditing(false);
         }
 
         private void btnViewDetail_Click(object sender, EventArgs e)
@@ -95,11 +97,11 @@ namespace GUI
                 return;
             }
 
-            string maDonHang = gridOrderList.SelectedRows[0].Cells[0].Value.ToString(); // Cột đầu tiên là MaDonHang
+            string maDonHang = gridOrderList.SelectedRows[0].Cells[0].Value.ToString(); 
             DataTable ctList = ctDonHang.SelectChiTietByMaDon(maDonHang); // Gọi từ BUS
 
             gridOrderDetail.Rows.Clear();
-
+            int tongTien = 0;
             foreach (DataRow row in ctList.Rows)
             {
                 string tenSP = row["TenSp"].ToString();
@@ -107,17 +109,17 @@ namespace GUI
                 string soLuong = row["SoLuong"].ToString();
                 Image img = Properties.Resources.recyclebin;
                 gridOrderDetail.Rows.Add(img, tenSP, donGia, soLuong);
+                tongTien += (int)row["DonGia"] * (int)row["SoLuong"];
             }
-
+            lblTongTien.Text = General.FormatMoney(tongTien);
+            txtGhiChu.Text = donhang.LayGhiChu(maDonHang);
             pnlOrderDetail.Visible = true;
         }
-
-        bool isEditing = false;
 
         private void btnChinhSua_Click(object sender, EventArgs e)
         {
             isEditing = !isEditing;
-            gridOrderDetail.Columns["SoLuong"].ReadOnly = false;
+            EnableEditing(isEditing);
         }
 
         private void gridOrderDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
