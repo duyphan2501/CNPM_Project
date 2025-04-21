@@ -159,6 +159,8 @@ namespace GUI
         //Nút lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            bool loi = false;
+            bool datontai = false;
             // Lấy thông tin từ form
             string maSanPham = txtMasanpham.Text;
             string maLoai = cboTenloai.SelectedValue.ToString();
@@ -166,26 +168,61 @@ namespace GUI
             int giaBan = Convert.ToInt32(numGiaban.Value);
             string trangThai = cboTrangthai.Text;
 
+           
             // Kiểm tra xem có ảnh không
             byte[] anhSanPham = null;
             if (picAnhsanpham.Image != null)
             {
                 anhSanPham = General.ImageToByteArray(picAnhsanpham.Image);
             }
-
-            // Kiểm tra nếu không cho sửa mã sản phẩm (trường hợp cập nhật)
-            if (txtMasanpham.Enabled == false)  // Cập nhật sản phẩm
+            else if(picAnhsanpham.Image == null)
             {
-                sanpham.UpdateProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                MessageBox.Show("Vui lòng thêm ảnh sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                loi = true;
+                return;
             }
-            else  // Thêm sản phẩm mới
+            else if(giaBan == 0)
             {
-                sanpham.AddProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                MessageBox.Show("Vui lòng nhập giá bán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                loi = true;
+                return;
+            }
+            else if (trangThai == null)
+            {
+                MessageBox.Show("Vui lòng chọn trạng thái.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                loi = true;
+                return;
             }
 
-            // Tải lại dữ liệu sau khi thêm/sửa
-            LoadProduct();
-            frmThucdon_Load(sender, e);
+            if (loi == false) {
+                DataTable dt = sanpham.LoadProduct();
+                foreach (DataRow row in dt.Rows)
+                {
+                    string tenmon = row["Tên món"].ToString();
+                    if (tenmon == tenSanPham && txtMasanpham.Enabled == true)  //Kiểm tra có thêm trùng sản phẩm không
+                    {
+                        MessageBox.Show("Đã có sản phẩm này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        datontai = true;
+                    }
+                }
+            }
+
+            if (loi == false && datontai == false)
+            {
+                // Kiểm tra nếu không cho sửa mã sản phẩm (trường hợp cập nhật)
+                if (txtMasanpham.Enabled == false)  // Cập nhật sản phẩm
+                {
+                    sanpham.UpdateProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                }
+                else  // Thêm sản phẩm mới
+                {
+                    sanpham.AddProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
+                }
+
+                // Tải lại dữ liệu sau khi thêm/sửa
+                LoadProduct();
+                frmThucdon_Load(sender, e);
+            }
         }
 
 

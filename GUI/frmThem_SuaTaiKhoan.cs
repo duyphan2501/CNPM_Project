@@ -75,33 +75,50 @@ namespace GUI
                 return false;
             }
         }
+
+        
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtHoten.Text) ||  //check thông tin nhập vào không được bỏ trống
-                string.IsNullOrEmpty(cboVaitro.Text) ||
-                string.IsNullOrEmpty(txtEmail.Text))
+            bool datontai = false;
+            string tenDN = txtTendangnhap.Text;  //Tên đăng nhập đăng nhập vào
+            DataTable dt = taikhoanbus.LoadAccount();
+            foreach (DataRow row in dt.Rows)  
             {
-                MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string tendangnhap = row["Tên đăng nhập"].ToString();  // duyệt qua các tên đăng nhập đăng có
+                if(tendangnhap == tenDN && txtTendangnhap.ReadOnly == false)
+                {
+                    MessageBox.Show("Tên đăng nhập đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    datontai = true;
+                }
             }
-            else if (!IsValidEmail(txtEmail.Text))  //check định dạng email
+            if (datontai == false)
             {
-                MessageBox.Show("Email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if ((string.IsNullOrEmpty(txtTendangnhap.Text) || string.IsNullOrEmpty(txtMatkhau.Text)) && isUpdateMode == false) //Trường hợp  thêm tài khoản thì check thêm tên đăng nhập và mật khẩu
-            {
-                MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (isUpdateMode == false)  //Thêm tài khoản
-            {
-                taikhoanbus.AddAccount(txtTendangnhap.Text, txtMatkhau.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else   //Cập nhật tài khoản
-            {
-                taikhoanbus.UpdateAccount(txtTendangnhap.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (string.IsNullOrEmpty(txtHoten.Text) ||  //check thông tin nhập vào không được bỏ trống
+                    string.IsNullOrEmpty(cboVaitro.Text) ||
+                    string.IsNullOrEmpty(txtEmail.Text))
+                {
+                    MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (!IsValidEmail(txtEmail.Text))  //check định dạng email
+                {
+                    MessageBox.Show("Email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if ((string.IsNullOrEmpty(txtTendangnhap.Text) || string.IsNullOrEmpty(txtMatkhau.Text)) && isUpdateMode == false) //Trường hợp  thêm tài khoản thì check thêm tên đăng nhập và mật khẩu
+                {
+                    MessageBox.Show("Thông tin không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (isUpdateMode == false)  //Thêm tài khoản
+                {
+                    taikhoanbus.AddAccount(txtTendangnhap.Text, txtMatkhau.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else   //Cập nhật tài khoản
+                {
+                    taikhoanbus.UpdateAccount(txtTendangnhap.Text, trangthai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
 

@@ -539,7 +539,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridThucDon.DefaultCellStyle = dataGridViewCellStyle3;
             gridThucDon.GridColor = Color.White;
-            gridThucDon.Location = new Point(2, 63);
+            gridThucDon.Location = new Point(4, 44);
             gridThucDon.Margin = new Padding(2, 5, 2, 5);
             gridThucDon.Name = "gridThucDon";
             gridThucDon.ReadOnly = true;

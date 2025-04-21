@@ -67,6 +67,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             gridDsNguyenlieu = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -97,6 +99,7 @@
             label2 = new Label();
             pnlThongtinNL = new Guna.UI2.WinForms.Guna2Panel();
             btnClose = new Guna.UI2.WinForms.Guna2Button();
+            btnTrolai = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)gridDsNguyenlieu).BeginInit();
             pnlTrangthai.SuspendLayout();
             pnlTensanpham.SuspendLayout();
@@ -605,6 +608,28 @@
             btnClose.Text = "X";
             btnClose.Click += btnClose_Click;
             // 
+            // btnTrolai
+            // 
+            btnTrolai.AutoRoundedCorners = true;
+            btnTrolai.CustomizableEdges = customizableEdges37;
+            btnTrolai.DisabledState.BorderColor = Color.DarkGray;
+            btnTrolai.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnTrolai.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnTrolai.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnTrolai.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnTrolai.FillColor = Color.FromArgb(244, 103, 0);
+            btnTrolai.FillColor2 = Color.DarkOrange;
+            btnTrolai.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            btnTrolai.ForeColor = Color.White;
+            btnTrolai.Location = new Point(124, 33);
+            btnTrolai.Margin = new Padding(2, 5, 2, 5);
+            btnTrolai.Name = "btnTrolai";
+            btnTrolai.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            btnTrolai.Size = new Size(192, 69);
+            btnTrolai.TabIndex = 27;
+            btnTrolai.Text = "Trờ lại";
+            btnTrolai.Click += btnTrolai_Click;
+            // 
             // frmKho
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -615,6 +640,7 @@
             Controls.Add(txtTimkiem);
             Controls.Add(guna2GroupBox1);
             Controls.Add(btnTimkiem);
+            Controls.Add(btnTrolai);
             Controls.Add(btnThemNguyenlieu);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmKho";
@@ -674,5 +700,6 @@
         private Label label4;
         private Guna.UI2.WinForms.Guna2Panel pnlThongtinNL;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2GradientButton btnTrolai;
     }
 }

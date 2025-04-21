@@ -1,1 +1,199 @@
-﻿
+﻿import tkinter as tk
+import config_font
+import sys
+import os
+import socket
+import threading
+import json
+from tkinter import messagebox
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from game.board import Board
+from game.game_logic import GameLogic
+
+
+class NetworkManager:
+    def __init__(self):
+        self.server_socket = None
+        self.connection_socket = None  # Dùng cho server
+        self.client_socket = None
+        self.is_server = False
+        self.connected = False
+        self.host = socket.gethostbyname(socket.gethostname())
+        self.port = 5000
+
+    def start_server(self):
+        try:
+            self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.server_socket.bind((self.host, self.port))
+            self.server_socket.listen(1)
+            self.is_server = True
+            print("Đang chờ client kết nối...")
+            self.connection_socket, _ = self.server_socket.accept()
+            print("Client đã kết nối!")
+            self.connected = True
+            return True
+        except Exception as e:
+            print(f"Lỗi server: {e}")
+            return False
+
+    def connect_to_server(self, server_ip):
+        try:
+            self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.client_socket.connect((server_ip, self.port))
+            self.connected = True
+            return True
+        except Exception as e:
+            print(f"Lỗi kết nối: {e}")
+            return False
+
+    def send_data(self, data):
+        try:
+            message = json.dumps(data).encode()
+            if self.is_server and self.connected:
+                self.connection_socket.sendall(message)
+            elif self.connected:
+                self.client_socket.sendall(message)
+        except Exception as e:
+            print(f"Lỗi gửi dữ liệu: {e}")
+
+    def receive_data(self):
+        try:
+            if self.is_server and self.connected:
+                return json.loads(self.connection_socket.recv(1024).decode())
+            elif self.connected:
+                return json.loads(self.client_socket.recv(1024).decode())
+        except Exception as e:
+            print(f"Lỗi nhận dữ liệu: {e}")
+            return None
+
+
+def create_PlayvsPlayer(main_window, main_menu):
+    network = NetworkManager()
+    game_logic = GameLogic()
+
+    # Tạo cửa sổ kết nối
+    conn_window = tk.Toplevel()
+    config_font.center_window(conn_window, 400, 200)
+    conn_window.configure(bg="#333333")
+    conn_window.title("Xiangqi - Kết nối người chơi")
+
+    tk.Label(conn_window, text="IP của bạn: " + network.host,
+             bg="#333333", fg="white").pack(pady=10)
+
+    ip_entry = tk.Entry(conn_window)
+    ip_entry.pack(pady=10)
+    ip_entry.insert(0, "Nhập IP của server")
+
+    def start_server():
+        if network.start_server():
+            conn_window.withdraw()
+            start_game(is_server=True)
+        else:
+            messagebox.showerror("Lỗi", "Không thể khởi tạo server")
+
+    def connect_client():
+        server_ip = ip_entry.get()
+        if network.connect_to_server(server_ip):
+            conn_window.withdraw()
+            start_game(is_server=False)
+        else:
+            messagebox.showerror("Lỗi", "Không thể kết nối tới server")
+
+    tk.Button(conn_window, text="Tạo phòng (Server)", command=start_server).pack(pady=5)
+    tk.Button(conn_window, text="Tham gia phòng (Client)", command=connect_client).pack(pady=5)
+
+    def start_game(is_server):
+        board_window = tk.Toplevel()
+        config_font.center_window(board_window, 800, 440)
+        board_window.configure(bg="#333333")
+        board_window.protocol("WM_DELETE_WINDOW", lambda: close_game())
+        board_window.title("Xiangqi - Người chơi với người chơi")
+
+        canvas = tk.Canvas(board_window, height=425, width=400, highlightthickness=0)
+        canvas.configure(bg="#333333")
+        canvas.pack()
+
+        board = Board(canvas)
+        current_turn = "red"
+        is_my_turn = is_server  # Server luôn đi trước
+
+        turn_label = tk.Label(board_window, text="", bg="#333333", fg="white")
+        turn_label.pack()
+
+        def close_game():
+            # Gửi thông báo cho đối phương
+            try:
+                network.send_data({"type": "exit"})
+            except:
+                pass
+            
+            # Đóng kết nối
+            if network.is_server:
+                if network.connection_socket:
+                    network.connection_socket.close()
+                if network.server_socket:
+                    network.server_socket.close()
+            else:
+                if network.client_socket:
+                    network.client_socket.close()
+            
+            # Đóng cửa sổ
+            board_window.destroy()
+            conn_window.destroy()
+            main_menu.deiconify()
+
+        def update_turn_label():
+            turn_label.config(text="Lượt của bạn" if is_my_turn else "Lượt đối thủ")
+
+        def handle_move(pos):
+            nonlocal is_my_turn
+            if not is_my_turn:
+                return
+            move = board.get_move_from_click(pos)
+            if move and game_logic.is_valid_move(move):
+                game_logic.make_move(move)
+                board.update_board(game_logic.board)
+                network.send_data({"type": "move", "move": move})
+                is_my_turn = False
+                update_turn_label()
+
+        def receive_moves():
+            nonlocal is_my_turn
+            while True:
+                try:
+                    data = network.receive_data()
+                    if data:
+                        if data["type"] == "move":
+                            game_logic.make_move(data["move"])
+                            board.update_board(game_logic.board)
+                            is_my_turn = True
+                            update_turn_label()
+                        elif data["type"] == "exit":
+                            messagebox.showinfo("Thông báo", "Đối thủ đã thoát game!")
+                            close_game()
+                            break
+                except:
+                    messagebox.showinfo("Thông báo", "Kết nối bị ngắt!")
+                    close_game()
+                    break
+
+        # Luồng nhận dữ liệu
+        threading.Thread(target=receive_moves, daemon=True).start()
+        update_turn_label()
+
+        # Nút quay lại
+        back_button = tk.Button(board_window, text="Quay lại menu",
+                                command=close_game)
+        back_button.place(x=10)
+
+        # Gán sự kiện chuột
+        canvas.bind("<Button-1>", lambda event: handle_move(board.get_piece_by_position(event.x, event.y)))
+
+        board_window.mainloop()
+
+    conn_window.mainloop()
+
+
+# Để test: tạo Tkinter window
+# create_PlayvsPlayer(tk.Tk(), tk.Toplevel())

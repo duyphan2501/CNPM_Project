@@ -22,14 +22,26 @@ namespace GUI
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-            pnlThongtinNL.Visible = false;
-            LoadNguyenLieu();
-            TaiTenLoai();
-            pnlThongtinNL.Enabled = false;
-            btnThemNguyenlieu.Enabled = true;
-            btnHuy.Enabled = false;
-            btnLuu.Enabled = false;
-
+            
+            if (this.Modal)   //nếu mở từ xuất nhập
+            {
+                pnlThongtinNL.Visible = false;
+                btnThemNguyenlieu.Visible = false;
+                btnTrolai.Visible = true;
+                LoadNguyenLieu();
+            }
+            else  //nếu chạy trực tiếp
+            {
+                btnTrolai.Visible = false;
+                pnlThongtinNL.Visible = false;
+                LoadNguyenLieu();
+                TaiTenLoai();
+                pnlThongtinNL.Enabled = false;
+                btnThemNguyenlieu.Enabled = true;
+                btnThemNguyenlieu.Visible = true;
+                btnHuy.Enabled = false;
+                btnLuu.Enabled = false; 
+            }
         }
 
         public void LoadNguyenLieu()
@@ -96,20 +108,24 @@ namespace GUI
                 {
                     nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
                     LoadNguyenLieu();
+                    frmKho_Load(sender, e);
 
                 }
                 else
                 {
                     nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
                     LoadNguyenLieu();
+                    frmKho_Load(sender, e);
                 }
             }
-            frmKho_Load(sender, e);
+
 
         }
 
         private void gridDsNguyenlieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.Modal) //nếu mở từ form khác thì không cho sửa
+                return;
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
             if (e.RowIndex < 0 || e.ColumnIndex != gridDsNguyenlieu.Columns["btnUpdate"].Index)
             {
@@ -142,6 +158,11 @@ namespace GUI
         {
             pnlThongtinNL.Visible = false;
             btnThemNguyenlieu.Enabled = true;
+        }
+
+        private void btnTrolai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
