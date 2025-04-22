@@ -13,7 +13,7 @@ namespace GUI
 {
     public partial class frmTaiKhoan : Form
     {
-        BUS_TaiKhoan taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
+        BUS_TaiKhoan taiKhoanBus = new BUS_TaiKhoan("", "", "", "", "", "");
         public frmTaiKhoan()
         {
             InitializeComponent();
@@ -21,66 +21,39 @@ namespace GUI
 
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
-            LoadAccount();
+            LoadAccountsByStatus("Hoạt Động"); //mở form thì load danh sách tài khoản còn hoạt động
             //cboTrangthai.Text = "Hoạt Động";
-            gridDsTaikhoan.Columns["btnUpdate"].DisplayIndex = gridDsTaikhoan.Columns.Count - 1; //đưa button về cuối
+            gridDsTaikhoan.Columns["btnUpdate"].DisplayIndex = gridDsTaikhoan.Columns.Count - 1; //đưa button kí hiệu sửa về cuối
         }
 
-
-        //Load tài khoản có hiệu lực
-        public void LoadAccount()
+        //Hàm tài danh sách tài khoản theo trạng thái
+        private void LoadAccountsByStatus(string status)
         {
-            
-            gridDsTaikhoan.DataSource = taikhoanbus.LoadAccount();
-            gridDsTaikhoan.RowTemplate.Height = 50;   //Chiều cao các hàng trong gridview
-            cboTrangthai.SelectedItem = "Hoạt Động";
-        }
+            if (status == "Hoạt Động")
+                gridDsTaikhoan.DataSource = taiKhoanBus.LoadAccount();
+            else
+                gridDsTaikhoan.DataSource = taiKhoanBus.LoadDisabledAccounts();
 
-        //Load tài khoản vô hiệu hóa
-        public void LoadDisabledAccounts()
-        {
-            gridDsTaikhoan.DataSource = taikhoanbus.LoadDisabledAccounts();
             gridDsTaikhoan.RowTemplate.Height = 50;
-            cboTrangthai.SelectedItem = "Vô Hiệu";
+            cboTrangthai.SelectedItem = status;
         }
 
-        //Khi click tạo tài khoản thì chuyển form
+        //Khi click tạo tài khoản thì chuyển sang form Them_SuaTaiKhoan
         private void btnTaotaikhoan_Click(object sender, EventArgs e)
         {
             frmThem_SuaTaiKhoan themtk = new frmThem_SuaTaiKhoan();
             General.ShowDialogWithBlur(themtk);
-            LoadAccount();
-
+            LoadAccountsByStatus("Hoạt Động");
         }
-
-
 
 
         //Hiển thị danh sách tài khoản theo trạng thái
         private void cboTrangthai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTrangthai.Text == "Hoạt Động")
-            {
-                LoadAccount();
-            }
-            else
-            {
-                LoadDisabledAccounts();
-            }
-
+            LoadAccountsByStatus(cboTrangthai.Text);
         }
 
-
-
-        //private void gridDsTaikhoan_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        //{
-        //    taikhoanbus = new BUS_TaiKhoan("", "", "", "", "", "");
-        //    DataGridViewRow hangduocchon = gridDsTaikhoan.SelectedRows[0];
-        //    frmThemTaiKhoan capnhattk = new frmThemTaiKhoan(hangduocchon.Cells[1].Value.ToString(), hangduocchon.Cells[2].Value.ToString(), hangduocchon.Cells[3].Value.ToString(), hangduocchon.Cells[0].Value.ToString(), hangduocchon.Cells[4].Value.ToString());
-        //    capnhattk.ShowDialog();
-        //    LoadAccount();
-        //}
-
+        //Khi click vào button sửa tài khoản thì chuyển sang form Them_SuaTaiKhoan và đưa thông tin tài khoản được chọn vào form
         private void gridDsTaikhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
@@ -94,14 +67,10 @@ namespace GUI
             string vaitro = hangduocchon.Cells["Vai trò"].Value.ToString();
             string hoten = hangduocchon.Cells["Họ tên"].Value.ToString();
             string email = hangduocchon.Cells["Email"].Value.ToString();
+
             frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(tendangnhap, trangthai , vaitro, hoten, email);
             capnhattk.ShowDialog();
-            LoadAccount();
-        }
-
-        private void gridDsTaikhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            LoadAccountsByStatus(cboTrangthai.Text);
         }
     }
 }

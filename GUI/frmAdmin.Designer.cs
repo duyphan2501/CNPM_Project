@@ -86,10 +86,10 @@
             btnTonkho = new Guna.UI2.WinForms.Guna2GradientButton();
             btnKho = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            btnMenu = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnThucDon = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnDashboard = new Guna.UI2.WinForms.Guna2GradientButton();
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            pnlTop = new Guna.UI2.WinForms.Guna2GradientPanel();
             btnExit = new Guna.UI2.WinForms.Guna2Button();
             pnlFormcon = new Guna.UI2.WinForms.Guna2Panel();
             pnlMenu.SuspendLayout();
@@ -99,7 +99,7 @@
             pnlKho.SuspendLayout();
             guna2Panel5.SuspendLayout();
             guna2Panel1.SuspendLayout();
-            guna2GradientPanel1.SuspendLayout();
+            pnlTop.SuspendLayout();
             SuspendLayout();
             // 
             // pnlMenu
@@ -112,11 +112,12 @@
             pnlMenu.Controls.Add(guna2Panel5);
             pnlMenu.Controls.Add(guna2Panel1);
             pnlMenu.CustomizableEdges = customizableEdges35;
-            pnlMenu.Location = new Point(0, 60);
+            pnlMenu.Dock = DockStyle.Left;
+            pnlMenu.Location = new Point(0, 88);
             pnlMenu.Margin = new Padding(3, 2, 3, 2);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            pnlMenu.Size = new Size(374, 1146);
+            pnlMenu.Size = new Size(374, 1118);
             pnlMenu.TabIndex = 1;
             // 
             // guna2Panel2
@@ -143,8 +144,8 @@
             btnTaiKhoan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnTaiKhoan.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnTaiKhoan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTaiKhoan.FillColor = Color.FromArgb(248, 92, 7);
-            btnTaiKhoan.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnTaiKhoan.FillColor = Color.Transparent;
+            btnTaiKhoan.FillColor2 = Color.Transparent;
             btnTaiKhoan.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
             btnTaiKhoan.ForeColor = Color.White;
             btnTaiKhoan.Image = Properties.Resources.people;
@@ -178,6 +179,7 @@
             // 
             // btnMathangbanchay
             // 
+            btnMathangbanchay.BorderRadius = 20;
             btnMathangbanchay.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnMathangbanchay.CustomImages.ImageOffset = new Point(20, 0);
             btnMathangbanchay.CustomImages.ImageSize = new Size(30, 30);
@@ -187,15 +189,15 @@
             btnMathangbanchay.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnMathangbanchay.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnMathangbanchay.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMathangbanchay.FillColor = Color.FromArgb(248, 92, 7);
-            btnMathangbanchay.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnMathangbanchay.FillColor = Color.Transparent;
+            btnMathangbanchay.FillColor2 = Color.Transparent;
             btnMathangbanchay.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnMathangbanchay.ForeColor = Color.White;
             btnMathangbanchay.Image = (Image)resources.GetObject("btnMathangbanchay.Image");
             btnMathangbanchay.ImageAlign = HorizontalAlignment.Left;
             btnMathangbanchay.ImageOffset = new Point(10, 0);
             btnMathangbanchay.ImageSize = new Size(30, 30);
-            btnMathangbanchay.Location = new Point(5, 199);
+            btnMathangbanchay.Location = new Point(5, 212);
             btnMathangbanchay.Margin = new Padding(3, 5, 3, 5);
             btnMathangbanchay.Name = "btnMathangbanchay";
             btnMathangbanchay.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -208,6 +210,7 @@
             // 
             // btnLoinhuan
             // 
+            btnLoinhuan.BorderRadius = 20;
             btnLoinhuan.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnLoinhuan.CustomImages.ImageOffset = new Point(20, 0);
             btnLoinhuan.CustomImages.ImageSize = new Size(30, 30);
@@ -217,15 +220,15 @@
             btnLoinhuan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLoinhuan.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnLoinhuan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLoinhuan.FillColor = Color.FromArgb(248, 92, 7);
-            btnLoinhuan.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnLoinhuan.FillColor = Color.Transparent;
+            btnLoinhuan.FillColor2 = Color.Transparent;
             btnLoinhuan.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnLoinhuan.ForeColor = Color.White;
             btnLoinhuan.Image = (Image)resources.GetObject("btnLoinhuan.Image");
             btnLoinhuan.ImageAlign = HorizontalAlignment.Left;
             btnLoinhuan.ImageOffset = new Point(10, 0);
             btnLoinhuan.ImageSize = new Size(30, 30);
-            btnLoinhuan.Location = new Point(5, 118);
+            btnLoinhuan.Location = new Point(5, 121);
             btnLoinhuan.Margin = new Padding(3, 5, 3, 5);
             btnLoinhuan.Name = "btnLoinhuan";
             btnLoinhuan.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -238,6 +241,7 @@
             // 
             // btnBaocaoTK
             // 
+            btnBaocaoTK.BorderRadius = 20;
             btnBaocaoTK.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnBaocaoTK.CustomImages.ImageOffset = new Point(20, 0);
             btnBaocaoTK.CustomImages.ImageSize = new Size(30, 30);
@@ -247,8 +251,8 @@
             btnBaocaoTK.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnBaocaoTK.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnBaocaoTK.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBaocaoTK.FillColor = Color.FromArgb(248, 92, 7);
-            btnBaocaoTK.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnBaocaoTK.FillColor = Color.Transparent;
+            btnBaocaoTK.FillColor2 = Color.Transparent;
             btnBaocaoTK.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
             btnBaocaoTK.ForeColor = Color.White;
             btnBaocaoTK.Image = Properties.Resources.Thong_ke;
@@ -261,7 +265,7 @@
             btnBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnBaocaoTK.Size = new Size(364, 88);
             btnBaocaoTK.TabIndex = 0;
-            btnBaocaoTK.Text = "Báo cáo - Thống kê";
+            btnBaocaoTK.Text = "Báo cáo - Thống kê ▽";
             btnBaocaoTK.TextAlign = HorizontalAlignment.Left;
             btnBaocaoTK.TextOffset = new Point(20, 0);
             btnBaocaoTK.Click += btnBaocaoTK_Click;
@@ -290,8 +294,8 @@
             btnThuchi.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnThuchi.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnThuchi.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnThuchi.FillColor = Color.FromArgb(248, 92, 7);
-            btnThuchi.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnThuchi.FillColor = Color.Transparent;
+            btnThuchi.FillColor2 = Color.Transparent;
             btnThuchi.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
             btnThuchi.ForeColor = Color.White;
             btnThuchi.Image = Properties.Resources.thuchi;
@@ -326,6 +330,7 @@
             // 
             // btnKiemkekho
             // 
+            btnKiemkekho.BorderRadius = 20;
             btnKiemkekho.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnKiemkekho.CustomImages.ImageOffset = new Point(20, 0);
             btnKiemkekho.CustomImages.ImageSize = new Size(30, 30);
@@ -335,15 +340,15 @@
             btnKiemkekho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnKiemkekho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnKiemkekho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnKiemkekho.FillColor = Color.FromArgb(248, 92, 7);
-            btnKiemkekho.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnKiemkekho.FillColor = Color.Transparent;
+            btnKiemkekho.FillColor2 = Color.Transparent;
             btnKiemkekho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnKiemkekho.ForeColor = Color.White;
             btnKiemkekho.Image = (Image)resources.GetObject("btnKiemkekho.Image");
             btnKiemkekho.ImageAlign = HorizontalAlignment.Left;
             btnKiemkekho.ImageOffset = new Point(10, 0);
             btnKiemkekho.ImageSize = new Size(30, 30);
-            btnKiemkekho.Location = new Point(5, 286);
+            btnKiemkekho.Location = new Point(5, 294);
             btnKiemkekho.Margin = new Padding(3, 5, 3, 5);
             btnKiemkekho.Name = "btnKiemkekho";
             btnKiemkekho.ShadowDecoration.CustomizableEdges = customizableEdges18;
@@ -352,9 +357,11 @@
             btnKiemkekho.Text = "Kiểm kê kho";
             btnKiemkekho.TextAlign = HorizontalAlignment.Left;
             btnKiemkekho.TextOffset = new Point(20, 0);
+            btnKiemkekho.Click += btnKiemkekho_Click_1;
             // 
             // btnXuatnhapkho
             // 
+            btnXuatnhapkho.BorderRadius = 20;
             btnXuatnhapkho.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnXuatnhapkho.CustomImages.ImageOffset = new Point(20, 0);
             btnXuatnhapkho.CustomImages.ImageSize = new Size(30, 30);
@@ -364,15 +371,15 @@
             btnXuatnhapkho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnXuatnhapkho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnXuatnhapkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnXuatnhapkho.FillColor = Color.FromArgb(248, 92, 7);
-            btnXuatnhapkho.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnXuatnhapkho.FillColor = Color.Transparent;
+            btnXuatnhapkho.FillColor2 = Color.Transparent;
             btnXuatnhapkho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnXuatnhapkho.ForeColor = Color.White;
             btnXuatnhapkho.Image = (Image)resources.GetObject("btnXuatnhapkho.Image");
             btnXuatnhapkho.ImageAlign = HorizontalAlignment.Left;
             btnXuatnhapkho.ImageOffset = new Point(10, 0);
             btnXuatnhapkho.ImageSize = new Size(30, 30);
-            btnXuatnhapkho.Location = new Point(5, 201);
+            btnXuatnhapkho.Location = new Point(5, 206);
             btnXuatnhapkho.Margin = new Padding(3, 5, 3, 5);
             btnXuatnhapkho.Name = "btnXuatnhapkho";
             btnXuatnhapkho.ShadowDecoration.CustomizableEdges = customizableEdges20;
@@ -385,6 +392,7 @@
             // 
             // btnTonkho
             // 
+            btnTonkho.BorderRadius = 20;
             btnTonkho.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnTonkho.CustomImages.ImageOffset = new Point(20, 0);
             btnTonkho.CustomImages.ImageSize = new Size(30, 30);
@@ -394,15 +402,15 @@
             btnTonkho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnTonkho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnTonkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTonkho.FillColor = Color.FromArgb(248, 92, 7);
-            btnTonkho.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnTonkho.FillColor = Color.Transparent;
+            btnTonkho.FillColor2 = Color.Transparent;
             btnTonkho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
             btnTonkho.ForeColor = Color.White;
             btnTonkho.Image = (Image)resources.GetObject("btnTonkho.Image");
             btnTonkho.ImageAlign = HorizontalAlignment.Left;
             btnTonkho.ImageOffset = new Point(10, 0);
             btnTonkho.ImageSize = new Size(30, 30);
-            btnTonkho.Location = new Point(5, 117);
+            btnTonkho.Location = new Point(5, 118);
             btnTonkho.Margin = new Padding(3, 5, 3, 5);
             btnTonkho.Name = "btnTonkho";
             btnTonkho.ShadowDecoration.CustomizableEdges = customizableEdges22;
@@ -415,6 +423,7 @@
             // 
             // btnKho
             // 
+            btnKho.BorderRadius = 20;
             btnKho.CustomImages.ImageAlign = HorizontalAlignment.Left;
             btnKho.CustomImages.ImageOffset = new Point(20, 0);
             btnKho.CustomImages.ImageSize = new Size(30, 30);
@@ -424,8 +433,8 @@
             btnKho.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnKho.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnKho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnKho.FillColor = Color.FromArgb(248, 92, 7);
-            btnKho.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnKho.FillColor = Color.Transparent;
+            btnKho.FillColor2 = Color.Transparent;
             btnKho.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
             btnKho.ForeColor = Color.White;
             btnKho.Image = Properties.Resources.kho;
@@ -438,14 +447,14 @@
             btnKho.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btnKho.Size = new Size(364, 88);
             btnKho.TabIndex = 0;
-            btnKho.Text = "Kho";
+            btnKho.Text = "Kho                ▽";
             btnKho.TextAlign = HorizontalAlignment.Left;
             btnKho.TextOffset = new Point(20, 0);
             btnKho.Click += btnKho_Click;
             // 
             // guna2Panel5
             // 
-            guna2Panel5.Controls.Add(btnMenu);
+            guna2Panel5.Controls.Add(btnThucDon);
             guna2Panel5.CustomizableEdges = customizableEdges29;
             guna2Panel5.Dock = DockStyle.Top;
             guna2Panel5.Location = new Point(0, 119);
@@ -455,36 +464,36 @@
             guna2Panel5.Size = new Size(374, 119);
             guna2Panel5.TabIndex = 4;
             // 
-            // btnMenu
+            // btnThucDon
             // 
-            btnMenu.BorderRadius = 20;
-            btnMenu.CustomImages.ImageAlign = HorizontalAlignment.Left;
-            btnMenu.CustomImages.ImageOffset = new Point(20, 0);
-            btnMenu.CustomImages.ImageSize = new Size(30, 30);
-            btnMenu.CustomizableEdges = customizableEdges27;
-            btnMenu.DisabledState.BorderColor = Color.DarkGray;
-            btnMenu.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMenu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMenu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnMenu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMenu.FillColor = Color.FromArgb(248, 92, 7);
-            btnMenu.FillColor2 = Color.FromArgb(255, 128, 0);
-            btnMenu.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnMenu.ForeColor = Color.White;
-            btnMenu.Image = Properties.Resources.drinkmenu;
-            btnMenu.ImageAlign = HorizontalAlignment.Left;
-            btnMenu.ImageOffset = new Point(10, 0);
-            btnMenu.ImageSize = new Size(30, 30);
-            btnMenu.Location = new Point(6, 31);
-            btnMenu.Margin = new Padding(3, 5, 3, 5);
-            btnMenu.Name = "btnMenu";
-            btnMenu.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            btnMenu.Size = new Size(364, 88);
-            btnMenu.TabIndex = 0;
-            btnMenu.Text = "Menu";
-            btnMenu.TextAlign = HorizontalAlignment.Left;
-            btnMenu.TextOffset = new Point(20, 0);
-            btnMenu.Click += btnMenu_Click;
+            btnThucDon.BorderRadius = 20;
+            btnThucDon.CustomImages.ImageAlign = HorizontalAlignment.Left;
+            btnThucDon.CustomImages.ImageOffset = new Point(20, 0);
+            btnThucDon.CustomImages.ImageSize = new Size(30, 30);
+            btnThucDon.CustomizableEdges = customizableEdges27;
+            btnThucDon.DisabledState.BorderColor = Color.DarkGray;
+            btnThucDon.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnThucDon.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnThucDon.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnThucDon.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnThucDon.FillColor = Color.Transparent;
+            btnThucDon.FillColor2 = Color.Transparent;
+            btnThucDon.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
+            btnThucDon.ForeColor = Color.White;
+            btnThucDon.Image = Properties.Resources.drinkmenu;
+            btnThucDon.ImageAlign = HorizontalAlignment.Left;
+            btnThucDon.ImageOffset = new Point(10, 0);
+            btnThucDon.ImageSize = new Size(30, 30);
+            btnThucDon.Location = new Point(6, 31);
+            btnThucDon.Margin = new Padding(3, 5, 3, 5);
+            btnThucDon.Name = "btnThucDon";
+            btnThucDon.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            btnThucDon.Size = new Size(364, 88);
+            btnThucDon.TabIndex = 0;
+            btnThucDon.Text = "Thực đơn";
+            btnThucDon.TextAlign = HorizontalAlignment.Left;
+            btnThucDon.TextOffset = new Point(20, 0);
+            btnThucDon.Click += btnMenu_Click;
             // 
             // guna2Panel1
             // 
@@ -510,8 +519,8 @@
             btnDashboard.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnDashboard.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnDashboard.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnDashboard.FillColor = Color.FromArgb(248, 92, 7);
-            btnDashboard.FillColor2 = Color.FromArgb(255, 128, 0);
+            btnDashboard.FillColor = Color.Transparent;
+            btnDashboard.FillColor2 = Color.Transparent;
             btnDashboard.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.White;
             btnDashboard.Image = Properties.Resources.dashboard;
@@ -527,20 +536,21 @@
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextAlign = HorizontalAlignment.Left;
             btnDashboard.TextOffset = new Point(20, 0);
+            btnDashboard.Click += btnDashboard_Click;
             // 
-            // guna2GradientPanel1
+            // pnlTop
             // 
-            guna2GradientPanel1.AutoSize = true;
-            guna2GradientPanel1.BackColor = Color.FromArgb(31, 50, 90);
-            guna2GradientPanel1.Controls.Add(btnExit);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges39;
-            guna2GradientPanel1.Dock = DockStyle.Top;
-            guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Margin = new Padding(3, 5, 3, 5);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            guna2GradientPanel1.Size = new Size(2294, 88);
-            guna2GradientPanel1.TabIndex = 2;
+            pnlTop.AutoSize = true;
+            pnlTop.BackColor = Color.FromArgb(31, 50, 90);
+            pnlTop.Controls.Add(btnExit);
+            pnlTop.CustomizableEdges = customizableEdges39;
+            pnlTop.Dock = DockStyle.Top;
+            pnlTop.Location = new Point(0, 0);
+            pnlTop.Margin = new Padding(3, 5, 3, 5);
+            pnlTop.Name = "pnlTop";
+            pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            pnlTop.Size = new Size(2294, 88);
+            pnlTop.TabIndex = 2;
             // 
             // btnExit
             // 
@@ -563,10 +573,11 @@
             // 
             pnlFormcon.AutoSize = true;
             pnlFormcon.CustomizableEdges = customizableEdges41;
-            pnlFormcon.Location = new Point(378, 91);
+            pnlFormcon.Dock = DockStyle.Fill;
+            pnlFormcon.Location = new Point(374, 88);
             pnlFormcon.Name = "pnlFormcon";
             pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            pnlFormcon.Size = new Size(1900, 1107);
+            pnlFormcon.Size = new Size(1920, 1118);
             pnlFormcon.TabIndex = 3;
             // 
             // frmAdmin
@@ -577,8 +588,8 @@
             BackColor = Color.White;
             ClientSize = new Size(2294, 1206);
             Controls.Add(pnlFormcon);
-            Controls.Add(guna2GradientPanel1);
             Controls.Add(pnlMenu);
+            Controls.Add(pnlTop);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmAdmin";
@@ -592,17 +603,17 @@
             pnlKho.ResumeLayout(false);
             guna2Panel5.ResumeLayout(false);
             guna2Panel1.ResumeLayout(false);
-            guna2GradientPanel1.ResumeLayout(false);
+            pnlTop.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2Panel pnlMenu;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlTop;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2GradientButton btnDashboard;
-        private Guna.UI2.WinForms.Guna2GradientButton btnMenu;
+        private Guna.UI2.WinForms.Guna2GradientButton btnThucDon;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2Panel pnlBaocaoTK;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;

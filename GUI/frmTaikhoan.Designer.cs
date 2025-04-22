@@ -151,7 +151,6 @@
             gridDsTaikhoan.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsTaikhoan.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridDsTaikhoan.CellClick += gridDsTaikhoan_CellClick;
-            gridDsTaikhoan.CellContentClick += gridDsTaikhoan_CellContentClick;
             // 
             // btnUpdate
             // 
@@ -215,7 +214,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1900, 1100);
+            ClientSize = new Size(1920, 1118);
             Controls.Add(label1);
             Controls.Add(guna2GroupBox1);
             Controls.Add(cboTrangthai);
@@ -223,6 +222,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 5, 3, 5);
             Name = "frmTaiKhoan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTaiKhoan";
             Load += frmTaiKhoan_Load;
             guna2GroupBox1.ResumeLayout(false);

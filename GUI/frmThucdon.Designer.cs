@@ -684,7 +684,7 @@
             pnlThongtinSP.Controls.Add(btnHuy);
             pnlThongtinSP.Controls.Add(btnDinhluong);
             pnlThongtinSP.CustomizableEdges = customizableEdges43;
-            pnlThongtinSP.Location = new Point(1339, -3);
+            pnlThongtinSP.Location = new Point(1358, -3);
             pnlThongtinSP.Name = "pnlThongtinSP";
             pnlThongtinSP.ShadowDecoration.CustomizableEdges = customizableEdges44;
             pnlThongtinSP.Size = new Size(560, 1103);
@@ -697,7 +697,7 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1900, 1100);
+            ClientSize = new Size(1920, 1118);
             Controls.Add(pnlThongtinSP);
             Controls.Add(cboLoctrangthai);
             Controls.Add(label5);
