@@ -203,7 +203,6 @@
             gridDsNguyenlieu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsNguyenlieu.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridDsNguyenlieu.CellClick += gridDsNguyenlieu_CellClick;
-            gridDsNguyenlieu.CellContentClick += gridDsNguyenlieu_CellContentClick;
             // 
             // btnUpdate
             // 

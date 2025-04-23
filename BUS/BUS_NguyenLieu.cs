@@ -21,9 +21,9 @@ namespace BUS
             return nguyenlieudal.LoadIngredients();
         }
 
-        public DataTable TaiLoaiNguyenLieu()
+        public DataTable LoadIngredients_type()
         {
-            return nguyenlieudal.TaiLoaiNguyenlieu();
+            return nguyenlieudal.LoadIngredients_type();
         }
 
         //Tải tên nguyên liệu

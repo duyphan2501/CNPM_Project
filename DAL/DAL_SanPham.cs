@@ -64,7 +64,7 @@ namespace DAL
 
 
         // lấy mã sp lớn nhất
-        public string MaspLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaSp from SanPham order by Masp desc";
             string maxMasp = (string)DataProvider.ExecuteScalar(query);

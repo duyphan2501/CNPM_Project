@@ -164,9 +164,10 @@ namespace GUI
             string trangThai = cboTrangthai.Text;
             byte[] anhSanPham = picAnhsanpham.Image != null ? General.ImageToByteArray(picAnhsanpham.Image) : null;
 
-            if (ValidateInputs(tenSanPham, giaBan, trangThai, anhSanPham))  //kiểm tra dữ liệu nhập vào
+            
+            if (!IsDuplicateProduct(maSanPham, tenSanPham)) //kiểm tra trùng tên sản phẩm
             {
-                if (!IsDuplicateProduct(maSanPham, tenSanPham)) //kiểm tra trùng tên sản phẩm
+                if (ValidateInputs(tenSanPham, giaBan, trangThai, anhSanPham))  //kiểm tra dữ liệu nhập vào
                 {
                     if (!txtMasanpham.Enabled) // Đang ở chế độ cập nhật
                     {
@@ -191,10 +192,10 @@ namespace GUI
             DataTable dt = sanpham.LoadProduct();
             foreach (DataRow row in dt.Rows)
             {
-                string tenMon = row["Tên món"].ToString();
+                string tenMon = row["Tên món"].ToString().ToLower();
                 string maMon = row["Mã món"].ToString();
 
-                if (tenMon.Equals(tenSP, StringComparison.OrdinalIgnoreCase) && maMon != maSP)
+                if (tenMon == tenSP.ToLower() && maMon != maSP) //so sánh ko phân biệt hoa thường
                 {
                     MessageBox.Show("Đã có sản phẩm này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return true;
@@ -260,6 +261,7 @@ namespace GUI
         {
             pnlThongtinSP.Visible = false;
             btnThemmon.Enabled = true;
+            frmThucdon_Load(sender, e);
         }
     }
 }

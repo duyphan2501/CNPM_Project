@@ -22,7 +22,7 @@ namespace GUI
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-            
+
             if (this.Modal)   //nếu mở từ xuất nhập
             {
                 pnlThongtinNL.Visible = false;
@@ -40,7 +40,8 @@ namespace GUI
                 btnThemNguyenlieu.Enabled = true;
                 btnThemNguyenlieu.Visible = true;
                 btnHuy.Enabled = false;
-                btnLuu.Enabled = false; 
+                btnLuu.Enabled = false;
+                txtMaNguyenLieu.Enabled = true;
             }
         }
 
@@ -48,13 +49,13 @@ namespace GUI
         {
             gridDsNguyenlieu.RowTemplate.Height = 50;
             gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
-            gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1; //đưa button về cuối
+            gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1;
 
         }
 
         public void TaiTenLoai()
         {
-            cboTenloai.DataSource = nguyenlieubus.TaiLoaiNguyenLieu();
+            cboTenloai.DataSource = nguyenlieubus.LoadIngredients_type();
             cboTenloai.DisplayMember = "TenLoai";
         }
 
@@ -70,9 +71,13 @@ namespace GUI
         {
             pnlThongtinNL.Visible = true;
             pnlThongtinNL.Enabled = true;
-            txtMaNguyenLieu.Enabled = true;
+
             btnHuy.Enabled = true;
             btnLuu.Enabled = true;
+            btnThemNguyenlieu.Enabled = false;
+
+            
+            txtMaNguyenLieu.Focus();
             txtTenNguyenLieu.Clear();
             txtDonvitinh.Clear();
             numMuctoithieu.Value = 0;
@@ -85,7 +90,6 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmKho_Load(sender, e);
-            btnThemNguyenlieu.Enabled = true;
         }
 
 
@@ -95,70 +99,83 @@ namespace GUI
             string tenloai = cboTenloai.Text;
             string tennl = txtTenNguyenLieu.Text;
             string donvi = txtDonvitinh.Text;
-            int muctoithieu = Convert.ToInt32(numMuctoithieu.Value);
-            int mucondinh = Convert.ToInt32(numMucondinh.Value);
-            DataTable dt = nguyenlieubus.LoadIngredients_name(); //tải danh sách tên nguyên liêu
-            bool tontai = false;
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row["TenNL"].ToString() == tennl && txtMaNguyenLieu.Enabled == true)
-                {
-                    tontai = true;
-                }
-                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text && tennl != txtTenNguyenLieu.Text && txtMaNguyenLieu.Enabled == false)
-                {
-                    tontai = true;
-                }
-            }
-            if (tontai == true)
+            int muctoithieu = (int)numMuctoithieu.Value;
+            int mucondinh = (int)numMucondinh.Value;
+
+            //// Kiểm tra tên nguyên liệu có trùng không
+            if (IsDuplicateIngredient(tennl, manl))
             {
                 MessageBox.Show("Đã tồn tại tên nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            // Kiểm tra các thông tin nhập vào
+            if (!ValidateInput(tenloai, tennl, donvi, muctoithieu, mucondinh)) return;
 
-            if (tontai == false)
-            {
-                if (string.IsNullOrEmpty(tenloai)) //check thông tin nhập vào không được bỏ trống
-                {
-                    MessageBox.Show("Vui lòng chọn tên loại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (string.IsNullOrEmpty(tennl))
-                {
-                    MessageBox.Show("Vui lòng nhập tên nguyên liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (string.IsNullOrEmpty(donvi))
-                {
-                    MessageBox.Show("Vui lòng nhập đơn vị tính", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (muctoithieu == 0)
-                {
-                    MessageBox.Show("Vui lòng nhập mức tối thiểu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (mucondinh == 0)
-                {
-                    MessageBox.Show("Vui lòng nhập mức ổn định", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    if (txtMaNguyenLieu.Enabled == true)
-                    {
-                        nguyenlieubus.AddIngredients(manl, tenloai, tennl, donvi, Convert.ToInt32(muctoithieu), Convert.ToInt32(mucondinh));
-                        LoadNguyenLieu();
-                        frmKho_Load(sender, e);
+            
 
-                    }
-                    else
-                    {
-                        nguyenlieubus.UpdateIngredients(manl, tenloai, tennl, donvi, Convert.ToInt32(muctoithieu), Convert.ToInt32(mucondinh));
-                        LoadNguyenLieu();
-                        frmKho_Load(sender, e);
-                    }
-                }
-            }
+            if (txtMaNguyenLieu.Enabled == true)
+                nguyenlieubus.AddIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
+            else
+                nguyenlieubus.UpdateIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
+
+            LoadNguyenLieu();
+            frmKho_Load(sender, e);
 
         }
 
+        private bool ValidateInput(string tenloai, string tennl, string donvi, int muctoithieu, int mucondinh)
+        {
+            if (string.IsNullOrEmpty(tenloai))
+            {
+                General.ShowWarning("Vui lòng chọn tên loại");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(tennl))
+            {
+                General.ShowWarning("Vui lòng nhập tên nguyên liệu");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(donvi))
+            {
+                General.ShowWarning("Vui lòng nhập đơn vị tính");
+                return false;
+            }
+
+            if (muctoithieu == 0)
+            {
+                General.ShowWarning("Vui lòng nhập mức tối thiểu");
+                return false;
+            }
+
+            if (mucondinh == 0)
+            {
+                General.ShowWarning("Vui lòng nhập mức ổn định");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsDuplicateIngredient(string tennl, string currentMaNL)
+        {
+            DataTable dt = nguyenlieubus.LoadIngredients_name();
+            foreach (DataRow row in dt.Rows)
+            {
+                string existingName = row["TenNL"].ToString().ToLower();  // Chuyển tất cả thành chữ thường
+                string existingMaNL = row["MaNL"].ToString();
+
+                if (existingName == tennl.ToLower() && existingMaNL != currentMaNL)  // So sánh không phân biệt hoa/thường
+                    return true;
+            }
+            return false;
+        }
+
+
         private void gridDsNguyenlieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            pnlThongtinNL.Visible = true;
             if (this.Modal) //nếu mở từ form khác thì không cho sửa
                 return;
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
@@ -181,12 +198,7 @@ namespace GUI
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
-            pnlThongtinNL.Visible = true;
-        }
-
-        private void gridDsNguyenlieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)

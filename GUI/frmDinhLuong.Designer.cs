@@ -335,7 +335,6 @@
             gridDsDinhluong.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsDinhluong.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridDsDinhluong.CellClick += gridDsDinhluong_CellClick;
-            gridDsDinhluong.CellContentClick += gridDsDinhluong_CellContentClick;
             // 
             // btnUpdate
             // 

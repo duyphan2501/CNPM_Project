@@ -26,14 +26,15 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
-        public DataTable TaiLoaiNguyenlieu() {
+        public DataTable LoadIngredients_type()
+        {
             string query = "select distinct TenLoai from LoaiNguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
 
         public DataTable LoadIngredients_name()
         {
-            string query = "select distinct TenNL from NguyenLieu";
+            string query = "select MaNL, TenNL from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
 

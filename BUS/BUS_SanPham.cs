@@ -46,7 +46,7 @@ namespace BUS
         public string PhatSinhMaSp()
         {
             // lấy mã sp lớn nhất
-            string masp = sanphamdal.MaspLonNhat();
+            string masp = sanphamdal.MaxID();
             // nếu mã sp lớn nhất là null thì gán mã sp đầu tiên là SP0001
             if (masp == null)
             {

@@ -18,7 +18,7 @@ namespace DAL
         }
 
         //Thêm định lượng vào database
-        public void ThemDinhluong(string masp, string manl, int soluong)
+        public void AddRecipe(string masp, string manl, int soluong)
         {
             string query = "insert into DinhLuong values (@_MaSp,dbo.LayMaNlTheoTenNl(@_MaNL),@_SoLuong)";
             object[] parem = new object[] { masp, manl, soluong };
@@ -26,7 +26,7 @@ namespace DAL
         }
 
         //Sửa thông tin định lượng
-        public void SuaDinhluong(string masp, string manl, int soluong)
+        public void UpdateRecipe(string masp, string manl, int soluong)
         {
             string query = "update DinhLuong set soluong = @_SoLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp) and manl = dbo.LayMaNlTheoTenNl(@_MaNL)"; 
             object[] parem = new object[] {soluong, masp, manl};
@@ -34,7 +34,7 @@ namespace DAL
         }
 
         //Xóa định lượng
-        public void XoaDinhLuong(string masp, string manl)
+        public void DeleteRecipe(string masp, string manl)
         {
             string query = "delete from DinhLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp) and manl = dbo.LayMaNlTheoTenNl(@_MaNL)";
             object[] parem = new object[] {masp, manl };
@@ -42,7 +42,7 @@ namespace DAL
         }
 
         //Tải danh sách định lượng theo tên sản phẩm lên gridview theo tên sản phẩm
-        public DataTable TaiDsDinhluong(string tensp)
+        public DataTable LoadRecipe(string tensp)
         {
             string query = "select NguyenLieu.TenNL as 'Tên nguyên liệu', DinhLuong.SoLuong as 'Số lượng' " +
                             "from DinhLuong, NguyenLieu,SanPham " +
@@ -53,7 +53,7 @@ namespace DAL
         }
 
         //Tải tên sản phẩm lên combobox
-        public DataTable TaiTenNL()
+        public DataTable LoadRecipe_name()
         {
             string query = "select distinct TenNL from NguyenLieu";
             return DataProvider.ExecuteQuery(query);

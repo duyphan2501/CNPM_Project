@@ -17,31 +17,31 @@ namespace BUS
         }
 
         //Thêm định lượng
-        public void ThemDinhluong(string masp, string manl, int soluong)
+        public void AddRecipe(string masp, string manl, int soluong)
         {
-            dinhluongbus.ThemDinhluong(masp, manl, soluong);
+            dinhluongbus.AddRecipe(masp, manl, soluong);
         }
 
-        public void SuaDinhluong(string masp, string manl, int soluong)
+        public void UpdateRecipe(string masp, string manl, int soluong)
         {
-            dinhluongbus.SuaDinhluong(masp, manl, soluong);
+            dinhluongbus.UpdateRecipe(masp, manl, soluong);
         }
 
         //Tải danh sách định lượng
-        public DataTable TaiDsDinhluong(string tensp)
+        public DataTable LoadRecipe(string tensp)
         {
-            return dinhluongbus.TaiDsDinhluong(tensp);
+            return dinhluongbus.LoadRecipe(tensp);
         }
 
         //Tải tên nguyên liêu lên combobox
-        public DataTable TaiTenNL()
+        public DataTable LoadRecipe_name()
         {
-            return dinhluongbus.TaiTenNL();
+            return dinhluongbus.LoadRecipe_name();
         }
 
-        public void XoaDinhLuong(string masp, string manl)
+        public void DeleteRecipe(string masp, string manl)
         {
-            dinhluongbus.XoaDinhLuong(masp , manl);
+            dinhluongbus.DeleteRecipe(masp , manl);
         }
     }
 }

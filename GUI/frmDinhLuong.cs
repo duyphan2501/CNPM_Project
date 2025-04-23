@@ -21,12 +21,14 @@ namespace GUI
             txtTenSp.Text = tensp;
             txtTenSp.ReadOnly = true;
             Masp = masp;
+
+            loadDsDinhluong(); //load danh sách định lượng theo tên sản phẩm
         }
 
         //Tải tên nguyên liệu lên combobox
         public void TaitenNL()
         {
-            cboTenNguyenLieu.DataSource = dinhluong.TaiTenNL();
+            cboTenNguyenLieu.DataSource = dinhluong.LoadRecipe_name();
             cboTenNguyenLieu.DisplayMember = "TenNL";
         }
 
@@ -34,7 +36,7 @@ namespace GUI
         public void loadDsDinhluong()
         {
             gridDsDinhluong.RowTemplate.Height = 50;
-            gridDsDinhluong.DataSource = dinhluong.TaiDsDinhluong(txtTenSp.Text);
+            gridDsDinhluong.DataSource = dinhluong.LoadRecipe(txtTenSp.Text);
             gridDsDinhluong.Columns["btnUpdate"].DisplayIndex = gridDsDinhluong.Columns.Count - 1; //đưa button về cuối
 
         }
@@ -49,31 +51,33 @@ namespace GUI
             TaitenNL();
         }
 
+        private bool IsIngredientDuplicated(string tennl) //Kiểm tra trùng nguyên liệu
+        {
+            foreach (DataGridViewRow row in gridDsDinhluong.Rows)
+            {
+                if (row.Cells["Tên nguyên liệu"].Value != null &&
+                    row.Cells["Tên nguyên liệu"].Value.ToString() == tennl)
+                {
+                    return true;
+                }
+            }
+            return false;
+        } 
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
 
-            // Kiểm tra xem nguyên liệu được định lượng chưa
-            bool daTonTai = false;
-            foreach (DataGridViewRow row in gridDsDinhluong.Rows)
+            string tennl = cboTenNguyenLieu.Text;
+
+            if (IsIngredientDuplicated(tennl))
             {
-                if (row.Cells["Tên nguyên liệu"].Value != null && row.Cells["Tên nguyên liệu"].Value.ToString() == cboTenNguyenLieu.Text)
-                {
-                    // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                    MessageBox.Show("Đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    daTonTai = true;
-                    break;
-                }
+                MessageBox.Show("This ingredient already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            // Thêm mới nếu chưa tồn tại
-            if (!daTonTai)
-            {
-                dinhluong.ThemDinhluong(Masp, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
-
-                numSoluongNL.Value = 0;
-                loadDsDinhluong();
-            }
+            dinhluong.AddRecipe(Masp, tennl, Convert.ToInt32(numSoluongNL.Value));
+            numSoluongNL.Value = 0;
+            loadDsDinhluong();
         }
 
         //Nhấn nút xong khi đã thêm đủ danh sách định lượng
@@ -83,13 +87,6 @@ namespace GUI
             this.Close();
         }
 
-        //Nút Hủy
-        //private void btnHuy_Click(object sender, EventArgs e)
-        //{
-        //    this.DialogResult = DialogResult.Cancel;
-        //    this.Close();
-
-        //}
 
         private void gridDsDinhluong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -105,27 +102,24 @@ namespace GUI
             btnThem.Enabled = false;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
-            cboTenNguyenLieu.Enabled = false; //Không cho sưa tên nguyên liệu
+            cboTenNguyenLieu.Enabled = false; //Không cho sửa tên nguyên liệu
         }
 
+        //Sửa đinh lượng
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            dinhluong.SuaDinhluong(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
+            dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
             cboTenNguyenLieu.Enabled = true;
             loadDsDinhluong();
             frmDinhLuong_Load(sender, e);
 
         }
 
-        private void gridDsDinhluong_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        //Khi xóa định lượng
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            dinhluong.XoaDinhLuong(txtTenSp.Text, cboTenNguyenLieu.Text);
+            dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
             loadDsDinhluong();
             frmDinhLuong_Load(sender, e);
         }
