@@ -53,5 +53,12 @@ namespace DAL
             return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
         }
 
+        public int DeleteAllCTDonHang(string maDonHang)
+        {
+            string query = "DELETE FROM ChiTietDonHang WHERE MaDonHang = @MaDonHang";
+            object[] parameters = new object[] { maDonHang };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
+
     }
 }

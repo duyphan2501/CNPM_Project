@@ -52,5 +52,12 @@ namespace DAL
             };
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
+
+        public string GetUserNameOfShift(string maCa)
+        {
+            string query = "select TenDangNhap from CaLamViec where MaCaLam = @MaCa";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maCa });
+            return result != null ? result.ToString() : null;
+        }
     }
 }

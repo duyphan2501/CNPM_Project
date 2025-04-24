@@ -13,16 +13,16 @@ namespace DAL
     {
         DTO_DonHang donhang;
         // Lập đơn hàng
-        public DAL_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
-                           int trangThai, string maThe, string ghiChu)
-        {
-            donhang = new DTO_DonHang(maDonHang, tenDangNhap, maCaLam, trangThai, maThe, ghiChu);
+        public DAL_DonHang(string maDonHang, string maCaLap,
+                           int trangThai, string maThe, int giamGia, int tongTien, string ghiChu)
+        {   
+            donhang = new DTO_DonHang(maDonHang, maCaLap, trangThai, maThe, giamGia, tongTien, ghiChu);
         }
         // Thanh toán đơn hàng
-        public DAL_DonHang(string maDonHang, string tenDangNhap, string maCaThanhToan, int giamGia,
+        public DAL_DonHang(string maDonHang, string maCaThanhToan, int giamGia, int tongTien,
                            int loaiThanhToan)
         {
-            donhang = new DTO_DonHang(maDonHang, tenDangNhap, maCaThanhToan, giamGia, loaiThanhToan);
+            donhang = new DTO_DonHang(maDonHang, maCaThanhToan, giamGia, tongTien, loaiThanhToan);
         }
 
         public DAL_DonHang() { donhang = new DTO_DonHang(); }
@@ -36,16 +36,17 @@ namespace DAL
 
         public int InsertNewOrder()
         {
-            string query = "INSERT INTO DonHang (MaDonHang, NguoiLap, MaCaLap, TrangThai, MaThe, GhiChu) " +
-                           "VALUES (@MaDonHang, @TenDangNhap, @MaCaLam, @TrangThai, @MaThe, @GhiChu)";
+            string query = "INSERT INTO DonHang (MaDonHang, MaCaLap, TrangThai, MaThe, GiamGia, TongTien, GhiChu) " +
+                           "VALUES (@MaDonHang, @MaCaLam, @TrangThai, @MaThe, @GiamGia, @TongTien, @GhiChu)";
 
             object[] parameters = new object[]
             {
                 donhang.MaDonHang,
-                donhang.NguoiLap,
                 donhang.MaCaLap,
                 donhang.TrangThai,
                 donhang.MaThe,
+                donhang.GiamGia,
+                donhang.TongTien,
                 donhang.GhiChu
             };
 
@@ -54,12 +55,12 @@ namespace DAL
 
         public int ThanhToanDonHang()
         {
-            string query = "UPDATE DonHang SET NguoiThanhToan = @TenDangNhap, MaCaThanhToan = @MaCaThanhToan, GiamGia = @GiamGia, LoaiThanhToan = @LoaiThanhToan WHERE MaDonHang = @MaDonHang";
+            string query = "UPDATE DonHang SET MaCaThanhToan = @MaCaThanhToan, GiamGia = @GiamGia, TongTien = @TongTien, LoaiThanhToan = @LoaiThanhToan WHERE MaDonHang = @MaDonHang";
             object[] parameters = new object[]
             {
-                donhang.NguoiThanhToan,
                 donhang.MaCaThanhToan,
                 donhang.GiamGia,
+                donhang.TongTien,
                 donhang.LoaiThanhToan,
                 donhang.MaDonHang
             };
@@ -81,15 +82,34 @@ namespace DAL
             return DataProvider.ExecuteQuery(query, new object[] { maCaLam });
         }
 
-        public int UpdateTongTien(string maDonHang)
+        public int TinhTongTien(string maDonHang)
         {
-            string query = "UPDATE DonHang SET TongTien = (SELECT SUM(SoLuong * DonGia) FROM ChiTietDonHang WHERE MaDonHang = @MaDonHang) WHERE MaDonHang = @MaDon";
-            object[] parameters = new object[]
-            {
-                maDonHang,
-                maDonHang
-            };
-            return (int)DataProvider.ExecuteNonQuery(query, parameters);
+            string query = @"
+                    SELECT 
+                        ISNULL(SUM(ct.DonGia * ct.SoLuong), 0) AS TongTien,
+                        ISNULL(dh.GiamGia, 0) AS GiamGia
+                    FROM ChiTietDonHang ct
+                    JOIN DonHang dh ON ct.MaDonHang = dh.MaDonHang
+                    WHERE ct.MaDonHang = @maDon
+                    GROUP BY dh.GiamGia
+                ";
+
+            DataTable dt = DataProvider.ExecuteQuery(query, new object[] { maDonHang });
+            if (dt.Rows.Count == 0) return 0;
+
+            int tongTien = Convert.ToInt32(dt.Rows[0]["TongTien"]);
+            int giamGia = Convert.ToInt32(dt.Rows[0]["GiamGia"]);
+
+            // Tính tổng tiền sau khi trừ phần trăm giảm giá
+            int tongTienSauGiam = tongTien - (tongTien * giamGia / 100);
+            return tongTienSauGiam;
+        }
+
+        public int UpdateDonHang(string maDonHang, int giamGia, int tongTien, string ghiChu)
+        {
+            string query = "update donhang set GiamGia = @GiamGia, TongTien = @TongTien, GhiChu = @GhiChu where madonhang = @madonhang";
+            object[] objects = { giamGia, tongTien, ghiChu, maDonHang };
+            return DataProvider.ExecuteNonQuery(query, objects);
         }
 
         public string LayGhiChu(string maDonHang)
@@ -97,6 +117,12 @@ namespace DAL
             string query = "SELECT GhiChu FROM DonHang WHERE MaDonHang = @MaDonHang";
             object result = DataProvider.ExecuteScalar(query, new object[] { maDonHang });
             return result != null ? result.ToString() : "";
+        }
+
+        public DataTable SelectDonHang(string maDonHang)
+        {
+            string query = "select * from donhang where madonhang = @madonhang";
+            return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
         }
     }
 }

@@ -27,5 +27,10 @@ namespace BUS
         {
             return ctDonHang.SelectChiTietByMaDon(maDonHang);
         }
+
+        public int DeleteAllCTDonHang(string maDonHang)
+        {
+            return ctDonHang.DeleteAllCTDonHang(maDonHang);
+        }
     }
 }

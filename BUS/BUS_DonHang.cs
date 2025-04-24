@@ -13,17 +13,17 @@ namespace BUS
         DAL_DonHang donhang;
 
         // Lập đơn hàng
-        public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaLam,
-                           int trangThai, string maThe, string ghiChu)
+        public BUS_DonHang(string maDonHang, string maCaLap,
+                           int trangThai, string maThe, int giamGia, int tongTien, string ghiChu)
         {
-            donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaLam, trangThai, maThe, ghiChu);
+            donhang = new DAL_DonHang(maDonHang, maCaLap, trangThai, maThe, giamGia, tongTien, ghiChu);
         }
 
         // Thanh toán đơn hàng
-        public BUS_DonHang(string maDonHang, string tenDangNhap, string maCaThanhToan, int giamGia,
+        public BUS_DonHang(string maDonHang, string maCaThanhToan, int giamGia, int tongTien,
                            int loaiThanhToan)
         {
-            donhang = new DAL_DonHang(maDonHang, tenDangNhap, maCaThanhToan, giamGia, loaiThanhToan);
+            donhang = new DAL_DonHang(maDonHang, maCaThanhToan, giamGia, tongTien, loaiThanhToan);
         }
 
         public BUS_DonHang() { donhang = new DAL_DonHang(); }
@@ -63,14 +63,24 @@ namespace BUS
             return donhang.SelectOrderForCashier(maCaLam);
         }
 
-        public int UpdateTongTien(string maDonHang)
+        public int TinhTongTien(string maDonHang)
         {
-            return donhang.UpdateTongTien(maDonHang);
+            return donhang.TinhTongTien(maDonHang);
         }
 
         public string LayGhiChu(string maDonHang)
         {
             return donhang.LayGhiChu(maDonHang);
         }   
+
+        public DataTable SelectDonHang(string maDonHang)
+        {
+            return donhang.SelectDonHang(maDonHang);
+        }
+
+        public int UpdateDonHang(string maDonHang, int giamGia, int tongTien, string ghiChu)
+        {
+            return donhang.UpdateDonHang(maDonHang, giamGia, tongTien, ghiChu);
+        }
     } 
 }

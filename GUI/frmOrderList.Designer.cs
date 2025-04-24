@@ -52,6 +52,14 @@
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             gridOrderList = new Guna.UI2.WinForms.Guna2DataGridView();
+            MaDonHan = new DataGridViewTextBoxColumn();
+            NVLap = new DataGridViewTextBoxColumn();
+            NVThanhToan = new DataGridViewTextBoxColumn();
+            GiamGia = new DataGridViewTextBoxColumn();
+            TongTien = new DataGridViewTextBoxColumn();
+            LoaiThanhToan = new DataGridViewTextBoxColumn();
+            TrangThai = new DataGridViewTextBoxColumn();
+            NgayLap = new DataGridViewTextBoxColumn();
             pnlOrderDetail = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             numGiamGia = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -60,6 +68,7 @@
             txtGhiChu = new Guna.UI2.WinForms.Guna2TextBox();
             gridOrderDetail = new Guna.UI2.WinForms.Guna2DataGridView();
             RemoveItem = new DataGridViewImageColumn();
+            MaSP = new DataGridViewTextBoxColumn();
             TenSP = new DataGridViewTextBoxColumn();
             DonGia = new DataGridViewTextBoxColumn();
             SoLuong = new DataGridViewTextBoxColumn();
@@ -71,14 +80,6 @@
             btnExit = new Guna.UI2.WinForms.Guna2Button();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             btnViewDetail = new Guna.UI2.WinForms.Guna2Button();
-            MaDonHan = new DataGridViewTextBoxColumn();
-            NVLap = new DataGridViewTextBoxColumn();
-            NVThanhToan = new DataGridViewTextBoxColumn();
-            GiamGia = new DataGridViewTextBoxColumn();
-            TongTien = new DataGridViewTextBoxColumn();
-            LoaiThanhToan = new DataGridViewTextBoxColumn();
-            TrangThai = new DataGridViewTextBoxColumn();
-            NgayLap = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)gridOrderList).BeginInit();
             pnlOrderDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numGiamGia).BeginInit();
@@ -131,7 +132,7 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             gridOrderList.DefaultCellStyle = dataGridViewCellStyle6;
             gridOrderList.GridColor = Color.FromArgb(231, 229, 255);
-            gridOrderList.Location = new Point(29, 108);
+            gridOrderList.Location = new Point(12, 108);
             gridOrderList.Name = "gridOrderList";
             gridOrderList.ReadOnly = true;
             gridOrderList.RowHeadersVisible = false;
@@ -160,6 +161,70 @@
             gridOrderList.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridOrderList.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // MaDonHan
+            // 
+            MaDonHan.FillWeight = 70F;
+            MaDonHan.HeaderText = "MãĐH";
+            MaDonHan.MinimumWidth = 6;
+            MaDonHan.Name = "MaDonHan";
+            MaDonHan.ReadOnly = true;
+            // 
+            // NVLap
+            // 
+            NVLap.FillWeight = 110F;
+            NVLap.HeaderText = "NVLập";
+            NVLap.MinimumWidth = 6;
+            NVLap.Name = "NVLap";
+            NVLap.ReadOnly = true;
+            // 
+            // NVThanhToan
+            // 
+            NVThanhToan.FillWeight = 115F;
+            NVThanhToan.HeaderText = "NVThanhToán";
+            NVThanhToan.MinimumWidth = 6;
+            NVThanhToan.Name = "NVThanhToan";
+            NVThanhToan.ReadOnly = true;
+            // 
+            // GiamGia
+            // 
+            GiamGia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            GiamGia.HeaderText = "GiảmGiá";
+            GiamGia.MinimumWidth = 6;
+            GiamGia.Name = "GiamGia";
+            GiamGia.ReadOnly = true;
+            GiamGia.Width = 102;
+            // 
+            // TongTien
+            // 
+            TongTien.HeaderText = "TổngTiền";
+            TongTien.MinimumWidth = 6;
+            TongTien.Name = "TongTien";
+            TongTien.ReadOnly = true;
+            // 
+            // LoaiThanhToan
+            // 
+            LoaiThanhToan.HeaderText = "ThanhToán";
+            LoaiThanhToan.MinimumWidth = 6;
+            LoaiThanhToan.Name = "LoaiThanhToan";
+            LoaiThanhToan.ReadOnly = true;
+            // 
+            // TrangThai
+            // 
+            TrangThai.FillWeight = 105F;
+            TrangThai.HeaderText = "TrạngThái";
+            TrangThai.MinimumWidth = 6;
+            TrangThai.Name = "TrangThai";
+            TrangThai.ReadOnly = true;
+            // 
+            // NgayLap
+            // 
+            NgayLap.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NgayLap.FillWeight = 200F;
+            NgayLap.HeaderText = "NgàyLập";
+            NgayLap.MinimumWidth = 6;
+            NgayLap.Name = "NgayLap";
+            NgayLap.ReadOnly = true;
+            // 
             // pnlOrderDetail
             // 
             pnlOrderDetail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -177,19 +242,20 @@
             pnlOrderDetail.Controls.Add(label1);
             pnlOrderDetail.Controls.Add(btnExit);
             pnlOrderDetail.FillColor = Color.White;
-            pnlOrderDetail.Location = new Point(969, 3);
+            pnlOrderDetail.Location = new Point(775, 3);
             pnlOrderDetail.Name = "pnlOrderDetail";
             pnlOrderDetail.ShadowColor = Color.Black;
             pnlOrderDetail.ShadowShift = 2;
-            pnlOrderDetail.Size = new Size(550, 875);
+            pnlOrderDetail.Size = new Size(744, 875);
             pnlOrderDetail.TabIndex = 2;
             // 
             // guna2Separator1
             // 
+            guna2Separator1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2Separator1.FillThickness = 3;
             guna2Separator1.Location = new Point(17, 460);
             guna2Separator1.Name = "guna2Separator1";
-            guna2Separator1.Size = new Size(522, 12);
+            guna2Separator1.Size = new Size(716, 12);
             guna2Separator1.TabIndex = 6;
             // 
             // numGiamGia
@@ -204,6 +270,7 @@
             numGiamGia.ShadowDecoration.CustomizableEdges = customizableEdges4;
             numGiamGia.Size = new Size(83, 34);
             numGiamGia.TabIndex = 5;
+            numGiamGia.ValueChanged += numGiamGia_ValueChanged;
             // 
             // btnLuu
             // 
@@ -217,12 +284,13 @@
             btnLuu.FillColor = Color.FromArgb(113, 181, 108);
             btnLuu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(429, 40);
+            btnLuu.Location = new Point(623, 40);
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnLuu.Size = new Size(110, 34);
             btnLuu.TabIndex = 4;
             btnLuu.Text = "Lưu";
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnChinhSua
             // 
@@ -236,7 +304,7 @@
             btnChinhSua.FillColor = Color.DodgerBlue;
             btnChinhSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnChinhSua.ForeColor = Color.White;
-            btnChinhSua.Location = new Point(310, 40);
+            btnChinhSua.Location = new Point(504, 40);
             btnChinhSua.Name = "btnChinhSua";
             btnChinhSua.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnChinhSua.Size = new Size(110, 36);
@@ -264,7 +332,7 @@
             txtGhiChu.PlaceholderText = "";
             txtGhiChu.SelectedText = "";
             txtGhiChu.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtGhiChu.Size = new Size(348, 102);
+            txtGhiChu.Size = new Size(542, 102);
             txtGhiChu.TabIndex = 3;
             // 
             // gridOrderDetail
@@ -284,7 +352,7 @@
             gridOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             gridOrderDetail.ColumnHeadersHeight = 35;
             gridOrderDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            gridOrderDetail.Columns.AddRange(new DataGridViewColumn[] { RemoveItem, TenSP, DonGia, SoLuong });
+            gridOrderDetail.Columns.AddRange(new DataGridViewColumn[] { RemoveItem, MaSP, TenSP, DonGia, SoLuong });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -299,7 +367,7 @@
             gridOrderDetail.Name = "gridOrderDetail";
             gridOrderDetail.RowHeadersVisible = false;
             gridOrderDetail.RowHeadersWidth = 51;
-            gridOrderDetail.Size = new Size(527, 372);
+            gridOrderDetail.Size = new Size(721, 372);
             gridOrderDetail.TabIndex = 2;
             gridOrderDetail.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridOrderDetail.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -334,6 +402,12 @@
             RemoveItem.MinimumWidth = 6;
             RemoveItem.Name = "RemoveItem";
             // 
+            // MaSP
+            // 
+            MaSP.HeaderText = "MãSP";
+            MaSP.MinimumWidth = 6;
+            MaSP.Name = "MaSP";
+            // 
             // TenSP
             // 
             TenSP.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -361,7 +435,7 @@
             lblTongTien.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTongTien.AutoSize = true;
             lblTongTien.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTongTien.Location = new Point(515, 489);
+            lblTongTien.Location = new Point(709, 489);
             lblTongTien.Name = "lblTongTien";
             lblTongTien.Size = new Size(24, 28);
             lblTongTien.TabIndex = 1;
@@ -372,7 +446,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(298, 489);
+            label4.Location = new Point(520, 489);
             label4.Name = "label4";
             label4.Size = new Size(109, 28);
             label4.TabIndex = 1;
@@ -452,70 +526,6 @@
             btnViewDetail.Text = "Xem Chi Tiết";
             btnViewDetail.Click += btnViewDetail_Click;
             // 
-            // MaDonHan
-            // 
-            MaDonHan.FillWeight = 70F;
-            MaDonHan.HeaderText = "MãĐH";
-            MaDonHan.MinimumWidth = 6;
-            MaDonHan.Name = "MaDonHan";
-            MaDonHan.ReadOnly = true;
-            // 
-            // NVLap
-            // 
-            NVLap.FillWeight = 110F;
-            NVLap.HeaderText = "NVLập";
-            NVLap.MinimumWidth = 6;
-            NVLap.Name = "NVLap";
-            NVLap.ReadOnly = true;
-            // 
-            // NVThanhToan
-            // 
-            NVThanhToan.FillWeight = 115F;
-            NVThanhToan.HeaderText = "NVThanhToán";
-            NVThanhToan.MinimumWidth = 6;
-            NVThanhToan.Name = "NVThanhToan";
-            NVThanhToan.ReadOnly = true;
-            // 
-            // GiamGia
-            // 
-            GiamGia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            GiamGia.HeaderText = "GiảmGiá";
-            GiamGia.MinimumWidth = 6;
-            GiamGia.Name = "GiamGia";
-            GiamGia.ReadOnly = true;
-            GiamGia.Width = 102;
-            // 
-            // TongTien
-            // 
-            TongTien.HeaderText = "TổngTiền";
-            TongTien.MinimumWidth = 6;
-            TongTien.Name = "TongTien";
-            TongTien.ReadOnly = true;
-            // 
-            // LoaiThanhToan
-            // 
-            LoaiThanhToan.HeaderText = "ThanhToán";
-            LoaiThanhToan.MinimumWidth = 6;
-            LoaiThanhToan.Name = "LoaiThanhToan";
-            LoaiThanhToan.ReadOnly = true;
-            // 
-            // TrangThai
-            // 
-            TrangThai.FillWeight = 105F;
-            TrangThai.HeaderText = "TrạngThái";
-            TrangThai.MinimumWidth = 6;
-            TrangThai.Name = "TrangThai";
-            TrangThai.ReadOnly = true;
-            // 
-            // NgayLap
-            // 
-            NgayLap.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NgayLap.FillWeight = 200F;
-            NgayLap.HeaderText = "NgàyLập";
-            NgayLap.MinimumWidth = 6;
-            NgayLap.Name = "NgayLap";
-            NgayLap.ReadOnly = true;
-            // 
             // frmOrderList
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -557,10 +567,6 @@
         private Label lblTongTien;
         private Guna.UI2.WinForms.Guna2Button btnViewDetail;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
-        private DataGridViewImageColumn RemoveItem;
-        private DataGridViewTextBoxColumn TenSP;
-        private DataGridViewTextBoxColumn DonGia;
-        private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn MaDonHan;
         private DataGridViewTextBoxColumn NVLap;
         private DataGridViewTextBoxColumn NVThanhToan;
@@ -569,5 +575,10 @@
         private DataGridViewTextBoxColumn LoaiThanhToan;
         private DataGridViewTextBoxColumn TrangThai;
         private DataGridViewTextBoxColumn NgayLap;
+        private DataGridViewImageColumn RemoveItem;
+        private DataGridViewTextBoxColumn MaSP;
+        private DataGridViewTextBoxColumn TenSP;
+        private DataGridViewTextBoxColumn DonGia;
+        private DataGridViewTextBoxColumn SoLuong;
     }
 }

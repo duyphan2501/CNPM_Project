@@ -49,5 +49,10 @@ namespace BUS
                 MessageBox.Show("Không thể thêm ca mới");
             }
         }
+
+        public string GetUserNameOfShift(string maCa)
+        {
+            return calamViec.GetUserNameOfShift(maCa);
+        }
     }
 }

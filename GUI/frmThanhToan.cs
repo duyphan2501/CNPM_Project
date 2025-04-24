@@ -19,6 +19,7 @@ namespace GUI
         private string maDonhang;
         private string maThe;
         private string ghiChu;
+        BUS_DonHang donhang = new BUS_DonHang();
 
         public event EventHandler ThanhToanThanhCong;
 
@@ -213,34 +214,43 @@ namespace GUI
             string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
             string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
             int giamGia = (int)numGiamGia.Value;
+            int tongTien = General.FormatMoneyToInt(lblKhachCanTra.Text);
             int loaiThanhToan = cboLoaiThanhToan.SelectedIndex;
 
-            // Tạo đối tượng đơn hàng
-            BUS_DonHang donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, 0, maThe, ghiChu);
-            if (!donHang.isExistedOrder(maDonhang))
+            if (!donhang.isExistedOrder(maDonhang))
             {
-                donHang.InsertNewOrder();
-                BUS_TheRung therung = new BUS_TheRung();
-                therung.UpdateStateTheRung(1, maThe);
+                // Tạo đối tượng thêm đơn hàng
+                donhang = new BUS_DonHang(maDonhang, maCaLam, 0, maThe, giamGia, tongTien, ghiChu);
+                int insertedRows = donhang.InsertNewOrder();
+                if (insertedRows > 0)
+                {
+                    // Thêm chi tiết đơn hàng
+                    foreach (var item in invoiceItemList)
+                    {
+                        // Tạo chi tiết đơn hàng
+                        BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
+                        // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
+                        int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+                        if (isDetailAdded == 0)
+                        {
+                            MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    BUS_TheRung therung = new BUS_TheRung();
+                    therung.UpdateStateTheRung(1, maThe);
+                } else
+                {
+                    MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, giamGia, loaiThanhToan);
-            int affectedRows = donHang.ThanhToanDonHang();
+
+            // Tạo đối tượng thanh toán đơn hàng
+            donhang = new BUS_DonHang(maDonhang, maCaLam, giamGia, tongTien, loaiThanhToan);
+            int affectedRows = donhang.ThanhToanDonHang();
             if (affectedRows != 0)
             {
-                // Thêm chi tiết đơn hàng
-                foreach (var item in invoiceItemList)
-                {
-                    // Tạo chi tiết đơn hàng
-                    BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
-                    // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
-                    int isDetailAdded = chiTietDonHang.InsertOrderDetail();
-                    if (isDetailAdded == 0)
-                    {
-                        MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
                 // Thông báo thành công
                 MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
