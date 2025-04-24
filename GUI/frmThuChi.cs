@@ -23,6 +23,7 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
+            grbXuatNhapKho.Visible = false;
             gridDsThuchi.RowTemplate.Height = 50;
             TaiPhieu();
             TaiLoaiPhieu();
@@ -51,6 +52,7 @@ namespace GUI
 
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
+            grbXuatNhapKho.Visible = true;
             txtMaphieu.Text = phieu.PhatSinhMaPhieu();
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;
@@ -67,6 +69,7 @@ namespace GUI
 
             numSotien.Value = 0;
             txtGhichu.Clear();
+            frmThuChi_Load(sender, e);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -84,14 +87,14 @@ namespace GUI
             {
                 TaiPhieu();
                 DataView dv =((DataTable) gridDsThuchi.DataSource).DefaultView;
-                dv.RowFilter = $"[Loại phiếu] LIKE '%Thu%'";
+                dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu thu%'";
                 gridDsThuchi.DataSource = dv;
             }
             else
             {
                 TaiPhieu();
                 DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-                dv.RowFilter = $"[Loại phiếu] LIKE '%Chi%'";
+                dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
                 gridDsThuchi.DataSource = dv;
             }
         }

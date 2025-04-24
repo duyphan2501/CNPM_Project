@@ -63,9 +63,39 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1013768 {
+            get {
+                object obj = ResourceManager.GetObject("1013768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _326497_account_circle_icon {
             get {
                 object obj = ResourceManager.GetObject("326497_account_circle_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3688460_pencil_text_update_write_draw_icon {
+            get {
+                object obj = ResourceManager.GetObject("3688460_pencil_text_update_write_draw_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _776053 {
+            get {
+                object obj = ResourceManager.GetObject("776053", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

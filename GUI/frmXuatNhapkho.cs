@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
+using Guna.UI2.WinForms.Enums;
 
 namespace GUI
 {
@@ -18,7 +19,7 @@ namespace GUI
         BUS_PhieuXuatKho phieuxuat = new BUS_PhieuXuatKho("", "", DateTime.Now, "");
         BUS_ChiTietNhapKho chitietnhap = new BUS_ChiTietNhapKho("", "", 0, 0);
         BUS_ChiTietXuatKho chitietxuat = new BUS_ChiTietXuatKho("", "", 0);
-        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("","","","",0,0,0);
+        BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0, 0);
         public frmXuatNhapKho()
         {
             InitializeComponent();
@@ -93,11 +94,14 @@ namespace GUI
             {
                 if (cboLoaiphieu.Enabled == true)
                 {
+                    gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
+                    gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
                     gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
                     gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
                     gridDsPhieu.Columns.Add("soluong", "Số lượng nhập");
                     gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
                     gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
+
                 }
                 cboLoaiphieu.Enabled = false;
 
@@ -110,6 +114,7 @@ namespace GUI
 
                 // Kiểm tra sự tồn tại của nguyên liệu
                 bool daTonTai = false;
+                bool loi = false;
 
                 foreach (DataGridViewRow row in gridDsPhieu.Rows)
                 {
@@ -122,8 +127,24 @@ namespace GUI
                     }
                 }
 
-                 // Thêm mới nếu chưa tồn tại
-                if (!daTonTai)
+                if (daTonTai == false)
+                {
+                    if (soluong == 0)
+                    {
+                        MessageBox.Show("Vui lòng nhập số lượng nhập kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loi = true;
+                        return;
+                    }
+                    if (gianhap == 0)
+                    {
+                        MessageBox.Show("Vui lòng nhập giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loi = true;
+                        return;
+                    }
+                }
+
+                // Thêm mới nếu chưa tồn tại
+                if (daTonTai == false && loi == false)
                 {
                     gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
 
@@ -140,9 +161,12 @@ namespace GUI
             {
                 if (cboLoaiphieu.Enabled == true)
                 {
+                    gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
+                    gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
                     gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
                     gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
                     gridDsPhieu.Columns.Add("soluong", "Số lượng xuất");
+
                 }
                 cboLoaiphieu.Enabled = false;
 
@@ -162,8 +186,19 @@ namespace GUI
                         break;
                     }
                 }
-                bool loi = false; //lỗi khi số lượng xuất lớn hơn số lượng tồn
-                if (daTonTai == false) {
+                bool loi = false; //bắt lỗi các trường hợp
+                if (daTonTai == false)
+                {
+                    if (soluongxuat == 0)
+                    {
+                        MessageBox.Show("Vui lòng nhập số lượng xuất kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loi = true;
+                        return;
+                    }
+                }
+
+                if (daTonTai == false && loi == false)
+                {
                     DataTable dt = nguyenlieubus.LoadIngredients();
                     foreach (DataRow row in dt.Rows)
                     {
@@ -171,9 +206,9 @@ namespace GUI
                         int soluongton = Convert.ToInt32(row["Số lượng tồn"]);
                         int muctoithieu = Convert.ToInt32(row["Mức tối thiểu"]);
 
-                        if (tennl == nguyenlieu && soluongxuat > soluongton)
+                        if (tennl == nguyenlieu && soluongxuat > soluongton) //Xuất quá số lượng tồn
                         {
-                            MessageBox.Show("Xuất quá số lượng tồn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Xuất quá số lượng nguyên liệu hiện tại trong kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             loi = true;
                         }
                         else if (tennl == nguyenlieu && (soluongton - soluongxuat) < muctoithieu)
@@ -183,7 +218,8 @@ namespace GUI
                                 "Xác nhận lưu phiếu",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question);
-                            if (result == DialogResult.Yes) {  //nếu chọn yes vẫn thêm nl vào phiếu xuất
+                            if (result == DialogResult.Yes)
+                            {  //nếu chọn yes vẫn thêm nl vào phiếu xuất
                                 loi = false;
                             }
                             else      //chọn no thì không thêm nl đó vào phiếu
@@ -193,21 +229,21 @@ namespace GUI
                             }
                         }
                     }
-                }
-                // Thêm mới nếu chưa tồn tại
-                if (!daTonTai && !loi)
-                {
-                    gridDsPhieu.Rows.Add(manl, nguyenlieu, soluongxuat);
 
-                    // Reset các input
-                    numGianhap.Value = 0;
-                    numSoluong.Value = 0;
-                    txtGhichu.Enabled = false;
+                    // Thêm mới nếu chưa tồn tại
+                    if (!daTonTai && !loi)
+                    {
+                        gridDsPhieu.Rows.Add(manl, nguyenlieu, soluongxuat);
+
+                        // Reset các input
+                        numGianhap.Value = 0;
+                        numSoluong.Value = 0;
+                        txtGhichu.Enabled = false;
+                    }
                 }
+
+
             }
-
-
-
         }
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
@@ -246,7 +282,7 @@ namespace GUI
                 }
                 else
                 {
-                    
+
                     foreach (DataGridViewRow row in gridDsPhieu.Rows)
                     {
                         string manguyenlieu = row.Cells["manl"].Value?.ToString();
@@ -254,7 +290,7 @@ namespace GUI
                         string tennnl = row.Cells["nguyenlieu"].Value?.ToString();
 
 
-                        
+
                         if (cboLoaiphieu.Enabled == true)
                         {
                             phieuxuat.ThemPhieuXuat(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
@@ -334,7 +370,26 @@ namespace GUI
             txtDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
         }
 
-        //Nếu thay đổi giá trị trong gridview
+
+
+
+        // Hàm cập nhật tổng tiền
+        private void UpdateTongTien()
+        {
+            int tongTien = 0;
+
+            foreach (DataGridViewRow row in gridDsPhieu.Rows)
+            {
+                if (row.Cells["thanhtien"].Value != null)
+                {
+                    tongTien += Convert.ToInt32(row.Cells["thanhtien"].Value);
+                }
+            }
+
+            // Hiển thị tổng tiền lên TextBox
+            txtTongtien.Text = tongTien.ToString();
+        }
+
         private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
@@ -355,21 +410,10 @@ namespace GUI
             }
         }
 
-        // Hàm cập nhật tổng tiền
-        private void UpdateTongTien()
+        private void btnTonKho_Click(object sender, EventArgs e)
         {
-            int tongTien = 0;
-
-            foreach (DataGridViewRow row in gridDsPhieu.Rows)
-            {
-                if (row.Cells["thanhtien"].Value != null)
-                {
-                    tongTien += Convert.ToInt32(row.Cells["thanhtien"].Value);
-                }
-            }
-
-            // Hiển thị tổng tiền lên TextBox
-            txtTongtien.Text = tongTien.ToString();
+            frmKho tonkho = new frmKho();
+            General.ShowDialogWithBlur(tonkho);
         }
     }
 }

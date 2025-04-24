@@ -23,11 +23,49 @@ namespace GUI
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
         }
 
+        private void ResetAllButtons(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                // Bỏ qua Panel có tên là pnlFormcon
+                if (control is Panel panel && panel.Name == "pnlFormcon")
+                {
+                    continue; // Bỏ qua control này và tiếp tục vòng lặp
+                }
+
+                if (control is Guna.UI2.WinForms.Guna2GradientButton btn)
+                {
+                    btn.FillColor = Color.Transparent;
+                    btn.FillColor2 = Color.Transparent;
+                    btn.ForeColor = Color.White;
+                }
+
+                // Gọi lại hàm nếu control có các controls con
+                if (control.HasChildren)
+                {
+                    ResetAllButtons(control);
+                }
+            }
+        }
+
+
+
+        private void SetActiveButton(Guna.UI2.WinForms.Guna2GradientButton clickedButton)
+        {
+            ResetAllButtons(this);
+
+            // Gán màu Gradient cho nút đang được chọn
+            clickedButton.FillColor = Color.FromArgb(248, 92, 7);     // Màu trái
+            clickedButton.FillColor2 = Color.FromArgb(255, 128, 0);   // Màu phải
+            clickedButton.ForeColor = Color.White;
+            clickedButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+        }
+
 
         private bool isOpenKho = false;    //Biến cờ để biết trạng thái xổ menu
         private async void btnKho_Click(object sender, EventArgs e)
         {
-
+            SetActiveButton(btnKho);
             if (pnlKho.Height > btnKho.Height + 40)
             {
                 isOpenKho = true;
@@ -36,7 +74,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 31; i += 5)
+                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 40; i += 10)
                 {
                     pnlKho.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -53,12 +91,12 @@ namespace GUI
 
         private void btnLoinhuan_Click(object sender, EventArgs e)
         {
-
+            SetActiveButton(btnLoinhuan);
         }
 
         private void btnMathangbanchay_Click(object sender, EventArgs e)
         {
-
+            SetActiveButton(btnMathangbanchay);
         }
 
         private void btnKiemkekho_Click(object sender, EventArgs e)
@@ -76,6 +114,7 @@ namespace GUI
         private bool isOpenBaocao = false;
         private async void btnBaocaoTK_Click(object sender, EventArgs e)
         {
+            SetActiveButton(btnBaocaoTK);
             if (pnlBaocaoTK.Height > btnBaocaoTK.Height + 40)
             {
                 isOpenBaocao = true;
@@ -84,7 +123,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 31; i += 5)
+                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 37; i += 10)
                 {
                     pnlBaocaoTK.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -101,6 +140,7 @@ namespace GUI
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            SetActiveButton(btnThucDon);
             pnlFormcon.Controls.Clear();
             frmThucdon frm = new frmThucdon();
             frm.TopLevel = false;
@@ -112,6 +152,7 @@ namespace GUI
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            SetActiveButton(btnTaiKhoan);
             pnlFormcon.Controls.Clear();
             frmTaiKhoan frm = new frmTaiKhoan();
             frm.TopLevel = false;
@@ -123,6 +164,7 @@ namespace GUI
 
         private void btnXuatnhapkho_Click_1(object sender, EventArgs e)
         {
+            SetActiveButton(btnXuatnhapkho);
             pnlFormcon.Controls.Clear();
             frmXuatNhapKho frm = new frmXuatNhapKho();
             frm.TopLevel = false;
@@ -134,6 +176,7 @@ namespace GUI
 
         private void btnThuchi_Click(object sender, EventArgs e)
         {
+            SetActiveButton(btnThuchi);
             pnlFormcon.Controls.Clear();
             frmThuChi frm = new frmThuChi();
             frm.TopLevel = false;
@@ -151,12 +194,23 @@ namespace GUI
 
         private void btnTonkho_Click(object sender, EventArgs e)
         {
+            SetActiveButton(btnTonkho);
             pnlFormcon.Controls.Clear();
             frmKho frm = new frmKho();
             frm.TopLevel = false;
             pnlFormcon.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
+        }
+
+        private void btnKiemkekho_Click_1(object sender, EventArgs e)
+        {
+            SetActiveButton(btnKiemkekho);
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(btnDashboard);
         }
     }
 }

@@ -22,26 +22,40 @@ namespace GUI
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-            LoadNguyenLieu();
-            TaiTenLoai();
-            gbThongtinnguyenlieu.Enabled = false;
-            btnThemNguyenlieu.Enabled = true;
-            btnHuy.Enabled = false;
-            btnLuu.Enabled = false;
 
+            if (this.Modal)   //nếu mở từ xuất nhập
+            {
+                pnlThongtinNL.Visible = false;
+                btnThemNguyenlieu.Visible = false;
+                btnTrolai.Visible = true;
+                LoadIngredients();
+            }
+            else  //nếu chạy trực tiếp
+            {
+                btnTrolai.Visible = false;
+                pnlThongtinNL.Visible = false;
+                LoadIngredients();
+                LoadIngredients_type();
+                pnlThongtinNL.Enabled = false;
+                btnThemNguyenlieu.Enabled = true;
+                btnThemNguyenlieu.Visible = true;
+                btnHuy.Enabled = false;
+                btnLuu.Enabled = false;
+                txtMaNguyenLieu.Enabled = true;
+            }
         }
 
-        public void LoadNguyenLieu()
+        public void LoadIngredients()
         {
             gridDsNguyenlieu.RowTemplate.Height = 50;
             gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
-            gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1; //đưa button về cuối
+            gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1;
 
         }
 
-        public void TaiTenLoai()
+        public void LoadIngredients_type()
         {
-            cboTenloai.DataSource = nguyenlieubus.TaiLoaiNguyenLieu();
+            cboTenloai.DataSource = nguyenlieubus.LoadIngredients_type();
             cboTenloai.DisplayMember = "TenLoai";
         }
 
@@ -50,17 +64,24 @@ namespace GUI
             frmThemLoaiNguyenLieu loainguyenlieu = new frmThemLoaiNguyenLieu();
             General.ShowDialogWithBlur(loainguyenlieu);
 
-            TaiTenLoai();
+            LoadIngredients_type();
         }
 
         private void btnThemNguyenlieu_Click(object sender, EventArgs e)
         {
-            gbThongtinnguyenlieu.Enabled = true;
-            txtMaNguyenLieu.Enabled = true;
+            pnlThongtinNL.Visible = true;
+            pnlThongtinNL.Enabled = true;
+
             btnHuy.Enabled = true;
             btnLuu.Enabled = true;
+            btnThemNguyenlieu.Enabled = false;
+
+            
+            txtMaNguyenLieu.Focus();
             txtTenNguyenLieu.Clear();
             txtDonvitinh.Clear();
+            numMuctoithieu.Value = 0;
+            numMucondinh.Value = 0;
 
             txtMaNguyenLieu.Text = nguyenlieubus.PhatSinhMaNL();
             txtMaNguyenLieu.ReadOnly = true;
@@ -69,45 +90,93 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmKho_Load(sender, e);
-            btnThemNguyenlieu.Enabled = true;
         }
 
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            DataTable dt = nguyenlieubus.LoadIngredients_name(); //tải danh sách tên nguyên liêu
-            bool tontai = false;
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row["TenNL"].ToString() == txtTenNguyenLieu.Text && txtMaNguyenLieu.Enabled == true)
-                {
-                    tontai = true;
-                }
-            }
-            if (tontai == true)
+            string manl = txtMaNguyenLieu.Text;
+            string tenloai = cboTenloai.Text;
+            string tennl = txtTenNguyenLieu.Text;
+            string donvi = txtDonvitinh.Text;
+            int muctoithieu = (int)numMuctoithieu.Value;
+            int mucondinh = (int)numMucondinh.Value;
+
+            //// Kiểm tra tên nguyên liệu có trùng không
+            if (IsDuplicateIngredient(tennl, manl))
             {
                 MessageBox.Show("Đã tồn tại tên nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
-            {
-                if (txtMaNguyenLieu.Enabled == true)
-                {
-                    nguyenlieubus.AddIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
-                    LoadNguyenLieu();
+            // Kiểm tra các thông tin nhập vào
+            if (!ValidateInput(tenloai, tennl, donvi, muctoithieu, mucondinh)) return;
 
-                }
-                else
-                {
-                    nguyenlieubus.UpdateIngredients(txtMaNguyenLieu.Text, cboTenloai.Text, txtTenNguyenLieu.Text, txtDonvitinh.Text, Convert.ToInt32(numMuctoithieu.Value), Convert.ToInt32(numMucondinh.Value));
-                    LoadNguyenLieu();
-                }
-            }
+            
+
+            if (txtMaNguyenLieu.Enabled == true)
+                nguyenlieubus.AddIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
+            else
+                nguyenlieubus.UpdateIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
+
+            LoadIngredients();
             frmKho_Load(sender, e);
 
         }
 
+        private bool ValidateInput(string tenloai, string tennl, string donvi, int muctoithieu, int mucondinh)
+        {
+            if (string.IsNullOrEmpty(tenloai))
+            {
+                General.ShowWarning("Vui lòng chọn tên loại");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(tennl))
+            {
+                General.ShowWarning("Vui lòng nhập tên nguyên liệu");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(donvi))
+            {
+                General.ShowWarning("Vui lòng nhập đơn vị tính");
+                return false;
+            }
+
+            if (muctoithieu == 0)
+            {
+                General.ShowWarning("Vui lòng nhập mức tối thiểu");
+                return false;
+            }
+
+            if (mucondinh == 0)
+            {
+                General.ShowWarning("Vui lòng nhập mức ổn định");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsDuplicateIngredient(string tennl, string currentMaNL)
+        {
+            DataTable dt = nguyenlieubus.LoadIngredients_name();
+            foreach (DataRow row in dt.Rows)
+            {
+                string existingName = row["TenNL"].ToString().ToLower();  // Chuyển tất cả thành chữ thường
+                string existingMaNL = row["MaNL"].ToString();
+
+                if (existingName == tennl.ToLower() && existingMaNL != currentMaNL)  // So sánh không phân biệt hoa/thường
+                    return true;
+            }
+            return false;
+        }
+
+
         private void gridDsNguyenlieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.Modal) //nếu mở từ form khác thì không cho sửa
+                return;
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
             if (e.RowIndex < 0 || e.ColumnIndex != gridDsNguyenlieu.Columns["btnUpdate"].Index)
             {
@@ -121,19 +190,26 @@ namespace GUI
             numMuctoithieu.Value = Convert.ToDecimal(hangduocchon.Cells["Mức tối thiểu"].Value);
             numMucondinh.Value = Convert.ToDecimal(hangduocchon.Cells["Mức ổn định"].Value);
 
-            gbThongtinnguyenlieu.Enabled = true;
+            pnlThongtinNL.Enabled = true;
             txtMaNguyenLieu.Enabled = false;
 
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
+            pnlThongtinNL.Visible = true;
 
         }
 
-        private void gridDsNguyenlieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
+            pnlThongtinNL.Visible = false;
+            btnThemNguyenlieu.Enabled = true;
+        }
 
+        private void btnTrolai_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
