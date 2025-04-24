@@ -283,6 +283,7 @@
             numSotien.Font = new Font("Segoe UI", 9F);
             numSotien.Location = new Point(36, 376);
             numSotien.Margin = new Padding(4, 6, 4, 6);
+            numSotien.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             numSotien.Name = "numSotien";
             numSotien.ShadowDecoration.CustomizableEdges = customizableEdges12;
             numSotien.Size = new Size(244, 50);

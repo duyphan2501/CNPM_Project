@@ -69,10 +69,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKho));
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             gridDsNguyenlieu = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnUpdate = new DataGridViewImageColumn();
             label8 = new Label();
             pnlTrangthai = new Guna.UI2.WinForms.Guna2Panel();
             txtDonvitinh = new TextBox();
@@ -100,6 +100,7 @@
             pnlThongtinNL = new Guna.UI2.WinForms.Guna2Panel();
             btnClose = new Guna.UI2.WinForms.Guna2Button();
             btnTrolai = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnUpdate = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)gridDsNguyenlieu).BeginInit();
             pnlTrangthai.SuspendLayout();
             pnlTensanpham.SuspendLayout();
@@ -203,19 +204,6 @@
             gridDsNguyenlieu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsNguyenlieu.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridDsNguyenlieu.CellClick += gridDsNguyenlieu_CellClick;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            btnUpdate.HeaderText = "";
-            btnUpdate.Image = Properties.Resources.update;
-            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnUpdate.MinimumWidth = 50;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Resizable = DataGridViewTriState.True;
-            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
-            btnUpdate.Width = 50;
             // 
             // label8
             // 
@@ -629,6 +617,19 @@
             btnTrolai.Text = "Trờ lại";
             btnTrolai.Click += btnTrolai_Click;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            btnUpdate.HeaderText = "";
+            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnUpdate.MinimumWidth = 50;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.ReadOnly = true;
+            btnUpdate.Resizable = DataGridViewTriState.True;
+            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
+            btnUpdate.Width = 50;
+            // 
             // frmKho
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -689,7 +690,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox picThemLoai;
         private Guna.UI2.WinForms.Guna2ComboBox cboTenloai;
         private Label label2;
-        private DataGridViewImageColumn btnUpdate;
         private TextBox txtDonvitinh;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2NumericUpDown numMucondinh;
@@ -700,5 +700,6 @@
         private Guna.UI2.WinForms.Guna2Panel pnlThongtinNL;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2GradientButton btnTrolai;
+        private DataGridViewImageColumn btnUpdate;
     }
 }

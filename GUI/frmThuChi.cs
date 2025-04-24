@@ -70,6 +70,7 @@ namespace GUI
 
             numSotien.Value = 0;
             txtGhichu.Clear();
+            frmThuChi_Load(sender, e);
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -87,14 +88,14 @@ namespace GUI
             {
                 TaiPhieu();
                 DataView dv =((DataTable) gridDsThuchi.DataSource).DefaultView;
-                dv.RowFilter = $"[Loại phiếu] LIKE '%Thu%'";
+                dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu thu%'";
                 gridDsThuchi.DataSource = dv;
             }
             else
             {
                 TaiPhieu();
                 DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-                dv.RowFilter = $"[Loại phiếu] LIKE '%Chi%'";
+                dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
                 gridDsThuchi.DataSource = dv;
             }
         }

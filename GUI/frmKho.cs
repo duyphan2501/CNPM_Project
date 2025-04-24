@@ -28,14 +28,14 @@ namespace GUI
                 pnlThongtinNL.Visible = false;
                 btnThemNguyenlieu.Visible = false;
                 btnTrolai.Visible = true;
-                LoadNguyenLieu();
+                LoadIngredients();
             }
             else  //nếu chạy trực tiếp
             {
                 btnTrolai.Visible = false;
                 pnlThongtinNL.Visible = false;
-                LoadNguyenLieu();
-                TaiTenLoai();
+                LoadIngredients();
+                LoadIngredients_type();
                 pnlThongtinNL.Enabled = false;
                 btnThemNguyenlieu.Enabled = true;
                 btnThemNguyenlieu.Visible = true;
@@ -45,7 +45,7 @@ namespace GUI
             }
         }
 
-        public void LoadNguyenLieu()
+        public void LoadIngredients()
         {
             gridDsNguyenlieu.RowTemplate.Height = 50;
             gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
@@ -53,7 +53,7 @@ namespace GUI
 
         }
 
-        public void TaiTenLoai()
+        public void LoadIngredients_type()
         {
             cboTenloai.DataSource = nguyenlieubus.LoadIngredients_type();
             cboTenloai.DisplayMember = "TenLoai";
@@ -64,7 +64,7 @@ namespace GUI
             frmThemLoaiNguyenLieu loainguyenlieu = new frmThemLoaiNguyenLieu();
             General.ShowDialogWithBlur(loainguyenlieu);
 
-            TaiTenLoai();
+            LoadIngredients_type();
         }
 
         private void btnThemNguyenlieu_Click(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace GUI
             else
                 nguyenlieubus.UpdateIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
 
-            LoadNguyenLieu();
+            LoadIngredients();
             frmKho_Load(sender, e);
 
         }
@@ -175,7 +175,6 @@ namespace GUI
 
         private void gridDsNguyenlieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            pnlThongtinNL.Visible = true;
             if (this.Modal) //nếu mở từ form khác thì không cho sửa
                 return;
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
@@ -198,7 +197,8 @@ namespace GUI
             btnHuy.Enabled = true;
 
             btnThemNguyenlieu.Enabled = false;
-            
+            pnlThongtinNL.Visible = true;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

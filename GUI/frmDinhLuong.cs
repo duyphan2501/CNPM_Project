@@ -22,18 +22,18 @@ namespace GUI
             txtTenSp.ReadOnly = true;
             Masp = masp;
 
-            loadDsDinhluong(); //load danh sách định lượng theo tên sản phẩm
+            LoadRecipe(); //load danh sách định lượng theo tên sản phẩm
         }
 
         //Tải tên nguyên liệu lên combobox
-        public void TaitenNL()
+        public void LoadRecipe_name()
         {
             cboTenNguyenLieu.DataSource = dinhluong.LoadRecipe_name();
             cboTenNguyenLieu.DisplayMember = "TenNL";
         }
 
         //Load lại danh sách định lượng theo tên sản phẩm trên griview
-        public void loadDsDinhluong()
+        public void LoadRecipe()
         {
             gridDsDinhluong.RowTemplate.Height = 50;
             gridDsDinhluong.DataSource = dinhluong.LoadRecipe(txtTenSp.Text);
@@ -44,11 +44,11 @@ namespace GUI
         //Khi load form định lượng
         private void frmDinhLuong_Load(object sender, EventArgs e)
         {
-            loadDsDinhluong();
+            LoadRecipe();
             btnThem.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            TaitenNL();
+            LoadRecipe_name();
         }
 
         private bool IsIngredientDuplicated(string tennl) //Kiểm tra trùng nguyên liệu
@@ -71,13 +71,14 @@ namespace GUI
 
             if (IsIngredientDuplicated(tennl))
             {
-                MessageBox.Show("This ingredient already exists.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nguyên liệu này đã có trong định lượng.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             dinhluong.AddRecipe(Masp, tennl, Convert.ToInt32(numSoluongNL.Value));
+            MessageBox.Show("Đã thêm nguyên liệu vào định lượng", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             numSoluongNL.Value = 0;
-            loadDsDinhluong();
+            LoadRecipe();
         }
 
         //Nhấn nút xong khi đã thêm đủ danh sách định lượng
@@ -110,8 +111,9 @@ namespace GUI
         {
 
             dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
+            MessageBox.Show("Cập nhật thông tin thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cboTenNguyenLieu.Enabled = true;
-            loadDsDinhluong();
+            LoadRecipe();
             frmDinhLuong_Load(sender, e);
 
         }
@@ -119,8 +121,17 @@ namespace GUI
         //Khi xóa định lượng
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
-            loadDsDinhluong();
+            DialogResult result = MessageBox.Show(   //Thông báo xuất quá mức tối thiểu
+                                "Bạn có chắc chắn xóa định lượng không?",
+                                "Xác nhận xóa",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
+                MessageBox.Show("Đã xóa nguyên liệu khỏi định lượng", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
             frmDinhLuong_Load(sender, e);
         }
     }

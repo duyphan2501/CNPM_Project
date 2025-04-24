@@ -75,6 +75,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThucdon));
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             txtMasanpham = new TextBox();
             label1 = new Label();
@@ -101,13 +102,13 @@
             btnDinhluong = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridThucDon = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnUpdate = new DataGridViewImageColumn();
             btnTimkiem = new Guna.UI2.WinForms.Guna2GradientButton();
             btnThemmon = new Guna.UI2.WinForms.Guna2GradientButton();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             label5 = new Label();
             cboLoctrangthai = new Guna.UI2.WinForms.Guna2ComboBox();
             pnlThongtinSP = new Guna.UI2.WinForms.Guna2Panel();
+            btnUpdate = new DataGridViewImageColumn();
             pnlMasanpham.SuspendLayout();
             pnlTenloai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picThemLoai).BeginInit();
@@ -571,19 +572,6 @@
             gridThucDon.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridThucDon.CellClick += gridThucDon_CellClick;
             // 
-            // btnUpdate
-            // 
-            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            btnUpdate.HeaderText = "";
-            btnUpdate.Image = Properties.Resources.update;
-            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnUpdate.MinimumWidth = 50;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Resizable = DataGridViewTriState.True;
-            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
-            btnUpdate.Width = 50;
-            // 
             // btnTimkiem
             // 
             btnTimkiem.AutoRoundedCorners = true;
@@ -690,6 +678,19 @@
             pnlThongtinSP.Size = new Size(560, 1103);
             pnlThongtinSP.TabIndex = 20;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            btnUpdate.HeaderText = "";
+            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnUpdate.MinimumWidth = 50;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.ReadOnly = true;
+            btnUpdate.Resizable = DataGridViewTriState.True;
+            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
+            btnUpdate.Width = 50;
+            // 
             // frmThucdon
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -762,10 +763,10 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnLuu;
         private Guna.UI2.WinForms.Guna2GradientButton btnHuy;
         private Guna.UI2.WinForms.Guna2GradientButton btnDinhluong;
-        private DataGridViewImageColumn btnUpdate;
         private Label label5;
         private Guna.UI2.WinForms.Guna2ComboBox cboLoctrangthai;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Panel pnlThongtinSP;
+        private DataGridViewImageColumn btnUpdate;
     }
 }

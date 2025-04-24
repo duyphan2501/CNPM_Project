@@ -275,7 +275,7 @@
             cboLoai.Font = new Font("Microsoft YaHei", 10F);
             cboLoai.ForeColor = Color.FromArgb(68, 88, 112);
             cboLoai.ItemHeight = 30;
-            cboLoai.Items.AddRange(new object[] { "Thu", "Chi" });
+            cboLoai.Items.AddRange(new object[] { "Phiếu thu", "Phiếu chi" });
             cboLoai.Location = new Point(62, 94);
             cboLoai.Name = "cboLoai";
             cboLoai.ShadowDecoration.CustomizableEdges = customizableEdges18;
