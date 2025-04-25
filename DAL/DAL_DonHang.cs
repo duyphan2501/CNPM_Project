@@ -15,7 +15,7 @@ namespace DAL
         // Lập đơn hàng
         public DAL_DonHang(string maDonHang, string maCaLap,
                            int trangThai, string maThe, int giamGia, int tongTien, string ghiChu)
-        {   
+        {
             donhang = new DTO_DonHang(maDonHang, maCaLap, trangThai, maThe, giamGia, tongTien, ghiChu);
         }
         // Thanh toán đơn hàng
@@ -78,7 +78,7 @@ namespace DAL
         // lấy đơn hàng cho thu ngân
         public DataTable SelectOrderForCashier(string maCaLam)
         {
-            string query = "select * from DonHang where MaCaLap = @MaCaLap or MaCaThanhToan is null";
+            string query = "select * from DonHang where MaCaLap = @MaCaLap or MaCaThanhToan is null order by madonhang desc";
             return DataProvider.ExecuteQuery(query, new object[] { maCaLam });
         }
 
@@ -123,6 +123,34 @@ namespace DAL
         {
             string query = "select * from donhang where madonhang = @madonhang";
             return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
+        }
+
+        public int UpdateStateDonHang(string maDonHang, int trangThai)
+        {
+            string query = "update donhang set trangthai = @trangthai where madonhang = @madonhang";
+            object[] objects = { trangThai, maDonHang };
+            return DataProvider.ExecuteNonQuery(query, objects);
+        }
+
+        public int LayLoaiThanhToan(string maDonHang)
+        {
+            string query = "SELECT LoaiThanhToan FROM DonHang WHERE MaDonHang = @MaDonHang";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maDonHang });
+            return result != null ? Convert.ToInt32(result) : 0;
+        }
+
+        public DataTable SelectDonHangOnPage(int page, int pageSize)
+        {
+            string query = "SELECT * FROM DonHang ORDER BY MaDonHang desc OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
+            int offset = (page - 1) * pageSize;
+            return DataProvider.ExecuteQuery(query, new object[] { offset, pageSize });
+        }
+
+        public int GetToTalNumberDonHang()
+        {
+            string query = "SELECT COUNT(MaDonHang) FROM DonHang";
+            object result = DataProvider.ExecuteScalar(query);
+            return result != null ? Convert.ToInt32(result) : 0;
         }
     }
 }

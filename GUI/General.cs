@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI
 {
@@ -89,5 +90,6 @@ namespace GUI
             money = money.Replace(",", "").Replace("đ", "").Trim();
             return Int32.Parse(money);
         }
+        
     }
 }

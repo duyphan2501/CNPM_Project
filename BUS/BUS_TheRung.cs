@@ -59,5 +59,15 @@ namespace BUS
         {
             return therung.UpdateStateTheRung(trangthai, maThe);
         }
+
+        public string LaySoThe(string maThe)
+        {
+            return therung.LaySoThe(maThe);
+        }
+
+        public string LayMaThe(string soThe)
+        {
+            return therung.LayMaThe(soThe);
+        }
     }
 }

@@ -82,5 +82,25 @@ namespace BUS
         {
             return donhang.UpdateDonHang(maDonHang, giamGia, tongTien, ghiChu);
         }
+
+        public int UpdateStateDonHang(string maDonHang, int trangThai)
+        {
+            return donhang.UpdateStateDonHang(maDonHang, trangThai);
+        }
+
+        public int LayLoaiThanhToan(string maDonHang)
+        {
+            return donhang.LayLoaiThanhToan(maDonHang);
+        }
+
+        public DataTable SelectDonHangOnPage(int page, int pageSize)
+        {
+            return donhang.SelectDonHangOnPage(page, pageSize);
+        }
+
+        public int GetToTalNumberDonHang()
+        {
+            return donhang.GetToTalNumberDonHang();
+        }
     } 
 }

@@ -224,12 +224,11 @@ namespace GUI
             // phát sinh mã đơn hàng
             donhangBUS = new BUS_DonHang();
             lblMaDonHang.Text = donhangBUS.PhatSinhMaDonHang();
-            lblSoCho.Text = "";
         }
 
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
-            if (maThe != "" && lblMaDonHang.Text != "" && pnlInvoiceItem.Controls.Count > 0)
+            if (IsValidDonHang())
             {
                 // lấy list từ pnlInvoice Item để tuyền vào frmThanhToan
                 List<InvoiceItem> danhSachItem = pnlInvoiceItem.Controls
@@ -274,8 +273,73 @@ namespace GUI
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            frmOrderList frmDonHang = new frmOrderList();
+            frmOrderList frmDonHang = new frmOrderList("asdfd");
             General.ShowDialogWithBlur(frmDonHang);
+        }
+
+        private void btnTamLuu_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra trạng thái đơn hàng trước khi lưu
+            if (!IsValidDonHang())
+            {
+                return;
+            }
+            // Lấy thông tin cần thiết để tạo đơn hàng
+            string maDonHang = lblMaDonHang.Text;
+            string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
+            string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
+            int tongTien = General.FormatMoneyToInt(lblTongtien.Text);
+
+            // Tạo đối tượng đơn hàng với trạng thái tạm lưu (ThanhToan = 0)
+            donhangBUS = new BUS_DonHang(maDonHang, maCaLam, 0, maThe, 0, tongTien, ghiChu);
+            int insertedRows = donhangBUS.InsertNewOrder();
+
+            if (insertedRows > 0)
+            {
+                // Duyệt qua các món trong hóa đơn để thêm chi tiết đơn hàng
+                foreach (var item in pnlInvoiceItem.Controls.OfType<InvoiceItem>())
+                {
+                    // Tạo đối tượng chi tiết đơn hàng
+                    BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonHang, item.MaSanPham, item.DonGia, item.SoLuong);
+
+                    // Lưu chi tiết vào CSDL
+                    int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+                    if (isDetailAdded == 0)
+                    {
+                        MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // Cập nhật trạng thái thẻ rung sang 'đang dùng' 
+                BUS_TheRung therung = new BUS_TheRung();
+                therung.UpdateStateTheRung(1, maThe);
+                ClearFormBanHang();
+            }
+            else
+            {
+                // Thông báo lỗi nếu thêm đơn hàng thất bại
+                MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private bool IsValidDonHang()
+        {
+            // Kiểm tra trạng thái đơn hàng
+            if (lblMaDonHang.Text.Trim() == "" || lblSoCho.Text.Trim() == "")
+            {
+                MessageBox.Show("Vui lòng chọn số chờ và mã đơn hàng trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (pnlInvoiceItem.Controls.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng trống. Vui lòng thêm sản phẩm trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }

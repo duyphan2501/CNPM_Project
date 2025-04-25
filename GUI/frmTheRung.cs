@@ -17,7 +17,6 @@ namespace GUI
         List<TheRung> deletedTheRung = new List<TheRung>();
         BUS_TheRung theRungBUS;
         DataTable allTheRung;
-        bool inControl = false;
         enum FormState
         {
             None, Insert, Update, Delete
@@ -78,8 +77,9 @@ namespace GUI
                     pnlTheRung.Controls.Remove(theRung);
                 }
             }
+
             // chế độ chọn số chờ
-            else if (!inControl)
+            else if (currentMode == FormState.None)
             {
                 if (theRung.TrangThai != 0) // ko rảnh
                 {
@@ -103,8 +103,6 @@ namespace GUI
                 cboTrangThaiThe.SelectedIndex = theRung.TrangThai;
             }
         }
-
-
         private void LoadCboTrangThaiThe()
         {
             var trangThaiList = new Dictionary<int, string>
@@ -121,20 +119,32 @@ namespace GUI
             cboTrangThaiThe.SelectedIndex = 0;
         }
 
+        public string ConvertStateToString(string state)
+        {
+            switch (state)
+            {
+                case "None":
+                    return "Chọn Số Chờ";
+                case "Insert":
+                    return "Thêm Thẻ";
+                case "Update":
+                    return "Chỉnh Sửa Thẻ";
+                default:
+                    return "Xoá Thẻ";
+            }
+        }
+
         private void SetFormState(FormState state)
         {
             // Hiển thị lại chế độ
             currentMode = state;
-            lblCurrentMode.Text = $"Chế độ: {state.ToString()}";
+            lblCurrentMode.Text = $"Chế độ: {ConvertStateToString(state.ToString())}";
 
             // Đổi con trỏ chuột khi ở chế độ xoá
             this.Cursor = (state == FormState.Delete) ? Cursors.No : Cursors.Default;
 
             // Kích hoạt/ Vô hiệu hóa group nhập liệu
             grpTheRungInfo.Enabled = (state != FormState.None);
-
-            // Cho phép chọn trên pnl khi không phải chế độ Delete
-            inControl = (state != FormState.None);
 
             // Điều khiển các nút
             btnThemThe.Enabled = (state == FormState.None);
@@ -228,7 +238,7 @@ namespace GUI
             string soThe = txtSoThe.Text;
             if (soThe.Length > 4)
             {
-                // Giữ lại 4 ký tự đầu tiên
+                // Giữ lại 4 ký tự đầu tiên khi nhập lố 5 kí tự
                 txtSoThe.Text = soThe.Substring(0, 4);
 
                 // Di chuyển con trỏ về cuối textbox

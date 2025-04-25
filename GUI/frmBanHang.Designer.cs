@@ -644,6 +644,7 @@
             btnTamLuu.Size = new Size(225, 76);
             btnTamLuu.TabIndex = 5;
             btnTamLuu.Text = "Tạm Lưu";
+            btnTamLuu.Click += btnTamLuu_Click;
             // 
             // pnlProductCategory
             // 
