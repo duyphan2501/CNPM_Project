@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DAL;
 using GUI.components;
+using GUI.ReportPrint;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -372,104 +373,20 @@ namespace GUI
             theRung.UpdateStateTheRung(0, maThe);
         }
 
-        private void GeneratePaginationButtons()
-        {
-            pnlPagination.Controls.Clear();
-
-            int maxPageButtons = 5;
-            int startPage = Math.Max(1, currentPage - 2);
-            int endPage = Math.Min(totalPages, startPage + maxPageButtons - 1);
-
-            // Giữ đúng số nút nếu gần cuối danh sách
-            if (endPage - startPage + 1 < maxPageButtons)
-            {
-                startPage = Math.Max(1, endPage - maxPageButtons + 1);
-            }
-
-            // Nút "Đầu Trang"
-            if (currentPage > 1)
-            {
-                pnlPagination.Controls.Add(CreateGunaButton("<<", (s, e) =>
-                {
-                    currentPage = 1;
-                    LoadDonHangPage(currentPage);
-                }));
-            }
-
-            // Nút "Trang trước"
-            if (currentPage > 1)
-            {
-                pnlPagination.Controls.Add(CreateGunaButton("<", (s, e) =>
-                {
-                    currentPage--;
-                    LoadDonHangPage(currentPage);
-                }));
-            }
-
-            // Các nút số trang
-            for (int i = startPage; i <= endPage; i++)
-            {
-                int selectedPage = i;
-                pnlPagination.Controls.Add(CreateGunaButton(i.ToString(), (s, e) =>
-                {
-                    currentPage = selectedPage;
-                    LoadDonHangPage(currentPage);
-                }, i == currentPage));
-            }
-
-            // Nút "Trang sau"
-            if (currentPage < totalPages)
-            {
-                pnlPagination.Controls.Add(CreateGunaButton(">", (s, e) =>
-                {
-                    currentPage++;
-                    LoadDonHangPage(currentPage);
-                }));
-            }
-
-            // Nút "Cuối Trang"
-            if (currentPage < totalPages)
-            {
-                pnlPagination.Controls.Add(CreateGunaButton(">>", (s, e) =>
-                {
-                    currentPage = totalPages;
-                    LoadDonHangPage(currentPage);
-                }));
-            }
-        }
-
-        private Guna2Button CreateGunaButton(string text, EventHandler onClick, bool isActive = false)
-        {
-            int width = 45;
-
-            // Nếu là >> hoặc << thì tăng chiều rộng
-            if (text == ">>" || text == "<<") width = 60;
-
-            var btn = new Guna2Button
-            {
-                Text = text,
-                Width = width,
-                Height = 32,
-                BorderRadius = 6,
-                FillColor = isActive ? Color.DodgerBlue : Color.Gainsboro,
-                ForeColor = isActive ? Color.White : Color.Black,
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Margin = new Padding(4),
-                Cursor = Cursors.Hand,
-                TextAlign = HorizontalAlignment.Center,
-                Padding = new Padding(0)
-            };
-            btn.Click += onClick;
-
-            return btn;
-        }
-
-
         private void LoadDonHangPage(int page)
         {
             DataTable dt = new BUS_DonHang().SelectDonHangOnPage(page, pageSize);
             LoadOrderList(dt);
-            GeneratePaginationButtons();
+            // gọi hàm phân trang
+            PaginationHelper.GeneratePaginationButtons(
+            pnlPagination,
+            currentPage,
+            totalPages,
+            (page) =>
+            {
+                currentPage = page;
+                LoadDonHangPage(currentPage);
+            });
         }
 
         int GetPageSizeFromGridView()
@@ -479,6 +396,30 @@ namespace GUI
             int rowHeight = gridOrderList.RowTemplate.Height;
 
             return Math.Max(1, gridHeight / rowHeight); // Đảm bảo tối thiểu 1 dòng
+        }
+
+
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = gridOrderList.SelectedRows[0];
+            string maHoaDon = selectedRow.Cells["MaDonHang"].Value.ToString();
+
+            // Gọi hàm từ tầng DAL để lấy dữ liệu
+            DataTable dt = new BUS_DonHang().SelectHoaDon(maHoaDon);
+
+            ReportHelper.PreviewReport("Invoice.rdlc", dt);
+        }
+
+        private void btnInPhieuBep_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = gridOrderList.SelectedRows[0];
+            string maHoaDon = selectedRow.Cells["MaDonHang"].Value.ToString();
+
+            // Gọi hàm từ tầng DAL để lấy dữ liệu
+            DataTable dt = new BUS_DonHang().SelectHoaDon(maHoaDon);
+
+            ReportHelper.PreviewReport("PhieuBep.rdlc", dt);
+
         }
     }
 }

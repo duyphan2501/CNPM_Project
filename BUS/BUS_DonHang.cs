@@ -102,5 +102,10 @@ namespace BUS
         {
             return donhang.GetToTalNumberDonHang();
         }
+
+        public DataTable SelectHoaDon(string maDonHang)
+        {
+            return donhang.SelectHoaDon(maDonHang);
+        }
     } 
 }

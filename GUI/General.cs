@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -90,6 +91,6 @@ namespace GUI
             money = money.Replace(",", "").Replace("đ", "").Trim();
             return Int32.Parse(money);
         }
-        
+
     }
 }

@@ -341,5 +341,11 @@ namespace GUI
 
             return true;
         }
+
+        private void btnTongKetCa_Click(object sender, EventArgs e)
+        {
+            frmTongKetCa frmTongKetCa = new frmTongKetCa();
+            General.ShowDialogWithBlur(frmTongKetCa);
+        }
     }
 }

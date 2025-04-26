@@ -77,7 +77,7 @@
             guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            btnTongKetCa = new Guna.UI2.WinForms.Guna2Button();
             btnDonHang = new Guna.UI2.WinForms.Guna2Button();
             guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
@@ -115,6 +115,7 @@
             // 
             guna2BorderlessForm1.ContainerControl = this;
             guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.DragForm = false;
             guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // guna2Panel1
@@ -286,7 +287,7 @@
             pnlSidebar.Controls.Add(guna2Button5);
             pnlSidebar.Controls.Add(guna2Button4);
             pnlSidebar.Controls.Add(guna2Button3);
-            pnlSidebar.Controls.Add(guna2Button2);
+            pnlSidebar.Controls.Add(btnTongKetCa);
             pnlSidebar.Controls.Add(btnDonHang);
             pnlSidebar.FillColor = Color.White;
             pnlSidebar.Location = new Point(0, 87);
@@ -347,23 +348,24 @@
             guna2Button3.TabIndex = 0;
             guna2Button3.Text = "guna2Button1";
             // 
-            // guna2Button2
+            // btnTongKetCa
             // 
-            guna2Button2.BorderRadius = 10;
-            guna2Button2.CustomizableEdges = customizableEdges20;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.Font = new Font("Segoe UI", 9F);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.HoverState.BorderColor = Color.FromArgb(255, 128, 0);
-            guna2Button2.Location = new Point(13, 121);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges21;
-            guna2Button2.Size = new Size(78, 84);
-            guna2Button2.TabIndex = 0;
-            guna2Button2.Text = "guna2Button1";
+            btnTongKetCa.BorderRadius = 10;
+            btnTongKetCa.CustomizableEdges = customizableEdges20;
+            btnTongKetCa.DisabledState.BorderColor = Color.DarkGray;
+            btnTongKetCa.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnTongKetCa.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnTongKetCa.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnTongKetCa.Font = new Font("Segoe UI", 9F);
+            btnTongKetCa.ForeColor = Color.White;
+            btnTongKetCa.HoverState.BorderColor = Color.FromArgb(255, 128, 0);
+            btnTongKetCa.Location = new Point(13, 121);
+            btnTongKetCa.Name = "btnTongKetCa";
+            btnTongKetCa.ShadowDecoration.CustomizableEdges = customizableEdges21;
+            btnTongKetCa.Size = new Size(78, 84);
+            btnTongKetCa.TabIndex = 0;
+            btnTongKetCa.Text = "Tổng Kết Ca";
+            btnTongKetCa.Click += btnTongKetCa_Click;
             // 
             // btnDonHang
             // 
@@ -767,7 +769,7 @@
         private Guna.UI2.WinForms.Guna2ShadowPanel pnlSidebar;
         private Guna.UI2.WinForms.Guna2Button btnDonHang;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnTongKetCa;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;

@@ -152,5 +152,11 @@ namespace DAL
             object result = DataProvider.ExecuteScalar(query);
             return result != null ? Convert.ToInt32(result) : 0;
         }
+
+        public DataTable SelectHoaDon(string maDonHang)
+        {
+            string query = "SELECT * FROM vw_HoaDonChiTiet WHERE MaDonHang = @MaDonHang";
+            return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
+        }
     }
 }
