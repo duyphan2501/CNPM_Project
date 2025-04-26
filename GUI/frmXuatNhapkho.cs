@@ -72,7 +72,7 @@ namespace GUI
             }
             else
             {
-                txtMaphieu.Text = phieuxuat.PhatSinhMaPhieuXuat();
+                txtMaphieu.Text = phieuxuat.GenerateID();
                 txtMaphieu.ReadOnly = true;
 
                 numGianhap.Value = 0;
@@ -126,7 +126,7 @@ namespace GUI
 
             if (IsDuplicateIngredient(manl)) return;
 
-            if (laNhap)
+            if (laNhap) //check thông tin phiếu nhập kho
             {
                 int gianhap = Convert.ToInt32(numGianhap.Value);
                 if (CheckInput_GoodsReceipt(soluong, gianhap)) return;
@@ -136,7 +136,7 @@ namespace GUI
                 tong += thanhtien;
                 txtTongtien.Text = tong.ToString();
             }
-            else
+            else //check thông tin phiếu xuất kho
             {
                 if (CheckInput_DeliveryReceipt(nguyenlieu, soluong)) return;
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong);

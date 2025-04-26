@@ -48,7 +48,7 @@ namespace DAL
         }
 
         // lấy mã phiếu xuất lớn nhất
-        public string MaphieuLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaPhieuXuat from PhieuXuatKho order by MaPhieuXuat desc";
             string maxMaphieu = (string)DataProvider.ExecuteScalar(query);

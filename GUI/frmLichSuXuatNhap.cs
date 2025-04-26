@@ -24,31 +24,31 @@ namespace GUI
 
 
 
-        public void LoadPhieu() //danh sách lịch sử
+        public void LoadReceipt() //danh sách lịch sử
         {
 
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
                 //BUS_PhieuNhapKho phieunhap = new BUS_PhieuNhapKho("", "", DateTime.Now, "");
                 //gridDsPhieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                gridLichsu.DataSource = phieunhap.TaiPhieunhap();
+                gridLichsu.DataSource = phieunhap.LoadGoodsReceipt();
             }
             else
             {
-                gridLichsu.DataSource = phieuxuat.TaiPhieuXuat();
+                gridLichsu.DataSource = phieuxuat.LoadDeliveryReceipt();
             }
             gridLichsu.RowTemplate.Height = 50;
         }
 
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadPhieu();
+            LoadReceipt();
         }
 
         private void frmLichSuXuatNhap_Load(object sender, EventArgs e)
         {
             cboLoaiphieu.Text = "Phiếu nhập";
-            LoadPhieu();
+            LoadReceipt();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

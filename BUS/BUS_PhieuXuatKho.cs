@@ -37,10 +37,10 @@ namespace BUS
             phieuxuatdal.SuaPhieuXuat(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
         }
 
-        public string PhatSinhMaPhieuXuat()
+        public string GenerateID()
         {
             // lấy mã phiếu xuất lớn nhất
-            string maphieu = phieuxuatdal.MaphieuLonNhat();
+            string maphieu = phieuxuatdal.MaxID();
             // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PX0001
             if (maphieu == null)
             {
