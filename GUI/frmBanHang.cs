@@ -16,6 +16,7 @@ namespace GUI
         private BUS_SanPham sanPhamBUS;
         private BUS_CaLamViec calam;
         private BUS_DonHang donhangBUS;
+
         public frmBanHang()
         {
             InitializeComponent();
@@ -345,6 +346,9 @@ namespace GUI
         private void btnTongKetCa_Click(object sender, EventArgs e)
         {
             frmTongKetCa frmTongKetCa = new frmTongKetCa();
+            frmTongKetCa.ShiftClosed += (s, ev) => {
+                CheckShiftOpening(); // Gọi lại kiểm tra mở ca khi frmTongKetCa báo đã chốt xong
+            };
             General.ShowDialogWithBlur(frmTongKetCa);
         }
     }

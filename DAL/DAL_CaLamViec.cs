@@ -59,5 +59,18 @@ namespace DAL
             object result = DataProvider.ExecuteScalar(query, new object[] { maCa });
             return result != null ? result.ToString() : null;
         }
+
+        public int ChotCaLamViec(string maCaLam, int tienCuoiCa, string ghiChu)
+        {
+            string query = "UPDATE CaLamViec SET TgKetThuc = @TgKetThuc, TienCuoiCa = @TienCuoiCa, GhiChu = @GhiChu WHERE MaCaLam = @MaCaLam";
+            object[] parameters = new object[]
+            {
+                DateTime.Now,
+                tienCuoiCa,
+                ghiChu,
+                maCaLam
+            };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
     }
 }

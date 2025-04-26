@@ -225,6 +225,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmMoCaLam";
             Text = "frmCaLam";
+            FormClosing += frmMoCaLam_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }

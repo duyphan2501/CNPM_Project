@@ -69,6 +69,28 @@ namespace GUI
                 errorDialog.Show();
             }
         }
+        private void frmMoCaLam_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Nếu người dùng cố bấm Alt+F4 hoặc bấm X để tắt
+                DialogResult result = MessageBox.Show(
+                    "Bạn phải mở ca để tiếp tục sử dụng phần mềm.\nBạn có muốn thoát phần mềm không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Không cho đóng
+                }
+                else
+                {
+                    Application.Exit(); // Đóng luôn cả phần mềm
+                }
+            }
+        }
 
     }
 }

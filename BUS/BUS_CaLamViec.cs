@@ -54,5 +54,10 @@ namespace BUS
         {
             return calamViec.GetUserNameOfShift(maCa);
         }
+
+        public int ChotCaLamViec(string maCaLam, int tienCuoiCa, string ghiChu)
+        {
+            return calamViec.ChotCaLamViec(maCaLam, tienCuoiCa, ghiChu);
+        }
     }
 }

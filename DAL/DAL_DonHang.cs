@@ -158,5 +158,11 @@ namespace DAL
             string query = "SELECT * FROM vw_HoaDonChiTiet WHERE MaDonHang = @MaDonHang";
             return DataProvider.ExecuteQuery(query, new object[] { maDonHang });
         }
+
+        public DataTable SelectOrderOfShift(string maCa)
+        {
+            string query = "SELECT * FROM DonHang WHERE MaCaLap = @MaCa or MaCaThanhToan = @MaCaLam";
+            return DataProvider.ExecuteQuery(query, new object[] { maCa, maCa });
+        }
     }
 }

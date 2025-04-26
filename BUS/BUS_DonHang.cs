@@ -107,5 +107,10 @@ namespace BUS
         {
             return donhang.SelectHoaDon(maDonHang);
         }
+
+        public DataTable SelectOrderOfShift(string maCaLam)
+        {
+            return donhang.SelectOrderOfShift(maCaLam);
+        }
     } 
 }
