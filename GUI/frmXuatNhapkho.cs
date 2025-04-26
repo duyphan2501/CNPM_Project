@@ -28,42 +28,43 @@ namespace GUI
 
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
-            TaiTenNguyenLieu();
+            LoadIngredients_name();
             txtTongtien.ReadOnly = true;
             txtDonvi.ReadOnly = true;
+            txtCannhap.ReadOnly = true;
             //cboLoaiphieu.Text = "Phiếu nhập";
         }
 
-        public void TaiTenNguyenLieu()
+        public void LoadIngredients_name()
         {
-            cboTenNguyenlieu.DataSource = phieunhap.TaiTenNguyenLieu();
+            cboTenNguyenlieu.DataSource = phieunhap.LoadIngredients_name();
             cboTenNguyenlieu.DisplayMember = "TenNL";
             cboTenNguyenlieu.ValueMember = "MaNL";
         }
 
-        public void LoadPhieu()
+        public void LoadReceipt()
         {
 
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
                 //BUS_PhieuNhapKho phieunhap = new BUS_PhieuNhapKho("", "", DateTime.Now, "");
                 //gridDsPhieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                gridDsPhieu.DataSource = phieunhap.TaiPhieunhap();
+                gridDsPhieu.DataSource = phieunhap.LoadGoodsReceipt();
 
             }
             else
             {
-                gridDsPhieu.DataSource = phieuxuat.TaiPhieuXuat();
+                gridDsPhieu.DataSource = phieuxuat.LoadDeliveryReceipt();
             }
         }
 
 
 
-        public void PhatSinhMa()  //Phát sinh mã phiếu mới
+        public void GenerateID()  //Phát sinh mã phiếu mới
         {
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
-                txtMaphieu.Text = phieunhap.PhatSinhMaPhieuNhap();
+                txtMaphieu.Text = phieunhap.GenerateID();
                 txtMaphieu.ReadOnly = true;
 
                 numGianhap.Enabled = true; //Phiếu nhập thì cho nhập giá
@@ -83,271 +84,207 @@ namespace GUI
 
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e) //Khi loại phiếu thay đổi thì tự phát sinh mã
         {
-            PhatSinhMa();
+            GenerateID();
+            Restocking(); //Đưa số lượng lên textbox
+        }
+
+        //Số lượng cần nhập thêm
+        public void Restocking()
+        {
+            int muccannhap = phieunhap.Restocking(cboTenNguyenlieu.Text);
+            if (cboLoaiphieu.Text == "Phiếu nhập" && muccannhap > 0)
+            {
+                txtCannhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text).ToString();
+            }
+            else if (cboLoaiphieu.Text == "Phiếu xuất")
+            {
+                txtCannhap.Text = null;
+            }
+            else
+            {
+                txtCannhap.Text = "0";
+            }
         }
 
         int tong = 0; //tạo biến lưu tổng tiền
         private void btnThem_Click(object sender, EventArgs e)
         {
-
-            DataTable dataTable = new DataTable();
-            if (cboLoaiphieu.Text == "Phiếu nhập")
+            if (string.IsNullOrWhiteSpace(cboLoaiphieu.Text)) // chưa chọn loại phiếu
             {
-                if (cboLoaiphieu.Enabled == true)
-                {
-                    gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
-                    gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-                    gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
-                    gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
-                    gridDsPhieu.Columns.Add("soluong", "Số lượng nhập");
-                    gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
-                    gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
-
-                }
+                MessageBox.Show("Vui lòng chọn loại phiếu trước khi thêm nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string manl = cboTenNguyenlieu.SelectedValue.ToString();
+            string nguyenlieu = cboTenNguyenlieu.Text;
+            int soluong = Convert.ToInt32(numSoluong.Value);
+            bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
+            if (cboLoaiphieu.Enabled)
+            {
+                AddColumnGrid(laNhap);
                 cboLoaiphieu.Enabled = false;
+            }
 
-                // Lấy thông tin nguyên liệu hiện tại
-                string manl = cboTenNguyenlieu.SelectedValue.ToString();
-                string nguyenlieu = cboTenNguyenlieu.Text;
-                int soluong = Convert.ToInt32(numSoluong.Value);
+            if (IsDuplicateIngredient(manl)) return;
+
+            if (laNhap)
+            {
                 int gianhap = Convert.ToInt32(numGianhap.Value);
+                if (CheckInput_GoodsReceipt(soluong, gianhap)) return;
+
                 int thanhtien = soluong * gianhap;
-
-                // Kiểm tra sự tồn tại của nguyên liệu
-                bool daTonTai = false;
-                bool loi = false;
-
-                foreach (DataGridViewRow row in gridDsPhieu.Rows)
-                {
-                    if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
-                    {
-                        // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Phiếu đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        daTonTai = true;
-                        break;
-                    }
-                }
-
-                if (daTonTai == false)
-                {
-                    if (soluong == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập số lượng nhập kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        loi = true;
-                        return;
-                    }
-                    if (gianhap == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        loi = true;
-                        return;
-                    }
-                }
-
-                // Thêm mới nếu chưa tồn tại
-                if (daTonTai == false && loi == false)
-                {
-                    gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
-
-                    // Cập nhật tổng tiền
-                    tong += thanhtien;
-                    txtTongtien.Text = tong.ToString();
-
-                    // Reset các input
-                    numGianhap.Value = 0;
-                    numSoluong.Value = 0;
-                }
+                gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
+                tong += thanhtien;
+                txtTongtien.Text = tong.ToString();
             }
             else
             {
-                if (cboLoaiphieu.Enabled == true)
-                {
-                    gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
-                    gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-                    gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
-                    gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
-                    gridDsPhieu.Columns.Add("soluong", "Số lượng xuất");
-
-                }
-                cboLoaiphieu.Enabled = false;
-
-                // Lấy thông tin nguyên liệu hiện tại
-                string manl = cboTenNguyenlieu.SelectedValue.ToString();
-                string nguyenlieu = cboTenNguyenlieu.Text;
-                int soluongxuat = Convert.ToInt32(numSoluong.Value);  //số lượng xuất
-
-                bool daTonTai = false; // Kiểm tra trong phiếu có trùng nguyên liệu không
-                foreach (DataGridViewRow row in gridDsPhieu.Rows)
-                {
-                    if (row.Cells["manl"].Value != null && row.Cells["manl"].Value.ToString() == manl)
-                    {
-                        // Hiển thị thông báo nếu nguyên liệu đã tồn tại
-                        MessageBox.Show("Phiếu đã có nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        daTonTai = true;
-                        break;
-                    }
-                }
-                bool loi = false; //bắt lỗi các trường hợp
-                if (daTonTai == false)
-                {
-                    if (soluongxuat == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập số lượng xuất kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        loi = true;
-                        return;
-                    }
-                }
-
-                if (daTonTai == false && loi == false)
-                {
-                    DataTable dt = nguyenlieubus.LoadIngredients();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string tennl = row["Tên nguyên liệu"].ToString();
-                        int soluongton = Convert.ToInt32(row["Số lượng tồn"]);
-                        int muctoithieu = Convert.ToInt32(row["Mức tối thiểu"]);
-
-                        if (tennl == nguyenlieu && soluongxuat > soluongton) //Xuất quá số lượng tồn
-                        {
-                            MessageBox.Show("Xuất quá số lượng nguyên liệu hiện tại trong kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            loi = true;
-                        }
-                        else if (tennl == nguyenlieu && (soluongton - soluongxuat) < muctoithieu)
-                        {
-                            DialogResult result = MessageBox.Show(   //Thông báo xuất quá mức tối thiểu
-                                "Xuất quá mức tối thiểu?",
-                                "Xác nhận lưu phiếu",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Question);
-                            if (result == DialogResult.Yes)
-                            {  //nếu chọn yes vẫn thêm nl vào phiếu xuất
-                                loi = false;
-                            }
-                            else      //chọn no thì không thêm nl đó vào phiếu
-                            {
-                                MessageBox.Show("Đã xóa nguyên liệu vừa thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                loi = true;
-                            }
-                        }
-                    }
-
-                    // Thêm mới nếu chưa tồn tại
-                    if (!daTonTai && !loi)
-                    {
-                        gridDsPhieu.Rows.Add(manl, nguyenlieu, soluongxuat);
-
-                        // Reset các input
-                        numGianhap.Value = 0;
-                        numSoluong.Value = 0;
-                        txtGhichu.Enabled = false;
-                    }
-                }
-
-
+                if (CheckInput_DeliveryReceipt(nguyenlieu, soluong)) return;
+                gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong);
+                txtGhichu.Enabled = false;
             }
+
+            numGianhap.Value = 0;
+            numSoluong.Value = 0;
         }
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc chắn muốn lưu phiếu này không?",
-                "Xác nhận lưu phiếu",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
 
-            if (result == DialogResult.Yes)
+
+            if (MessageBox.Show("Bạn có chắc chắn muốn lưu phiếu này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                cboLoaiphieu.Enabled = true; //hoạt động như biến cờ để insert phiếu 1 lần
-                if (cboLoaiphieu.Text == "Phiếu nhập")
-                {
-                    foreach (DataGridViewRow row in gridDsPhieu.Rows) //Thêm tất cả các dòng từ gridview vào database
-                    {
-                        if (!row.IsNewRow) // Chỉ xử lý các dòng không phải dòng trống
-                        {
-                            string manguyenlieu = row.Cells["manl"].Value?.ToString();
-                            int soLuong = Convert.ToInt32(row.Cells["soluong"].Value);
-                            int giaNhap = Convert.ToInt32(row.Cells["gianhap"].Value);
-                            if (cboLoaiphieu.Enabled == true)
-                            {
-                                phieunhap.ThemPhieuNhap(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
-                                chitietnhap.ThemChiTietNhap(txtMaphieu.Text, manguyenlieu, giaNhap, soLuong);
-                                cboLoaiphieu.Enabled = false;
-                            }
-                            else  //1 phiếu có nhiều nguyên liệu, các dòng sau chỉ thêm chi tiết
-                            {
-                                chitietnhap.ThemChiTietNhap(txtMaphieu.Text, manguyenlieu, giaNhap, soLuong);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-
-                    foreach (DataGridViewRow row in gridDsPhieu.Rows)
-                    {
-                        string manguyenlieu = row.Cells["manl"].Value?.ToString();
-                        int soLuong = Convert.ToInt32(row.Cells["soluong"].Value);
-                        string tennnl = row.Cells["nguyenlieu"].Value?.ToString();
-
-
-
-                        if (cboLoaiphieu.Enabled == true)
-                        {
-                            phieuxuat.ThemPhieuXuat(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
-                            chitietxuat.ThemChiTietXuat(txtMaphieu.Text, manguyenlieu, soLuong);
-                            cboLoaiphieu.Enabled = false;
-                        }
-                        else
-                        {
-                            chitietxuat.ThemChiTietXuat(txtMaphieu.Text, manguyenlieu, soLuong);
-                        }
-                    }
-
-                }
-
-                //Phát sinh mã mới
-                cboLoaiphieu.Enabled = true;
-                PhatSinhMa();
-                numGianhap.Value = 0;
-                numSoluong.Value = 0;
-                txtGhichu.Clear();
-
-                //Xóa sạch gridview sau khi Lưu phiếu
-                gridDsPhieu.Rows.Clear();
-                gridDsPhieu.Columns.Clear();
-
-                //biến tổng lại bằng 0
-                tong = 0;
-                txtTongtien.Text = tong.ToString();
-                txtGhichu.Enabled = true;
-
+                SaveReceipt();
+                ResetForm();
                 MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-            {
-                // Người dùng chọn "Không", không làm gì cả hoặc xử lý khác
-                MessageBox.Show("Đã hủy thao tác lưu phiếu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
         }
 
-        //private void cboLocMaphieu_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    DataTable dt = (DataTable)gridDsPhieu.DataSource;
-        //    if (cboLocLoaiphieu.Text == "Phiếu nhập")
-        //    {
-        //        dt.DefaultView.RowFilter = $"[Mã phiếu nhập] LIKE '%{cboLocMaphieu.Text}%'";
-        //    }
-        //    else
-        //    {
-        //        dt.DefaultView.RowFilter = $"[Mã phiếu xuất] LIKE '%{cboLocMaphieu.Text}%'";
-        //    }
-        //}
+        private void SaveReceipt()
+        {
+            bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
+            if (laNhap) //Thêm phiếu nhập kho
+                phieunhap.AddGoodsReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+            else //Thêm phiếu xuất kho
+                phieuxuat.AddDeliveryReceip(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+
+            foreach (DataGridViewRow row in gridDsPhieu.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string manl = row.Cells["manl"].Value?.ToString();
+                    int soluong = Convert.ToInt32(row.Cells["soluong"].Value);
+
+                    if (laNhap)  //Thêm chi tiết nhập kho
+                    {    
+                        int gianhap = Convert.ToInt32(row.Cells["gianhap"].Value);
+                        chitietnhap.AddEntryDetail(txtMaphieu.Text, manl, gianhap, soluong);
+                    }
+                    else  //Thêm chi tiết xuất kho
+                    {
+                        chitietxuat.AddExportDetail(txtMaphieu.Text, manl, soluong);
+                    }
+                }
+            }
+        }
+
+        private void ResetForm()
+        {
+            cboLoaiphieu.Enabled = true;
+            GenerateID();
+            numGianhap.Value = 0;
+            numSoluong.Value = 0;
+            txtGhichu.Clear();
+            txtGhichu.Enabled = true;
+            gridDsPhieu.Rows.Clear();
+            gridDsPhieu.Columns.Clear();
+            tong = 0;
+            txtTongtien.Text = "0";
+        }
+
+        //Tạo cột cho grid view theo các phiếu
+        private void AddColumnGrid(bool laNhap)
+        {
+            gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
+            gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
+            gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
+            gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
+            gridDsPhieu.Columns.Add("soluong", laNhap ? "Số lượng nhập" : "Số lượng xuất");
+            if (laNhap)
+            {
+                gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
+                gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
+            }
+        }
+
+        //Kiểm tra xem nguyên liệu đã có trong phiếu chưa
+        private bool IsDuplicateIngredient(string manl)
+        {
+            foreach (DataGridViewRow row in gridDsPhieu.Rows)
+            {
+                if (row.Cells["manl"].Value?.ToString() == manl)
+                {
+                    MessageBox.Show("Phiếu đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //kiểm tra thông tin phiếu nhập
+        private bool CheckInput_GoodsReceipt(int soluong, int gianhap)
+        {
+            if (soluong == 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng nhập kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            if (gianhap == 0)
+            {
+                MessageBox.Show("Vui lòng nhập giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            return false;
+        }
+
+        //kiểm tra thông tin phiếu xuất
+        private bool CheckInput_DeliveryReceipt(string nguyenlieu, int soluong)
+        {
+            if (soluong == 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng xuất kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+
+            DataTable dt = nguyenlieubus.LoadIngredients();
+            foreach (DataRow row in dt.Rows)
+            {
+                string tennl = row["Tên nguyên liệu"].ToString();
+                int ton = Convert.ToInt32(row["Số lượng tồn"]);
+                int muctoithieu = Convert.ToInt32(row["Mức tối thiểu"]);
+
+                if (tennl == nguyenlieu)
+                {
+                    if (soluong > ton)
+                    {
+                        MessageBox.Show("Xuất quá số lượng tồn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return true;
+                    }
+                    if (ton - soluong < muctoithieu)
+                    {
+                        DialogResult confirm = MessageBox.Show("Xuất quá mức tối thiểu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        return confirm == DialogResult.No;
+                    }
+                }
+            }
+            return false;
+        }
+
+
+
 
         public void LocTheoMa()
         {
-            LoadPhieu();
+            LoadReceipt();
             DataTable dt = (DataTable)gridDsPhieu.DataSource;
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
@@ -369,6 +306,7 @@ namespace GUI
         private void cboTenNguyenlieu_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
+            Restocking();
         }
 
 
@@ -415,6 +353,11 @@ namespace GUI
         {
             frmKho tonkho = new frmKho();
             General.ShowDialogWithBlur(tonkho);
+        }
+
+        private void guna2GroupBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

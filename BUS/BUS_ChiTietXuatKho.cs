@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BUS
 {
@@ -16,9 +17,9 @@ namespace BUS
             chitietxuat = new DAL_ChiTietXuatKho(maphieuxuat, manl, soluong);
         }
 
-        public void ThemChiTietXuat(string maphieuxuat, string manl, int soluong)
+        public void AddExportDetail(string maphieuxuat, string manl, int soluong)
         {
-            chitietxuat.ThemChiTietXuat(maphieuxuat, manl, soluong);
+            chitietxuat.AddExportDetail(maphieuxuat, manl, soluong);
         }
 
         public void UpdateDetailst(string maphieuxuat, string manl, int soluong)

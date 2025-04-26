@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DAL
 {
@@ -16,7 +17,8 @@ namespace DAL
             chitietxuatdto = new DTO_ChiTietXuatKho(maphieuxuat,manl,soluong);
         }
 
-        public void ThemChiTietXuat(string maphieuxuat, string manl, int soluong)
+        //Thêm chi tiết xuất kho
+        public void AddExportDetail(string maphieuxuat, string manl, int soluong)
         {
             string query = "insert into ChiTietXuatKho values (@_MaPhieuXuat,@_MaNL,@_SoLuong)";
             object[] parem = new object[] { maphieuxuat, manl, soluong };

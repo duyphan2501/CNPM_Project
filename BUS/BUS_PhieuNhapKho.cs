@@ -18,14 +18,16 @@ namespace BUS
             phieunhapkhodal = new DAL_PhieuNhapKho(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
 
-        public DataTable TaiPhieunhap()
+        //Tải phiếu nhập
+        public DataTable LoadGoodsReceipt()
         {
-            return phieunhapkhodal.TaiPhieunhap();
+            return phieunhapkhodal.LoadGoodsReceipt();
         }
 
-        public DataTable TaiTenNguyenLieu()
+      
+        public DataTable LoadIngredients_name()
         {
-            return phieunhapkhodal.TaiTenNguyenLieu();
+            return phieunhapkhodal.LoadIngredients_name();
         }
 
         public DataTable TaiMaPhieuNhap()
@@ -33,9 +35,14 @@ namespace BUS
             return phieunhapkhodal.TaiMaPhieuNhap();
         }
 
-        public void ThemPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        public int Restocking(string tennl)
         {
-            phieunhapkhodal.ThemPhieuNhap(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
+            return phieunhapkhodal.Restocking(tennl);
+        }
+
+        public void AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        {
+            phieunhapkhodal.AddGoodsReceipt(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
 
         public void SuaPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
@@ -50,10 +57,10 @@ namespace BUS
 
 
         // phát sinh mã phiếp nhập
-        public string PhatSinhMaPhieuNhap()
+        public string GenerateID()
         {
             // lấy mã phiếu nhập lớn nhất
-            string maphieu = phieunhapkhodal.MaphieuLonNhat();
+            string maphieu = phieunhapkhodal.MaxID();
             // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PN0001
             if (maphieu == null)
             {
