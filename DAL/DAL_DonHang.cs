@@ -164,5 +164,16 @@ namespace DAL
             string query = "SELECT * FROM DonHang WHERE MaCaLap = @MaCa or MaCaThanhToan = @MaCaLam";
             return DataProvider.ExecuteQuery(query, new object[] { maCa, maCa });
         }
+
+        public int UpdateMaTheDonHang(string maDonHang, string maThe)
+        {
+            string query = "UPDATE DonHang SET MaThe = @MaThe WHERE MaDonHang = @MaDonHang";
+            object[] parameters = new object[]
+            {
+                maThe,
+                maDonHang
+            };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
     }
 }

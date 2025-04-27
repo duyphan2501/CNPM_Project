@@ -14,7 +14,6 @@ namespace GUI
         string maCa;
         int tienCuoiCa = 0; // lưu tiền cuối ca để xử lý dễ hơn
         public event EventHandler ShiftClosed;
-
         public frmTongKetCa()
         {
             InitializeComponent();
@@ -88,10 +87,30 @@ namespace GUI
             }
         }
 
+        private void txtTienDauCa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập số và phím điều khiển (backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Chặn ký tự không hợp lệ
+            }
+
+            // Kiểm tra giá trị sau khi người dùng nhập một ký tự mới
+            string currentText = txtTienThucTe.Text + e.KeyChar;
+            if (long.TryParse(currentText, out long result))
+            {
+                if (result > 100000000) // Giới hạn giá trị 
+                {
+                    e.Handled = true; // Không cho phép nhập khi vượt quá giới hạn
+                    General.ShowError("Số tiền vượt quá giới hạn. Vui lòng nhập lại!", this);
+                }
+            }
+        }
+
         private void btnChotCa_Click(object sender, EventArgs e)
         {
             // Xác nhận có chốt ca không
-            DialogResult confirm = Guna.UI2.WinForms.MessageDialog.Show(this, "Bạn có chắc chắn muốn chốt ca?", "Xác nhận", Guna.UI2.WinForms.MessageDialogButtons.YesNo);
+            DialogResult confirm = General.ShowConfirm("Bạn có chắc chắn muốn chốt ca?",this);
             if (confirm != DialogResult.Yes)
             {
                 return;
@@ -112,28 +131,45 @@ namespace GUI
                 }
             }
 
+            // Kiểm tra xem người dùng đã nhập tiền thực tế chưa
+            if (string.IsNullOrEmpty(txtTienThucTe.Text))
+            {
+                Guna.UI2.WinForms.MessageDialog.Show(this, "Vui lòng nhập số tiền thực tế!", "Thông báo", Guna.UI2.WinForms.MessageDialogButtons.OK);
+                txtTienThucTe.Focus();
+                return;
+            }
+
+            // Kiểm tra tính hợp lệ của số tiền thực tế (có thể sử dụng FormatMoneyToInt nếu cần)
             int tienThucTe = General.FormatMoneyToInt(txtTienThucTe.Text);
+
+            // Nếu số tiền thực tế không hợp lệ
+            if (tienThucTe < 0)
+            {
+                Guna.UI2.WinForms.MessageDialog.Show(this, "Số tiền thực tế không hợp lệ!", "Thông báo", Guna.UI2.WinForms.MessageDialogButtons.OK);
+                txtTienThucTe.Focus();
+                return;
+            }
+
             string ghiChu = txtGhiChu.Text.Trim();
 
+            // Gọi hàm chốt ca
             int affectedRow = new BUS_CaLamViec().ChotCaLamViec(maCa, tienThucTe, ghiChu);
 
             if (affectedRow > 0)
             {
                 Guna.UI2.WinForms.MessageDialog.Show(this, "Chốt ca thành công!", "Thông báo", Guna.UI2.WinForms.MessageDialogButtons.OK);
 
-                ShiftClosed?.Invoke(this, EventArgs.Empty); // gọi event thông báo đã chốt ca
+                // Gọi event thông báo đã chốt ca
+                ShiftClosed?.Invoke(this, EventArgs.Empty);
 
                 this.Close();
 
-                Program.shift.Clear(); // clear shift luôn
+                Program.shift.Clear(); // Xóa thông tin ca làm việc
             }
-
             else
             {
                 Guna.UI2.WinForms.MessageDialog.Show(this, "Có lỗi xảy ra khi chốt ca.", "Lỗi", Guna.UI2.WinForms.MessageDialogButtons.OK);
             }
         }
-
-
     }
 }

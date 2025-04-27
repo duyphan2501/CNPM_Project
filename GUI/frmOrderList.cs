@@ -77,7 +77,6 @@ namespace GUI
 
         private void DefaultControlButton()
         {
-            btnViewDetail.Enabled = false;
             btnThanhToan.Enabled = false;
             btnHoanThanh.Enabled = false;
         }
@@ -116,7 +115,7 @@ namespace GUI
         {
             if (gridOrderList.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một đơn hàng.");
+                General.ShowInformation("Vui lòng chọn một đơn hàng.", this);
                 return;
             }
             // Lấy mã đơn hàng từ dòng được chọn
@@ -201,7 +200,7 @@ namespace GUI
             var cell = gridOrderDetail.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (!int.TryParse(cell.Value?.ToString(), out int soLuong) || soLuong < 1)
             {
-                MessageBox.Show("Số lượng phải là số nguyên dương.");
+                General.ShowInformation("Số lượng phải là số nguyên dương.", this);
                 cell.Value = 1;
             }
 
@@ -209,12 +208,13 @@ namespace GUI
             CapNhatTongTienVaGiamGia();
         }
 
+        // click vào icon xoá
         private void gridOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // nếu không phải là chế độ chỉnh sửa thì không cho phép xoá
             if (!isEditing || e.RowIndex < 0 || e.ColumnIndex != 0) return;
 
-            if (MessageBox.Show("Bạn có chắc muốn xoá sản phẩm này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (General.ShowConfirm("Bạn có chắc muốn xoá sản phẩm này?", this) == DialogResult.Yes)
             {
                 // xoá sản phẩm trong grid và cập nhật tổng tiền
                 gridOrderDetail.Rows.RemoveAt(e.RowIndex);
@@ -242,7 +242,7 @@ namespace GUI
                 ctDonHang = new BUS_ChiTietDonHang(viewDetailMaDonHang, maSP, donGia, soLuong);
                 if (ctDonHang.InsertOrderDetail() == 0)
                 {
-                    MessageBox.Show($"Lỗi khi thêm sản phẩm {maSP} vào đơn hàng");
+                    General.ShowError($"Lỗi khi thêm sản phẩm {maSP} vào đơn hàng", this);
                     return;
                 }
             }
@@ -254,7 +254,7 @@ namespace GUI
             donhang.UpdateDonHang(viewDetailMaDonHang, giamGia, tongTien, ghiChu);
 
             // cập nhật lại cả 2 gridview 
-            MessageBox.Show("Lưu đơn hàng thành công!");
+            General.ShowError("Lưu đơn hàng thành công!", this);
             LoadOrderDetail();
             UpdateviewDetailRow();
         }
@@ -325,7 +325,6 @@ namespace GUI
         private void gridOrderList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            btnViewDetail.Enabled = true;
 
             DataGridViewRow selectedRow = gridOrderList.Rows[e.RowIndex];
             var nvThanhToan = selectedRow.Cells["NVThanhToan"].Value;
@@ -401,6 +400,11 @@ namespace GUI
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
+            if (gridOrderList.SelectedRows.Count == 0)
+            {
+                General.ShowInformation("Vui lòng chọn một đơn hàng.", this);
+                return;
+            }
             DataGridViewRow selectedRow = gridOrderList.SelectedRows[0];
             string maHoaDon = selectedRow.Cells["MaDonHang"].Value.ToString();
 
@@ -412,6 +416,11 @@ namespace GUI
 
         private void btnInPhieuBep_Click(object sender, EventArgs e)
         {
+            if (gridOrderList.SelectedRows.Count == 0)
+            {
+                General.ShowInformation("Vui lòng chọn một đơn hàng.", this);
+                return;
+            }
             DataGridViewRow selectedRow = gridOrderList.SelectedRows[0];
             string maHoaDon = selectedRow.Cells["MaDonHang"].Value.ToString();
 
@@ -420,6 +429,48 @@ namespace GUI
 
             ReportHelper.PreviewReport("PhieuBep.rdlc", dt);
 
+        }
+
+        private void btnDoiThe_Click(object sender, EventArgs e)
+        {
+            if (gridOrderList.SelectedRows.Count == 0)
+            {
+                General.ShowInformation("Vui lòng chọn một đơn hàng.", this);
+                return;
+            }
+
+            DataGridViewRow selectedRow = gridOrderList.SelectedRows[0];
+            string maDonHang = selectedRow.Cells["MaDonHang"].Value.ToString();
+            frmTheRung frmTheRung = new frmTheRung();
+            General.ShowDialogWithBlur(frmTheRung);
+
+            // lấy mã thẻ hiện tại
+            theRung = new BUS_TheRung();
+            string sotheHienTai = selectedRow.Cells["SoThe"].Value.ToString();
+            string matheHienTai = theRung.LayMaThe(sotheHienTai);
+
+            // lấy kết quả từ form dialog
+            if (frmTheRung.DialogResult == DialogResult.OK && frmTheRung.SelectedTheRung != null)
+            {
+                var theDuocChon = frmTheRung.SelectedTheRung;
+                // cập nhật lại gridview
+                selectedRow.Cells["SoThe"].Value = theDuocChon.SoThe;
+
+                // cập nhật lại thông tin donhang
+                string maThe = theDuocChon.MaThe;
+                if (donhang.UpdateMaTheDonHang(maDonHang, maThe) <= 0)
+                {
+                    General.ShowError("Đổi thẻ không thành công", this);
+                }
+                else
+                {
+                    // cập nhật lại thẻ hiện tại
+                    theRung.UpdateStateTheRung(0, matheHienTai);
+
+                    // cập nhật lại trạng thái thẻ rung
+                    theRung.UpdateStateTheRung(1, maThe);
+                }
+            }
         }
     }
 }

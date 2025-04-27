@@ -40,7 +40,6 @@ namespace GUI
             }
         }
 
-        // Hàm xem trước báo cáo
         public static void PreviewReport(string reportPath, DataTable data)
         {
             var bitmap = RenderReportToImage(reportPath, data);
@@ -59,15 +58,31 @@ namespace GUI
                 e.Graphics.DrawImage(bitmap, pageBounds);
             };
 
-            PrintPreviewDialog previewDialog = new PrintPreviewDialog
+            printDoc.EndPrint += (sender, e) =>
             {
-                Document = printDoc
+                if (e.Cancel)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi in", "Lỗi in", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             };
 
-            previewDialog.ShowDialog();
+            try
+            {
+                using (PrintPreviewDialog previewDialog = new PrintPreviewDialog
+                {
+                    Document = printDoc
+                })
+                {
+                    previewDialog.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi xem trước in: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Hàm in trực tiếp báo cáo
         public static void PrintInvoice(string reportPath, DataTable data)
         {
             var bitmap = RenderReportToImage(reportPath, data);
@@ -86,7 +101,24 @@ namespace GUI
                 e.Graphics.DrawImage(bitmap, pageBounds);
             };
 
-            printDoc.Print();
+            printDoc.EndPrint += (sender, e) =>
+            {
+                if (e.Cancel)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi in", "Lỗi in", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            };
+
+            try
+            {
+                printDoc.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi in: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }

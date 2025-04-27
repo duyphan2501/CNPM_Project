@@ -67,17 +67,17 @@ namespace GUI
 
             List<int> suggestions = new List<int>();
 
-            // 1. Gợi ý đúng số tiền
+            // Gợi ý đúng số tiền
             suggestions.Add(soTienCanThanhToan);
 
-            // 2. Làm tròn lên các bước nhỏ hơn
+            // Làm tròn lên các bước nhỏ hơn
             int roundUpTo5000 = ((soTienCanThanhToan + 4999) / 5000) * 5000;
             if (!suggestions.Contains(roundUpTo5000)) suggestions.Add(roundUpTo5000);
 
             int roundUpTo10000 = ((soTienCanThanhToan + 9999) / 10000) * 10000;
             if (!suggestions.Contains(roundUpTo10000)) suggestions.Add(roundUpTo10000);
 
-            // 3. Thêm mệnh giá lớn hơn thông dụng
+            // Thêm mệnh giá lớn hơn thông dụng
             int[] commonCash = { 100000, 200000, 500000 };
             foreach (var money in commonCash)
             {
@@ -196,7 +196,7 @@ namespace GUI
             {
                 if (txtKhachDua.Text == "")
                 {
-                    MessageBox.Show("Hãy nhập tiền khách đưa!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Hãy nhập tiền khách đưa!", this);
                     return;
                 }
                 int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text); // Tiền khách đưa
@@ -206,7 +206,7 @@ namespace GUI
                 // 3. Kiểm tra xem tiền khách đưa có đủ không
                 if (tienKhachDua < tienCanTra)
                 {
-                    MessageBox.Show("Tiền khách đưa không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    General.ShowError("Tiền khách đưa không đủ!", this);
                     return;
                 }
             }
@@ -233,7 +233,7 @@ namespace GUI
                         int isDetailAdded = chiTietDonHang.InsertOrderDetail();
                         if (isDetailAdded == 0)
                         {
-                            MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            General.ShowError("Lỗi khi thêm chi tiết đơn hàng", this);
                             return;
                         }
                     }
@@ -241,7 +241,7 @@ namespace GUI
                     therung.UpdateStateTheRung(1, maThe);
                 } else
                 {
-                    MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    General.ShowError("Lỗi khi thêm đơn hàng", this);
                     return;
                 }
             }
@@ -252,7 +252,7 @@ namespace GUI
             if (affectedRows != 0)
             {
                 // Thông báo thành công
-                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                General.ShowInformation("Thanh toán thành công!", this);
 
                 // Xử lý các bước tiếp theo
                 ThanhToanThanhCong?.Invoke(this, EventArgs.Empty);
@@ -260,7 +260,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                General.ShowError("Lỗi khi thêm đơn hàng", this);
             }
         }
     }

@@ -403,6 +403,7 @@
             txtTienThucTe.Size = new Size(157, 36);
             txtTienThucTe.TabIndex = 6;
             txtTienThucTe.TextChanged += txtTienThucTe_TextChanged;
+            txtTienThucTe.KeyPress += txtTienDauCa_KeyPress;
             // 
             // label12
             // 

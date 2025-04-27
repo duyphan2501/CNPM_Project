@@ -112,5 +112,10 @@ namespace BUS
         {
             return donhang.SelectOrderOfShift(maCaLam);
         }
+
+        public int UpdateMaTheDonHang(string maDonHang, string maThe)
+        {
+            return donhang.UpdateMaTheDonHang(maDonHang, maThe);
+        }
     } 
 }
