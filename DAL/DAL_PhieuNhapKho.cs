@@ -17,7 +17,8 @@ namespace DAL
             phieunhapkhodto = new DTO_PhieuNhapKho(maPhieuNhap,tenDangNhap,ngayNhap,ghiChu);
         }
 
-        public DataTable TaiPhieunhap()
+        //Tải phiếu nhập
+        public DataTable LoadGoodsReceipt()
         {
             string query = "SELECT ph.MaPhieuNhap AS N'Mã phiếu nhập', nl.TenNL AS N'Nguyên liệu',ct.GiaNhap AS N'Giá nhập',    ct.SoLuong AS N'Số lượng nhập',    ph.NgayNhap AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
                             " FROM PhieuNhapKho ph " +
@@ -54,14 +55,30 @@ namespace DAL
             }
         }
 
+        // lấy số lượng cần nhập thêm để đạt ổn định
+        public int Restocking(string tennl)
+        {
+            string query = "select * from NguyenLieu where TenNL = @TenNL";
+            DataTable result = DataProvider.ExecuteQuery(query, new object[] { tennl });
 
-        public DataTable TaiTenNguyenLieu()
+            if (result.Rows.Count > 0)
+            {
+                return Convert.ToInt32(result.Rows[0]["MucOnDinh"]) - Convert.ToInt32(result.Rows[0]["SoLuongTon"]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public DataTable LoadIngredients_name()
         {
             string query = "select * from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
 
-        public void ThemPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        //Thêm phiếu nhập kho
+        public void AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
         {
             string query = "insert into PhieuNhapKho values (@_MaPhiepNhap,@_TenDangNhap,@_NgayNhap,@_GhiChu)";
             object[] parem = new object[] {maPhieuNhap,tenDangNhap,ngayNhap,ghiChu};
@@ -69,7 +86,7 @@ namespace DAL
         }
 
         // lấy mã phiếu nhập lớn nhất
-        public string MaphieuLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaPhieuNhap from PhieuNhapKho order by MaPhieuNhap desc";
             string maxMaphieu = (string)DataProvider.ExecuteScalar(query);

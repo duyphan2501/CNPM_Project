@@ -17,7 +17,8 @@ namespace DAL
             chitietnhap = new DTO_ChiTietNhapKho(maphieunhap,manl,gianhap,soluong);
         }
 
-        public void ThemChiTietNhap(string maphieunhap, string manl, int gianhap, int soluong)
+        //Thêm chi tiết nhập kho
+        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)
         {
             string query = "insert into ChiTietNhapKho values (@_MaPhieuNhap,@_MaNL,@_GiaNhap,@_SoLuong)";
             object[] parem = new object[] { maphieunhap, manl, gianhap, soluong};

@@ -17,9 +17,9 @@ namespace BUS
             phieuxuatdal = new DAL_PhieuXuatKho(maPhieuXuat,tenDangNhap,ngayXuat,ghiChu);
         }
 
-        public DataTable TaiPhieuXuat()
+        public DataTable LoadDeliveryReceipt()
         {
-            return phieuxuatdal.TaiPhieuxuat();
+            return phieuxuatdal.LoadDeliveryReceipt();
         }
 
         public DataTable TaiMaPhieuXuat()
@@ -27,9 +27,9 @@ namespace BUS
             return phieuxuatdal.TaiMaPhieuXuat();
         }
 
-        public void ThemPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        public void AddDeliveryReceip(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
         {
-            phieuxuatdal.ThemPhieuXuat(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
+            phieuxuatdal.AddDeliveryReceip(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
         }
 
         public void SuaPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
@@ -37,10 +37,10 @@ namespace BUS
             phieuxuatdal.SuaPhieuXuat(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
         }
 
-        public string PhatSinhMaPhieuXuat()
+        public string GenerateID()
         {
             // lấy mã phiếu xuất lớn nhất
-            string maphieu = phieuxuatdal.MaphieuLonNhat();
+            string maphieu = phieuxuatdal.MaxID();
             // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PX0001
             if (maphieu == null)
             {

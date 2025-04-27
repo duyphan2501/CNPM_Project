@@ -16,9 +16,9 @@ namespace BUS
             chitietnhap = new DAL_ChiTietNhapKho(maphieunhap, manl, gianhap, soluong);
         }
 
-        public void ThemChiTietNhap(string maphieunhap, string manl, int gianhap, int soluong)
+        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)
         {
-            chitietnhap.ThemChiTietNhap(maphieunhap, manl, gianhap, soluong);
+            chitietnhap.AddEntryDetail(maphieunhap, manl, gianhap, soluong);
         }
 
         public void UpdateDetailst(string maphieunhap, string manl, int gianhap, int soluong)
