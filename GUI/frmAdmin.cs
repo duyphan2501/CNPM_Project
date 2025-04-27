@@ -97,6 +97,13 @@ namespace GUI
         private void btnMathangbanchay_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnMathangbanchay);
+            pnlFormcon.Controls.Clear();
+            frmHangBanChay frm = new frmHangBanChay();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+
         }
 
         private void btnKiemkekho_Click(object sender, EventArgs e)

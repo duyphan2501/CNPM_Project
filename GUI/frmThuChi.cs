@@ -33,14 +33,14 @@ namespace GUI
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
 
-            // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
-            dateDenngay.Value = DateTime.Now;
+            
+            dateDenngay.Value = DateTime.Now;   // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
+            dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 
         public void LoadPhieu()
         {
             gridDsThuchi.DataSource = phieu.TaiPhieu();
-
         }
 
         public void LoadLoaiPhieu()
@@ -115,6 +115,7 @@ namespace GUI
             //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
             //    gridDsThuchi.DataSource = dv;
             //}
+
             LocTheoNgay();
             LocTheoLoaiPhieu();
             
@@ -122,7 +123,7 @@ namespace GUI
 
         private void Date_ValueChanged(object sender, EventArgs e)
         {
-            LocTheoLoaiPhieu();
+            LocTheoLoaiPhieu();  
             LocTheoNgay();
         }
 
@@ -175,7 +176,7 @@ namespace GUI
             {
                 dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu thu%'";
             }
-            else
+            else 
             {
                 dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu chi%'";
             }
