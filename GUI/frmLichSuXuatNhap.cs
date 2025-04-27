@@ -53,7 +53,7 @@ namespace GUI
 
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
-            dateDenngay.Value = DateTime.Now;   // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
+            dateDenngay.Value = DateTime.Today.AddDays(1);  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
             dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 

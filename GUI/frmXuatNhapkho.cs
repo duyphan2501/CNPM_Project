@@ -333,21 +333,23 @@ namespace GUI
 
         private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
-            if (e.RowIndex >= 0 && (gridDsPhieu.Columns[e.ColumnIndex].Name == "soluong" || gridDsPhieu.Columns[e.ColumnIndex].Name == "gianhap"))
-            {
-                // Lấy dòng hiện tại
-                DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
+            if (cboLoaiphieu.Text == "Phiếu nhập") {
+                // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
+                if (e.RowIndex >= 0 && (gridDsPhieu.Columns[e.ColumnIndex].Name == "soluong" || gridDsPhieu.Columns[e.ColumnIndex].Name == "gianhap"))
+                {
+                    // Lấy dòng hiện tại
+                    DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
 
-                // Lấy giá trị "Số lượng" và "Giá nhập"
-                int soluong = row.Cells["soluong"].Value != null ? Convert.ToInt32(row.Cells["soluong"].Value) : 0;
-                int gianhap = row.Cells["gianhap"].Value != null ? Convert.ToInt32(row.Cells["gianhap"].Value) : 0;
+                    // Lấy giá trị "Số lượng" và "Giá nhập"
+                    int soluong = row.Cells["soluong"].Value != null ? Convert.ToInt32(row.Cells["soluong"].Value) : 0;
+                    int gianhap = row.Cells["gianhap"].Value != null ? Convert.ToInt32(row.Cells["gianhap"].Value) : 0;
 
-                // Tính lại "Thành tiền"
-                row.Cells["thanhtien"].Value = soluong * gianhap;
+                    // Tính lại "Thành tiền"
+                    row.Cells["thanhtien"].Value = soluong * gianhap;
 
-                // Cập nhật tổng tiền
-                UpdateTongTien();
+                    // Cập nhật tổng tiền
+                    UpdateTongTien();
+                } 
             }
         }
 
