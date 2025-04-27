@@ -240,5 +240,29 @@ namespace GUI
                 row.Visible = isMatchFound;
             }
         }
+
+        private void cboLocNL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadIngredients();
+            DataView dv = ((DataTable)gridDsNguyenlieu.DataSource).DefaultView;
+            
+
+            // Lọc dữ liệu theo loại phiếu
+            if (cboLocNL.Text == "Tất cả")
+            {
+                dv.RowFilter = "";  // Không áp dụng bộ lọc nếu chọn "Tất cả"
+            }
+            else if (cboLocNL.Text == "Ổn định")
+            {
+                dv.RowFilter = "[Số lượng tồn] >= [Mức ổn định]";
+            }
+            else
+            {
+                dv.RowFilter = "[Số lượng tồn] < [Mức tối thiểu]";
+            }
+
+            // Cập nhật lại DataSource với bộ lọc
+            gridDsNguyenlieu.DataSource = dv.ToTable();  // Dùng ToTable để chuyển DataView thành DataTable
+        }
     }
 }

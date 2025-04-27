@@ -98,7 +98,6 @@ namespace GUI
             pnlThongtinSP.Enabled = true;
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
-            btnTimkiem.Enabled = true;
             txtTimkiem.Enabled = true;
             ResetTextbox();
 

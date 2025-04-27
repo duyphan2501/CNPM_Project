@@ -164,9 +164,8 @@ namespace GUI
 
         private void LocTheoLoaiPhieu()
         {
+            
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-
-            // Tải dữ liệu nếu cần thiết
             LoadPhieu();
 
             // Lọc dữ liệu theo loại phiếu
