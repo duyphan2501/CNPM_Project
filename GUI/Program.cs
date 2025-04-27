@@ -1,7 +1,7 @@
 ﻿using GUI;
 using System.Data;
 
-namespace cnpm
+namespace GUI
 {
     internal static class Program
     {

@@ -21,6 +21,7 @@ namespace DTO
             DonGia = donGia;
             SoLuong = soLuong;
         }
+        public DTO_ChiTietDonHang() { }
     }
 
 }

@@ -12,9 +12,9 @@ namespace DAL
     public class DAL_TheRung
     {
         DTO_TheRung theRung;
-        public DAL_TheRung(string mathe, string sothe, int trangthai) 
-        { 
-            theRung = new DTO_TheRung(mathe, sothe, trangthai); 
+        public DAL_TheRung(string mathe, string sothe, int trangthai)
+        {
+            theRung = new DTO_TheRung(mathe, sothe, trangthai);
         }
 
         public DAL_TheRung()
@@ -39,7 +39,7 @@ namespace DAL
         {
             string query = "select top 1 MaThe from TheRung order by mathe desc";
             object result = DataProvider.ExecuteScalar(query);
-            return result != null ? result.ToString(): "T001" ;
+            return result != null ? result.ToString() : "";
         }
 
         public int UpdateTheRung()
@@ -58,8 +58,22 @@ namespace DAL
 
         public int DeleteTheRung(string mathe)
         {
-            string query = "delete from therung where mathe = "+mathe;
-            return DataProvider.ExecuteNonQuery(query);
+            string query = "delete from therung where mathe = @mathe";
+            return DataProvider.ExecuteNonQuery(query, new object[] { mathe });
+        }
+
+        public string LaySoThe(string maThe)
+        {
+            string query = "select sothe from TheRung where mathe = @mathe";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maThe });
+            return result != null ? result.ToString() : null;
+        }
+
+        public string LayMaThe(string soThe)
+        {
+            string query = "select mathe from TheRung where sothe = @sothe";
+            object result = DataProvider.ExecuteScalar(query, new object[] { soThe });
+            return result != null ? result.ToString() : null;
         }
     }
 }

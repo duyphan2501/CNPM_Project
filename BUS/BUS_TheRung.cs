@@ -33,6 +33,10 @@ namespace BUS
         public string PhatSinhMaThe()
         {
             string maTheHienTai = therung.LayMaTheLonNhat();
+            if (maTheHienTai == "")
+            {
+                return "T001"; // Nếu không có mã nào, bắt đầu từ T001
+            }
             // Lấy phần số sau chữ T
             int so = int.Parse(maTheHienTai.Substring(1));
             // Tăng lên 1
@@ -54,6 +58,16 @@ namespace BUS
         public int UpdateStateTheRung(int trangthai, string maThe)
         {
             return therung.UpdateStateTheRung(trangthai, maThe);
+        }
+
+        public string LaySoThe(string maThe)
+        {
+            return therung.LaySoThe(maThe);
+        }
+
+        public string LayMaThe(string soThe)
+        {
+            return therung.LayMaThe(soThe);
         }
     }
 }

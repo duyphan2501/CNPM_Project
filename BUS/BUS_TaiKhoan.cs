@@ -26,6 +26,10 @@ namespace BUS
         {
             taikhoandal = new DAL_TaiKhoan(tendangnhap);
         }
+        public BUS_TaiKhoan()
+        {
+            taikhoandal = new DAL_TaiKhoan();
+        }
 
         //Tải tài khoản có hiệu lực
         public DataTable LoadAccount()
@@ -77,11 +81,16 @@ namespace BUS
             return null; // Sai username hoặc password
         }
 
-        public void updatePassword(string username, string password)
+        public void UpdatePassword(string username, string password)
         {
             string hashPassword = General.HashPassword(password);
             taikhoandal = new DAL_TaiKhoan(username, hashPassword);
-            taikhoandal.updatePassword();
+            taikhoandal.UpdatePassword();
+        }
+
+        public string GetUserNameByShiftID(string shiftID)
+        {
+            return taikhoandal.GetUserNameByShiftID(shiftID);
         }
     }
 }

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
-using cnpm;
 
 namespace GUI
 {
@@ -20,6 +19,7 @@ namespace GUI
         private string maDonhang;
         private string maThe;
         private string ghiChu;
+        BUS_DonHang donhang = new BUS_DonHang();
 
         public event EventHandler ThanhToanThanhCong;
 
@@ -67,17 +67,17 @@ namespace GUI
 
             List<int> suggestions = new List<int>();
 
-            // 1. Gợi ý đúng số tiền
+            // Gợi ý đúng số tiền
             suggestions.Add(soTienCanThanhToan);
 
-            // 2. Làm tròn lên các bước nhỏ hơn
+            // Làm tròn lên các bước nhỏ hơn
             int roundUpTo5000 = ((soTienCanThanhToan + 4999) / 5000) * 5000;
             if (!suggestions.Contains(roundUpTo5000)) suggestions.Add(roundUpTo5000);
 
             int roundUpTo10000 = ((soTienCanThanhToan + 9999) / 10000) * 10000;
             if (!suggestions.Contains(roundUpTo10000)) suggestions.Add(roundUpTo10000);
 
-            // 3. Thêm mệnh giá lớn hơn thông dụng
+            // Thêm mệnh giá lớn hơn thông dụng
             int[] commonCash = { 100000, 200000, 500000 };
             foreach (var money in commonCash)
             {
@@ -196,7 +196,7 @@ namespace GUI
             {
                 if (txtKhachDua.Text == "")
                 {
-                    MessageBox.Show("Hãy nhập tiền khách đưa!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Hãy nhập tiền khách đưa!", this);
                     return;
                 }
                 int tienKhachDua = General.FormatMoneyToInt(txtKhachDua.Text); // Tiền khách đưa
@@ -206,7 +206,7 @@ namespace GUI
                 // 3. Kiểm tra xem tiền khách đưa có đủ không
                 if (tienKhachDua < tienCanTra)
                 {
-                    MessageBox.Show("Tiền khách đưa không đủ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    General.ShowError("Tiền khách đưa không đủ!", this);
                     return;
                 }
             }
@@ -214,45 +214,53 @@ namespace GUI
             string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
             string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
             int giamGia = (int)numGiamGia.Value;
+            int tongTien = General.FormatMoneyToInt(lblKhachCanTra.Text);
             int loaiThanhToan = cboLoaiThanhToan.SelectedIndex;
 
-            // 4. Tạo đối tượng đơn hàng
-            BUS_DonHang donHang = new BUS_DonHang(maDonhang, tenDangNhap, maCaLam, 0, maThe, ghiChu);
-            if (!donHang.isExistedOrder(maDonhang))
+            if (!donhang.isExistedOrder(maDonhang))
             {
-                donHang.InsertNewOrder();
-                BUS_TheRung therung = new BUS_TheRung();
-                therung.UpdateStateTheRung(1, maThe);
+                // Tạo đối tượng thêm đơn hàng
+                donhang = new BUS_DonHang(maDonhang, maCaLam, 0, maThe, giamGia, tongTien, ghiChu);
+                int insertedRows = donhang.InsertNewOrder();
+                if (insertedRows > 0)
+                {
+                    // Thêm chi tiết đơn hàng
+                    foreach (var item in invoiceItemList)
+                    {
+                        // Tạo chi tiết đơn hàng
+                        BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
+                        // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
+                        int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+                        if (isDetailAdded == 0)
+                        {
+                            General.ShowError("Lỗi khi thêm chi tiết đơn hàng", this);
+                            return;
+                        }
+                    }
+                    BUS_TheRung therung = new BUS_TheRung();
+                    therung.UpdateStateTheRung(1, maThe);
+                } else
+                {
+                    General.ShowError("Lỗi khi thêm đơn hàng", this);
+                    return;
+                }
             }
-            donHang = new BUS_DonHang(maDonhang, maCaLam, giamGia, loaiThanhToan);
-            int affectedRows = donHang.ThanhToanDonHang();
+
+            // Tạo đối tượng thanh toán đơn hàng
+            donhang = new BUS_DonHang(maDonhang, maCaLam, giamGia, tongTien, loaiThanhToan);
+            int affectedRows = donhang.ThanhToanDonHang();
             if (affectedRows != 0)
             {
-                // 6. Thêm chi tiết đơn hàng
-                foreach (var item in invoiceItemList)
-                {
-                    // Tạo chi tiết đơn hàng
-                    BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
+                // Thông báo thành công
+                General.ShowInformation("Thanh toán thành công!", this);
 
-                    // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
-                    int isDetailAdded = chiTietDonHang.InsertOrderDetail();
-                    if (isDetailAdded == 0)
-                    {
-                        MessageBox.Show("Lỗi khi thêm chi tiết đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
-                // 7. Thông báo thành công
-                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // 8. Xử lý các bước tiếp theo, ví dụ: đóng form, in hóa đơn, vv.
+                // Xử lý các bước tiếp theo
                 ThanhToanThanhCong?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Lỗi khi thêm đơn hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                General.ShowError("Lỗi khi thêm đơn hàng", this);
             }
         }
     }

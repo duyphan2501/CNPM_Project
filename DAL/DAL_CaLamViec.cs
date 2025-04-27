@@ -52,5 +52,25 @@ namespace DAL
             };
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
+
+        public string GetUserNameOfShift(string maCa)
+        {
+            string query = "select TenDangNhap from CaLamViec where MaCaLam = @MaCa";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maCa });
+            return result != null ? result.ToString() : null;
+        }
+
+        public int ChotCaLamViec(string maCaLam, int tienCuoiCa, string ghiChu)
+        {
+            string query = "UPDATE CaLamViec SET TgKetThuc = @TgKetThuc, TienCuoiCa = @TienCuoiCa, GhiChu = @GhiChu WHERE MaCaLam = @MaCaLam";
+            object[] parameters = new object[]
+            {
+                DateTime.Now,
+                tienCuoiCa,
+                ghiChu,
+                maCaLam
+            };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
     }
 }

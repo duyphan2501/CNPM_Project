@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
-using cnpm;
 using Microsoft.VisualBasic.Devices;
 
 namespace GUI

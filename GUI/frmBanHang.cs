@@ -1,5 +1,4 @@
 ﻿using BUS;
-using cnpm;
 using GUI.components;
 using System;
 using System.Collections.Generic;
@@ -17,6 +16,7 @@ namespace GUI
         private BUS_SanPham sanPhamBUS;
         private BUS_CaLamViec calam;
         private BUS_DonHang donhangBUS;
+
         public frmBanHang()
         {
             InitializeComponent();
@@ -32,7 +32,6 @@ namespace GUI
             CheckShiftOpening();
             LoadProductCateGory();
             LoadProducts();
-            SetUserDetails();
         }
 
         private void SetFullScreen()
@@ -57,20 +56,45 @@ namespace GUI
             var calam = new BUS_CaLamViec();
             string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
             Program.shift = calam.SelectOpenShift(tenDangNhap);
-            // ko có ca nào
+
+            // Nếu không có ca nào, mở form mở ca
             if (Program.shift.Rows.Count == 0)
             {
                 frmMoCaLam frmMoCaLam = new frmMoCaLam();
-                General.ShowDialogWithBlur(frmMoCaLam);
+                General.ShowDialogWithBlur(frmMoCaLam);  // Hiển thị form mở ca và đợi người dùng mở ca
+
+                // Sau khi người dùng mở ca, gọi SetUserDetails()
+                SetUserDetails();
+            }
+            else
+            {
+                // Nếu ca đã mở, chỉ cần gọi SetUserDetails() ngay lập tức
+                SetUserDetails();
             }
         }
 
         private void SetUserDetails()
         {
-            // Cập nhật các thông tin ca làm việc, họ tên và vai trò người dùng
-            lblMaCaLam.Text = Program.shift.Rows[0]["MaCaLam"].ToString();
-            lblHoTen.Text = Program.account.Rows[0]["HoTen"].ToString();
-            lblVaiTro.Text = Program.account.Rows[0]["VaiTro"].ToString();
+            if (Program.shift.Rows.Count > 0)
+            {
+                // Nếu có ca làm việc đang mở, lấy thông tin từ DataTable
+                lblMaCaLam.Text = Program.shift.Rows[0]["MaCaLam"].ToString();
+            }
+            else
+            {
+                lblMaCaLam.Text = "Chưa mở ca";
+            }
+            if (Program.account.Rows.Count > 0)
+            {
+                lblHoTen.Text = Program.account.Rows[0]["HoTen"].ToString();
+                lblVaiTro.Text = Program.account.Rows[0]["VaiTro"].ToString();
+            }
+            else
+            {
+                // Nếu không có thông tin người dùng, đặt các label về trống
+                lblHoTen.Text = "";
+                lblVaiTro.Text = "";
+            }
         }
 
         private void LoadProductCateGory()
@@ -84,6 +108,7 @@ namespace GUI
             // Tải các loại sản phẩm và hiển thị lên panel
             foreach (DataRow category in loaiSanphamBUS.SelectAllCategoryProduct().Rows)
             {
+                // Tạo đối tượng mới và thêm vào panel sản phẩm
                 ProductCategory proCategory = new ProductCategory(category["TenLoai"].ToString(), category["MaLoai"].ToString());
                 proCategory.LoaiSPClicked += ProductCategory_Clicked;
                 pnlProductCategory.Controls.Add(proCategory);
@@ -95,12 +120,14 @@ namespace GUI
             // Lấy sản phẩm và hiển thị lên giao diện
             foreach (DataRow dr in sanPhamBUS.SelectOnSaleProduct().Rows)
             {
+                // lấy dữ liệu
                 byte[] hinhAnh = dr["HinhAnh"] as byte[];
                 string tenSp = dr["TenSp"].ToString();
                 int giaBan = Convert.ToInt32(dr["GiaBan"]);
                 string maLoai = dr["MaLoai"].ToString();
                 string maSp = dr["MaSp"].ToString();
 
+                //Tạo một đối tượng Widget mới và thêm vào panel sản phẩm
                 Widget widget = new Widget(hinhAnh, tenSp, giaBan, maLoai, maSp);
                 widget.ThemSanPhamClicked += Widget_ThemSanPhamClicked;
                 pnlThucDon.Controls.Add(widget);
@@ -225,12 +252,11 @@ namespace GUI
             // phát sinh mã đơn hàng
             donhangBUS = new BUS_DonHang();
             lblMaDonHang.Text = donhangBUS.PhatSinhMaDonHang();
-            lblSoCho.Text = "";
         }
 
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
-            if (maThe != "" && lblMaDonHang.Text != "" && pnlInvoiceItem.Controls.Count > 0)
+            if (IsValidDonHang())
             {
                 // lấy list từ pnlInvoice Item để tuyền vào frmThanhToan
                 List<InvoiceItem> danhSachItem = pnlInvoiceItem.Controls
@@ -271,6 +297,92 @@ namespace GUI
         private void btnHuyDon_Click(object sender, EventArgs e)
         {
             ClearFormBanHang();
+        }
+
+        private void btnDonHang_Click(object sender, EventArgs e)
+        {
+            frmOrderList frmDonHang = new frmOrderList("cashier");
+            General.ShowDialogWithBlur(frmDonHang);
+        }
+
+        private void btnTamLuu_Click(object sender, EventArgs e)
+        {
+            // xác nhận tạm lưu
+            if (General.ShowConfirm("Xác nhận tạm lưu", this) == DialogResult.No)
+            {
+                return;
+            }
+
+            // Kiểm tra trạng thái đơn hàng trước khi lưu
+            if (!IsValidDonHang())
+            {
+                return;
+            }
+            // Lấy thông tin cần thiết để tạo đơn hàng
+            string maDonHang = lblMaDonHang.Text;
+            string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
+            string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
+            int tongTien = General.FormatMoneyToInt(lblTongtien.Text);
+
+            // Tạo đối tượng đơn hàng với trạng thái tạm lưu (ThanhToan = 0)
+            donhangBUS = new BUS_DonHang(maDonHang, maCaLam, 0, maThe, 0, tongTien, ghiChu);
+            int insertedRows = donhangBUS.InsertNewOrder();
+
+            if (insertedRows > 0)
+            {
+                // Duyệt qua các món trong hóa đơn để thêm chi tiết đơn hàng
+                foreach (var item in pnlInvoiceItem.Controls.OfType<InvoiceItem>())
+                {
+                    // Tạo đối tượng chi tiết đơn hàng
+                    BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonHang, item.MaSanPham, item.DonGia, item.SoLuong);
+
+                    // Lưu chi tiết vào CSDL
+                    int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+                    if (isDetailAdded == 0)
+                    {
+                        General.ShowError("Lỗi khi thêm chi tiết đơn hàng", this);
+                        return;
+                    }
+                }
+
+                // Cập nhật trạng thái thẻ rung sang 'đang dùng' 
+                BUS_TheRung therung = new BUS_TheRung();
+                therung.UpdateStateTheRung(1, maThe);
+                ClearFormBanHang();
+            }
+            else
+            {
+                // Thông báo lỗi nếu thêm đơn hàng thất bại
+                General.ShowError("Lỗi khi thêm đơn hàng", this);
+                return;
+            }
+        }
+
+        private bool IsValidDonHang()
+        {
+            // Kiểm tra trạng thái đơn hàng
+            if (lblMaDonHang.Text.Trim() == "" || lblSoCho.Text.Trim() == "")
+            {
+                General.ShowWarning("Vui lòng chọn số chờ và mã đơn hàng trước khi thanh toán.", this);
+                return false;
+            }
+
+            if (pnlInvoiceItem.Controls.Count == 0)
+            {
+                General.ShowWarning("Giỏ hàng trống. Vui lòng thêm sản phẩm trước khi thanh toán.", this);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnTongKetCa_Click(object sender, EventArgs e)
+        {
+            frmTongKetCa frmTongKetCa = new frmTongKetCa();
+            frmTongKetCa.ShiftClosed += (s, ev) => {
+                CheckShiftOpening(); // Gọi lại kiểm tra mở ca khi frmTongKetCa báo đã chốt xong
+            };
+            General.ShowDialogWithBlur(frmTongKetCa);
         }
     }
 }

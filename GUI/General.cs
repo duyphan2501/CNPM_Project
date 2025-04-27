@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace GUI
 {
@@ -89,5 +92,58 @@ namespace GUI
             money = money.Replace(",", "").Replace("đ", "").Trim();
             return Int32.Parse(money);
         }
+
+        public static DialogResult ShowConfirm(string text, Form parent)
+        {
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = text,
+                Caption = "Xác nhận",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Question,
+                Parent = parent,
+            };
+            return dialog.Show();
+        }
+
+        public static void ShowError(string text, Form parent)
+        {
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = text,
+                Caption = "Lỗi",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Error,
+                Parent = parent,
+            };
+            dialog.Show();
+        }
+
+        public static void ShowWarning(string text, Form parent)
+        {
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = text,
+                Caption = "Cảnh báo",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning,
+                Parent = parent,
+            };
+            dialog.Show();
+        }
+
+        public static void ShowInformation(string text, Form parent)
+        {
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = text,
+                Caption = "Thông tin",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Information,
+                Parent = parent,
+            };
+            dialog.Show();
+        }
+        
     }
 }
