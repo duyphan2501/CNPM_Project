@@ -158,13 +158,12 @@ namespace GUI
             if (affectedRow > 0)
             {
                 Guna.UI2.WinForms.MessageDialog.Show(this, "Chốt ca thành công!", "Thông báo", Guna.UI2.WinForms.MessageDialogButtons.OK);
+                Program.shift.Clear(); // Xóa thông tin ca làm việc
 
                 // Gọi event thông báo đã chốt ca
                 ShiftClosed?.Invoke(this, EventArgs.Empty);
 
                 this.Close();
-
-                Program.shift.Clear(); // Xóa thông tin ca làm việc
             }
             else
             {

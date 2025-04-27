@@ -78,7 +78,7 @@ namespace DAL
         // lấy đơn hàng cho thu ngân
         public DataTable SelectOrderForCashier(string maCaLam)
         {
-            string query = "select * from DonHang where MaCaLap = @MaCaLap or MaCaThanhToan is null order by madonhang desc";
+            string query = "select * from DonHang where MaCaLap = @MaCaLap or MaCaThanhToan is null or TrangThai = 0 order by madonhang desc";
             return DataProvider.ExecuteQuery(query, new object[] { maCaLam });
         }
 

@@ -16,6 +16,8 @@ namespace GUI
 
         private void frmMoCaLam_Load(object sender, EventArgs e)
         {
+            lblNhanVienCa.Text = Program.account.Rows[0]["TenDangNhap"].ToString();
+            lblGioBatDau.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
             txtTienDauCa.Focus();
         }
 
