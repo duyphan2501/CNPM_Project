@@ -137,7 +137,7 @@ namespace GUI
             EnableProductFields();
             pnlThongtinSP.Visible = true;
 
-            
+
         }
 
         private void EnableProductFields()
@@ -164,7 +164,7 @@ namespace GUI
             string trangThai = cboTrangthai.Text;
             byte[] anhSanPham = picAnhsanpham.Image != null ? General.ImageToByteArray(picAnhsanpham.Image) : null;
 
-            
+
             if (!IsDuplicateProduct(maSanPham, tenSanPham)) //kiểm tra trùng tên sản phẩm
             {
                 if (ValidateInputs(tenSanPham, giaBan, trangThai, anhSanPham))  //kiểm tra dữ liệu nhập vào
@@ -262,6 +262,35 @@ namespace GUI
             pnlThongtinSP.Visible = false;
             btnThemmon.Enabled = true;
             frmThucdon_Load(sender, e);
+        }
+
+        private void txtTimkiem_TextChanged(object sender, EventArgs e)
+        {
+            // Lọc sản phẩm trong DataGridView theo từ khóa tìm kiếm
+            string keyword = txtTimkiem.Text.Trim().ToLower();
+
+            // Tạm thời bỏ qua việc chọn dòng hiện tại
+            gridThucDon.CurrentCell = null;
+
+            // Lặp qua tất cả các hàng trong DataGridView
+            foreach (DataGridViewRow row in gridThucDon.Rows)
+            {
+                bool isMatchFound = false;
+
+                // Lặp qua tất cả các cột trong mỗi hàng
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Kiểm tra nếu giá trị trong cell chứa từ khóa tìm kiếm
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
+                    {
+                        isMatchFound = true;
+                        break;  // Nếu tìm thấy kết quả, không cần kiểm tra các cột còn lại
+                    }
+                }
+
+                // Ẩn hoặc hiện hàng tùy thuộc vào việc tìm thấy kết quả hay không
+                row.Visible = isMatchFound;
+            }
         }
     }
 }

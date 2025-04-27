@@ -30,6 +30,7 @@ namespace GUI
             LoadLoaiPhieu();
             btnLuu.Enabled = false;
 
+            cboLoaiPhieu.Text = "Tất cả";
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
 
@@ -123,8 +124,9 @@ namespace GUI
 
         private void Date_ValueChanged(object sender, EventArgs e)
         {
-            LocTheoLoaiPhieu();  
+              
             LocTheoNgay();
+            LocTheoLoaiPhieu();
         }
 
         private void LocTheoNgay()

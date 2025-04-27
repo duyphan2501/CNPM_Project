@@ -76,7 +76,7 @@ namespace GUI
             btnLuu.Enabled = true;
             btnThemNguyenlieu.Enabled = false;
 
-            
+
             txtMaNguyenLieu.Focus();
             txtTenNguyenLieu.Clear();
             txtDonvitinh.Clear();
@@ -111,7 +111,7 @@ namespace GUI
             // Kiểm tra các thông tin nhập vào
             if (!ValidateInput(tenloai, tennl, donvi, muctoithieu, mucondinh)) return;
 
-            
+
 
             if (txtMaNguyenLieu.Enabled == true)
                 nguyenlieubus.AddIngredients(manl, tenloai, tennl, donvi, muctoithieu, mucondinh);
@@ -210,6 +210,35 @@ namespace GUI
         private void btnTrolai_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTimkiem_TextChanged(object sender, EventArgs e)
+        {
+            // Lọc sản phẩm trong DataGridView theo từ khóa tìm kiếm
+            string keyword = txtTimkiem.Text.Trim().ToLower();
+
+            // Tạm thời bỏ qua việc chọn dòng hiện tại
+            gridDsNguyenlieu.CurrentCell = null;
+
+            // Lặp qua tất cả các hàng trong DataGridView
+            foreach (DataGridViewRow row in gridDsNguyenlieu.Rows)
+            {
+                bool isMatchFound = false;
+
+                // Lặp qua tất cả các cột trong mỗi hàng
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Kiểm tra nếu giá trị trong cell chứa từ khóa tìm kiếm
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
+                    {
+                        isMatchFound = true;
+                        break;  // Nếu tìm thấy kết quả, không cần kiểm tra các cột còn lại
+                    }
+                }
+
+                // Ẩn hoặc hiện hàng tùy thuộc vào việc tìm thấy kết quả hay không
+                row.Visible = isMatchFound;
+            }
         }
     }
 }

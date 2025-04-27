@@ -32,6 +32,7 @@ namespace GUI
             txtTongtien.ReadOnly = true;
             txtDonvi.ReadOnly = true;
             txtCannhap.ReadOnly = true;
+            btnLuuphieu.Enabled = false;
             //cboLoaiphieu.Text = "Phiếu nhập";
         }
 
@@ -135,12 +136,14 @@ namespace GUI
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
                 tong += thanhtien;
                 txtTongtien.Text = tong.ToString();
+                btnLuuphieu.Enabled = true; //cho phép lưu phiếu
             }
             else //check thông tin phiếu xuất kho
             {
                 if (CheckInput_DeliveryReceipt(nguyenlieu, soluong)) return;
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong);
                 txtGhichu.Enabled = false;
+                btnLuuphieu.Enabled = true; //cho phép lưu phiếu
             }
 
             numGianhap.Value = 0;
@@ -353,11 +356,6 @@ namespace GUI
         {
             frmKho tonkho = new frmKho();
             General.ShowDialogWithBlur(tonkho);
-        }
-
-        private void guna2GroupBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

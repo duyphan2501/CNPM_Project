@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gbLichsu = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -40,22 +44,30 @@
             cboLoaiphieu = new ComboBox();
             label6 = new Label();
             btnThoat = new Guna.UI2.WinForms.Guna2GradientButton();
+            dateDenngay = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            dateTungay = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            label5 = new Label();
+            label3 = new Label();
             gbLichsu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridLichsu).BeginInit();
             SuspendLayout();
             // 
             // gbLichsu
             // 
+            gbLichsu.Controls.Add(dateDenngay);
+            gbLichsu.Controls.Add(dateTungay);
+            gbLichsu.Controls.Add(label5);
+            gbLichsu.Controls.Add(label3);
             gbLichsu.Controls.Add(gridLichsu);
             gbLichsu.Controls.Add(cboLoaiphieu);
             gbLichsu.Controls.Add(label6);
             gbLichsu.CustomBorderColor = Color.FromArgb(239, 119, 18);
-            gbLichsu.CustomizableEdges = customizableEdges1;
+            gbLichsu.CustomizableEdges = customizableEdges5;
             gbLichsu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             gbLichsu.ForeColor = Color.Black;
             gbLichsu.Location = new Point(1, 96);
             gbLichsu.Name = "gbLichsu";
-            gbLichsu.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            gbLichsu.ShadowDecoration.CustomizableEdges = customizableEdges6;
             gbLichsu.Size = new Size(1536, 738);
             gbLichsu.TabIndex = 20;
             gbLichsu.Text = "Lịch sử xuất nhập";
@@ -144,7 +156,7 @@
             // 
             btnThoat.AutoRoundedCorners = true;
             btnThoat.BackColor = Color.Transparent;
-            btnThoat.CustomizableEdges = customizableEdges3;
+            btnThoat.CustomizableEdges = customizableEdges7;
             btnThoat.DisabledState.BorderColor = Color.DarkGray;
             btnThoat.DisabledState.CustomBorderColor = Color.DarkGray;
             btnThoat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -157,11 +169,65 @@
             btnThoat.Location = new Point(1356, 14);
             btnThoat.Margin = new Padding(4, 5, 4, 5);
             btnThoat.Name = "btnThoat";
-            btnThoat.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnThoat.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnThoat.Size = new Size(150, 69);
             btnThoat.TabIndex = 21;
             btnThoat.Text = "Thoát";
             btnThoat.Click += btnThoat_Click;
+            // 
+            // dateDenngay
+            // 
+            dateDenngay.Checked = true;
+            dateDenngay.CustomizableEdges = customizableEdges1;
+            dateDenngay.Font = new Font("Segoe UI", 9F);
+            dateDenngay.Format = DateTimePickerFormat.Long;
+            dateDenngay.Location = new Point(738, 58);
+            dateDenngay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dateDenngay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dateDenngay.Name = "dateDenngay";
+            dateDenngay.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            dateDenngay.Size = new Size(276, 46);
+            dateDenngay.TabIndex = 21;
+            dateDenngay.Value = new DateTime(2025, 4, 26, 22, 2, 45, 400);
+            // 
+            // dateTungay
+            // 
+            dateTungay.Checked = true;
+            dateTungay.CustomizableEdges = customizableEdges3;
+            dateTungay.Font = new Font("Segoe UI", 9F);
+            dateTungay.Format = DateTimePickerFormat.Long;
+            dateTungay.Location = new Point(305, 58);
+            dateTungay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dateTungay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dateTungay.Name = "dateTungay";
+            dateTungay.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            dateTungay.Size = new Size(276, 46);
+            dateTungay.TabIndex = 22;
+            dateTungay.Value = new DateTime(2025, 4, 26, 22, 2, 45, 400);
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.Control;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(244, 103, 0);
+            label5.Location = new Point(604, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(123, 32);
+            label5.TabIndex = 19;
+            label5.Text = "Đến ngày";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = SystemColors.Control;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(244, 103, 0);
+            label3.Location = new Point(185, 64);
+            label3.Name = "label3";
+            label3.Size = new Size(107, 32);
+            label3.TabIndex = 20;
+            label3.Text = "Từ ngày";
             // 
             // frmLichSuXuatNhap
             // 
@@ -187,5 +253,9 @@
         private ComboBox cboLoaiphieu;
         private Label label6;
         private Guna.UI2.WinForms.Guna2GradientButton btnThoat;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateDenngay;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTungay;
+        private Label label5;
+        private Label label3;
     }
 }

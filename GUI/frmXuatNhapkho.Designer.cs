@@ -511,7 +511,6 @@
             guna2GroupBox1.Size = new Size(1534, 1101);
             guna2GroupBox1.TabIndex = 0;
             guna2GroupBox1.Text = "Thông tin phiếu đang nhập";
-            guna2GroupBox1.Click += guna2GroupBox1_Click;
             // 
             // gridDsPhieu
             // 
