@@ -22,15 +22,22 @@ namespace DAL
         }
 
         //Thêm loại sản phẩm
-        public void ThemLoaiSp(string maloai, string tenloai)
+        public void AddProduct_type(string maloai, string tenloai)
         {
             string query = "insert into LoaiSanPham values (@_MaLoai,@_TenLoai)";
             object[] parem = new object[] { maloai, tenloai, };
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
+        //Tải danh sách loại sản phẩm 
+        public DataTable LoadProduct_type()
+        {
+            string query = "select * from LoaiSanPham";
+            return DataProvider.ExecuteQuery(query);
+        }
+
         // lấy mã loại lớn nhất trong bảng LoaiSanPham
-        public string MaloaiSPLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaLoai from LoaiSanPham order by Maloai desc";
             string maxMaloaiSP = (string)DataProvider.ExecuteScalar(query);

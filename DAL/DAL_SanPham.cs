@@ -36,7 +36,7 @@ namespace DAL
         }
 
         //Tải danh sách các tên loại lên combobox
-        public DataTable TaiLoaiSP()
+        public DataTable LoadProduct_type()
         {
             string query = "select * from LoaiSanPham";
             return DataProvider.ExecuteQuery(query);
@@ -81,20 +81,17 @@ namespace DAL
         }
 
         //Lọc n sản phẩm bán chạy nhất
-        public DataTable GetBestSellingProductst(int soluong,DateTime ngaybatdau,DateTime ngayketthuc)
+        public DataTable GetBestSellingProductst(int soluong, DateTime ngaybatdau, DateTime ngayketthuc)
         {
-            string query = "SELECT TOP (@SoLuong) sp.MaSp as 'Mã sản phẩm', sp.TenSp 'Tên sản phẩm', SUM(ct.SoLuong) AS 'Số lượng bán'" +
-                           "FROM ChiTietDonHang ct " +
-                           "JOIN DonHang dh ON ct.MaDonHang = dh.MaDonHang " +
-                           "JOIN SanPham sp ON ct.MaSP = sp.MaSp " +
-                           "WHERE dh.TrangThai = 1 " +
-                           "AND (dh.NgayLap >= @TuNgay) " +
-                           "AND (dh.NgayLap <= @DenNgay) " +
-                           "GROUP BY sp.MaSp, sp.TenSp " +
-                           "ORDER BY SUM(ct.SoLuong) DESC";
-            object[] parem = new object[] { soluong,  ngaybatdau, ngayketthuc};
+            string query = "SELECT TOP (@SoLuong) TenSp AS 'Tên sản phẩm', SUM(SoLuong) AS 'Tổng số lượng bán', DonGia AS 'Đơn giá', DonGia * SUM(SoLuong) AS 'Thành tiền' " +
+                           "FROM vw_HoaDonChiTiet " +
+                           "WHERE NgayLap BETWEEN @TuNgay AND @DenNgay " +
+                           "GROUP BY TenSp, DonGia " +
+                           "ORDER BY SUM(SoLuong) DESC";
+
+            object[] parem = new object[] { soluong, ngaybatdau, ngayketthuc };
             return DataProvider.ExecuteQuery(query, parem);
-           
         }
+
     }
 }

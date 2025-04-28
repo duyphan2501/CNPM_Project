@@ -76,7 +76,7 @@ namespace GUI
         //Tải tên loại lên combobox Tên loại
         public void TaiTenLoai()
         {
-            cboTenloai.DataSource = sanpham.TaiLoaiSP();
+            cboTenloai.DataSource = sanpham.LoadProduct_type();
             cboTenloai.DisplayMember = "TenLoai";
             cboTenloai.ValueMember = "MaLoai";
         }

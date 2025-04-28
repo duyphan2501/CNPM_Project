@@ -25,7 +25,7 @@ namespace GUI
         {
             grbXuatNhapKho.Visible = false;
             gridDsThuchi.RowTemplate.Height = 50;
-            LoadPhieu();
+            LoadReceipt();
             LoadLoaiPhieu();
             btnLuu.Enabled = false;
 
@@ -33,19 +33,19 @@ namespace GUI
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
 
-            
-            dateDenngay.Value = DateTime.Now;   // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
+
+            dateDenngay.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
             dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 
-        public void LoadPhieu()
+        public void LoadReceipt()
         {
-            gridDsThuchi.DataSource = phieu.TaiPhieu();
+            gridDsThuchi.DataSource = phieu.LoadReceipt();
         }
 
         public void LoadLoaiPhieu()
         {
-            cboLoaithuchi.DataSource = loaithuchi.TaiLoaiPhieu();
+            cboLoaithuchi.DataSource = loaithuchi.LoadType();
             cboLoaithuchi.DisplayMember = "TenLoai";
             cboLoaithuchi.ValueMember = "MaLoaiThuChi";
         }
@@ -60,7 +60,7 @@ namespace GUI
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
             grbXuatNhapKho.Visible = true;
-            txtMaphieu.Text = phieu.PhatSinhMaPhieu();
+            txtMaphieu.Text = phieu.GenerateID();
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;
 
@@ -75,8 +75,8 @@ namespace GUI
                 General.ShowWarning("Vui lòng nhập số tiền!");
                 return;
             }
-            phieu.ThemThuChi(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
-            LoadPhieu();
+            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
+            LoadReceipt();
             btnLuu.Enabled = false;
 
             numSotien.Value = 0;
@@ -133,7 +133,7 @@ namespace GUI
             DateTime tuNgay = dateTungay.Value.Date;
             DateTime denNgay = dateDenngay.Value.Date;  // Không cần thay đổi giờ
 
-            LoadPhieu();
+            LoadReceipt();
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
 
             // Xử lý khi cả hai ngày đều được chọn
@@ -165,7 +165,7 @@ namespace GUI
         {
             
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            LoadPhieu();
+            LoadReceipt();
 
             // Lọc dữ liệu theo loại phiếu
             if (cboLoaiPhieu.Text == "Tất cả")

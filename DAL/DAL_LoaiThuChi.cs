@@ -17,25 +17,27 @@ namespace DAL
             loaithuchidto = new DTO_LoaiThuChi(maloaithuchi,tenloai,loai);
         }
 
-        public void ThemLoai(string maloaithuchi, string tenloai, string loai)
+        public void AddType(string maloaithuchi, string tenloai, string loai)
         {
             string query = "insert into LoaiThuChi values (@_MaLoaiThuChi, @_TenLoai,@_Loai)";
             object[] parem = new object[] {maloaithuchi,tenloai,loai };
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        public DataTable TaiLoaiPhieu()
+        public DataTable LoadType()
         {
             string query = "select * from LoaiThuChi";
             return DataProvider.ExecuteQuery(query);
         }
 
         // lấy mã loại thu chi lớn nhất
-        public string MaloaiLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaLoaiThuChi from LoaiThuChi order by MaLoaiThuChi desc";
             string maxMaloai = (string)DataProvider.ExecuteScalar(query);
             return maxMaloai;
         }
+
+
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
@@ -21,8 +22,16 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-
-            loaisanphambus.ThemLoaiSp(txtMaloai.Text, txtTenloai.Text);
+            if (IsDuplicate(txtTenloai.Text))
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtTenloai.Text))
+            {
+                General.ShowWarning("Vui lòng nhập tên loại sản phẩm");
+                return;
+            }
+            loaisanphambus.AddProduct_type(txtMaloai.Text, txtTenloai.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -39,9 +48,25 @@ namespace GUI
 
         private void frmThemLoaiSanPham_Load(object sender, EventArgs e)
         {
-            txtMaloai.Text = loaisanphambus.PhatSinhMaLoai();
+            txtMaloai.Text = loaisanphambus.GenerateID();
             txtMaloai.ReadOnly = true;
 
+        }
+
+        private bool IsDuplicate(string tenloai) //kiểm tra trùng loại nguyên liệu
+        {
+            DataTable dt = loaisanphambus.LoadProduct_type();
+            foreach (DataRow row in dt.Rows)
+            {
+                string TenLoai = row["TenLoai"].ToString().ToLower();
+
+                if (TenLoai == tenloai.ToLower()) //so sánh ko phân biệt hoa thường
+                {
+                    MessageBox.Show("Đã có loại sản phẩm này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

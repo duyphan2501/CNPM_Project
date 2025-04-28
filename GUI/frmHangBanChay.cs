@@ -21,7 +21,8 @@ namespace GUI
 
         private void frmHangBanChay_Load(object sender, EventArgs e)
         {
-           
+            dateStop.Value = DateTime.Now.AddDays(1);  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
+            dateStart.Value = DateTime.Now.AddDays(-30); //mặc định là 7 ngày trước
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)

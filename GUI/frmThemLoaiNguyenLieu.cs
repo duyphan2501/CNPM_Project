@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DAL;
 
 namespace GUI
 {
@@ -21,14 +22,28 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            loainguyenlieubus.ThemLoaiNguyenLieu(txtMaloai.Text, txtTenloai.Text);
+            if (string.IsNullOrWhiteSpace(txtTenloai.Text))
+            {
+                General.ShowWarning("Vui lòng nhập tên loại nguyên liệu!");
+                return;
+            }
+            if (IsDuplicate(txtTenloai.Text))  //Kiểm tra có trùng tên loại nguyên liệu hay không
+            {
+                return;
+            }
+            {
+                return;
+            }
+            loainguyenlieubus.AddIngredients_type(txtMaloai.Text, txtTenloai.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        
+
         private void frmThemLoaiNguyenLieu_Load(object sender, EventArgs e)
         {
-            txtMaloai.Text = loainguyenlieubus.PhatSinhMaLoaiNL();
+            txtMaloai.Text = loainguyenlieubus.GenerateID();
             txtMaloai.ReadOnly = true;
         }
         
@@ -37,6 +52,22 @@ namespace GUI
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private bool IsDuplicate(string tenloai) //kiểm tra trùng loại nguyên liệu
+        {
+            DataTable dt = loainguyenlieubus.LoadIngredients_type();
+            foreach (DataRow row in dt.Rows)
+            {
+                string TenLoai = row["TenLoai"].ToString().ToLower();
+
+                if (TenLoai == tenloai.ToLower()) //so sánh ko phân biệt hoa thường
+                {
+                    MessageBox.Show("Đã có loại nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -24,9 +24,9 @@ namespace BUS
         }
 
         //Tải tên loại lên combobox
-        public DataTable TaiLoaiSP()
+        public DataTable LoadProduct_type()
         {
-            return sanphamdal.TaiLoaiSP();
+            return sanphamdal.LoadProduct_type();
         }
 
 
