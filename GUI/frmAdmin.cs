@@ -21,6 +21,7 @@ namespace GUI
         {
             pnlKho.Height = btnDashboard.Height + 31;
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
+            General.SetFullScreen(this);
         }
 
         private void ResetAllButtons(Control parent)
@@ -47,8 +48,6 @@ namespace GUI
                 }
             }
         }
-
-
 
         private void SetActiveButton(Guna.UI2.WinForms.Guna2GradientButton clickedButton)
         {

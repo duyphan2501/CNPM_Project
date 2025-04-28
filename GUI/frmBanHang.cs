@@ -22,23 +22,17 @@ namespace GUI
             InitializeComponent();
             loaiSanphamBUS = new BUS_LoaiSanPham();
             sanPhamBUS = new BUS_SanPham();
+            donhangBUS = new BUS_DonHang();
             calam = new BUS_CaLamViec();
         }
 
         private void frmBanHang_Load(object sender, EventArgs e)
         {
-            SetFullScreen();
+            General.SetFullScreen(this);
             EnableDoubleBuffering();
             CheckShiftOpening();
             LoadProductCateGory();
             LoadProducts();
-        }
-
-        private void SetFullScreen()
-        {
-            // Đặt form toàn màn hình
-            this.Location = new Point(0, 0);
-            this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
         private void EnableDoubleBuffering()
@@ -156,6 +150,14 @@ namespace GUI
             string tenmon = widget.TenSanPham;
             int dongia = widget.GiaSanPham;
             string maSanPham = widget.MaSanPham;
+
+            // Trước khi thêm sản phẩm, kiểm tra đủ nguyên liệu chưa
+            if (!IsEnoughIngredient(maSanPham, true))
+            {
+                General.ShowWarning("Không đủ nguyên liệu để thêm sản phẩm này.", this);
+                return;
+            }
+
             // Kiểm tra sản phẩm đã có trong hóa đơn chưa
             foreach (Control ctrl in pnlInvoiceItem.Controls)
             {
@@ -163,6 +165,7 @@ namespace GUI
                 {
                     // Nếu có, tăng số lượng sản phẩm
                     existingItem.IncreaseQuantity();
+                    existingItem.UpdateThanhTien();  // Cập nhật lại thành tiền
                     // Cập nhật lại tổng tiền khi số lượng thay đổi
                     UpdateTotalAmount();
                     return;
@@ -181,8 +184,65 @@ namespace GUI
 
         private void InvoiceItem_SoLuongChanged(object sender, EventArgs e)
         {
-            // Cập nhật lại tổng tiền khi số lượng thay đổi
+            InvoiceItem invoiceItem = sender as InvoiceItem;
+            bool isEnough = IsEnoughIngredient(invoiceItem.MaSanPham, false);
+            if (!isEnough)
+            {
+                invoiceItem.DecreaseQuantity();
+                invoiceItem.UpdateThanhTien();
+                return;
+            }
+            // Cập nhật lại tổng tiền nếu nguyên liệu đủ
             UpdateTotalAmount();
+        }
+
+        private bool IsEnoughIngredient(string masp, bool isAdding)
+        {
+            // Lấy danh sách nguyên liệu của sản phẩm cần kiểm tra
+            DataTable dtIngredient = new BUS_DinhLuong().SelectRecipeOfProduct(masp);
+
+            foreach (DataRow row in dtIngredient.Rows)
+            {
+                string maNguyenLieu = row["MaNL"].ToString();
+                int soLuongCan = Convert.ToInt32(row["SoLuong"]);
+
+                // Lấy số lượng tồn kho hiện tại của nguyên liệu
+                int soLuongTon = new BUS_NguyenLieu().GetQuantityOfIngredient(maNguyenLieu);
+
+                // Tính tổng số lượng nguyên liệu đã sử dụng từ tất cả món trong hóa đơn
+                int soLuongDaSuDung = 0;
+                foreach (Control ctrl in pnlInvoiceItem.Controls)
+                {
+                    if (ctrl is InvoiceItem invoiceItem)
+                    {
+                        // Lấy công thức của món đang xét
+                        DataTable dtIngredientOfItem = new BUS_DinhLuong().SelectRecipeOfProduct(invoiceItem.MaSanPham);
+
+                        // Tìm nguyên liệu trùng với maNguyenLieu
+                        foreach (DataRow ingredientRow in dtIngredientOfItem.Rows)
+                        {
+                            if (ingredientRow["MaNL"].ToString() == maNguyenLieu)
+                            {
+                                int soLuongTrongCongThuc = Convert.ToInt32(ingredientRow["SoLuong"]);
+                                soLuongDaSuDung += invoiceItem.SoLuong * soLuongTrongCongThuc;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Cộng thêm số lượng nguyên liệu sẽ dùng nếu thêm món mới
+                if (isAdding)
+                {
+                    soLuongDaSuDung += soLuongCan;
+                }
+                // Nếu không đủ nguyên liệu
+                if (soLuongTon < soLuongDaSuDung)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void UpdateTotalAmount()
@@ -301,7 +361,7 @@ namespace GUI
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            frmOrderList frmDonHang = new frmOrderList("cashier");
+            frmOrderList frmDonHang = new frmOrderList("cashie");
             General.ShowDialogWithBlur(frmDonHang);
         }
 
@@ -330,22 +390,47 @@ namespace GUI
 
             if (insertedRows > 0)
             {
-                // Duyệt qua các món trong hóa đơn để thêm chi tiết đơn hàng
+                // Thêm chi tiết đơn hàng
                 foreach (var item in pnlInvoiceItem.Controls.OfType<InvoiceItem>())
                 {
-                    // Tạo đối tượng chi tiết đơn hàng
+                    // Tạo chi tiết đơn hàng
                     BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonHang, item.MaSanPham, item.DonGia, item.SoLuong);
 
-                    // Lưu chi tiết vào CSDL
+                    // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
                     int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+
+                    // trừ kho nếu có định lượng
+                    DataTable recipe = new BUS_DinhLuong().SelectRecipeOfProduct(item.MaSanPham);
+                    if (recipe.Rows.Count > 0)
+                    {
+                        BUS_PhieuXuatKho phieuXuatKho = new BUS_PhieuXuatKho();
+                        BUS_ChiTietXuatKho chiTietPhieuXuatKho = new BUS_ChiTietXuatKho();
+
+                        // thêm phiếu xuất
+                        string maPhieuXuat = phieuXuatKho.GenerateID();
+                        phieuXuatKho.AddDeliveryReceip(maPhieuXuat, tenDangNhap, DateTime.Now, "Xuất kho cho đơn hàng " + maDonHang);
+
+                        foreach (DataRow row in recipe.Rows)
+                        {
+                            string maNguyenLieu = row["MaNL"].ToString();
+                            // số lượng cần cho 1 sản phẩm
+                            int soLuongCan = Convert.ToInt32(row["SoLuong"]);
+
+                            // tổng lượng cần trừ theo số lượng bán
+                            int tongSoLuongTru = soLuongCan * item.SoLuong;
+
+                            // thêm chi tiết phiếu xuất
+                            chiTietPhieuXuatKho.AddExportDetail(maPhieuXuat, maNguyenLieu, tongSoLuongTru);
+                        }
+                    }
+
+                    // Kiểm tra xem chi tiết đơn hàng đã được thêm thành công hay chưa
                     if (isDetailAdded == 0)
                     {
                         General.ShowError("Lỗi khi thêm chi tiết đơn hàng", this);
                         return;
                     }
                 }
-
-                // Cập nhật trạng thái thẻ rung sang 'đang dùng' 
                 BUS_TheRung therung = new BUS_TheRung();
                 therung.UpdateStateTheRung(1, maThe);
                 ClearFormBanHang();
@@ -379,10 +464,37 @@ namespace GUI
         private void btnTongKetCa_Click(object sender, EventArgs e)
         {
             frmTongKetCa frmTongKetCa = new frmTongKetCa();
-            frmTongKetCa.ShiftClosed += (s, ev) => {
+            frmTongKetCa.ShiftClosed += (s, ev) =>
+            {
                 CheckShiftOpening(); // Gọi lại kiểm tra mở ca khi frmTongKetCa báo đã chốt xong
             };
             General.ShowDialogWithBlur(frmTongKetCa);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Program.account.Clear();
+
+            // Đóng tất cả các form ngoài frmLogin
+            foreach (Form frm in Application.OpenForms.Cast<Form>().ToList())
+            {
+                if (!(frm is frmLogin)) // Chỉ giữ lại frmLogin
+                    frm.Close();
+            }
+
+            // Tạo và hiển thị lại frmLogin
+            frmLogin loginForm = new frmLogin();
+            loginForm.Show(); // Mở lại frmLogin
+            loginForm.BringToFront(); // Đưa frmLogin lên phía trước
+
+            // Đóng form hiện tại (có thể là frmBanHang, frmAdmin,...)
+            this.Close();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadProductCateGory();
+            LoadProducts();
         }
     }
 }

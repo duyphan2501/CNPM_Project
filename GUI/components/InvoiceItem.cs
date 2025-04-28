@@ -46,28 +46,60 @@ namespace GUI.components
             MaSanPham = masp;
         }
 
-        public void IncreaseQuantity()
-        {
-            numSoluong.Value += 1;
-        }
-
         private void picDeleteItem_Click(object sender, EventArgs e)
         {
             // Gọi sự kiện để báo về Form cha
             XoaItemClicked?.Invoke(this, EventArgs.Empty);
-
+            
             // Gọi sự kiện khi số lượng thay đổi
             SoLuongChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        private bool isHandlingValueChanged = false;  // Cờ để kiểm tra việc thay đổi giá trị
+
+        // Sự kiện khi giá trị của NumericUpDown thay đổi
         private void numSoluong_ValueChanged(object sender, EventArgs e)
         {
-            // Tính thành tiền và hiển thị theo định dạng "N0" (hàng nghìn)
-            lblThanhtien.Text = ThanhTien().ToString("N0");
+            // Nếu chúng ta đang xử lý sự kiện, tránh tiếp tục xử lý
+            if (isHandlingValueChanged) return;
+            if (numSoluong.Value < 1)
+            {
+                numSoluong.Value = 1;  // Giảm số lượng
+            }
+            UpdateThanhTien();  // Cập nhật lại giá trị thành tiền
 
-            // Gọi sự kiện khi số lượng thay đổi
+            // Gọi sự kiện khi giá trị thay đổi
             SoLuongChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        public void UpdateThanhTien()
+        {
+            // Cập nhật lại giá trị thành tiền
+            lblThanhtien.Text = ThanhTien().ToString("N0");
+        }
+
+        // Giảm số lượng
+        public void DecreaseQuantity()
+        {
+            if (numSoluong.Value > 1)
+            {
+                numSoluong.Value -= 1;  // Giảm số lượng
+            }
+        }
+
+        // Tăng số lượng
+        public void IncreaseQuantity()
+        {
+            // Tạm ngừng sự kiện khi thay đổi giá trị
+            isHandlingValueChanged = true;
+
+            numSoluong.Value += 1;  // Tăng số lượng
+            // Cập nhật lại giá trị thành tiền
+
+            // Đặt lại cờ để tiếp tục xử lý sự kiện
+            isHandlingValueChanged = false;
+        }
+
 
         public int ThanhTien()
         {

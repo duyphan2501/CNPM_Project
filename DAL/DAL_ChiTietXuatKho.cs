@@ -17,6 +17,11 @@ namespace DAL
             chitietxuatdto = new DTO_ChiTietXuatKho(maphieuxuat,manl,soluong);
         }
 
+        public DAL_ChiTietXuatKho()
+        {
+            chitietxuatdto = new DTO_ChiTietXuatKho();
+        }
+
         //Thêm chi tiết xuất kho
         public void AddExportDetail(string maphieuxuat, string manl, int soluong)
         {

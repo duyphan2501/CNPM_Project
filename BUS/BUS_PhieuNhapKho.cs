@@ -17,6 +17,10 @@ namespace BUS
         {
             phieunhapkhodal = new DAL_PhieuNhapKho(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
+        public BUS_PhieuNhapKho()
+        {
+            phieunhapkhodal = new DAL_PhieuNhapKho();
+        }
 
         //Tải phiếu nhập
         public DataTable LoadGoodsReceipt()
@@ -40,9 +44,9 @@ namespace BUS
             return phieunhapkhodal.Restocking(tennl);
         }
 
-        public void AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        public int AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
         {
-            phieunhapkhodal.AddGoodsReceipt(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
+            return phieunhapkhodal.AddGoodsReceipt(maPhieuNhap, tenDangNhap, ngayNhap, ghiChu);
         }
 
         public void SuaPhieuNhap(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)

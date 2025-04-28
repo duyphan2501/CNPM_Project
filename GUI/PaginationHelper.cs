@@ -1,9 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace GUI
 {
@@ -29,7 +27,7 @@ namespace GUI
             // Nút "Đầu Trang"
             if (currentPage > 1)
             {
-                pnlPagination.Controls.Add(CreateGunaButton("<<", (s, e) => loadPageAction(1)));
+                pnlPagination.Controls.Add(CreateGunaButton("Đầu", (s, e) => loadPageAction(1)));
             }
 
             // Nút "Trang trước"
@@ -51,16 +49,16 @@ namespace GUI
                 pnlPagination.Controls.Add(CreateGunaButton(">", (s, e) => loadPageAction(currentPage + 1)));
             }
 
-            // Nút "Cuối Trang"
+            // Nút "Cuối"
             if (currentPage < totalPages)
             {
-                pnlPagination.Controls.Add(CreateGunaButton(">>", (s, e) => loadPageAction(totalPages)));
+                pnlPagination.Controls.Add(CreateGunaButton("Cuối", (s, e) => loadPageAction(totalPages)));
             }
         }
 
         private static Guna2Button CreateGunaButton(string text, EventHandler onClick, bool isActive = false)
         {
-            int width = (text == ">>" || text == "<<") ? 60 : 45;
+            int width = (text == "Đầu" || text == "Cuối") ? 60 : 45;
 
             var btn = new Guna2Button
             {
@@ -68,8 +66,8 @@ namespace GUI
                 Width = width,
                 Height = 32,
                 BorderRadius = 6,
-                FillColor = isActive ? Color.DodgerBlue : Color.Gainsboro,
-                ForeColor = isActive ? Color.White : Color.Black,
+                FillColor = isActive ? Color.FromArgb(217, 98, 0) : Color.FromArgb(244, 129, 17), // cam đậm
+                ForeColor = isActive ? Color.White : Color.White,
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Margin = new Padding(4),
                 Cursor = Cursors.Hand,
@@ -81,4 +79,3 @@ namespace GUI
         }
     }
 }
-

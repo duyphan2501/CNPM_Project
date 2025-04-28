@@ -30,5 +30,10 @@ namespace DTO
             MucToiThieu = mucToiThieu;
             MucOnDinh = mucOnDinh;
         }
+
+        public DTO_NguyenLieu()
+        {
+         
+        }
     }
 }

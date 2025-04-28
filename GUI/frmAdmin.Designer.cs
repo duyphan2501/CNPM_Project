@@ -113,11 +113,11 @@
             pnlMenu.Controls.Add(guna2Panel1);
             pnlMenu.CustomizableEdges = customizableEdges35;
             pnlMenu.Dock = DockStyle.Left;
-            pnlMenu.Location = new Point(0, 88);
-            pnlMenu.Margin = new Padding(3, 2, 3, 2);
+            pnlMenu.Location = new Point(0, 70);
+            pnlMenu.Margin = new Padding(2, 2, 2, 2);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            pnlMenu.Size = new Size(374, 1118);
+            pnlMenu.Size = new Size(299, 812);
             pnlMenu.TabIndex = 1;
             // 
             // guna2Panel2
@@ -125,11 +125,11 @@
             guna2Panel2.Controls.Add(btnTaiKhoan);
             guna2Panel2.CustomizableEdges = customizableEdges3;
             guna2Panel2.Dock = DockStyle.Top;
-            guna2Panel2.Location = new Point(0, 595);
-            guna2Panel2.Margin = new Padding(3, 5, 3, 5);
+            guna2Panel2.Location = new Point(0, 475);
+            guna2Panel2.Margin = new Padding(2, 4, 2, 4);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Panel2.Size = new Size(374, 119);
+            guna2Panel2.Size = new Size(299, 95);
             guna2Panel2.TabIndex = 5;
             // 
             // btnTaiKhoan
@@ -152,11 +152,11 @@
             btnTaiKhoan.ImageAlign = HorizontalAlignment.Left;
             btnTaiKhoan.ImageOffset = new Point(10, 0);
             btnTaiKhoan.ImageSize = new Size(30, 30);
-            btnTaiKhoan.Location = new Point(6, 31);
-            btnTaiKhoan.Margin = new Padding(3, 5, 3, 5);
+            btnTaiKhoan.Location = new Point(5, 25);
+            btnTaiKhoan.Margin = new Padding(2, 4, 2, 4);
             btnTaiKhoan.Name = "btnTaiKhoan";
             btnTaiKhoan.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnTaiKhoan.Size = new Size(364, 88);
+            btnTaiKhoan.Size = new Size(291, 70);
             btnTaiKhoan.TabIndex = 0;
             btnTaiKhoan.Text = "Tài khoản";
             btnTaiKhoan.TextAlign = HorizontalAlignment.Left;
@@ -170,11 +170,11 @@
             pnlBaocaoTK.Controls.Add(btnBaocaoTK);
             pnlBaocaoTK.CustomizableEdges = customizableEdges11;
             pnlBaocaoTK.Dock = DockStyle.Top;
-            pnlBaocaoTK.Location = new Point(0, 476);
-            pnlBaocaoTK.Margin = new Padding(3, 5, 3, 5);
+            pnlBaocaoTK.Location = new Point(0, 380);
+            pnlBaocaoTK.Margin = new Padding(2, 4, 2, 4);
             pnlBaocaoTK.Name = "pnlBaocaoTK";
             pnlBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pnlBaocaoTK.Size = new Size(374, 119);
+            pnlBaocaoTK.Size = new Size(299, 95);
             pnlBaocaoTK.TabIndex = 3;
             // 
             // btnMathangbanchay
@@ -197,11 +197,11 @@
             btnMathangbanchay.ImageAlign = HorizontalAlignment.Left;
             btnMathangbanchay.ImageOffset = new Point(10, 0);
             btnMathangbanchay.ImageSize = new Size(30, 30);
-            btnMathangbanchay.Location = new Point(5, 212);
-            btnMathangbanchay.Margin = new Padding(3, 5, 3, 5);
+            btnMathangbanchay.Location = new Point(4, 170);
+            btnMathangbanchay.Margin = new Padding(2, 4, 2, 4);
             btnMathangbanchay.Name = "btnMathangbanchay";
             btnMathangbanchay.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnMathangbanchay.Size = new Size(364, 88);
+            btnMathangbanchay.Size = new Size(291, 70);
             btnMathangbanchay.TabIndex = 0;
             btnMathangbanchay.Text = "Mặt hàng bán chạy";
             btnMathangbanchay.TextAlign = HorizontalAlignment.Left;
@@ -228,11 +228,11 @@
             btnLoinhuan.ImageAlign = HorizontalAlignment.Left;
             btnLoinhuan.ImageOffset = new Point(10, 0);
             btnLoinhuan.ImageSize = new Size(30, 30);
-            btnLoinhuan.Location = new Point(5, 121);
-            btnLoinhuan.Margin = new Padding(3, 5, 3, 5);
+            btnLoinhuan.Location = new Point(4, 97);
+            btnLoinhuan.Margin = new Padding(2, 4, 2, 4);
             btnLoinhuan.Name = "btnLoinhuan";
             btnLoinhuan.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnLoinhuan.Size = new Size(364, 88);
+            btnLoinhuan.Size = new Size(291, 70);
             btnLoinhuan.TabIndex = 0;
             btnLoinhuan.Text = "Lợi nhuận";
             btnLoinhuan.TextAlign = HorizontalAlignment.Left;
@@ -259,11 +259,11 @@
             btnBaocaoTK.ImageAlign = HorizontalAlignment.Left;
             btnBaocaoTK.ImageOffset = new Point(10, 0);
             btnBaocaoTK.ImageSize = new Size(30, 30);
-            btnBaocaoTK.Location = new Point(5, 31);
-            btnBaocaoTK.Margin = new Padding(3, 5, 3, 5);
+            btnBaocaoTK.Location = new Point(4, 25);
+            btnBaocaoTK.Margin = new Padding(2, 4, 2, 4);
             btnBaocaoTK.Name = "btnBaocaoTK";
             btnBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnBaocaoTK.Size = new Size(364, 88);
+            btnBaocaoTK.Size = new Size(291, 70);
             btnBaocaoTK.TabIndex = 0;
             btnBaocaoTK.Text = "Báo cáo - Thống kê ▽";
             btnBaocaoTK.TextAlign = HorizontalAlignment.Left;
@@ -275,11 +275,11 @@
             guna2Panel3.Controls.Add(btnThuchi);
             guna2Panel3.CustomizableEdges = customizableEdges15;
             guna2Panel3.Dock = DockStyle.Top;
-            guna2Panel3.Location = new Point(0, 357);
-            guna2Panel3.Margin = new Padding(3, 5, 3, 5);
+            guna2Panel3.Location = new Point(0, 285);
+            guna2Panel3.Margin = new Padding(2, 4, 2, 4);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Panel3.Size = new Size(374, 119);
+            guna2Panel3.Size = new Size(299, 95);
             guna2Panel3.TabIndex = 4;
             // 
             // btnThuchi
@@ -302,11 +302,11 @@
             btnThuchi.ImageAlign = HorizontalAlignment.Left;
             btnThuchi.ImageOffset = new Point(10, 0);
             btnThuchi.ImageSize = new Size(30, 30);
-            btnThuchi.Location = new Point(6, 31);
-            btnThuchi.Margin = new Padding(3, 5, 3, 5);
+            btnThuchi.Location = new Point(5, 25);
+            btnThuchi.Margin = new Padding(2, 4, 2, 4);
             btnThuchi.Name = "btnThuchi";
             btnThuchi.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnThuchi.Size = new Size(364, 88);
+            btnThuchi.Size = new Size(291, 70);
             btnThuchi.TabIndex = 0;
             btnThuchi.Text = "Thu chi";
             btnThuchi.TextAlign = HorizontalAlignment.Left;
@@ -321,11 +321,11 @@
             pnlKho.Controls.Add(btnKho);
             pnlKho.CustomizableEdges = customizableEdges25;
             pnlKho.Dock = DockStyle.Top;
-            pnlKho.Location = new Point(0, 238);
-            pnlKho.Margin = new Padding(3, 5, 3, 5);
+            pnlKho.Location = new Point(0, 190);
+            pnlKho.Margin = new Padding(2, 4, 2, 4);
             pnlKho.Name = "pnlKho";
             pnlKho.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            pnlKho.Size = new Size(374, 119);
+            pnlKho.Size = new Size(299, 95);
             pnlKho.TabIndex = 4;
             // 
             // btnKiemkekho
@@ -348,11 +348,11 @@
             btnKiemkekho.ImageAlign = HorizontalAlignment.Left;
             btnKiemkekho.ImageOffset = new Point(10, 0);
             btnKiemkekho.ImageSize = new Size(30, 30);
-            btnKiemkekho.Location = new Point(5, 294);
-            btnKiemkekho.Margin = new Padding(3, 5, 3, 5);
+            btnKiemkekho.Location = new Point(4, 235);
+            btnKiemkekho.Margin = new Padding(2, 4, 2, 4);
             btnKiemkekho.Name = "btnKiemkekho";
             btnKiemkekho.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            btnKiemkekho.Size = new Size(364, 88);
+            btnKiemkekho.Size = new Size(291, 70);
             btnKiemkekho.TabIndex = 0;
             btnKiemkekho.Text = "Kiểm kê kho";
             btnKiemkekho.TextAlign = HorizontalAlignment.Left;
@@ -379,11 +379,11 @@
             btnXuatnhapkho.ImageAlign = HorizontalAlignment.Left;
             btnXuatnhapkho.ImageOffset = new Point(10, 0);
             btnXuatnhapkho.ImageSize = new Size(30, 30);
-            btnXuatnhapkho.Location = new Point(5, 206);
-            btnXuatnhapkho.Margin = new Padding(3, 5, 3, 5);
+            btnXuatnhapkho.Location = new Point(4, 165);
+            btnXuatnhapkho.Margin = new Padding(2, 4, 2, 4);
             btnXuatnhapkho.Name = "btnXuatnhapkho";
             btnXuatnhapkho.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnXuatnhapkho.Size = new Size(364, 88);
+            btnXuatnhapkho.Size = new Size(291, 70);
             btnXuatnhapkho.TabIndex = 0;
             btnXuatnhapkho.Text = "Xuất nhập kho";
             btnXuatnhapkho.TextAlign = HorizontalAlignment.Left;
@@ -410,11 +410,11 @@
             btnTonkho.ImageAlign = HorizontalAlignment.Left;
             btnTonkho.ImageOffset = new Point(10, 0);
             btnTonkho.ImageSize = new Size(30, 30);
-            btnTonkho.Location = new Point(5, 118);
-            btnTonkho.Margin = new Padding(3, 5, 3, 5);
+            btnTonkho.Location = new Point(4, 94);
+            btnTonkho.Margin = new Padding(2, 4, 2, 4);
             btnTonkho.Name = "btnTonkho";
             btnTonkho.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            btnTonkho.Size = new Size(364, 88);
+            btnTonkho.Size = new Size(291, 70);
             btnTonkho.TabIndex = 0;
             btnTonkho.Text = "Tồn kho";
             btnTonkho.TextAlign = HorizontalAlignment.Left;
@@ -441,11 +441,11 @@
             btnKho.ImageAlign = HorizontalAlignment.Left;
             btnKho.ImageOffset = new Point(10, 0);
             btnKho.ImageSize = new Size(30, 30);
-            btnKho.Location = new Point(5, 30);
-            btnKho.Margin = new Padding(3, 5, 3, 5);
+            btnKho.Location = new Point(4, 24);
+            btnKho.Margin = new Padding(2, 4, 2, 4);
             btnKho.Name = "btnKho";
             btnKho.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            btnKho.Size = new Size(364, 88);
+            btnKho.Size = new Size(291, 70);
             btnKho.TabIndex = 0;
             btnKho.Text = "Kho                ▽";
             btnKho.TextAlign = HorizontalAlignment.Left;
@@ -457,11 +457,11 @@
             guna2Panel5.Controls.Add(btnThucDon);
             guna2Panel5.CustomizableEdges = customizableEdges29;
             guna2Panel5.Dock = DockStyle.Top;
-            guna2Panel5.Location = new Point(0, 119);
-            guna2Panel5.Margin = new Padding(3, 5, 3, 5);
+            guna2Panel5.Location = new Point(0, 95);
+            guna2Panel5.Margin = new Padding(2, 4, 2, 4);
             guna2Panel5.Name = "guna2Panel5";
             guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            guna2Panel5.Size = new Size(374, 119);
+            guna2Panel5.Size = new Size(299, 95);
             guna2Panel5.TabIndex = 4;
             // 
             // btnThucDon
@@ -484,11 +484,11 @@
             btnThucDon.ImageAlign = HorizontalAlignment.Left;
             btnThucDon.ImageOffset = new Point(10, 0);
             btnThucDon.ImageSize = new Size(30, 30);
-            btnThucDon.Location = new Point(6, 31);
-            btnThucDon.Margin = new Padding(3, 5, 3, 5);
+            btnThucDon.Location = new Point(5, 25);
+            btnThucDon.Margin = new Padding(2, 4, 2, 4);
             btnThucDon.Name = "btnThucDon";
             btnThucDon.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            btnThucDon.Size = new Size(364, 88);
+            btnThucDon.Size = new Size(291, 70);
             btnThucDon.TabIndex = 0;
             btnThucDon.Text = "Thực đơn";
             btnThucDon.TextAlign = HorizontalAlignment.Left;
@@ -501,10 +501,10 @@
             guna2Panel1.CustomizableEdges = customizableEdges33;
             guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.Location = new Point(0, 0);
-            guna2Panel1.Margin = new Padding(3, 5, 3, 5);
+            guna2Panel1.Margin = new Padding(2, 4, 2, 4);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            guna2Panel1.Size = new Size(374, 119);
+            guna2Panel1.Size = new Size(299, 95);
             guna2Panel1.TabIndex = 0;
             // 
             // btnDashboard
@@ -527,11 +527,11 @@
             btnDashboard.ImageAlign = HorizontalAlignment.Left;
             btnDashboard.ImageOffset = new Point(10, 0);
             btnDashboard.ImageSize = new Size(30, 30);
-            btnDashboard.Location = new Point(6, 31);
-            btnDashboard.Margin = new Padding(3, 5, 3, 5);
+            btnDashboard.Location = new Point(5, 25);
+            btnDashboard.Margin = new Padding(2, 4, 2, 4);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            btnDashboard.Size = new Size(364, 88);
+            btnDashboard.Size = new Size(291, 70);
             btnDashboard.TabIndex = 0;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextAlign = HorizontalAlignment.Left;
@@ -546,10 +546,10 @@
             pnlTop.CustomizableEdges = customizableEdges39;
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
-            pnlTop.Margin = new Padding(3, 5, 3, 5);
+            pnlTop.Margin = new Padding(2, 4, 2, 4);
             pnlTop.Name = "pnlTop";
             pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            pnlTop.Size = new Size(2294, 88);
+            pnlTop.Size = new Size(1554, 70);
             pnlTop.TabIndex = 2;
             // 
             // btnExit
@@ -561,37 +561,39 @@
             btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnExit.Font = new Font("Segoe UI", 9F);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(2195, 29);
+            btnExit.Location = new Point(1756, 23);
+            btnExit.Margin = new Padding(2, 2, 2, 2);
             btnExit.Name = "btnExit";
             btnExit.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            btnExit.Size = new Size(87, 56);
+            btnExit.Size = new Size(70, 45);
             btnExit.TabIndex = 1;
             btnExit.Text = "exit";
             btnExit.Click += btnExit_Click;
             // 
             // pnlFormcon
             // 
+            pnlFormcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlFormcon.AutoSize = true;
             pnlFormcon.CustomizableEdges = customizableEdges41;
-            pnlFormcon.Dock = DockStyle.Fill;
-            pnlFormcon.Location = new Point(374, 88);
+            pnlFormcon.Location = new Point(299, 70);
+            pnlFormcon.Margin = new Padding(2, 2, 2, 2);
             pnlFormcon.Name = "pnlFormcon";
             pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            pnlFormcon.Size = new Size(1920, 1118);
+            pnlFormcon.Size = new Size(1536, 894);
             pnlFormcon.TabIndex = 3;
             // 
             // frmAdmin
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.White;
-            ClientSize = new Size(2294, 1206);
+            ClientSize = new Size(1554, 882);
             Controls.Add(pnlFormcon);
             Controls.Add(pnlMenu);
             Controls.Add(pnlTop);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "frmAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAdmin";

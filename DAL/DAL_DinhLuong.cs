@@ -17,6 +17,8 @@ namespace DAL
             dinhluongdal = new DTO_DinhLuong(masp, manl, soluong);
         }
 
+        public DAL_DinhLuong(){ dinhluongdal = new DTO_DinhLuong(); }
+
         //Thêm định lượng vào database
         public void AddRecipe(string masp, string manl, int soluong)
         {
@@ -58,5 +60,14 @@ namespace DAL
             string query = "select distinct TenNL from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
+
+        public DataTable SelectRecipeOfProduct(string maSp)
+        {
+            string query = "select dl.MaNL, TenNL, SoLuong from DinhLuong dl " +
+                           "INNER JOIN NguyenLieu nl ON dl.MaNL = nl.MaNL " +
+                           "where dl.MaSp = @MaSp";
+            return DataProvider.ExecuteQuery(query, new object[] { maSp });
+        }
+
     }
 }

@@ -17,6 +17,11 @@ namespace BUS
             chitietxuat = new DAL_ChiTietXuatKho(maphieuxuat, manl, soluong);
         }
 
+        public BUS_ChiTietXuatKho()
+        {
+            chitietxuat = new DAL_ChiTietXuatKho();
+        }
+
         public void AddExportDetail(string maphieuxuat, string manl, int soluong)
         {
             chitietxuat.AddExportDetail(maphieuxuat, manl, soluong);

@@ -16,6 +16,11 @@ namespace BUS
             dinhluongbus = new DAL_DinhLuong(masp, manl, soluong);
         }
 
+        public BUS_DinhLuong()
+        {
+            dinhluongbus = new DAL_DinhLuong();
+        }
+
         //Thêm định lượng
         public void AddRecipe(string masp, string manl, int soluong)
         {
@@ -42,6 +47,11 @@ namespace BUS
         public void DeleteRecipe(string masp, string manl)
         {
             dinhluongbus.DeleteRecipe(masp , manl);
+        }
+
+        public DataTable SelectRecipeOfProduct(string masp)
+        {
+            return dinhluongbus.SelectRecipeOfProduct(masp);
         }
     }
 }

@@ -16,11 +16,15 @@ namespace DAL
         {
             phieunhapkhodto = new DTO_PhieuNhapKho(maPhieuNhap,tenDangNhap,ngayNhap,ghiChu);
         }
+        public DAL_PhieuNhapKho()
+        {
+            phieunhapkhodto = new DTO_PhieuNhapKho("", "", DateTime.Now, "");
+        }
 
         //Tải phiếu nhập
         public DataTable LoadGoodsReceipt()
         {
-            string query = "SELECT ph.MaPhieuNhap AS N'Mã phiếu nhập', nl.TenNL AS N'Nguyên liệu',ct.GiaNhap AS N'Giá nhập',    ct.SoLuong AS N'Số lượng nhập',    ph.NgayNhap AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
+            string query = "SELECT ph.MaPhieuNhap AS N'Mã phiếu nhập', nl.TenNL AS N'Nguyên liệu',ct.GiaNhap AS N'Giá nhập',    ct.SoLuong AS N'Số lượng nhập',    ph.NgayLap AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
                             " FROM PhieuNhapKho ph " +
                             "JOIN ChiTietNhapKho ct ON ph.MaPhieuNhap = ct.MaPhieuNhap " +
                             "JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL;";
@@ -78,11 +82,11 @@ namespace DAL
         }
 
         //Thêm phiếu nhập kho
-        public void AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
+        public int AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)
         {
             string query = "insert into PhieuNhapKho values (@_MaPhiepNhap,@_TenDangNhap,@_NgayNhap,@_GhiChu)";
             object[] parem = new object[] {maPhieuNhap,tenDangNhap,ngayNhap,ghiChu};
-            DataProvider.ExecuteNonQuery(query, parem);
+            return DataProvider.ExecuteNonQuery(query, parem);
         }
 
         // lấy mã phiếu nhập lớn nhất

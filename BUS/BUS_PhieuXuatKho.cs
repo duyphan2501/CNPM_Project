@@ -17,6 +17,11 @@ namespace BUS
             phieuxuatdal = new DAL_PhieuXuatKho(maPhieuXuat,tenDangNhap,ngayXuat,ghiChu);
         }
 
+        public BUS_PhieuXuatKho()
+        {
+            phieuxuatdal = new DAL_PhieuXuatKho();
+        }
+
         public DataTable LoadDeliveryReceipt()
         {
             return phieuxuatdal.LoadDeliveryReceipt();
@@ -27,9 +32,9 @@ namespace BUS
             return phieuxuatdal.TaiMaPhieuXuat();
         }
 
-        public void AddDeliveryReceip(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        public int AddDeliveryReceip(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
         {
-            phieuxuatdal.AddDeliveryReceip(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
+            return phieuxuatdal.AddDeliveryReceip(maPhieuXuat, tenDangNhap, ngayXuat, ghiChu);
         }
 
         public void SuaPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
@@ -53,5 +58,31 @@ namespace BUS
                 return "PX" + num.ToString("D4");
             }
         }
+
+        public string GetMaPhieuXuat(string maDonHang)
+        {
+            return phieuxuatdal.GetMaPhieuXuat(maDonHang);
+        }
+
+        public Dictionary<string, int> GetRecipeFromPhieuXuat(string maPhieuXuat)
+        {
+            Dictionary<string, int> recipe = new Dictionary<string, int>();
+
+            DataTable dt = phieuxuatdal.SelectCtPhieuXuat(maPhieuXuat);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string maNL = row["MaNL"].ToString();
+                int soLuong = Convert.ToInt32(row["SoLuong"]);
+
+                if (!recipe.ContainsKey(maNL))
+                {
+                    recipe.Add(maNL, soLuong);
+                }
+            }
+
+            return recipe;
+        }
+
     }
 }

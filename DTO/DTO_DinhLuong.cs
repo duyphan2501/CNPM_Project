@@ -21,5 +21,10 @@ namespace DTO
             this._MaNL = manl;
             this._SoLuong = soluong;
         }
+
+        public DTO_DinhLuong()
+        {
+            
+        }
     }
 }

@@ -20,5 +20,12 @@ namespace DTO
             this.MaNL = manl;
             this._SoLuong = soluong;
         }
+
+        public DTO_ChiTietXuatKho()
+        {
+            this.MaPhieuXuat = "";
+            this.MaNL = "";
+            this._SoLuong = 0;
+        }
     }
 }

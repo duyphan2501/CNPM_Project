@@ -229,8 +229,35 @@ namespace GUI
                     {
                         // Tạo chi tiết đơn hàng
                         BUS_ChiTietDonHang chiTietDonHang = new BUS_ChiTietDonHang(maDonhang, item.MaSanPham, item.DonGia, item.SoLuong);
+
                         // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
                         int isDetailAdded = chiTietDonHang.InsertOrderDetail();
+
+                        // trừ kho nếu có định lượng
+                        DataTable recipe = new BUS_DinhLuong().SelectRecipeOfProduct(item.MaSanPham);
+                        if (recipe.Rows.Count > 0)
+                        {
+                            BUS_PhieuXuatKho phieuXuatKho = new BUS_PhieuXuatKho();
+                            BUS_ChiTietXuatKho chiTietPhieuXuatKho = new BUS_ChiTietXuatKho();
+
+                            // thêm phiếu xuất
+                            string maPhieuXuat = phieuXuatKho.GenerateID();
+                            phieuXuatKho.AddDeliveryReceip(maPhieuXuat, tenDangNhap, DateTime.Now, "Xuất kho cho đơn hàng " + maDonhang);
+
+                            foreach (DataRow row in recipe.Rows)
+                            {
+                                string maNguyenLieu = row["MaNL"].ToString();
+                                // số lượng cần cho 1 sản phẩm
+                                int soLuongCan = Convert.ToInt32(row["SoLuong"]);
+                                // tổng lượng cần trừ theo số lượng bán
+                                int tongSoLuongTru = soLuongCan * item.SoLuong;
+
+                                // thêm chi tiết phiếu xuất
+                                chiTietPhieuXuatKho.AddExportDetail(maPhieuXuat, maNguyenLieu, tongSoLuongTru); 
+                            }
+                        }
+                        
+                        // Kiểm tra xem chi tiết đơn hàng đã được thêm thành công hay chưa
                         if (isDetailAdded == 0)
                         {
                             General.ShowError("Lỗi khi thêm chi tiết đơn hàng", this);
@@ -245,6 +272,7 @@ namespace GUI
                     return;
                 }
             }
+
 
             // Tạo đối tượng thanh toán đơn hàng
             donhang = new BUS_DonHang(maDonhang, maCaLam, giamGia, tongTien, loaiThanhToan);

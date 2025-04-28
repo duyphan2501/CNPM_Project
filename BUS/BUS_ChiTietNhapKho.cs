@@ -15,6 +15,10 @@ namespace BUS
         {
             chitietnhap = new DAL_ChiTietNhapKho(maphieunhap, manl, gianhap, soluong);
         }
+        public BUS_ChiTietNhapKho()
+        {
+            chitietnhap = new DAL_ChiTietNhapKho();
+        }
 
         public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)
         {
@@ -25,5 +29,6 @@ namespace BUS
         {
             chitietnhap.UpdateDetailst(maphieunhap, manl, gianhap, soluong);
         }
+
     }
 }

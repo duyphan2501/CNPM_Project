@@ -148,7 +148,12 @@ namespace GUI
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
         {
-
+            // kiểm tra có thêm nguyên liệu nào chưua
+            if (gridDsPhieu.Rows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng thêm nguyên liệu vào phiếu trước khi lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (MessageBox.Show("Bạn có chắc chắn muốn lưu phiếu này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -161,10 +166,27 @@ namespace GUI
         private void SaveReceipt()
         {
             bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
-            if (laNhap) //Thêm phiếu nhập kho
-                phieunhap.AddGoodsReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
-            else //Thêm phiếu xuất kho
-                phieuxuat.AddDeliveryReceip(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+            if (laNhap)
+            {
+                //Thêm phiếu nhập kho 
+                int affectedRows = phieunhap.AddGoodsReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+                if (affectedRows == 0)
+                {
+                    General.ShowError("Lưu phiếu nhập không thành công!", this);
+                    return;
+                }
+            } 
+                
+            else
+            {
+                //Thêm phiếu xuất kho
+                int affectedRows = phieuxuat.AddDeliveryReceip(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+                if (affectedRows == 0)
+                {
+                    General.ShowError("Lưu phiếu xuất không thành công!", this);
+                    return;
+                }
+            }
 
             foreach (DataGridViewRow row in gridDsPhieu.Rows)
             {
@@ -307,9 +329,6 @@ namespace GUI
             txtDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
             Restocking();
         }
-
-
-
 
         // Hàm cập nhật tổng tiền
         private void UpdateTongTien()

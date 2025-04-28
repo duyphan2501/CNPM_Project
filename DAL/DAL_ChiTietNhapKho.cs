@@ -16,6 +16,10 @@ namespace DAL
         {
             chitietnhap = new DTO_ChiTietNhapKho(maphieunhap,manl,gianhap,soluong);
         }
+        public DAL_ChiTietNhapKho()
+        {
+            chitietnhap = new DTO_ChiTietNhapKho("", "", 0, 0);
+        }
 
         //Thêm chi tiết nhập kho
         public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)

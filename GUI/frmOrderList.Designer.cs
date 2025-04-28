@@ -131,10 +131,10 @@
             gridOrderList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             gridOrderList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(217, 98, 0);
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             gridOrderList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
@@ -144,9 +144,9 @@
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(255, 167, 73);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             gridOrderList.DefaultCellStyle = dataGridViewCellStyle6;
             gridOrderList.GridColor = Color.FromArgb(231, 229, 255);
@@ -300,6 +300,7 @@
             numGiamGia.ShadowDecoration.CustomizableEdges = customizableEdges14;
             numGiamGia.Size = new Size(83, 34);
             numGiamGia.TabIndex = 5;
+            numGiamGia.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
             numGiamGia.ValueChanged += numGiamGia_ValueChanged;
             // 
             // btnLuu
@@ -311,7 +312,7 @@
             btnLuu.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLuu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLuu.FillColor = Color.FromArgb(113, 181, 108);
+            btnLuu.FillColor = Color.FromArgb(73, 176, 45);
             btnLuu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuu.ForeColor = Color.White;
             btnLuu.Location = new Point(445, 40);
@@ -331,7 +332,7 @@
             btnChinhSua.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChinhSua.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnChinhSua.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnChinhSua.FillColor = Color.DodgerBlue;
+            btnChinhSua.FillColor = Color.FromArgb(0, 92, 191);
             btnChinhSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnChinhSua.ForeColor = Color.White;
             btnChinhSua.Location = new Point(324, 40);
@@ -375,10 +376,10 @@
             gridOrderDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             gridOrderDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(217, 98, 0);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             gridOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -388,10 +389,10 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
             dataGridViewCellStyle3.Padding = new Padding(2, 0, 2, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 167, 73);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridOrderDetail.DefaultCellStyle = dataGridViewCellStyle3;
             gridOrderDetail.GridColor = Color.FromArgb(231, 229, 255);
@@ -545,9 +546,10 @@
             btnViewDetail.DisabledState.CustomBorderColor = Color.DarkGray;
             btnViewDetail.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnViewDetail.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnViewDetail.FillColor = Color.FromArgb(0, 92, 191);
             btnViewDetail.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnViewDetail.ForeColor = Color.White;
-            btnViewDetail.Location = new Point(30, 63);
+            btnViewDetail.Location = new Point(29, 63);
             btnViewDetail.Name = "btnViewDetail";
             btnViewDetail.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnViewDetail.Size = new Size(133, 36);
@@ -563,6 +565,7 @@
             btnHoanThanh.DisabledState.CustomBorderColor = Color.DarkGray;
             btnHoanThanh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnHoanThanh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnHoanThanh.FillColor = Color.FromArgb(0, 92, 191);
             btnHoanThanh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHoanThanh.ForeColor = Color.White;
             btnHoanThanh.Location = new Point(473, 63);
@@ -581,6 +584,7 @@
             btnThanhToan.DisabledState.CustomBorderColor = Color.DarkGray;
             btnThanhToan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnThanhToan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnThanhToan.FillColor = Color.FromArgb(0, 92, 191);
             btnThanhToan.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThanhToan.ForeColor = Color.White;
             btnThanhToan.Location = new Point(649, 63);
@@ -606,6 +610,7 @@
             btnInHoaDon.DisabledState.CustomBorderColor = Color.DarkGray;
             btnInHoaDon.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnInHoaDon.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnInHoaDon.FillColor = Color.FromArgb(244, 129, 17);
             btnInHoaDon.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInHoaDon.ForeColor = Color.White;
             btnInHoaDon.Location = new Point(179, 63);
@@ -624,6 +629,7 @@
             btnInPhieuBep.DisabledState.CustomBorderColor = Color.DarkGray;
             btnInPhieuBep.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnInPhieuBep.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnInPhieuBep.FillColor = Color.FromArgb(244, 129, 17);
             btnInPhieuBep.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInPhieuBep.ForeColor = Color.White;
             btnInPhieuBep.Location = new Point(327, 63);
@@ -642,6 +648,7 @@
             btnDoiThe.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDoiThe.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnDoiThe.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDoiThe.FillColor = Color.FromArgb(0, 92, 191);
             btnDoiThe.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDoiThe.ForeColor = Color.White;
             btnDoiThe.Location = new Point(784, 63);

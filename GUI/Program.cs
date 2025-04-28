@@ -19,8 +19,6 @@ namespace GUI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            // tải biến môi trường từ file .env
-            //Env.Load();
             ////Application.Run(new frmConfig());
             //Application.Run(new frmTaiKhoan());
             Application.Run(new frmLogin());

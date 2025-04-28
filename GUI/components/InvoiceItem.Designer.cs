@@ -45,7 +45,7 @@
             // 
             lblThanhtien.AutoSize = true;
             lblThanhtien.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblThanhtien.Location = new Point(440, 21);
+            lblThanhtien.Location = new Point(439, 21);
             lblThanhtien.Name = "lblThanhtien";
             lblThanhtien.Size = new Size(60, 23);
             lblThanhtien.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             lblDongia.AutoSize = true;
             lblDongia.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDongia.Location = new Point(310, 21);
+            lblDongia.Location = new Point(309, 21);
             lblDongia.Name = "lblDongia";
             lblDongia.Size = new Size(60, 23);
             lblDongia.TabIndex = 0;
@@ -92,7 +92,7 @@
             numSoluong.BorderRadius = 5;
             numSoluong.CustomizableEdges = customizableEdges3;
             numSoluong.Font = new Font("Segoe UI", 9F);
-            numSoluong.Location = new Point(376, 14);
+            numSoluong.Location = new Point(375, 14);
             numSoluong.Margin = new Padding(3, 4, 3, 4);
             numSoluong.Name = "numSoluong";
             numSoluong.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -111,7 +111,7 @@
             Controls.Add(lblDongia);
             Controls.Add(lblThanhtien);
             Name = "InvoiceItem";
-            Size = new Size(522, 59);
+            Size = new Size(521, 59);
             ((System.ComponentModel.ISupportInitialize)picDeleteItem).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSoluong).EndInit();
             ResumeLayout(false);

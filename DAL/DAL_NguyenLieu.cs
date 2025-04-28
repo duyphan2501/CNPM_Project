@@ -18,6 +18,11 @@ namespace DAL
             nguyenlieudto = new DTO_NguyenLieu(manl,maloainl,tennl,donvi,soluong,muctoithieu,mucondinh);
         }
 
+        public DAL_NguyenLieu()
+        {
+            nguyenlieudto = new DTO_NguyenLieu();
+        }
+
         //Tải nguyên liệu lên datagridview
         public DataTable LoadIngredients()
         {
@@ -61,5 +66,31 @@ namespace DAL
             return maxMaNL;
         }
 
+        public int GetQuantityOfIngredient(string maNL)
+        {
+            string query = "select SoLuongTon from NguyenLieu where MaNL = @_MaNL";
+            object[] parameters = new object[] { maNL };
+            DataTable dt = DataProvider.ExecuteQuery(query, parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0]["SoLuongTon"]);
+            }
+            return int.MaxValue;
+        }
+
+        public int UpdateQuantityOfIngredient(string maNL, int quantity)
+        {
+            string query = "update NguyenLieu set SoLuongTon = @_SoLuongTon where MaNL = @_MaNL";
+            object[] parameters = new object[] { quantity, maNL };
+            return DataProvider.ExecuteNonQuery(query, parameters);
+        }
+        public int GetGiaNhap(string maNL)
+        {
+            string query = "SELECT GiaNhap FROM ChiTietNhapKho WHERE MaNL = @MaNL";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maNL });
+
+            // Nếu không tìm thấy giá nhập, trả về 0 hoặc giá trị mặc định
+            return result != null ? Convert.ToInt32(result) : 0;
+        }
     }
 }

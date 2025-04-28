@@ -17,6 +17,11 @@ namespace DAL
             phieuxuatdto = new DTO_PhieuXuatKho(maPhieuXuat,tenDangXuat,ngayXuat,ghiChu);
         }
 
+        public DAL_PhieuXuatKho()
+        {
+            phieuxuatdto = new DTO_PhieuXuatKho("", "", DateTime.Now, "");
+        }
+
         public DataTable LoadDeliveryReceipt()
         {
             string query = "SELECT ph.MaPhieuXuat AS N'Mã phiếu xuất', nl.TenNL AS N'Nguyên liệu',    ct.SoLuong AS N'Số lượng xuất',    ph.NgayXuat AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
@@ -33,11 +38,11 @@ namespace DAL
         }
 
         //Thêm phiếu xuất
-        public void AddDeliveryReceip(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
+        public int AddDeliveryReceip(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
         {
             string query = "insert into PhieuXuatKho values (@_MaPhiepXuat,@_TenDangNhap,@_NgayXuat,@_GhiChu)";
             object[] parem = new object[] { maPhieuXuat, tenDangNhap, ngayXuat, ghiChu };
-            DataProvider.ExecuteNonQuery(query, parem);
+            return DataProvider.ExecuteNonQuery(query, parem);
         }
 
         public void SuaPhieuXuat(string maPhieuXuat, string tenDangNhap, DateTime ngayXuat, string ghiChu)
@@ -53,6 +58,20 @@ namespace DAL
             string query = "select top 1 MaPhieuXuat from PhieuXuatKho order by MaPhieuXuat desc";
             string maxMaphieu = (string)DataProvider.ExecuteScalar(query);
             return maxMaphieu;
+        }
+
+        public string GetMaPhieuXuat(string maDonHang)
+        {
+            string query = "SELECT MaPhieuXuat FROM PhieuXuatKho WHERE GhiChu LIKE @MaDonHang";
+            object result = DataProvider.ExecuteScalar(query, new object[] { "%" + maDonHang + "%" });
+            return result != null ? result.ToString() : null;
+        }
+
+        public DataTable SelectCtPhieuXuat(string maPhieuXuat)
+        {
+            string query = "SELECT MaNL, SoLuong FROM ChiTietXuatKho WHERE MaPhieuXuat = @MaPhieuXuat";
+            DataTable dt = DataProvider.ExecuteQuery(query, new object[] { maPhieuXuat });
+            return DataProvider.ExecuteQuery(query, new object[] { maPhieuXuat });
         }
     }
 }

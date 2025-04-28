@@ -40,8 +40,15 @@ namespace GUI
                 }
             }
             return null;
-            
         }
+
+        public static void SetFullScreen(Form frm)
+        {
+            // Đặt form toàn màn hình
+            frm.Location = new Point(0, 0);
+            frm.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+        }
+
 
         private class BlurBackgroundForm : Form
         {
