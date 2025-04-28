@@ -31,9 +31,7 @@ namespace GUI
             {
                 return;
             }
-            {
-                return;
-            }
+            
             loainguyenlieubus.AddIngredients_type(txtMaloai.Text, txtTenloai.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();

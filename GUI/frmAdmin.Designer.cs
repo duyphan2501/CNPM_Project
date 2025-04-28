@@ -104,7 +104,7 @@
             // 
             // pnlMenu
             // 
-            pnlMenu.BackColor = Color.FromArgb(31, 50, 90);
+            pnlMenu.BackColor = Color.AliceBlue;
             pnlMenu.Controls.Add(guna2Panel2);
             pnlMenu.Controls.Add(pnlBaocaoTK);
             pnlMenu.Controls.Add(guna2Panel3);
@@ -146,8 +146,8 @@
             btnTaiKhoan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTaiKhoan.FillColor = Color.Transparent;
             btnTaiKhoan.FillColor2 = Color.Transparent;
-            btnTaiKhoan.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnTaiKhoan.ForeColor = Color.White;
+            btnTaiKhoan.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnTaiKhoan.ForeColor = Color.Black;
             btnTaiKhoan.Image = Properties.Resources.people;
             btnTaiKhoan.ImageAlign = HorizontalAlignment.Left;
             btnTaiKhoan.ImageOffset = new Point(10, 0);
@@ -191,8 +191,8 @@
             btnMathangbanchay.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnMathangbanchay.FillColor = Color.Transparent;
             btnMathangbanchay.FillColor2 = Color.Transparent;
-            btnMathangbanchay.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            btnMathangbanchay.ForeColor = Color.White;
+            btnMathangbanchay.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnMathangbanchay.ForeColor = Color.Black;
             btnMathangbanchay.Image = (Image)resources.GetObject("btnMathangbanchay.Image");
             btnMathangbanchay.ImageAlign = HorizontalAlignment.Left;
             btnMathangbanchay.ImageOffset = new Point(10, 0);
@@ -222,8 +222,8 @@
             btnLoinhuan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnLoinhuan.FillColor = Color.Transparent;
             btnLoinhuan.FillColor2 = Color.Transparent;
-            btnLoinhuan.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            btnLoinhuan.ForeColor = Color.White;
+            btnLoinhuan.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnLoinhuan.ForeColor = Color.Black;
             btnLoinhuan.Image = (Image)resources.GetObject("btnLoinhuan.Image");
             btnLoinhuan.ImageAlign = HorizontalAlignment.Left;
             btnLoinhuan.ImageOffset = new Point(10, 0);
@@ -253,8 +253,8 @@
             btnBaocaoTK.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnBaocaoTK.FillColor = Color.Transparent;
             btnBaocaoTK.FillColor2 = Color.Transparent;
-            btnBaocaoTK.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnBaocaoTK.ForeColor = Color.White;
+            btnBaocaoTK.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnBaocaoTK.ForeColor = Color.Black;
             btnBaocaoTK.Image = Properties.Resources.Thong_ke;
             btnBaocaoTK.ImageAlign = HorizontalAlignment.Left;
             btnBaocaoTK.ImageOffset = new Point(10, 0);
@@ -296,8 +296,8 @@
             btnThuchi.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnThuchi.FillColor = Color.Transparent;
             btnThuchi.FillColor2 = Color.Transparent;
-            btnThuchi.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnThuchi.ForeColor = Color.White;
+            btnThuchi.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnThuchi.ForeColor = Color.Black;
             btnThuchi.Image = Properties.Resources.thuchi;
             btnThuchi.ImageAlign = HorizontalAlignment.Left;
             btnThuchi.ImageOffset = new Point(10, 0);
@@ -342,8 +342,8 @@
             btnKiemkekho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnKiemkekho.FillColor = Color.Transparent;
             btnKiemkekho.FillColor2 = Color.Transparent;
-            btnKiemkekho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            btnKiemkekho.ForeColor = Color.White;
+            btnKiemkekho.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnKiemkekho.ForeColor = Color.Black;
             btnKiemkekho.Image = (Image)resources.GetObject("btnKiemkekho.Image");
             btnKiemkekho.ImageAlign = HorizontalAlignment.Left;
             btnKiemkekho.ImageOffset = new Point(10, 0);
@@ -373,8 +373,8 @@
             btnXuatnhapkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnXuatnhapkho.FillColor = Color.Transparent;
             btnXuatnhapkho.FillColor2 = Color.Transparent;
-            btnXuatnhapkho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            btnXuatnhapkho.ForeColor = Color.White;
+            btnXuatnhapkho.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnXuatnhapkho.ForeColor = Color.Black;
             btnXuatnhapkho.Image = (Image)resources.GetObject("btnXuatnhapkho.Image");
             btnXuatnhapkho.ImageAlign = HorizontalAlignment.Left;
             btnXuatnhapkho.ImageOffset = new Point(10, 0);
@@ -404,8 +404,8 @@
             btnTonkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTonkho.FillColor = Color.Transparent;
             btnTonkho.FillColor2 = Color.Transparent;
-            btnTonkho.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold);
-            btnTonkho.ForeColor = Color.White;
+            btnTonkho.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnTonkho.ForeColor = Color.Black;
             btnTonkho.Image = (Image)resources.GetObject("btnTonkho.Image");
             btnTonkho.ImageAlign = HorizontalAlignment.Left;
             btnTonkho.ImageOffset = new Point(10, 0);
@@ -435,8 +435,8 @@
             btnKho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnKho.FillColor = Color.Transparent;
             btnKho.FillColor2 = Color.Transparent;
-            btnKho.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnKho.ForeColor = Color.White;
+            btnKho.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnKho.ForeColor = Color.Black;
             btnKho.Image = Properties.Resources.kho;
             btnKho.ImageAlign = HorizontalAlignment.Left;
             btnKho.ImageOffset = new Point(10, 0);
@@ -478,8 +478,8 @@
             btnThucDon.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnThucDon.FillColor = Color.Transparent;
             btnThucDon.FillColor2 = Color.Transparent;
-            btnThucDon.Font = new Font("Cascadia Code", 12F, FontStyle.Bold);
-            btnThucDon.ForeColor = Color.White;
+            btnThucDon.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnThucDon.ForeColor = Color.Black;
             btnThucDon.Image = Properties.Resources.drinkmenu;
             btnThucDon.ImageAlign = HorizontalAlignment.Left;
             btnThucDon.ImageOffset = new Point(10, 0);
@@ -521,8 +521,8 @@
             btnDashboard.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnDashboard.FillColor = Color.Transparent;
             btnDashboard.FillColor2 = Color.Transparent;
-            btnDashboard.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDashboard.ForeColor = Color.White;
+            btnDashboard.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnDashboard.ForeColor = Color.Black;
             btnDashboard.Image = Properties.Resources.dashboard;
             btnDashboard.ImageAlign = HorizontalAlignment.Left;
             btnDashboard.ImageOffset = new Point(10, 0);
@@ -541,7 +541,7 @@
             // pnlTop
             // 
             pnlTop.AutoSize = true;
-            pnlTop.BackColor = Color.FromArgb(31, 50, 90);
+            pnlTop.BackColor = Color.AliceBlue;
             pnlTop.Controls.Add(btnExit);
             pnlTop.CustomizableEdges = customizableEdges39;
             pnlTop.Dock = DockStyle.Top;
@@ -572,6 +572,8 @@
             // pnlFormcon
             // 
             pnlFormcon.AutoSize = true;
+            pnlFormcon.BackColor = SystemColors.Control;
+            pnlFormcon.BorderRadius = 5;
             pnlFormcon.CustomizableEdges = customizableEdges41;
             pnlFormcon.Dock = DockStyle.Fill;
             pnlFormcon.Location = new Point(374, 88);

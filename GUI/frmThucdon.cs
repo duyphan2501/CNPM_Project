@@ -57,7 +57,9 @@ namespace GUI
             btnLuu.Enabled = btnHuy.Enabled = btnDinhluong.Enabled = false;
             btnThemmon.Enabled = true;
             txtMasanpham.Enabled = true;
-            TaiTenLoai();
+
+            cboLoctrangthai.Text = "Tất cả";
+            LoadProduct_type();
             LoadProduct();
         }
 
@@ -74,7 +76,7 @@ namespace GUI
         }
 
         //Tải tên loại lên combobox Tên loại
-        public void TaiTenLoai()
+        public void LoadProduct_type()
         {
             cboTenloai.DataSource = sanpham.LoadProduct_type();
             cboTenloai.DisplayMember = "TenLoai";
@@ -87,7 +89,7 @@ namespace GUI
             frmThemLoaiSanPham themloai = new frmThemLoaiSanPham();
             General.ShowDialogWithBlur(themloai);
 
-            TaiTenLoai();
+            LoadProduct_type();
         }
 
 
@@ -101,7 +103,7 @@ namespace GUI
             txtTimkiem.Enabled = true;
             ResetTextbox();
 
-            TaiTenLoai();
+            LoadProduct_type();
             txtMasanpham.Text = sanpham.PhatSinhMaSp(); //Phát sinh mã sản phẩm
             txtMasanpham.ReadOnly = true;
         }
@@ -182,8 +184,9 @@ namespace GUI
                     LoadProduct();
                     frmThucdon_Load(sender, e);
                 }
+                txtMasanpham.Enabled = true;
             }
-            txtMasanpham.Enabled = true;
+            
         }
 
         private bool IsDuplicateProduct(string maSP, string tenSP) //kiểm tra trùng tên sản phẩm mà khác chính nó

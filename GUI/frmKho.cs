@@ -22,7 +22,7 @@ namespace GUI
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-
+            cboLocNL.Text = "Tất cả";
             if (this.Modal)   //nếu mở từ xuất nhập
             {
                 pnlThongtinNL.Visible = false;

@@ -498,6 +498,7 @@
             // guna2GroupBox1
             // 
             guna2GroupBox1.BackColor = SystemColors.Control;
+            guna2GroupBox1.BorderRadius = 5;
             guna2GroupBox1.BorderThickness = 0;
             guna2GroupBox1.Controls.Add(gridThucDon);
             guna2GroupBox1.CustomBorderThickness = new Padding(0);

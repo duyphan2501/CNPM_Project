@@ -334,6 +334,7 @@
             // guna2GroupBox1
             // 
             guna2GroupBox1.BackColor = SystemColors.Control;
+            guna2GroupBox1.BorderRadius = 5;
             guna2GroupBox1.BorderThickness = 0;
             guna2GroupBox1.Controls.Add(gridDsNguyenlieu);
             guna2GroupBox1.CustomBorderThickness = new Padding(0);
@@ -626,12 +627,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1900, 1100);
-            Controls.Add(cboLocNL);
             Controls.Add(pnlThongtinNL);
             Controls.Add(txtTimkiem);
             Controls.Add(guna2GroupBox1);
             Controls.Add(btnTrolai);
             Controls.Add(btnThemNguyenlieu);
+            Controls.Add(cboLocNL);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmKho";
             StartPosition = FormStartPosition.CenterScreen;
