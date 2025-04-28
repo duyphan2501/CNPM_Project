@@ -38,7 +38,7 @@ namespace GUI
                 {
                     btn.FillColor = Color.Transparent;
                     btn.FillColor2 = Color.Transparent;
-                    btn.ForeColor = Color.White;
+                    btn.ForeColor = Color.Black;
                 }
 
                 // Gọi lại hàm nếu control có các controls con
@@ -56,7 +56,7 @@ namespace GUI
             // Gán màu Gradient cho nút đang được chọn
             clickedButton.FillColor = Color.FromArgb(248, 92, 7);     // Màu trái
             clickedButton.FillColor2 = Color.FromArgb(255, 128, 0);   // Màu phải
-            clickedButton.ForeColor = Color.White;
+            clickedButton.ForeColor = Color.Black;
             clickedButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
         }
 
@@ -96,6 +96,13 @@ namespace GUI
         private void btnMathangbanchay_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnMathangbanchay);
+            pnlFormcon.Controls.Clear();
+            frmHangBanChay frm = new frmHangBanChay();
+            frm.TopLevel = false;
+            pnlFormcon.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+
         }
 
         private void btnKiemkekho_Click(object sender, EventArgs e)

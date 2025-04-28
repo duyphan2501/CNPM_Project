@@ -67,15 +67,13 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThucdon));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThucdon));
             txtTimkiem = new Guna.UI2.WinForms.Guna2TextBox();
             txtMasanpham = new TextBox();
             label1 = new Label();
@@ -102,13 +100,12 @@
             btnDinhluong = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridThucDon = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnTimkiem = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnUpdate = new DataGridViewImageColumn();
             btnThemmon = new Guna.UI2.WinForms.Guna2GradientButton();
             dataGridViewImageColumn1 = new DataGridViewImageColumn();
             label5 = new Label();
             cboLoctrangthai = new Guna.UI2.WinForms.Guna2ComboBox();
             pnlThongtinSP = new Guna.UI2.WinForms.Guna2Panel();
-            btnUpdate = new DataGridViewImageColumn();
             pnlMasanpham.SuspendLayout();
             pnlTenloai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picThemLoai).BeginInit();
@@ -138,11 +135,12 @@
             txtTimkiem.Location = new Point(412, 85);
             txtTimkiem.Margin = new Padding(6);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.PlaceholderText = "Nhập mã sản phẩm";
+            txtTimkiem.PlaceholderText = "Nhập thông tin sản phẩm";
             txtTimkiem.SelectedText = "";
             txtTimkiem.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtTimkiem.Size = new Size(380, 42);
             txtTimkiem.TabIndex = 7;
+            txtTimkiem.TextChanged += txtTimkiem_TextChanged;
             // 
             // txtMasanpham
             // 
@@ -500,6 +498,7 @@
             // guna2GroupBox1
             // 
             guna2GroupBox1.BackColor = SystemColors.Control;
+            guna2GroupBox1.BorderRadius = 5;
             guna2GroupBox1.BorderThickness = 0;
             guna2GroupBox1.Controls.Add(gridThucDon);
             guna2GroupBox1.CustomBorderThickness = new Padding(0);
@@ -572,32 +571,23 @@
             gridThucDon.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridThucDon.CellClick += gridThucDon_CellClick;
             // 
-            // btnTimkiem
+            // btnUpdate
             // 
-            btnTimkiem.AutoRoundedCorners = true;
-            btnTimkiem.CustomizableEdges = customizableEdges37;
-            btnTimkiem.DisabledState.BorderColor = Color.DarkGray;
-            btnTimkiem.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnTimkiem.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnTimkiem.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnTimkiem.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTimkiem.FillColor = Color.FromArgb(244, 103, 0);
-            btnTimkiem.FillColor2 = Color.DarkOrange;
-            btnTimkiem.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            btnTimkiem.ForeColor = Color.White;
-            btnTimkiem.Location = new Point(835, 67);
-            btnTimkiem.Margin = new Padding(2, 5, 2, 5);
-            btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            btnTimkiem.Size = new Size(130, 69);
-            btnTimkiem.TabIndex = 19;
-            btnTimkiem.Text = "Tìm";
-            btnTimkiem.Click += btnTimkiem_Click;
+            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            btnUpdate.HeaderText = "";
+            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            btnUpdate.MinimumWidth = 50;
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.ReadOnly = true;
+            btnUpdate.Resizable = DataGridViewTriState.True;
+            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
+            btnUpdate.Width = 50;
             // 
             // btnThemmon
             // 
             btnThemmon.AutoRoundedCorners = true;
-            btnThemmon.CustomizableEdges = customizableEdges39;
+            btnThemmon.CustomizableEdges = customizableEdges37;
             btnThemmon.DisabledState.BorderColor = Color.DarkGray;
             btnThemmon.DisabledState.CustomBorderColor = Color.DarkGray;
             btnThemmon.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -610,7 +600,7 @@
             btnThemmon.Location = new Point(92, 58);
             btnThemmon.Margin = new Padding(2, 5, 2, 5);
             btnThemmon.Name = "btnThemmon";
-            btnThemmon.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            btnThemmon.ShadowDecoration.CustomizableEdges = customizableEdges38;
             btnThemmon.Size = new Size(192, 69);
             btnThemmon.TabIndex = 19;
             btnThemmon.Text = "Thêm món";
@@ -641,7 +631,7 @@
             // cboLoctrangthai
             // 
             cboLoctrangthai.BackColor = Color.Transparent;
-            cboLoctrangthai.CustomizableEdges = customizableEdges41;
+            cboLoctrangthai.CustomizableEdges = customizableEdges39;
             cboLoctrangthai.DrawMode = DrawMode.OwnerDrawFixed;
             cboLoctrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLoctrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -653,7 +643,7 @@
             cboLoctrangthai.Location = new Point(1006, 107);
             cboLoctrangthai.Margin = new Padding(2, 4, 2, 4);
             cboLoctrangthai.Name = "cboLoctrangthai";
-            cboLoctrangthai.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            cboLoctrangthai.ShadowDecoration.CustomizableEdges = customizableEdges40;
             cboLoctrangthai.Size = new Size(328, 36);
             cboLoctrangthai.TabIndex = 2;
             cboLoctrangthai.SelectedIndexChanged += cboLoctrangthai_SelectedIndexChanged;
@@ -671,25 +661,12 @@
             pnlThongtinSP.Controls.Add(pnlTenloai);
             pnlThongtinSP.Controls.Add(btnHuy);
             pnlThongtinSP.Controls.Add(btnDinhluong);
-            pnlThongtinSP.CustomizableEdges = customizableEdges43;
+            pnlThongtinSP.CustomizableEdges = customizableEdges41;
             pnlThongtinSP.Location = new Point(1358, -3);
             pnlThongtinSP.Name = "pnlThongtinSP";
-            pnlThongtinSP.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            pnlThongtinSP.ShadowDecoration.CustomizableEdges = customizableEdges42;
             pnlThongtinSP.Size = new Size(560, 1103);
             pnlThongtinSP.TabIndex = 20;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            btnUpdate.HeaderText = "";
-            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
-            btnUpdate.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            btnUpdate.MinimumWidth = 50;
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.ReadOnly = true;
-            btnUpdate.Resizable = DataGridViewTriState.True;
-            btnUpdate.SortMode = DataGridViewColumnSortMode.Automatic;
-            btnUpdate.Width = 50;
             // 
             // frmThucdon
             // 
@@ -703,7 +680,6 @@
             Controls.Add(cboLoctrangthai);
             Controls.Add(label5);
             Controls.Add(txtTimkiem);
-            Controls.Add(btnTimkiem);
             Controls.Add(btnThemmon);
             Controls.Add(guna2GroupBox1);
             FormBorderStyle = FormBorderStyle.None;
@@ -758,7 +734,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox picThemLoai;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private Guna.UI2.WinForms.Guna2GradientButton btnThemmon;
-        private Guna.UI2.WinForms.Guna2GradientButton btnTimkiem;
        
         private Guna.UI2.WinForms.Guna2GradientButton btnLuu;
         private Guna.UI2.WinForms.Guna2GradientButton btnHuy;

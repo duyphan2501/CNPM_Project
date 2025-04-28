@@ -25,26 +25,27 @@ namespace GUI
         {
             grbXuatNhapKho.Visible = false;
             gridDsThuchi.RowTemplate.Height = 50;
-            LoadPhieu();
+            LoadReceipt();
             LoadLoaiPhieu();
             btnLuu.Enabled = false;
 
+            cboLoaiPhieu.Text = "Tất cả";
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
 
-            // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại
-            dateDenngay.Value = DateTime.Now;
+
+            dateDenngay.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
+            dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 
-        public void LoadPhieu()
+        public void LoadReceipt()
         {
-            gridDsThuchi.DataSource = phieu.TaiPhieu();
-
+            gridDsThuchi.DataSource = phieu.LoadReceipt();
         }
 
         public void LoadLoaiPhieu()
         {
-            cboLoaithuchi.DataSource = loaithuchi.TaiLoaiPhieu();
+            cboLoaithuchi.DataSource = loaithuchi.LoadType();
             cboLoaithuchi.DisplayMember = "TenLoai";
             cboLoaithuchi.ValueMember = "MaLoaiThuChi";
         }
@@ -59,7 +60,7 @@ namespace GUI
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
             grbXuatNhapKho.Visible = true;
-            txtMaphieu.Text = phieu.PhatSinhMaPhieu();
+            txtMaphieu.Text = phieu.GenerateID();
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;
 
@@ -74,8 +75,8 @@ namespace GUI
                 General.ShowWarning("Vui lòng nhập số tiền!");
                 return;
             }
-            phieu.ThemThuChi(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
-            LoadPhieu();
+            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
+            LoadReceipt();
             btnLuu.Enabled = false;
 
             numSotien.Value = 0;
@@ -114,6 +115,7 @@ namespace GUI
             //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
             //    gridDsThuchi.DataSource = dv;
             //}
+
             LocTheoNgay();
             LocTheoLoaiPhieu();
             
@@ -121,8 +123,9 @@ namespace GUI
 
         private void Date_ValueChanged(object sender, EventArgs e)
         {
-            LocTheoLoaiPhieu();
+              
             LocTheoNgay();
+            LocTheoLoaiPhieu();
         }
 
         private void LocTheoNgay()
@@ -130,7 +133,7 @@ namespace GUI
             DateTime tuNgay = dateTungay.Value.Date;
             DateTime denNgay = dateDenngay.Value.Date;  // Không cần thay đổi giờ
 
-            LoadPhieu();
+            LoadReceipt();
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
 
             // Xử lý khi cả hai ngày đều được chọn
@@ -160,10 +163,9 @@ namespace GUI
 
         private void LocTheoLoaiPhieu()
         {
+            
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-
-            // Tải dữ liệu nếu cần thiết
-            LoadPhieu();
+            LoadReceipt();
 
             // Lọc dữ liệu theo loại phiếu
             if (cboLoaiPhieu.Text == "Tất cả")
@@ -174,7 +176,7 @@ namespace GUI
             {
                 dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu thu%'";
             }
-            else
+            else 
             {
                 dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu chi%'";
             }

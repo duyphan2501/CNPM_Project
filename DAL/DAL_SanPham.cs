@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using DTO;
 using System.Collections;
+using Microsoft.Data.SqlClient;
 namespace DAL
 {
     public class DAL_SanPham
@@ -35,7 +36,7 @@ namespace DAL
         }
 
         //Tải danh sách các tên loại lên combobox
-        public DataTable TaiLoaiSP()
+        public DataTable LoadProduct_type()
         {
             string query = "select * from LoaiSanPham";
             return DataProvider.ExecuteQuery(query);
@@ -79,18 +80,18 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
-        //public DataTable GetBestSellingProductst(int soluong,DateTime ngaybatdau, DateTime ngayketthuc) {
-        //    string query = "SELECT TOP (@SoLuong) sp.MaSp as 'Mã sản phẩm', sp.TenSp 'Tên sản phẩm', SUM(ct.SoLuong) AS 'Số lượng bán'" +
-        //                   "FROM ChiTietHoaDon ct " +
-        //                   "JOIN HoaDon hd ON ct.MaHD = hd.MaHD " +
-        //                   "JOIN SanPham sp ON ct.MaSP = sp.MaSp " +
-        //                   "WHERE (@NgayBatDau IS NULL OR dh.NgayLap >= @NgayBatDau) " +
-        //                   "AND (@NgayKetThuc IS NULL OR dh.NgayLap <= @NgayKetThuc) " +
-        //                   "AND dh.TrangThai = 1 " +
-        //                   "GROUP BY sp.MaSp, sp.TenSp " +
-        //                   "ORDER BY TongSoLuong DESC";
-        //    object[] parem = new object[] {soluong,ngaybatdau,ngaybatdau,ngayketthuc,ngayketthuc};
-        //    return DataProvider.ExecuteQuery(query,parem);
-        //}
+        //Lọc n sản phẩm bán chạy nhất
+        public DataTable GetBestSellingProductst(int soluong, DateTime ngaybatdau, DateTime ngayketthuc)
+        {
+            string query = "SELECT TOP (@SoLuong) TenSp AS 'Tên sản phẩm', SUM(SoLuong) AS 'Tổng số lượng bán', DonGia AS 'Đơn giá', DonGia * SUM(SoLuong) AS 'Thành tiền' " +
+                           "FROM vw_HoaDonChiTiet " +
+                           "WHERE NgayLap BETWEEN @TuNgay AND @DenNgay " +
+                           "GROUP BY TenSp, DonGia " +
+                           "ORDER BY SUM(SoLuong) DESC";
+
+            object[] parem = new object[] { soluong, ngaybatdau, ngayketthuc };
+            return DataProvider.ExecuteQuery(query, parem);
+        }
+
     }
 }

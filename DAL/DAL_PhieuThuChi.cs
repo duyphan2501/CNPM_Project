@@ -17,7 +17,7 @@ namespace DAL
             phieuthuchidto = new DTO_PhieuThuChi(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
         }
 
-        public DataTable TaiPhieu()
+        public DataTable LoadReceipt()
         {
             string query = "select ptc.TenDangNhap as 'Tài khoản lập phiếu', ltc.Loai as 'Loại phiếu', ltc.TenLoai as 'Loại thu chi', ptc.SoTien as 'Số tiền', ptc.GhiChu as 'Ghi chú', ptc.NgayLap as 'Ngày lập' " +
                             "from PhieuThuChi ptc, LoaiThuChi ltc " +
@@ -25,7 +25,7 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
-        public void ThemThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public void AddReceipt(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
         {
             string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, MaLoaiThuChi, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_MaLoaiThuChi,@_GhiChu)";
             object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu };
@@ -33,7 +33,7 @@ namespace DAL
         }
 
         // lấy mã phiếu thu cho lớn nhất
-        public string MaphieuLonNhat()
+        public string MaxID()
         {
             string query = "select top 1 MaPhieu from PhieuThuChi order by MaPhieu desc";
             string maxMaphieu = (string)DataProvider.ExecuteScalar(query);

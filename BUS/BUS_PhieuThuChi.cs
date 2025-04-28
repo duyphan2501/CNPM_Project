@@ -17,21 +17,21 @@ namespace BUS
             phieuthuchidal = new DAL_PhieuThuChi(maphieuthuchi, tendangnhap, sotien, maloaithuchi, ghichu);
         }
 
-        public DataTable TaiPhieu()
+        public DataTable LoadReceipt()
         {
-            return phieuthuchidal.TaiPhieu();
+            return phieuthuchidal.LoadReceipt();
         }
 
-        public void ThemThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public void AddReceipt(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
         {
-            phieuthuchidal.ThemThuChi(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
+            phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
         }
 
         //Phát sinh mã phiếu tự động
-        public string PhatSinhMaPhieu()
+        public string GenerateID()
         {
             // lấy mã phiếu lớn nhất
-            string maphieu = phieuthuchidal.MaphieuLonNhat();
+            string maphieu = phieuthuchidal.MaxID();
             // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PH0001
             if (maphieu == null)
             {

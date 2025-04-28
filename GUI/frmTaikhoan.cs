@@ -69,7 +69,7 @@ namespace GUI
             string email = hangduocchon.Cells["Email"].Value.ToString();
 
             frmThem_SuaTaiKhoan capnhattk = new frmThem_SuaTaiKhoan(tendangnhap, trangthai , vaitro, hoten, email);
-            capnhattk.ShowDialog();
+            General.ShowDialogWithBlur(capnhattk);
             LoadAccountsByStatus(cboTrangthai.Text);
         }
     }

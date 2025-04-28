@@ -19,14 +19,18 @@ namespace BUS
         {
             loaiSanPham = new DAL_LoaiSanPham(maloai, tenloai);
         }
-        public void ThemLoaiSp(string maloai, string tenloai)
+        public void AddProduct_type(string maloai, string tenloai)
         {
-            loaiSanPham.ThemLoaiSp(maloai, tenloai);
+            loaiSanPham.AddProduct_type(maloai, tenloai);
         }
 
-        public string PhatSinhMaLoai()
+        public DataTable LoadProduct_type()
         {
-            string maxMaloai = loaiSanPham.MaloaiSPLonNhat();
+            return loaiSanPham.LoadProduct_type();
+        }
+        public string GenerateID()
+        {
+            string maxMaloai = loaiSanPham.MaxID();
             if (maxMaloai != null)
             {
                 int ma = int.Parse(maxMaloai.Substring(2)) + 1;

@@ -17,20 +17,20 @@ namespace BUS
             loaithuchidal = new DAL_LoaiThuChi(maloaithuchi,tenloai,loai);
         }
 
-        public void ThemLoai(string maloaithuchi, string tenloai, string loai)
+        public void AddType(string maloaithuchi, string tenloai, string loai)
         {
-            loaithuchidal.ThemLoai(maloaithuchi, tenloai, loai);
+            loaithuchidal.AddType(maloaithuchi, tenloai, loai);
         }
 
-        public DataTable TaiLoaiPhieu()
+        public DataTable LoadType()
         {
-            return loaithuchidal.TaiLoaiPhieu();
+            return loaithuchidal.LoadType();
         }
 
         //Phát sinh mã loại thu chi
-        public string PhatSinhMaLoai()
+        public string GenerateID()
         {
-            string maxMaloai = loaithuchidal.MaloaiLonNhat();
+            string maxMaloai = loaithuchidal.MaxID();
             if (maxMaloai != null)
             {
                 int ma = int.Parse(maxMaloai.Substring(2)) + 1;

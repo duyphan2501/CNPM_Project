@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,18 @@ namespace BUS
             loainguyenlieudal = new DAL_LoaiNguyenLieu(maloainl,tenloai);
         }
 
-        public void ThemLoaiNguyenLieu(string maloainl, string tenloai)
+        public void AddIngredients_type(string maloainl, string tenloai)
         {
-            loainguyenlieudal.ThemLoaiNguyenLieu(maloainl, tenloai);
+            loainguyenlieudal.AddIngredients_type(maloainl, tenloai);
         }
 
-        public string PhatSinhMaLoaiNL()
+        public DataTable LoadIngredients_type()
         {
-            string maxMaloai = loainguyenlieudal.MaloaiNLLonNhat();
+            return loainguyenlieudal.LoadIngredients_type();
+        }
+        public string GenerateID()
+        {
+            string maxMaloai = loainguyenlieudal.MaxID();
             if (maxMaloai != null)
             {
                 int ma = int.Parse(maxMaloai.Substring(2)) + 1;
