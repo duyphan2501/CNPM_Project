@@ -78,7 +78,7 @@ namespace GUI
                 for (int i = pnlKho.Height; i <= (3 * btnKho.Height) + 37; i += 10)
                 {
                     pnlKho.Height = i;
-                    await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
+                    await Task.Delay(1);         // Dừng 5ms để tạo hiệu ứng mượt
                 }
             }
             else
@@ -87,7 +87,6 @@ namespace GUI
                 pnlKho.Height = btnKho.Height + 31;
                 //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
             }
-
         }
 
         private void btnLoinhuan_Click(object sender, EventArgs e)
@@ -98,26 +97,8 @@ namespace GUI
         private void btnMathangbanchay_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnMathangbanchay);
-            pnlFormcon.Controls.Clear();
-            frmHangBanChay frm = new frmHangBanChay();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
-
+            ShowFormInPanel(new frmHangBanChay());
         }
-
-        private void btnKiemkekho_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnXuatnhapkho_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private bool isOpenBaocao = false;
         private async void btnBaocaoTK_Click(object sender, EventArgs e)
@@ -134,7 +115,7 @@ namespace GUI
                 for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 37; i += 10)
                 {
                     pnlBaocaoTK.Height = i;
-                    await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
+                    await Task.Delay(1);         // Dừng 5ms để tạo hiệu ứng mượt
                 }
             }
             else
@@ -149,50 +130,57 @@ namespace GUI
         private void btnMenu_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnThucDon);
-            pnlFormcon.Controls.Clear();
-            frmThucdon frm = new frmThucdon();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
-
+            ShowFormInPanel(new frmThucdon());
         }
+
+        private void ShowFormInPanel(Form form)
+        {
+            // Đóng và giải phóng form cũ nếu có
+            foreach (Control ctrl in pnlFormcon.Controls)
+            {
+                if (ctrl is Form oldForm)
+                {
+                    oldForm.Close();
+                    oldForm.Dispose();
+                }
+            }
+
+            // Xóa tất cả controls trong panel
+            pnlFormcon.Controls.Clear();
+
+            // Cấu hình form mới
+            form.TopLevel = false;                         // Không cho form là cửa sổ độc lập
+            form.FormBorderStyle = FormBorderStyle.None;   // Bỏ viền form
+            form.Dock = DockStyle.Fill;                    // Chiếm toàn bộ panel
+
+            // Thêm form vào panel
+            pnlFormcon.Controls.Add(form);
+
+            // Hiển thị form mới
+            form.BringToFront();    // Đảm bảo form mới sẽ hiển thị lên trên
+            form.Show();            // Hiển thị form mới
+        }
+
+
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnTaiKhoan);
-            pnlFormcon.Controls.Clear();
-            frmTaiKhoan frm = new frmTaiKhoan();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
-
+            ShowFormInPanel(new frmTaiKhoan());
         }
 
         private void btnXuatnhapkho_Click_1(object sender, EventArgs e)
         {
             SetActiveButton(btnXuatnhapkho);
-            pnlFormcon.Controls.Clear();
-            frmXuatNhapKho frm = new frmXuatNhapKho();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            ShowFormInPanel(new frmXuatNhapKho());
 
         }
 
         private void btnThuchi_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnThuchi);
-            pnlFormcon.Controls.Clear();
-            frmThuChi frm = new frmThuChi();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            ShowFormInPanel(new frmThuChi());
         }
-
 
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -203,24 +191,19 @@ namespace GUI
         private void btnTonkho_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnTonkho);
-            pnlFormcon.Controls.Clear();
-            frmKho frm = new frmKho();
-            frm.TopLevel = false;
-            pnlFormcon.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            ShowFormInPanel(new frmKho());
         }
-
-        
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnDashboard);
         }
 
-        private void btnBanhang_Click(object sender, EventArgs e)
+        private void btnDonHang_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnBanhang);
+            SetActiveButton(btnDonHang);
+            frmOrderList frmOrder = new frmOrderList("admin");
+            ShowFormInPanel(frmOrder);
         }
     }
 }

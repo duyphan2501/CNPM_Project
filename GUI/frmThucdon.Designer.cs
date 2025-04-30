@@ -131,7 +131,7 @@
             txtTimkiem.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtTimkiem.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtTimkiem.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtTimkiem.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTimkiem.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTimkiem.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtTimkiem.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTimkiem.Location = new Point(353, 68);
@@ -181,16 +181,16 @@
             txtMasanpham.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtMasanpham.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtMasanpham.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtMasanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMasanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtMasanpham.ForeColor = Color.Black;
             txtMasanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtMasanpham.Location = new Point(20, 46);
-            txtMasanpham.Margin = new Padding(4, 5, 4, 5);
+            txtMasanpham.Location = new Point(25, 53);
+            txtMasanpham.Margin = new Padding(5, 6, 5, 6);
             txtMasanpham.Name = "txtMasanpham";
             txtMasanpham.PlaceholderText = "";
             txtMasanpham.SelectedText = "";
             txtMasanpham.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtMasanpham.Size = new Size(313, 43);
+            txtMasanpham.Size = new Size(308, 49);
             txtMasanpham.TabIndex = 21;
             // 
             // label3
@@ -238,11 +238,11 @@
             picThemLoai.CustomizableEdges = customizableEdges7;
             picThemLoai.Image = Properties.Resources.them;
             picThemLoai.ImageRotate = 0F;
-            picThemLoai.Location = new Point(293, 43);
+            picThemLoai.Location = new Point(288, 48);
             picThemLoai.Margin = new Padding(2, 3, 2, 3);
             picThemLoai.Name = "picThemLoai";
             picThemLoai.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            picThemLoai.Size = new Size(40, 41);
+            picThemLoai.Size = new Size(45, 36);
             picThemLoai.SizeMode = PictureBoxSizeMode.Zoom;
             picThemLoai.TabIndex = 2;
             picThemLoai.TabStop = false;
@@ -257,7 +257,7 @@
             cboTenloai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTenloai.FocusedColor = Color.FromArgb(94, 148, 255);
             cboTenloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTenloai.Font = new Font("Segoe UI", 10.2F);
+            cboTenloai.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             cboTenloai.ForeColor = Color.Black;
             cboTenloai.ItemHeight = 30;
             cboTenloai.Items.AddRange(new object[] { "cafe" });
@@ -301,7 +301,7 @@
             numGiaban.BorderRadius = 5;
             numGiaban.Cursor = Cursors.IBeam;
             numGiaban.CustomizableEdges = customizableEdges13;
-            numGiaban.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numGiaban.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             numGiaban.Location = new Point(21, 52);
             numGiaban.Margin = new Padding(3, 5, 3, 5);
             numGiaban.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
@@ -336,16 +336,16 @@
             txtTensanpham.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtTensanpham.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtTensanpham.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTensanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTensanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtTensanpham.ForeColor = Color.Black;
             txtTensanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTensanpham.Location = new Point(23, 47);
-            txtTensanpham.Margin = new Padding(4, 5, 4, 5);
+            txtTensanpham.Location = new Point(29, 54);
+            txtTensanpham.Margin = new Padding(5, 6, 5, 6);
             txtTensanpham.Name = "txtTensanpham";
             txtTensanpham.PlaceholderText = "";
             txtTensanpham.SelectedText = "";
             txtTensanpham.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            txtTensanpham.Size = new Size(310, 43);
+            txtTensanpham.Size = new Size(304, 49);
             txtTensanpham.TabIndex = 21;
             // 
             // btnClose
@@ -447,7 +447,7 @@
             cboTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
             cboTrangthai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTrangthai.Font = new Font("Segoe UI", 10.2F);
+            cboTrangthai.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;
             cboTrangthai.Items.AddRange(new object[] { "Còn bán", "Ngưng bán" });
@@ -589,8 +589,8 @@
             cboLoctrangthai.CustomizableEdges = customizableEdges41;
             cboLoctrangthai.DrawMode = DrawMode.OwnerDrawFixed;
             cboLoctrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboLoctrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboLoctrangthai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboLoctrangthai.FocusedColor = Color.FromArgb(244, 129, 17);
+            cboLoctrangthai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             cboLoctrangthai.Font = new Font("Segoe UI", 10F);
             cboLoctrangthai.ForeColor = Color.FromArgb(68, 88, 112);
             cboLoctrangthai.ItemHeight = 30;
@@ -605,7 +605,9 @@
             // 
             // pnlThongtinSP
             // 
+            pnlThongtinSP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pnlThongtinSP.BackColor = SystemColors.ButtonHighlight;
+            pnlThongtinSP.BorderColor = Color.Black;
             pnlThongtinSP.Controls.Add(pnlHinhanh);
             pnlThongtinSP.Controls.Add(btnClose);
             pnlThongtinSP.Controls.Add(pnlTrangthai);
@@ -617,11 +619,11 @@
             pnlThongtinSP.Controls.Add(btnHuy);
             pnlThongtinSP.Controls.Add(btnDinhluong);
             pnlThongtinSP.CustomizableEdges = customizableEdges43;
-            pnlThongtinSP.Location = new Point(1077, 1);
+            pnlThongtinSP.Location = new Point(1075, 1);
             pnlThongtinSP.Margin = new Padding(2);
             pnlThongtinSP.Name = "pnlThongtinSP";
             pnlThongtinSP.ShadowDecoration.CustomizableEdges = customizableEdges44;
-            pnlThongtinSP.Size = new Size(448, 882);
+            pnlThongtinSP.Size = new Size(461, 874);
             pnlThongtinSP.TabIndex = 20;
             // 
             // label6
@@ -669,7 +671,7 @@
             gridThucDon.RowHeadersVisible = false;
             gridThucDon.RowHeadersWidth = 51;
             gridThucDon.RowTemplate.Height = 100;
-            gridThucDon.Size = new Size(1474, 739);
+            gridThucDon.Size = new Size(1475, 731);
             gridThucDon.TabIndex = 0;
             gridThucDon.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridThucDon.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -711,10 +713,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1536, 882);
+            ClientSize = new Size(1537, 874);
             Controls.Add(pnlThongtinSP);
             Controls.Add(gridThucDon);
             Controls.Add(cboLoctrangthai);
@@ -725,7 +726,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2, 3, 2, 3);
             Name = "frmThucdon";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "frmThucdon";
             Load += frmThucdon_Load;
             pnlMasanpham.ResumeLayout(false);

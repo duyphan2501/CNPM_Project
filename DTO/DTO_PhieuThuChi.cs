@@ -16,11 +16,11 @@ namespace DTO
 
         public string _MaPhieuThuChi { get; set; }
         public string _TenDangNhap { get; set; }
-        public long _SoTien { get; set; }
+        public int _SoTien { get; set; }
         public string _MaLoaiThuChi { get; set; }
         public string _GhiChu { get; set; }
 
-        public DTO_PhieuThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public DTO_PhieuThuChi(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
             this.MaPhieuThuChi = maphieuthuchi;
             this.TenDangNhap = tendangnhap;
@@ -29,6 +29,8 @@ namespace DTO
             this._GhiChu = ghichu;
 
         }
+
+        public DTO_PhieuThuChi() { }    
 
     }
 }

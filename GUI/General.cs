@@ -100,57 +100,111 @@ namespace GUI
             return Int32.Parse(money);
         }
 
-        public static DialogResult ShowConfirm(string text, Form parent)
-        {
-            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
-            {
-                Text = text,
-                Caption = "Xác nhận",
-                Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo,
-                Icon = Guna.UI2.WinForms.MessageDialogIcon.Question,
-                Parent = parent,
-            };
-            return dialog.Show();
-        }
-
         public static void ShowError(string text, Form parent)
         {
-            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            if (parent == null || parent.IsDisposed || !parent.IsHandleCreated || !parent.TopLevel)
             {
-                Text = text,
-                Caption = "Lỗi",
-                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
-                Icon = Guna.UI2.WinForms.MessageDialogIcon.Error,
-                Parent = parent,
-            };
-            dialog.Show();
+                MessageBox.Show(text, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+                {
+                    Text = text,
+                    Caption = "Lỗi",
+                    Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                    Icon = Guna.UI2.WinForms.MessageDialogIcon.Error,
+                    Parent = parent
+                };
+                dialog.Show();
+            }
+            catch
+            {
+                MessageBox.Show(parent, text, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void ShowWarning(string text, Form parent)
         {
-            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            if (parent == null || parent.IsDisposed || !parent.IsHandleCreated || !parent.TopLevel)
             {
-                Text = text,
-                Caption = "Cảnh báo",
-                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
-                Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning,
-                Parent = parent,
-            };
-            dialog.Show();
+                MessageBox.Show(text, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+                {
+                    Text = text,
+                    Caption = "Cảnh báo",
+                    Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                    Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning,
+                    Parent = parent
+                };
+                dialog.Show();
+            }
+            catch
+            {
+                MessageBox.Show(parent, text, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+        public static DialogResult ShowConfirm(string text, Form parent)
+        {
+            if (parent == null || parent.IsDisposed || !parent.IsHandleCreated || !parent.TopLevel)
+            {
+                return MessageBox.Show(text, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+
+            try
+            {
+                var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+                {
+                    Text = text,
+                    Caption = "Xác nhận",
+                    Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo,
+                    Icon = Guna.UI2.WinForms.MessageDialogIcon.Question,
+                    Parent = parent
+                };
+                return dialog.Show();
+            }
+            catch
+            {
+                return MessageBox.Show(parent, text, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+        }
+
 
         public static void ShowInformation(string text, Form parent)
         {
-            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            // Kiểm tra nếu parent không hợp lệ thì dùng MessageBox
+            if (parent == null || parent.IsDisposed || !parent.IsHandleCreated || !parent.TopLevel)
             {
-                Text = text,
-                Caption = "Thông tin",
-                Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
-                Icon = Guna.UI2.WinForms.MessageDialogIcon.Information,
-                Parent = parent,
-            };
-            dialog.Show();
+                MessageBox.Show(text, "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+                {
+                    Text = text,
+                    Caption = "Thông tin",
+                    Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK,
+                    Icon = Guna.UI2.WinForms.MessageDialogIcon.Information,
+                    Parent = parent
+                };
+                dialog.Show();
+            }
+            catch
+            {
+                // Fallback nếu Guna dialog vẫn bị lỗi
+                MessageBox.Show(parent, text, "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-        
+
     }
 }

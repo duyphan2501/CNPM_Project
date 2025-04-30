@@ -24,7 +24,7 @@ namespace DAL
         //Tải phiếu nhập
         public DataTable LoadGoodsReceipt()
         {
-            string query = "SELECT ph.MaPhieuNhap AS N'Mã phiếu nhập', nl.TenNL AS N'Nguyên liệu',ct.GiaNhap AS N'Giá nhập',    ct.SoLuong AS N'Số lượng nhập',    ph.NgayLap AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
+            string query = "SELECT ph.MaPhieuNhap AS N'Mã phiếu nhập', nl.TenNL AS N'Nguyên liệu',ct.GiaNhap AS N'Giá nhập',    ct.SoLuong AS N'Số lượng nhập', nl.Donvi AS N'Đơn vị',    ph.NgayLap AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
                             " FROM PhieuNhapKho ph " +
                             "JOIN ChiTietNhapKho ct ON ph.MaPhieuNhap = ct.MaPhieuNhap " +
                             "JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL;";

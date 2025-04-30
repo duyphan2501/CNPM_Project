@@ -12,9 +12,14 @@ namespace BUS
     {
         DAL_PhieuThuChi phieuthuchidal;
 
-        public BUS_PhieuThuChi(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public BUS_PhieuThuChi(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
             phieuthuchidal = new DAL_PhieuThuChi(maphieuthuchi, tendangnhap, sotien, maloaithuchi, ghichu);
+        }
+
+        public BUS_PhieuThuChi()
+        {
+            this.phieuthuchidal = new DAL_PhieuThuChi();
         }
 
         public DataTable LoadReceipt()
@@ -22,9 +27,9 @@ namespace BUS
             return phieuthuchidal.LoadReceipt();
         }
 
-        public void AddReceipt(string maphieuthuchi, string tendangnhap, long sotien, string maloaithuchi, string ghichu)
+        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
-            phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
+            return phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
         }
 
         //Phát sinh mã phiếu tự động
@@ -44,5 +49,6 @@ namespace BUS
                 return "PH" + num.ToString("D4");
             }
         }
+
     }
 }

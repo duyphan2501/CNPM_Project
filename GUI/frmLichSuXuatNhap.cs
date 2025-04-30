@@ -22,23 +22,34 @@ namespace GUI
             InitializeComponent();
         }
 
-
-
-        public void LoadReceipt() //danh sách lịch sử
+        private void LoadCboLoaiPhieu()
         {
+            cboLoaiphieu.Items.Clear();
+            cboLoaiphieu.Items.Add("Phiếu nhập");
+            cboLoaiphieu.Items.Add("Phiếu xuất");
+        }
+
+        public void LoadReceipt()
+        {
+            gridLichsu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             if (cboLoaiphieu.Text == "Phiếu nhập")
             {
-                //BUS_PhieuNhapKho phieunhap = new BUS_PhieuNhapKho("", "", DateTime.Now, "");
-                //gridDsPhieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 gridLichsu.DataSource = phieunhap.LoadGoodsReceipt();
             }
             else
             {
                 gridLichsu.DataSource = phieuxuat.LoadDeliveryReceipt();
             }
-            gridLichsu.RowTemplate.Height = 50;
+
+            // Sau khi gán dữ liệu xong, chỉnh lại cột cuối để fill phần còn lại
+            if (gridLichsu.Columns.Count > 0)
+            {
+                // Cột cuối cùng chiếm toàn bộ phần còn lại
+                gridLichsu.Columns[gridLichsu.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
+
 
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -50,16 +61,11 @@ namespace GUI
         {
             //cboLoaiphieu.Text = "Phiếu nhập";
             //LoadReceipt();
-
+            LoadCboLoaiPhieu();
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
             dateDenngay.Value = DateTime.Today.AddDays(1);  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại thêm 1 ngày để xem luôn cả ngày hiện tại
             dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void Date_ValueChanged(object sender, EventArgs e)

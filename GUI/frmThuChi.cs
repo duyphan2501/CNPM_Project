@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
-using Microsoft.VisualBasic.Devices;
 
 namespace GUI
 {
@@ -16,6 +10,8 @@ namespace GUI
     {
         BUS_PhieuThuChi phieu = new BUS_PhieuThuChi("", "", 0, "", "");
         BUS_LoaiThuChi loaithuchi = new BUS_LoaiThuChi("", "", "");
+
+        private DataTable fullData = new DataTable(); // Dữ liệu toàn bộ phiếu thu chi
         public frmThuChi()
         {
             InitializeComponent();
@@ -24,23 +20,24 @@ namespace GUI
         private void frmThuChi_Load(object sender, EventArgs e)
         {
             grbXuatNhapKho.Visible = false;
-            gridDsThuchi.RowTemplate.Height = 50;
-            LoadReceipt();
             LoadLoaiPhieu();
-            btnLuu.Enabled = false;
 
+            btnLuu.Enabled = false;
             cboLoaiPhieu.Text = "Tất cả";
+            dateDenngay.Value = DateTime.Now;
+            dateTungay.Value = DateTime.Now.AddDays(-7);
+
             dateTungay.ValueChanged += Date_ValueChanged;
             dateDenngay.ValueChanged += Date_ValueChanged;
 
+            LoadReceipt();
 
-            dateDenngay.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
-            dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 
         public void LoadReceipt()
         {
-            gridDsThuchi.DataSource = phieu.LoadReceipt();
+            fullData = phieu.LoadReceipt();
+            gridDsThuchi.DataSource = fullData;
         }
 
         public void LoadLoaiPhieu()
@@ -50,11 +47,38 @@ namespace GUI
             cboLoaithuchi.ValueMember = "MaLoaiThuChi";
         }
 
-        private void picThemLoai_Click(object sender, EventArgs e)
+        private void ApplyFilters()
         {
-            frmLoaiThuChi themloai = new frmLoaiThuChi();
-            General.ShowDialogWithBlur(themloai);
-            LoadLoaiPhieu();
+            if (fullData == null || fullData.Rows.Count == 0)
+                return;
+
+            DataView dv = fullData.DefaultView;
+            List<string> filters = new List<string>();
+
+            if (dateTungay.Checked && dateDenngay.Checked)
+                filters.Add($"[Ngày lập] >= #{dateTungay.Value:MM/dd/yyyy}# AND [Ngày lập] <= #{dateDenngay.Value:MM/dd/yyyy}#");
+            else if (dateTungay.Checked)
+                filters.Add($"[Ngày lập] >= #{dateTungay.Value:MM/dd/yyyy}#");
+            else if (dateDenngay.Checked)
+                filters.Add($"[Ngày lập] <= #{dateDenngay.Value:MM/dd/yyyy}#");
+
+            if (cboLoaiPhieu.Text == "Phiếu thu")
+                filters.Add("[Loại phiếu] LIKE '%Phiếu thu%'");
+            else if (cboLoaiPhieu.Text == "Phiếu chi")
+                filters.Add("[Loại phiếu] LIKE '%Phiếu chi%'");
+
+            dv.RowFilter = string.Join(" AND ", filters);
+            gridDsThuchi.DataSource = dv.ToTable();
+        }
+
+        private void Date_ValueChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
+        }
+
+        private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilters();
         }
 
         private void btnThemphieu_Click(object sender, EventArgs e)
@@ -63,7 +87,6 @@ namespace GUI
             txtMaphieu.Text = phieu.GenerateID();
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;
-
             numSotien.Value = 0;
             txtGhichu.Clear();
         }
@@ -75,13 +98,19 @@ namespace GUI
                 General.ShowWarning("Vui lòng nhập số tiền!");
                 return;
             }
-            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
+
+            phieu.AddReceipt(
+                txtMaphieu.Text,
+                Program.account.Rows[0]["TenDangNhap"].ToString(),
+                Convert.ToInt32(numSotien.Value),
+                cboLoaithuchi.SelectedValue.ToString(),
+                txtGhichu.Text
+            );
+
             LoadReceipt();
             btnLuu.Enabled = false;
-
             numSotien.Value = 0;
             txtGhichu.Clear();
-            frmThuChi_Load(sender, e);
 
             MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -95,99 +124,11 @@ namespace GUI
             }
         }
 
-        private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
+        private void picThemLoai_Click(object sender, EventArgs e)
         {
-            //if (cboLoaiPhieu.Text == "Tất cả")
-            //{
-            //    LoadPhieu();
-            //}
-            //else if (cboLoaiPhieu.Text == "Phiếu thu")
-            //{
-            //    LoadPhieu();
-            //    DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu thu%'";
-            //    gridDsThuchi.DataSource = dv;
-            //}
-            //else
-            //{
-            //    LoadPhieu();
-            //    DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
-            //    gridDsThuchi.DataSource = dv;
-            //}
-
-            LocTheoNgay();
-            LocTheoLoaiPhieu();
-            
+            frmLoaiThuChi themloai = new frmLoaiThuChi();
+            General.ShowDialogWithBlur(themloai);
+            LoadLoaiPhieu();
         }
-
-        private void Date_ValueChanged(object sender, EventArgs e)
-        {
-              
-            LocTheoNgay();
-            LocTheoLoaiPhieu();
-        }
-
-        private void LocTheoNgay()
-        {
-            DateTime tuNgay = dateTungay.Value.Date;
-            DateTime denNgay = dateDenngay.Value.Date;  // Không cần thay đổi giờ
-
-            LoadReceipt();
-            DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-
-            // Xử lý khi cả hai ngày đều được chọn
-            if (dateTungay.Checked && dateDenngay.Checked)
-            {
-                dv.RowFilter = $"[Ngày lập] >= #{tuNgay:MM/dd/yyyy}# AND [Ngày lập] <= #{denNgay:MM/dd/yyyy}#";
-            }
-            // Xử lý khi chỉ có ngày bắt đầu được chọn
-            else if (dateTungay.Checked)
-            {
-                dv.RowFilter = $"[Ngày lập] >= #{tuNgay:MM/dd/yyyy}#";
-            }
-            // Xử lý khi chỉ có ngày kết thúc được chọn
-            else if (dateDenngay.Checked)
-            {
-                dv.RowFilter = $"[Ngày lập] <= #{denNgay:MM/dd/yyyy}#";
-            }
-            // Nếu không có ngày nào được chọn, không thay đổi bộ lọc
-            else
-            {
-                dv.RowFilter = "";  // Làm rỗng bộ lọc nếu không có ngày nào được chọn
-            }
-
-            // Cập nhật lại DataSource bằng cách chuyển DataView thành DataTable
-            gridDsThuchi.DataSource = dv.ToTable(); // Dùng ToTable để chuyển DataView thành DataTable
-        }
-
-        private void LocTheoLoaiPhieu()
-        {
-            
-            DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            LoadReceipt();
-
-            // Lọc dữ liệu theo loại phiếu
-            if (cboLoaiPhieu.Text == "Tất cả")
-            {
-                dv.RowFilter = "";  // Không áp dụng bộ lọc nếu chọn "Tất cả"
-            }
-            else if (cboLoaiPhieu.Text == "Phiếu thu")
-            {
-                dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu thu%'";
-            }
-            else 
-            {
-                dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu chi%'";
-            }
-
-            // Cập nhật lại DataSource với bộ lọc
-            gridDsThuchi.DataSource = dv.ToTable();  // Dùng ToTable để chuyển DataView thành DataTable
-        }
-
-        
-
-
-
     }
 }

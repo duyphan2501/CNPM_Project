@@ -40,16 +40,16 @@ namespace GUI
 
         private void frmOrderList_Load(object sender, EventArgs e)
         {
-            // Load danh sách đơn hàng
-            string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
             if (mode == "cashier")
             {
+                string maCaLam = Program.shift.Rows[0]["MaCaLam"].ToString();
                 LoadOrderList(donhang.SelectOrderForCashier(maCaLam));
                 btnChinhSua.Visible = false;
                 btnLuu.Visible = false;
             }
             else
             {
+                ctrlboxExit.Visible = false;
                 pageSize = GetPageSizeFromGridView();
                 totalPages = (int)Math.Ceiling((double)new BUS_DonHang().GetToTalNumberDonHang() / pageSize);
                 LoadDonHangPage(currentPage);

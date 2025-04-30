@@ -17,37 +17,40 @@ namespace GUI
         public frmKho()
         {
             InitializeComponent();
-
         }
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-            cboLocNL.Text = "Tất cả";
-            if (this.Modal)   //nếu mở từ xuất nhập
-            {
-                pnlThongtinNL.Visible = false;
-                btnThemNguyenlieu.Visible = false;
-                btnTrolai.Visible = true;
-                LoadIngredients();
-            }
-            else  //nếu chạy trực tiếp
-            {
-                btnTrolai.Visible = false;
-                pnlThongtinNL.Visible = false;
-                LoadIngredients();
-                LoadIngredients_type();
-                pnlThongtinNL.Enabled = false;
-                btnThemNguyenlieu.Enabled = true;
-                btnThemNguyenlieu.Visible = true;
-                btnHuy.Enabled = false;
-                btnLuu.Enabled = false;
-                txtMaNguyenLieu.Enabled = true;
-            }
+            LoadCboLocNL();
+            pnlThongtinNL.Visible = false;
+            LoadIngredients();
+            LoadIngredients_type();
+            pnlThongtinNL.Enabled = false;
+            btnThemNguyenlieu.Enabled = true;
+            btnThemNguyenlieu.Visible = true;
+            btnHuy.Enabled = false;
+            btnLuu.Enabled = false;
+            txtMaNguyenLieu.Enabled = true;
+        }
+
+        public void LoadCboLocNL()
+        {
+            // Xóa các mục cũ (nếu có)
+            cboLocNL.Items.Clear();
+
+            // Thêm mục "Tất cả" đầu tiên
+            cboLocNL.Items.Add("Tất cả");
+
+            // Thêm các nguyên liệu trực tiếp 
+            cboLocNL.Items.Add("Ổn định");
+            cboLocNL.Items.Add("Cần nhập");
+
+            // Chọn mặc định là "Tất cả"
+            cboLocNL.SelectedIndex = 0;
         }
 
         public void LoadIngredients()
         {
-            gridDsNguyenlieu.RowTemplate.Height = 50;
             gridDsNguyenlieu.DataSource = nguyenlieubus.LoadIngredients();
             gridDsNguyenlieu.Columns["btnUpdate"].DisplayIndex = gridDsNguyenlieu.Columns.Count - 1;
 

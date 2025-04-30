@@ -37,7 +37,5 @@ namespace DAL
             string maxMaloai = (string)DataProvider.ExecuteScalar(query);
             return maxMaloai;
         }
-
-
     }
 }

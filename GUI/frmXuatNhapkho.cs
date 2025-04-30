@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,10 +28,8 @@ namespace GUI
 
         private void frmXuatNhapKho_Load(object sender, EventArgs e)
         {
+            LoadcboLoaiPhieu();
             LoadIngredients_name();
-            txtTongtien.ReadOnly = true;
-            txtDonvi.ReadOnly = true;
-            txtCannhap.ReadOnly = true;
             btnLuuphieu.Enabled = false;
             //cboLoaiphieu.Text = "Phiếu nhập";
         }
@@ -58,7 +57,12 @@ namespace GUI
             }
         }
 
-
+        private void LoadcboLoaiPhieu()
+        {
+            cboLoaiphieu.Items.Add("Phiếu nhập");
+            cboLoaiphieu.Items.Add("Phiếu xuất");
+            cboLoaiphieu.SelectedIndex = -1;
+        }
 
         public void GenerateID()  //Phát sinh mã phiếu mới
         {
@@ -94,15 +98,15 @@ namespace GUI
             int muccannhap = phieunhap.Restocking(cboTenNguyenlieu.Text);
             if (cboLoaiphieu.Text == "Phiếu nhập" && muccannhap > 0)
             {
-                txtCannhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text).ToString();
+                lblCanNhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text).ToString();
             }
             else if (cboLoaiphieu.Text == "Phiếu xuất")
             {
-                txtCannhap.Text = null;
+                lblCanNhap.Text = null;
             }
             else
             {
-                txtCannhap.Text = "0";
+                lblCanNhap.Text = "0";
             }
         }
 
@@ -134,7 +138,7 @@ namespace GUI
                 int thanhtien = soluong * gianhap;
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
                 tong += thanhtien;
-                txtTongtien.Text = tong.ToString();
+                lblTongTien.Text = tong.ToString();
                 btnLuuphieu.Enabled = true; //cho phép lưu phiếu
             }
             else //check thông tin phiếu xuất kho
@@ -171,15 +175,31 @@ namespace GUI
             bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
             if (laNhap)
             {
+                string tenDangNhap = Program.account.Rows[0]["TenDangNhap"].ToString();
+
                 //Thêm phiếu nhập kho 
-                int affectedRows = phieunhap.AddGoodsReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, txtGhichu.Text);
+                int affectedRows = phieunhap.AddGoodsReceipt(txtMaphieu.Text, tenDangNhap, DateTime.Now, txtGhichu.Text);
                 if (affectedRows == 0)
                 {
                     General.ShowError("Lưu phiếu nhập không thành công!", this);
                     return;
                 }
-            } 
-                
+
+                // Tạo phiếu chi
+                BUS_PhieuThuChi phieuThuChi = new BUS_PhieuThuChi();
+                string maPhieuChi = phieuThuChi.GenerateID();
+                int sotien = General.FormatMoneyToInt(lblTongTien.Text);
+                string maLoaiChi = "C01";
+                string ghiChu = "";
+
+                affectedRows = phieuThuChi.AddReceipt(maPhieuChi, tenDangNhap, sotien, maLoaiChi, ghiChu);
+                if (affectedRows == 0)
+                {
+                    General.ShowError("Tạo phiếu chi không thành công!", this);
+                    return;
+                }
+            }
+
             else
             {
                 //Thêm phiếu xuất kho
@@ -199,7 +219,7 @@ namespace GUI
                     int soluong = Convert.ToInt32(row.Cells["soluong"].Value);
 
                     if (laNhap)  //Thêm chi tiết nhập kho
-                    {    
+                    {
                         int gianhap = Convert.ToInt32(row.Cells["gianhap"].Value);
                         chitietnhap.AddEntryDetail(txtMaphieu.Text, manl, gianhap, soluong);
                     }
@@ -222,7 +242,7 @@ namespace GUI
             gridDsPhieu.Rows.Clear();
             gridDsPhieu.Columns.Clear();
             tong = 0;
-            txtTongtien.Text = "0";
+            lblTongTien.Text = "0";
         }
 
         //Tạo cột cho grid view theo các phiếu
@@ -303,9 +323,6 @@ namespace GUI
             return false;
         }
 
-
-
-
         public void LocTheoMa()
         {
             LoadReceipt();
@@ -329,7 +346,7 @@ namespace GUI
 
         private void cboTenNguyenlieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
+            lblDonvi.Text = phieunhap.TaiDonvi(cboTenNguyenlieu.Text);
             Restocking();
         }
 
@@ -347,12 +364,13 @@ namespace GUI
             }
 
             // Hiển thị tổng tiền lên TextBox
-            txtTongtien.Text = tongTien.ToString();
+            lblTongTien.Text = tongTien.ToString();
         }
 
         private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (cboLoaiphieu.Text == "Phiếu nhập") {
+            if (cboLoaiphieu.Text == "Phiếu nhập")
+            {
                 // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
                 if (e.RowIndex >= 0 && (gridDsPhieu.Columns[e.ColumnIndex].Name == "soluong" || gridDsPhieu.Columns[e.ColumnIndex].Name == "gianhap"))
                 {
@@ -368,7 +386,7 @@ namespace GUI
 
                     // Cập nhật tổng tiền
                     UpdateTongTien();
-                } 
+                }
             }
         }
 
@@ -376,6 +394,11 @@ namespace GUI
         {
             frmKho tonkho = new frmKho();
             General.ShowDialogWithBlur(tonkho);
+        }
+
+        private void btnHuyPhieu_Click(object sender, EventArgs e)
+        {
+            ResetForm();
         }
     }
 }
