@@ -22,6 +22,8 @@ namespace GUI
             pnlKho.Height = btnDashboard.Height + 31;
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
             General.SetFullScreen(this);
+            //pnlBanHang.Visible = false;
+
         }
 
         private void ResetAllButtons(Control parent)
@@ -73,7 +75,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenKho = true;
-                for (int i = pnlKho.Height; i <= (4 * btnKho.Height) + 40; i += 10)
+                for (int i = pnlKho.Height; i <= (3 * btnKho.Height) + 37; i += 10)
                 {
                     pnlKho.Height = i;
                     await Task.Delay(2);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -209,14 +211,16 @@ namespace GUI
             frm.Show();
         }
 
-        private void btnKiemkekho_Click_1(object sender, EventArgs e)
-        {
-            SetActiveButton(btnKiemkekho);
-        }
+        
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnDashboard);
+        }
+
+        private void btnBanhang_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(btnBanhang);
         }
     }
 }
