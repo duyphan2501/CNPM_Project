@@ -92,5 +92,13 @@ namespace DAL
             // Nếu không tìm thấy giá nhập, trả về 0 hoặc giá trị mặc định
             return result != null ? Convert.ToInt32(result) : 0;
         }
+
+        public string LayDonvi(string maNL)
+        {
+            string query = "select donvi from nguyenlieu where manl = @maNl";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maNL });
+            return result != null ? result.ToString() : "";
+        }
+
     }
 }

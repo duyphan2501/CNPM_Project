@@ -26,7 +26,7 @@ namespace GUI
         //Tải danh sách sản phẩm
         public void LoadProduct()
         {
-            gridThucDon.RowTemplate.Height = 150; //Chiều cao các hàng trong gridview
+            gridThucDon.RowTemplate.Height = 100; //Chiều cao các hàng trong gridview
             gridThucDon.DataSource = sanpham.LoadProduct();
             gridThucDon.Columns["btnUpdate"].DisplayIndex = gridThucDon.Columns.Count - 1; //đưa button về cuối
             ((DataGridViewImageColumn)gridThucDon.Columns["Hình Ảnh"]).ImageLayout = DataGridViewImageCellLayout.Zoom;

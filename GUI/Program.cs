@@ -21,10 +21,10 @@ namespace GUI
             ApplicationConfiguration.Initialize();
             ////Application.Run(new frmConfig());
             //Application.Run(new frmTaiKhoan());
-            Application.Run(new frmLogin());
+            //Application.Run(new frmLogin());
             //Application.Run(new frmAdmin());
             //Application.Run(new frmThemLoaiSanPham());
-            //Application.Run(new frmThucdon());
+            Application.Run(new frmThucdon());
             //Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmDinhLuong());
             //Application.Run(new frmKho());

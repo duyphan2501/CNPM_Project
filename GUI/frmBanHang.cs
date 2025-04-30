@@ -93,6 +93,8 @@ namespace GUI
 
         private void LoadProductCateGory()
         {
+            // Xóa tất cả các điều khiển trong panel loại sản phẩm trước khi thêm mới
+            pnlProductCategory.Controls.Clear();
             // Tạo nút "Tất cả" để chọn tất cả sản phẩm
             var allCategory = new ProductCategory("Tất cả", null);
             allCategory.SetActive(true);
@@ -111,6 +113,8 @@ namespace GUI
 
         private void LoadProducts()
         {
+            // Xóa tất cả các điều khiển trong panel sản phẩm trước khi thêm mới
+            pnlThucDon.Controls.Clear();
             // Lấy sản phẩm và hiển thị lên giao diện
             foreach (DataRow dr in sanPhamBUS.SelectOnSaleProduct().Rows)
             {
