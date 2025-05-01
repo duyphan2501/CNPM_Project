@@ -23,11 +23,10 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
-            grbXuatNhapKho.Visible = false;
+            
             gridDsThuchi.RowTemplate.Height = 50;
             LoadReceipt();
-            LoadLoaiPhieu();
-            btnLuu.Enabled = false;
+          
 
             cboLoaiPhieu.Text = "Tất cả";
             dateTungay.ValueChanged += Date_ValueChanged;
@@ -43,78 +42,17 @@ namespace GUI
             gridDsThuchi.DataSource = phieu.LoadReceipt();
         }
 
-        public void LoadLoaiPhieu()
-        {
-            cboLoaithuchi.DataSource = loaithuchi.LoadType();
-            cboLoaithuchi.DisplayMember = "TenLoai";
-            cboLoaithuchi.ValueMember = "MaLoaiThuChi";
-        }
-
-        private void picThemLoai_Click(object sender, EventArgs e)
-        {
-            frmLoaiThuChi themloai = new frmLoaiThuChi();
-            General.ShowDialogWithBlur(themloai);
-            LoadLoaiPhieu();
-        }
 
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
-            grbXuatNhapKho.Visible = true;
-            txtMaphieu.Text = phieu.GenerateID();
-            txtMaphieu.ReadOnly = true;
-            btnLuu.Enabled = true;
-
-            numSotien.Value = 0;
-            txtGhichu.Clear();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            if (numSotien.Value == 0)
-            {
-                General.ShowWarning("Vui lòng nhập số tiền!");
-                return;
-            }
-            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
+            frmThemPhieuThuChi themphieu = new frmThemPhieuThuChi();
+            General.ShowDialogWithBlur(themphieu);
             LoadReceipt();
-            btnLuu.Enabled = false;
-
-            numSotien.Value = 0;
-            txtGhichu.Clear();
-            frmThuChi_Load(sender, e);
-
-            MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn hủy phiếu này không?", "Xác nhận hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                frmThuChi_Load(sender, e);
-            }
-        }
 
         private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (cboLoaiPhieu.Text == "Tất cả")
-            //{
-            //    LoadPhieu();
-            //}
-            //else if (cboLoaiPhieu.Text == "Phiếu thu")
-            //{
-            //    LoadPhieu();
-            //    DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu thu%'";
-            //    gridDsThuchi.DataSource = dv;
-            //}
-            //else
-            //{
-            //    LoadPhieu();
-            //    DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
-            //    dv.RowFilter = $"[Loại phiếu] LIKE '%Phiếu chi%'";
-            //    gridDsThuchi.DataSource = dv;
-            //}
 
             LocTheoNgay();
             LocTheoLoaiPhieu();
@@ -184,9 +122,6 @@ namespace GUI
             // Cập nhật lại DataSource với bộ lọc
             gridDsThuchi.DataSource = dv.ToTable();  // Dùng ToTable để chuyển DataView thành DataTable
         }
-
-        
-
 
 
     }

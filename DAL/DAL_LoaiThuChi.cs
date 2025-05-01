@@ -24,10 +24,10 @@ namespace DAL
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        public DataTable LoadType()
+        public DataTable LoadType(string loaiphieu)
         {
-            string query = "select * from LoaiThuChi";
-            return DataProvider.ExecuteQuery(query);
+            string query = "select * from LoaiThuChi where Loai = @LoaiPhieu";
+            return DataProvider.ExecuteQuery(query, new object[] { loaiphieu });
         }
 
         // lấy mã loại thu chi lớn nhất
