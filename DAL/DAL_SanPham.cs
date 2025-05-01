@@ -83,7 +83,7 @@ namespace DAL
         //Lọc n sản phẩm bán chạy nhất
         public DataTable GetBestSellingProductst(int soluong, DateTime ngaybatdau, DateTime ngayketthuc)
         {
-            string query = "SELECT TOP (@SoLuong) TenSp AS 'Tên sản phẩm', SUM(SoLuong) AS 'Tổng số lượng bán', DonGia AS 'Đơn giá', DonGia * SUM(SoLuong) AS 'Thành tiền' " +
+            string query = "SELECT TOP (@SoLuong) TenSp AS 'Tên sản phẩm', SUM(SoLuong) AS 'Tổng số lượng bán'" +
                            "FROM vw_HoaDonChiTiet " +
                            "WHERE NgayLap BETWEEN @TuNgay AND @DenNgay " +
                            "GROUP BY TenSp, DonGia " +

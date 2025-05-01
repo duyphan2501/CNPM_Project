@@ -50,5 +50,10 @@ namespace BUS
             }
         }
 
+        public DataTable LayDoanhThuTheoThang()
+        {
+            return phieuthuchidal.LayDoanhThuTheoThang();
+        }
+
     }
 }

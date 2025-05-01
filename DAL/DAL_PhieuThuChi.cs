@@ -45,6 +45,22 @@ namespace DAL
             return maxMaphieu;
         }
 
+        public DataTable LayDoanhThuTheoThang()
+        {
+            string query = @"
+                SELECT 
+                    YEAR(NgayLap) AS Nam,
+                    MONTH(NgayLap) AS Thang,
+                    SUM(CASE WHEN L.Loai = 'Thu' THEN P.SoTien ELSE 0 END) AS DoanhThu,
+                    SUM(CASE WHEN L.Loai = 'Chi' THEN P.SoTien ELSE 0 END) AS ChiPhi
+                FROM PhieuThuChi P
+                JOIN LoaiThuChi L ON P.MaLoaiThuChi = L.MaLoaiThuChi
+                GROUP BY YEAR(NgayLap), MONTH(NgayLap)
+                ORDER BY Nam, Thang;
+            ";
+
+            return DataProvider.ExecuteQuery(query);
+        }
 
 
     }
