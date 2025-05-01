@@ -63,31 +63,7 @@ namespace GUI
         }
 
 
-        private bool isOpenKho = false;    //Biến cờ để biết trạng thái xổ menu
-        private async void btnKho_Click(object sender, EventArgs e)
-        {
-            SetActiveButton(btnKho);
-            if (pnlKho.Height > btnKho.Height + 40)
-            {
-                isOpenKho = true;
-            }
-            if (isOpenKho == false)
-            {
-                //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
-                isOpenKho = true;
-                for (int i = pnlKho.Height; i <= (3 * btnKho.Height) + 37; i += 10)
-                {
-                    pnlKho.Height = i;
-                    await Task.Delay(1);         // Dừng 5ms để tạo hiệu ứng mượt
-                }
-            }
-            else
-            {
-                isOpenKho = false;
-                pnlKho.Height = btnKho.Height + 31;
-                //btnKho.FillColor = Color.FromArgb(212, 151, 96);   //Trở lại màu ban đầu khi tắt xổ
-            }
-        }
+        
 
         private void btnLoinhuan_Click(object sender, EventArgs e)
         {
@@ -112,7 +88,7 @@ namespace GUI
             if (isOpenBaocao == false)
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
-                isOpenKho = true;
+                isOpenBaocao = true;
                 for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 37; i += 10)
                 {
                     pnlBaocaoTK.Height = i;
@@ -170,12 +146,7 @@ namespace GUI
             ShowFormInPanel(new frmTaiKhoan());
         }
 
-        private void btnXuatnhapkho_Click_1(object sender, EventArgs e)
-        {
-            SetActiveButton(btnXuatnhapkho);
-            ShowFormInPanel(new frmXuatNhapKho());
-
-        }
+       
 
         private void btnThuchi_Click(object sender, EventArgs e)
         {

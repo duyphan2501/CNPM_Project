@@ -27,29 +27,28 @@ namespace BUS
             return phieuthuchidal.LoadReceipt();
         }
 
-        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
+        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string loai, string ghichu)
         {
-            return phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
+            return phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,loai,ghichu);
         }
 
         //Phát sinh mã phiếu tự động
         public string GenerateID(bool isExpense)
         {
-            // lấy mã phiếu lớn nhất
-            string maphieu = phieuthuchidal.MaxID();
-            string start = isExpense ? "PC": "PT";
-            // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PH0001
-            if (maphieu == null)
+            string maphieu = phieuthuchidal.MaxID(isExpense); // gọi đúng theo loại phiếu
+            string start = isExpense ? "PC" : "PT";
+
+            if (string.IsNullOrEmpty(maphieu))
             {
                 return start + "0001";
             }
             else
             {
-                // lấy số sau SP
                 int num = int.Parse(maphieu.Substring(2)) + 1;
                 return start + num.ToString("D4");
             }
         }
+
 
         public DataTable LayDoanhThuTheoThang()
         {

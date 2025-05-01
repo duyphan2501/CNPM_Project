@@ -24,26 +24,26 @@ namespace DAL
 
         public DataTable LoadReceipt()
         {
-            string query = "select ptc.TenDangNhap as 'Tài khoản lập phiếu', ltc.Loai as 'Loại phiếu', ltc.TenLoai as 'Loại thu chi', ptc.SoTien as 'Số tiền', ptc.GhiChu as 'Ghi chú', ptc.NgayLap as 'Ngày lập' " +
-                            "from PhieuThuChi ptc, LoaiThuChi ltc " +
-                            "where ptc.MaLoaiThuChi = ltc.MaLoaiThuChi";
+            string query = "select MaPhieu as 'Mã Phiếu', TenDangNhap as 'Tên đăng nhập', Loai as 'Loại phiếu', SoTien as 'Số tiền', GhiChu as 'Ghi chú', NgayLap as 'Ngày lập' from PhieuThuChi";
             return DataProvider.ExecuteQuery(query);
         }
 
-        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
+        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string loai, string ghichu)
         {
-            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, MaLoaiThuChi, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_MaLoaiThuChi,@_GhiChu)";
-            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu };
+            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, Loai, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
+            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,loai,ghichu };
             return DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        // lấy mã phiếu thu cho lớn nhất
-        public string MaxID()
+        // lấy mã phiếu thu cho lớn nhất theo từng loại mã
+        public string MaxID(bool isExpense)
         {
-            string query = "select top 1 MaPhieu from PhieuThuChi order by MaPhieu desc";
+            string prefix = isExpense ? "PC" : "PT";
+            string query = $"select top 1 MaPhieu from PhieuThuChi where MaPhieu like '{prefix}%' order by MaPhieu desc";
             string maxMaphieu = (string)DataProvider.ExecuteScalar(query);
             return maxMaphieu;
         }
+
 
         public DataTable LayDoanhThuTheoThang()
         {

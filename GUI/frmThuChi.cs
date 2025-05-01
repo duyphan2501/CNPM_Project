@@ -21,7 +21,7 @@ namespace GUI
         {
             gridDsThuchi.RowTemplate.Height = 50;
             LoadReceipt();
-          
+
 
             cboLoaiPhieu.Text = "Tất cả";
             dateDenngay.Value = DateTime.Now;
@@ -51,17 +51,17 @@ namespace GUI
         }
 
 
-        private void picThemLoai_Click(object sender, EventArgs e)
-        {
+        //private void picThemLoai_Click(object sender, EventArgs e)
+        //{
 
-            LocTheoNgay();
-            LocTheoLoaiPhieu();
-            
-        }
+        //    LocTheoNgay();
+        //    LocTheoLoaiPhieu();
+
+        //}
 
         private void Date_ValueChanged(object sender, EventArgs e)
         {
-              
+
             LocTheoNgay();
             LocTheoLoaiPhieu();
         }
@@ -101,7 +101,7 @@ namespace GUI
 
         private void LocTheoLoaiPhieu()
         {
-            
+
             DataView dv = ((DataTable)gridDsThuchi.DataSource).DefaultView;
             LoadReceipt();
 
@@ -112,17 +112,22 @@ namespace GUI
             }
             else if (cboLoaiPhieu.Text == "Phiếu thu")
             {
-                dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu thu%'";
+                dv.RowFilter = "[Loại phiếu] LIKE '%Thu%'";
             }
-            else 
+            else
             {
-                dv.RowFilter = "[Loại phiếu] LIKE '%Phiếu chi%'";
+                dv.RowFilter = "[Loại phiếu] LIKE '%Chi%'";
             }
 
             // Cập nhật lại DataSource với bộ lọc
             gridDsThuchi.DataSource = dv.ToTable();  // Dùng ToTable để chuyển DataView thành DataTable
         }
 
+        private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LocTheoNgay();
+            LocTheoLoaiPhieu();
 
+        }
     }
 }
