@@ -57,7 +57,7 @@ namespace DAL
         //Tải tên sản phẩm lên combobox
         public DataTable LoadRecipe_name()
         {
-            string query = "select distinct TenNL from NguyenLieu";
+            string query = "select distinct TenNL, MaNL from NguyenLieu";
             return DataProvider.ExecuteQuery(query);
         }
 
@@ -68,6 +68,8 @@ namespace DAL
                            "where dl.MaSp = @MaSp";
             return DataProvider.ExecuteQuery(query, new object[] { maSp });
         }
+
+
 
     }
 }

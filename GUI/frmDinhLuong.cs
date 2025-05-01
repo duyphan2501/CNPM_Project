@@ -30,12 +30,13 @@ namespace GUI
         {
             cboTenNguyenLieu.DataSource = dinhluong.LoadRecipe_name();
             cboTenNguyenLieu.DisplayMember = "TenNL";
+            cboTenNguyenLieu.ValueMember = "MaNL";
         }
 
         //Load lại danh sách định lượng theo tên sản phẩm trên griview
         public void LoadRecipe()
         {
-            gridDsDinhluong.RowTemplate.Height = 50;
+            gridDsDinhluong.RowTemplate.Height = 35;
             gridDsDinhluong.DataSource = dinhluong.LoadRecipe(txtTenSp.Text);
             gridDsDinhluong.Columns["btnUpdate"].DisplayIndex = gridDsDinhluong.Columns.Count - 1; //đưa button về cuối
 
@@ -62,11 +63,16 @@ namespace GUI
                 }
             }
             return false;
-        } 
+        }
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
-
+            int soLuong = Convert.ToInt32(numSoluongNL.Value);
+            if (soLuong == 0)
+            {
+                General.ShowWarning("Vui lòng nhập số lượng nguyên liệu", this);
+                return;
+            }
             string tennl = cboTenNguyenLieu.Text;
 
             if (IsIngredientDuplicated(tennl))
@@ -75,8 +81,7 @@ namespace GUI
                 return;
             }
 
-            dinhluong.AddRecipe(Masp, tennl, Convert.ToInt32(numSoluongNL.Value));
-            MessageBox.Show("Đã thêm nguyên liệu vào định lượng", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dinhluong.AddRecipe(Masp, tennl, soLuong);
             numSoluongNL.Value = 0;
             LoadRecipe();
         }
@@ -109,13 +114,11 @@ namespace GUI
         //Sửa đinh lượng
         private void btnSua_Click(object sender, EventArgs e)
         {
-
             dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
             MessageBox.Show("Cập nhật thông tin thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             cboTenNguyenLieu.Enabled = true;
             LoadRecipe();
             frmDinhLuong_Load(sender, e);
-
         }
 
         //Khi xóa định lượng
@@ -131,8 +134,18 @@ namespace GUI
                 dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
                 MessageBox.Show("Đã xóa nguyên liệu khỏi định lượng", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
             frmDinhLuong_Load(sender, e);
+        }
+
+        private void cboTenNguyenLieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTenNguyenLieu.SelectedValue != null)
+            {
+                string maNL = cboTenNguyenLieu.SelectedValue.ToString();
+                string donvi = new BUS_NguyenLieu().LayDonvi(maNL);
+                lblDonvi.Text = donvi;
+            }
         }
     }
 }

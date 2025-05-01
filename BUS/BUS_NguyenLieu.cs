@@ -81,5 +81,10 @@ namespace BUS
         {
             return nguyenlieudal.GetGiaNhap(maNL);
         }
+
+        public string LayDonvi(string maNL)
+        {
+            return nguyenlieudal.LayDonvi(maNL);
+        }
     }
 }
