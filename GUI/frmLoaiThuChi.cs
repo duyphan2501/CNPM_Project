@@ -22,7 +22,7 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (IsDuplicate(txtTenloai.Text))
+            if (IsDuplicate(txtTenloai.Text,cboLoai.Text))
             {
                 return;
             }
@@ -49,9 +49,9 @@ namespace GUI
             this.Close();
         }
 
-        private bool IsDuplicate(string tenloai) //kiểm tra trùng tên loại thu chi
+        private bool IsDuplicate(string tenloai, string loaiphieu) //kiểm tra trùng tên loại thu chi
         {
-            DataTable dt = loaithuchi.LoadType();
+            DataTable dt = loaithuchi.LoadType(loaiphieu);
             foreach (DataRow row in dt.Rows)
             {
                 string TenLoai = row["TenLoai"].ToString().ToLower();

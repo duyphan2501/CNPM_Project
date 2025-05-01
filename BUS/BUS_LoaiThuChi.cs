@@ -22,9 +22,9 @@ namespace BUS
             loaithuchidal.AddType(maloaithuchi, tenloai, loai);
         }
 
-        public DataTable LoadType()
+        public DataTable LoadType(string loaiphieu)
         {
-            return loaithuchidal.LoadType();
+            return loaithuchidal.LoadType(loaiphieu);
         }
 
         //Phát sinh mã loại thu chi
