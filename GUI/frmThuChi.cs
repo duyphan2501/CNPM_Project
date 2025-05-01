@@ -23,7 +23,6 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
-            
             gridDsThuchi.RowTemplate.Height = 50;
             LoadReceipt();
           
@@ -33,7 +32,7 @@ namespace GUI
             dateDenngay.ValueChanged += Date_ValueChanged;
 
 
-            dateDenngay.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
+            dateDenngay.Value = DateTime.Now.AddDays(1);  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
             dateTungay.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
         }
 

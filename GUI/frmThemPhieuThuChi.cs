@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GUI
 {
@@ -27,11 +28,17 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cboLoaiPhieu.Text))
+            {
+                General.ShowWarning("Vui chọn loại phiếu!");
+                return;
+            }
             if (numSotien.Value == 0)
             {
                 General.ShowWarning("Vui lòng nhập số tiền!");
                 return;
             }
+            
             phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
             btnLuu.Enabled = false;
 
@@ -39,6 +46,8 @@ namespace GUI
             txtGhichu.Clear();
 
             MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
