@@ -187,7 +187,7 @@ namespace GUI
 
                 // Tạo phiếu chi
                 BUS_PhieuThuChi phieuThuChi = new BUS_PhieuThuChi();
-                string maPhieuChi = phieuThuChi.GenerateID();
+                string maPhieuChi = phieuThuChi.GenerateID(true);
                 int sotien = General.FormatMoneyToInt(lblTongTien.Text);
                 string maLoaiChi = "C01";
                 string ghiChu = "";

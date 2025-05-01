@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -40,7 +39,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             cboTrangthai = new Guna.UI2.WinForms.Guna2ComboBox();
-            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridDsTaikhoan = new Guna.UI2.WinForms.Guna2DataGridView();
             btnUpdate = new DataGridViewImageColumn();
@@ -54,6 +52,7 @@
             // cboTrangthai
             // 
             cboTrangthai.BackColor = Color.Transparent;
+            cboTrangthai.BorderRadius = 5;
             cboTrangthai.CustomizableEdges = customizableEdges1;
             cboTrangthai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -63,20 +62,13 @@
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;
             cboTrangthai.Items.AddRange(new object[] { "Hoạt Động", "Vô Hiệu" });
-            cboTrangthai.Location = new Point(1535, 73);
-            cboTrangthai.Margin = new Padding(3, 5, 3, 5);
+            cboTrangthai.Location = new Point(1228, 58);
+            cboTrangthai.Margin = new Padding(2, 4, 2, 4);
             cboTrangthai.Name = "cboTrangthai";
             cboTrangthai.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            cboTrangthai.Size = new Size(235, 36);
+            cboTrangthai.Size = new Size(189, 36);
             cboTrangthai.TabIndex = 4;
             cboTrangthai.SelectedIndexChanged += cboTrangthai_SelectedIndexChanged;
-            // 
-            // guna2BorderlessForm1
-            // 
-            guna2BorderlessForm1.BorderRadius = 20;
-            guna2BorderlessForm1.ContainerControl = this;
-            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // guna2GroupBox1
             // 
@@ -88,11 +80,11 @@
             guna2GroupBox1.CustomizableEdges = customizableEdges3;
             guna2GroupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2GroupBox1.ForeColor = Color.Black;
-            guna2GroupBox1.Location = new Point(31, 143);
-            guna2GroupBox1.Margin = new Padding(3, 5, 3, 5);
+            guna2GroupBox1.Location = new Point(25, 114);
+            guna2GroupBox1.Margin = new Padding(2, 4, 2, 4);
             guna2GroupBox1.Name = "guna2GroupBox1";
             guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2GroupBox1.Size = new Size(1841, 935);
+            guna2GroupBox1.Size = new Size(1473, 748);
             guna2GroupBox1.TabIndex = 7;
             guna2GroupBox1.Text = "Danh sách tài khoản";
             // 
@@ -122,14 +114,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsTaikhoan.DefaultCellStyle = dataGridViewCellStyle3;
             gridDsTaikhoan.GridColor = Color.White;
-            gridDsTaikhoan.Location = new Point(17, 68);
-            gridDsTaikhoan.Margin = new Padding(3, 5, 3, 5);
+            gridDsTaikhoan.Location = new Point(14, 54);
+            gridDsTaikhoan.Margin = new Padding(2, 4, 2, 4);
             gridDsTaikhoan.Name = "gridDsTaikhoan";
             gridDsTaikhoan.ReadOnly = true;
             gridDsTaikhoan.RowHeadersVisible = false;
             gridDsTaikhoan.RowHeadersWidth = 51;
             gridDsTaikhoan.RowTemplate.Height = 24;
-            gridDsTaikhoan.Size = new Size(1803, 845);
+            gridDsTaikhoan.Size = new Size(1442, 676);
             gridDsTaikhoan.TabIndex = 0;
             gridDsTaikhoan.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridDsTaikhoan.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -170,12 +162,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(1367, 73);
+            label1.Location = new Point(1100, 58);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(134, 32);
+            label1.Size = new Size(112, 28);
             label1.TabIndex = 8;
             label1.Text = "Trạng Thái";
             // 
@@ -202,27 +195,28 @@
             btnTaotaikhoan.FillColor2 = Color.DarkOrange;
             btnTaotaikhoan.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnTaotaikhoan.ForeColor = Color.White;
-            btnTaotaikhoan.Location = new Point(61, 40);
-            btnTaotaikhoan.Margin = new Padding(3, 5, 3, 5);
+            btnTaotaikhoan.Location = new Point(25, 39);
+            btnTaotaikhoan.Margin = new Padding(2, 4, 2, 4);
             btnTaotaikhoan.Name = "btnTaotaikhoan";
             btnTaotaikhoan.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnTaotaikhoan.Size = new Size(193, 69);
+            btnTaotaikhoan.Size = new Size(154, 55);
             btnTaotaikhoan.TabIndex = 1;
             btnTaotaikhoan.Text = "Tạo tài khoản";
             btnTaotaikhoan.Click += btnTaotaikhoan_Click;
             // 
             // frmTaiKhoan
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(221, 222, 224);
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1920, 1118);
+            ClientSize = new Size(1536, 882);
             Controls.Add(label1);
             Controls.Add(guna2GroupBox1);
             Controls.Add(cboTrangthai);
             Controls.Add(btnTaotaikhoan);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 5, 3, 5);
+            Margin = new Padding(2, 4, 2, 4);
             Name = "frmTaiKhoan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTaiKhoan";
@@ -237,7 +231,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnTaotaikhoan;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private Guna.UI2.WinForms.Guna2ComboBox cboTrangthai;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2DataGridView gridDsTaikhoan;
         private System.Windows.Forms.Label label1;

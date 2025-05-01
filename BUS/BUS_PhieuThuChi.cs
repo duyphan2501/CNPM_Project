@@ -33,26 +33,32 @@ namespace BUS
         }
 
         //Phát sinh mã phiếu tự động
-        public string GenerateID()
+        public string GenerateID(bool isExpense)
         {
             // lấy mã phiếu lớn nhất
             string maphieu = phieuthuchidal.MaxID();
+            string start = isExpense ? "PC": "PT";
             // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PH0001
             if (maphieu == null)
             {
-                return "PH0001";
+                return start + "0001";
             }
             else
             {
                 // lấy số sau SP
                 int num = int.Parse(maphieu.Substring(2)) + 1;
-                return "PH" + num.ToString("D4");
+                return start + num.ToString("D4");
             }
         }
 
         public DataTable LayDoanhThuTheoThang()
         {
             return phieuthuchidal.LayDoanhThuTheoThang();
+        }
+
+        public DataTable LayDuLieuThongKe(string kieu, DateTime tuNgay, DateTime denNgay)
+        {
+            return phieuthuchidal.LayDuLieuThongKe(kieu, tuNgay, denNgay);
         }
 
     }

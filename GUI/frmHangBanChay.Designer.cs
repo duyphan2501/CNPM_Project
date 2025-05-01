@@ -28,26 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            pnlBieuDo = new Guna.UI2.WinForms.Guna2Panel();
-            gridHangbanchay = new Guna.UI2.WinForms.Guna2DataGridView();
             grbXuatNhapKho = new Guna.UI2.WinForms.Guna2GroupBox();
             dateStop = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dateStart = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -56,98 +51,16 @@
             label2 = new Label();
             label1 = new Label();
             label9 = new Label();
-            guna2GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gridHangbanchay).BeginInit();
+            gridHangbanchay = new Guna.UI2.WinForms.Guna2DataGridView();
+            pnlBieuDo = new Guna.UI2.WinForms.Guna2Panel();
             grbXuatNhapKho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSosanpham).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridHangbanchay).BeginInit();
             SuspendLayout();
-            // 
-            // guna2GroupBox1
-            // 
-            guna2GroupBox1.BackColor = SystemColors.Control;
-            guna2GroupBox1.BorderThickness = 0;
-            guna2GroupBox1.Controls.Add(pnlBieuDo);
-            guna2GroupBox1.Controls.Add(gridHangbanchay);
-            guna2GroupBox1.CustomBorderThickness = new Padding(0);
-            guna2GroupBox1.CustomizableEdges = customizableEdges3;
-            guna2GroupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2GroupBox1.ForeColor = Color.Black;
-            guna2GroupBox1.Location = new Point(26, 196);
-            guna2GroupBox1.Margin = new Padding(2, 4, 2, 4);
-            guna2GroupBox1.Name = "guna2GroupBox1";
-            guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2GroupBox1.Size = new Size(1487, 678);
-            guna2GroupBox1.TabIndex = 19;
-            guna2GroupBox1.Text = "Danh sách sản phẩm";
-            // 
-            // pnlBieuDo
-            // 
-            pnlBieuDo.BackColor = Color.Transparent;
-            pnlBieuDo.CustomizableEdges = customizableEdges1;
-            pnlBieuDo.Location = new Point(734, 75);
-            pnlBieuDo.Name = "pnlBieuDo";
-            pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlBieuDo.Size = new Size(730, 594);
-            pnlBieuDo.TabIndex = 1;
-            // 
-            // gridHangbanchay
-            // 
-            gridHangbanchay.AllowUserToAddRows = false;
-            gridHangbanchay.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            gridHangbanchay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(217, 98, 0);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            gridHangbanchay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            gridHangbanchay.ColumnHeadersHeight = 40;
-            gridHangbanchay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 167, 73);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            gridHangbanchay.DefaultCellStyle = dataGridViewCellStyle3;
-            gridHangbanchay.GridColor = Color.White;
-            gridHangbanchay.Location = new Point(30, 75);
-            gridHangbanchay.Margin = new Padding(2, 4, 2, 4);
-            gridHangbanchay.Name = "gridHangbanchay";
-            gridHangbanchay.ReadOnly = true;
-            gridHangbanchay.RowHeadersVisible = false;
-            gridHangbanchay.RowHeadersWidth = 51;
-            gridHangbanchay.RowTemplate.Height = 35;
-            gridHangbanchay.Size = new Size(671, 594);
-            gridHangbanchay.TabIndex = 0;
-            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.Font = null;
-            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            gridHangbanchay.ThemeStyle.BackColor = Color.White;
-            gridHangbanchay.ThemeStyle.GridColor = Color.White;
-            gridHangbanchay.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            gridHangbanchay.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            gridHangbanchay.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gridHangbanchay.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            gridHangbanchay.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            gridHangbanchay.ThemeStyle.HeaderStyle.Height = 40;
-            gridHangbanchay.ThemeStyle.ReadOnly = true;
-            gridHangbanchay.ThemeStyle.RowsStyle.BackColor = Color.White;
-            gridHangbanchay.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            gridHangbanchay.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gridHangbanchay.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-            gridHangbanchay.ThemeStyle.RowsStyle.Height = 35;
-            gridHangbanchay.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            gridHangbanchay.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // grbXuatNhapKho
             // 
+            grbXuatNhapKho.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             grbXuatNhapKho.Controls.Add(dateStop);
             grbXuatNhapKho.Controls.Add(dateStart);
             grbXuatNhapKho.Controls.Add(btnThongKe);
@@ -156,13 +69,13 @@
             grbXuatNhapKho.Controls.Add(label1);
             grbXuatNhapKho.Controls.Add(label9);
             grbXuatNhapKho.CustomBorderColor = Color.FromArgb(239, 119, 18);
-            grbXuatNhapKho.CustomizableEdges = customizableEdges13;
+            grbXuatNhapKho.CustomizableEdges = customizableEdges9;
             grbXuatNhapKho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbXuatNhapKho.ForeColor = Color.White;
             grbXuatNhapKho.Location = new Point(29, 40);
             grbXuatNhapKho.Margin = new Padding(3, 4, 3, 4);
             grbXuatNhapKho.Name = "grbXuatNhapKho";
-            grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges10;
             grbXuatNhapKho.Size = new Size(1484, 148);
             grbXuatNhapKho.TabIndex = 20;
             grbXuatNhapKho.Text = "Thống kê mặt hàng bán chạy nhất";
@@ -171,7 +84,7 @@
             // 
             dateStop.BorderRadius = 5;
             dateStop.Checked = true;
-            dateStop.CustomizableEdges = customizableEdges5;
+            dateStop.CustomizableEdges = customizableEdges1;
             dateStop.Font = new Font("Segoe UI", 9F);
             dateStop.Format = DateTimePickerFormat.Long;
             dateStop.Location = new Point(653, 83);
@@ -179,7 +92,7 @@
             dateStop.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStop.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStop.Name = "dateStop";
-            dateStop.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            dateStop.ShadowDecoration.CustomizableEdges = customizableEdges2;
             dateStop.Size = new Size(240, 40);
             dateStop.TabIndex = 14;
             dateStop.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
@@ -188,7 +101,7 @@
             // 
             dateStart.BorderRadius = 5;
             dateStart.Checked = true;
-            dateStart.CustomizableEdges = customizableEdges7;
+            dateStart.CustomizableEdges = customizableEdges3;
             dateStart.Font = new Font("Segoe UI", 9F);
             dateStart.Format = DateTimePickerFormat.Long;
             dateStart.Location = new Point(319, 83);
@@ -196,7 +109,7 @@
             dateStart.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStart.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStart.Name = "dateStart";
-            dateStart.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            dateStart.ShadowDecoration.CustomizableEdges = customizableEdges4;
             dateStart.Size = new Size(240, 43);
             dateStart.TabIndex = 14;
             dateStart.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
@@ -207,7 +120,7 @@
             btnThongKe.BackColor = Color.Transparent;
             btnThongKe.BorderColor = Color.FromArgb(239, 119, 18);
             btnThongKe.BorderThickness = 1;
-            btnThongKe.CustomizableEdges = customizableEdges9;
+            btnThongKe.CustomizableEdges = customizableEdges5;
             btnThongKe.DisabledState.BorderColor = Color.DarkGray;
             btnThongKe.DisabledState.CustomBorderColor = Color.DarkGray;
             btnThongKe.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -220,7 +133,7 @@
             btnThongKe.Location = new Point(961, 72);
             btnThongKe.Margin = new Padding(3, 4, 3, 4);
             btnThongKe.Name = "btnThongKe";
-            btnThongKe.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnThongKe.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnThongKe.Size = new Size(115, 51);
             btnThongKe.TabIndex = 13;
             btnThongKe.Text = "Thống kê";
@@ -231,13 +144,13 @@
             numSosanpham.BackColor = Color.Transparent;
             numSosanpham.BorderRadius = 5;
             numSosanpham.Cursor = Cursors.IBeam;
-            numSosanpham.CustomizableEdges = customizableEdges11;
+            numSosanpham.CustomizableEdges = customizableEdges7;
             numSosanpham.Font = new Font("Segoe UI", 9F);
             numSosanpham.Location = new Point(29, 83);
             numSosanpham.Margin = new Padding(3, 5, 3, 5);
             numSosanpham.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             numSosanpham.Name = "numSosanpham";
-            numSosanpham.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            numSosanpham.ShadowDecoration.CustomizableEdges = customizableEdges8;
             numSosanpham.Size = new Size(204, 40);
             numSosanpham.TabIndex = 13;
             numSosanpham.UpDownButtonFillColor = Color.FromArgb(239, 119, 18);
@@ -278,31 +191,97 @@
             label9.TabIndex = 10;
             label9.Text = "Số sản phẩm";
             // 
+            // gridHangbanchay
+            // 
+            gridHangbanchay.AllowUserToAddRows = false;
+            gridHangbanchay.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            gridHangbanchay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            gridHangbanchay.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(217, 98, 0);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            gridHangbanchay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            gridHangbanchay.ColumnHeadersHeight = 40;
+            gridHangbanchay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 167, 73);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            gridHangbanchay.DefaultCellStyle = dataGridViewCellStyle3;
+            gridHangbanchay.GridColor = Color.White;
+            gridHangbanchay.Location = new Point(29, 276);
+            gridHangbanchay.Margin = new Padding(2, 4, 2, 4);
+            gridHangbanchay.Name = "gridHangbanchay";
+            gridHangbanchay.ReadOnly = true;
+            gridHangbanchay.RowHeadersVisible = false;
+            gridHangbanchay.RowHeadersWidth = 51;
+            gridHangbanchay.RowTemplate.Height = 35;
+            gridHangbanchay.Size = new Size(739, 573);
+            gridHangbanchay.TabIndex = 0;
+            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.Font = null;
+            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            gridHangbanchay.ThemeStyle.BackColor = Color.White;
+            gridHangbanchay.ThemeStyle.GridColor = Color.White;
+            gridHangbanchay.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            gridHangbanchay.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            gridHangbanchay.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gridHangbanchay.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            gridHangbanchay.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            gridHangbanchay.ThemeStyle.HeaderStyle.Height = 40;
+            gridHangbanchay.ThemeStyle.ReadOnly = true;
+            gridHangbanchay.ThemeStyle.RowsStyle.BackColor = Color.White;
+            gridHangbanchay.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            gridHangbanchay.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gridHangbanchay.ThemeStyle.RowsStyle.ForeColor = Color.Black;
+            gridHangbanchay.ThemeStyle.RowsStyle.Height = 35;
+            gridHangbanchay.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            gridHangbanchay.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
+            // pnlBieuDo
+            // 
+            pnlBieuDo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlBieuDo.BackColor = Color.Transparent;
+            pnlBieuDo.CustomizableEdges = customizableEdges11;
+            pnlBieuDo.Location = new Point(793, 218);
+            pnlBieuDo.Name = "pnlBieuDo";
+            pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            pnlBieuDo.Size = new Size(720, 631);
+            pnlBieuDo.TabIndex = 1;
+            // 
             // frmHangBanChay
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(221, 222, 224);
             ClientSize = new Size(1536, 882);
+            Controls.Add(gridHangbanchay);
+            Controls.Add(pnlBieuDo);
             Controls.Add(grbXuatNhapKho);
-            Controls.Add(guna2GroupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "frmHangBanChay";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmHangBanChay";
             Load += frmHangBanChay_Load;
-            guna2GroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gridHangbanchay).EndInit();
             grbXuatNhapKho.ResumeLayout(false);
             grbXuatNhapKho.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numSosanpham).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridHangbanchay).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
-        private Guna.UI2.WinForms.Guna2DataGridView gridHangbanchay;
         private Guna.UI2.WinForms.Guna2GroupBox grbXuatNhapKho;
         private Guna.UI2.WinForms.Guna2GradientButton btnThongKe;
         private Guna.UI2.WinForms.Guna2NumericUpDown numSosanpham;
@@ -311,6 +290,7 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dateStart;
         private Label label2;
         private Label label1;
+        private Guna.UI2.WinForms.Guna2DataGridView gridHangbanchay;
         private Guna.UI2.WinForms.Guna2Panel pnlBieuDo;
     }
 }

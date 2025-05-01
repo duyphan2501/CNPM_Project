@@ -365,7 +365,7 @@ namespace GUI
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            frmOrderList frmDonHang = new frmOrderList("cashie");
+            frmOrderList frmDonHang = new frmOrderList("cashier");
             General.ShowDialogWithBlur(frmDonHang);
         }
 

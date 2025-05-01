@@ -84,7 +84,7 @@ namespace GUI
         private void btnThemphieu_Click(object sender, EventArgs e)
         {
             grbXuatNhapKho.Visible = true;
-            txtMaphieu.Text = phieu.GenerateID();
+            txtMaphieu.Text = phieu.GenerateID(false);
             txtMaphieu.ReadOnly = true;
             btnLuu.Enabled = true;
             numSotien.Value = 0;

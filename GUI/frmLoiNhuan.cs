@@ -20,89 +20,190 @@ namespace GUI
             InitializeComponent();
         }
 
+        DataTable data;
+        private void frmLoiNhuan_Load(object sender, EventArgs e)
+        {
+            LoadCboKieuThongKe();
+            dtpTuNgay.Value = DateTime.Now.AddDays(-120);
+            dtpDenNgay.Value = DateTime.Now;
+            LoadDataAndCreateChart();
+        }
+
+        private void LoadCboKieuThongKe()
+        {
+            cboKieuThongKe.Items.Clear();
+            cboKieuThongKe.Items.Add("Tháng");
+            cboKieuThongKe.Items.Add("Quý");
+            cboKieuThongKe.Items.Add("Năm");
+            cboKieuThongKe.SelectedIndex = 0;
+        }
+
         private void LoadDataAndCreateChart()
         {
-            // Giả sử bạn đã có dữ liệu từ database
-            DataTable data = new BUS_PhieuThuChi().LayDoanhThuTheoThang();
+            // Xoá các điều khiển cũ
+            pnlBieuDo.Controls.Clear();
 
-            // Kiểm tra xem có dữ liệu hay không
+            // Lấy dữ liệu từ database
+            LayDuLieuThongKe();
+
             if (data.Rows.Count > 0)
             {
-                // Tạo các series cho Doanh thu và Chi phí
+                // Series 1: Doanh Thu (cột)
                 Series revenueSeries = new Series("Doanh Thu")
                 {
-                    ChartType = SeriesChartType.Column,  // Biểu đồ dạng cột
-                    Color = Color.Green,  // Màu xanh cho doanh thu
-                    BorderWidth = 2  // Đặt độ dày cho đường biên của cột
+                    ChartType = SeriesChartType.Column,
+                    Color = Color.RoyalBlue,
+                    BorderWidth = 2,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold)
                 };
 
+                // Series 2: Chi Phí (cột)
                 Series costSeries = new Series("Chi Phí")
                 {
-                    ChartType = SeriesChartType.Column,  // Biểu đồ dạng cột
-                    Color = Color.Red,  // Màu đỏ cho chi phí
-                    BorderWidth = 2  // Đặt độ dày cho đường biên của cột
+                    ChartType = SeriesChartType.Column,
+                    Color = Color.Orange,
+                    BorderWidth = 2,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold)
                 };
 
-                // Duyệt qua từng dòng trong DataTable và thêm dữ liệu vào các series
+                // Series 3: Lợi Nhuận (đường)
+                Series profitSeries = new Series("Lợi Nhuận")
+                {
+                    ChartType = SeriesChartType.Line,
+                    Color = Color.ForestGreen,
+                    BorderWidth = 3,
+                    MarkerStyle = MarkerStyle.Circle,
+                    MarkerSize = 8,
+                    MarkerColor = Color.ForestGreen,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold)
+                };
+
+                decimal minValue = 0;
+
                 foreach (DataRow row in data.Rows)
                 {
-                    int month = Convert.ToInt32(row["Thang"]);
-                    decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
+                    string label = row["ThoiGian"].ToString();
+                    decimal doanhThu = Convert.ToDecimal(row["DoanhThuDonHang"]) + Convert.ToDecimal(row["DoanhThuKhac"]);
                     decimal chiPhi = Convert.ToDecimal(row["ChiPhi"]);
+                    decimal loiNhuan = doanhThu - chiPhi;
+                    
+                    revenueSeries.Points.AddXY(label, doanhThu);
+                    costSeries.Points.AddXY(label, chiPhi);
+                    profitSeries.Points.AddXY(label, loiNhuan);
 
-                    // Thêm dữ liệu vào các Series tương ứng
-                    revenueSeries.Points.AddXY(month, doanhThu);
-                    costSeries.Points.AddXY(month, chiPhi);
+                    if (loiNhuan < minValue)
+                        minValue = loiNhuan;
                 }
 
-                // Tạo biểu đồ mới
-                Chart chartRevenueCost = new Chart
-                {
-                    Dock = DockStyle.Fill  // Biểu đồ sẽ tự động điều chỉnh kích thước theo form
-                };
+                // Tạo Chart
+                Chart chart = new Chart { Dock = DockStyle.Fill };
 
-                // Thêm ChartArea vào biểu đồ
                 ChartArea chartArea = new ChartArea("MainArea")
                 {
-                    AxisX = { Title = "Tháng", Interval = 1 },  // Tùy chỉnh trục X (Tháng)
-                    AxisY = { Title = "Số Tiền (VNĐ)", Minimum = 0 }  // Tùy chỉnh trục Y (Số Tiền)
+                    AxisX =
+                {
+                    Title = "Thời gian",
+                    Interval = 1,
+                    TitleFont = new Font("Segoe UI", 12, FontStyle.Bold),
+                    LabelStyle = { Font = new Font("Segoe UI", 10), Angle = -45 },
+                    MajorGrid = { Enabled = false }
+                },
+                    AxisY =
+                {
+                    Title = "Số Tiền (VNĐ)",
+                    Minimum = (double)Math.Floor(minValue),
+                    TitleFont = new Font("Segoe UI", 12, FontStyle.Bold),
+                    LabelStyle = { Font = new Font("Segoe UI", 10) },
+                    MajorGrid = { LineColor = Color.LightGray, LineDashStyle = ChartDashStyle.Dash }
+                }
                 };
 
-                chartRevenueCost.ChartAreas.Add(chartArea);
+                chart.ChartAreas.Add(chartArea);
 
-                // Thêm các series vào biểu đồ
-                chartRevenueCost.Series.Clear();
-                chartRevenueCost.Series.Add(revenueSeries);
-                chartRevenueCost.Series.Add(costSeries);
+                // Gán ChartArea cho series và ưu tiên vẽ đường sau
+                revenueSeries.ChartArea = "MainArea";
+                costSeries.ChartArea = "MainArea";
+                profitSeries.ChartArea = "MainArea";
+                profitSeries["DrawOnTop"] = "True";
 
-                // Thêm chú thích cho biểu đồ
-                chartRevenueCost.Legends.Add(new Legend("MainLegend")
+                chart.Series.Add(revenueSeries);
+                chart.Series.Add(costSeries);
+                chart.Series.Add(profitSeries);
+
+                chart.Legends.Add(new Legend("MainLegend")
                 {
-                    Docking = Docking.Top,  // Chú thích sẽ nằm phía trên biểu đồ
-                    Alignment = StringAlignment.Center  // Căn giữa chú thích
+                    Docking = Docking.Top,
+                    Alignment = StringAlignment.Center,
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
                 });
 
-                // Cải thiện khả năng hiển thị điểm trên biểu đồ (Hiển thị giá trị mỗi cột)
-                revenueSeries.IsValueShownAsLabel = true;  // Hiển thị giá trị cho doanh thu
-                costSeries.IsValueShownAsLabel = true;  // Hiển thị giá trị cho chi phí
-
-                // Thêm biểu đồ vào Form
-                this.Controls.Add(chartRevenueCost);
-
-                // Thông báo khi vẽ thành công
-                MessageBox.Show("Biểu đồ đã được vẽ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                pnlBieuDo.Controls.Add(chart);
             }
             else
             {
-                // Nếu không có dữ liệu, thông báo cho người dùng
-                MessageBox.Show("Không có dữ liệu để vẽ biểu đồ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không có dữ liệu trong khoảng thời gian đã chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-
-        private void frmLoiNhuan_Load(object sender, EventArgs e)
+        private void btnThongKe_Click(object sender, EventArgs e)
         {
             LoadDataAndCreateChart();
+        }
+
+        private void LayDuLieuThongKe()
+        {
+            DateTime tuNgay = dtpTuNgay.Value.Date;
+            DateTime denNgay = dtpDenNgay.Value.Date;
+            string kieu = cboKieuThongKe.SelectedItem?.ToString();
+
+            if (tuNgay > denNgay)
+            {
+                MessageBox.Show("Từ ngày không được lớn hơn Đến ngày!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            data = new BUS_PhieuThuChi().LayDuLieuThongKe(kieu, tuNgay, denNgay);
+
+            if (data.Rows.Count > 0)
+            {
+                int tongDoanhThuDonHang = 0;
+                decimal tongThuKhac = 0;
+                decimal tongChiPhi = 0;
+                int tongSoHoaDon = 0;
+
+                foreach (DataRow row in data.Rows)
+                {
+                    int doanhThuDonHang = row["DoanhThuDonHang"] != DBNull.Value ? Convert.ToInt32(row["DoanhThuDonHang"]) : 0;
+                    decimal thuKhac = row["DoanhThuKhac"] != DBNull.Value ? Convert.ToDecimal(row["DoanhThuKhac"]) : 0;
+                    decimal chiPhi = row["ChiPhi"] != DBNull.Value ? Convert.ToDecimal(row["ChiPhi"]) : 0;
+                    int soHoaDon = row["SoHoaDon"] != DBNull.Value ? Convert.ToInt32(row["SoHoaDon"]) : 0;
+
+                    tongDoanhThuDonHang += doanhThuDonHang;
+                    tongThuKhac += thuKhac;
+                    tongChiPhi += chiPhi;
+                    tongSoHoaDon += soHoaDon;
+                }
+
+                decimal tongThu = tongDoanhThuDonHang + tongThuKhac;
+                decimal loiNhuan = tongThu - tongChiPhi;
+
+                lblDoanhThu.Text = tongDoanhThuDonHang.ToString("N0");
+                lblThuKhac.Text = tongThuKhac.ToString("N0");
+                lblChiPhi.Text = tongChiPhi.ToString("N0");
+                lblSoHoaDon.Text = tongSoHoaDon.ToString();
+                lblLoiNhuan.Text = loiNhuan.ToString("N0");
+            }
+            else
+            {
+                // Trường hợp không có dữ liệu: reset về 0
+                lblDoanhThu.Text = "0";
+                lblThuKhac.Text = "0";
+                lblChiPhi.Text = "0";
+                lblSoHoaDon.Text = "0";
+                lblLoiNhuan.Text = "0";
+            }
         }
     }
 }

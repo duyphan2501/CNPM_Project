@@ -62,6 +62,49 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
+        public DataTable LayDuLieuThongKe(string kieu, DateTime tuNgay, DateTime denNgay)
+        {
+            string groupField = "";
+
+            // Xác định groupField dựa trên kiểu thống kê
+            switch (kieu)
+            {
+                case "Tháng":
+                    groupField = "FORMAT(NgayLap, 'MM/yyyy')";
+                    break;
+                case "Quý":
+                    groupField = "CONCAT('Q', DATEPART(QUARTER, NgayLap), '/', YEAR(NgayLap))";
+                    break;
+                case "Năm":
+                    groupField = "YEAR(NgayLap)";
+                    break;
+                default:
+                    throw new ArgumentException("Kiểu thống kê không hợp lệ.");
+            }
+
+            string query = string.Format(
+            "SELECT {0} AS ThoiGian, " +
+            "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuDonHang, " +
+            "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai != N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuKhac, " +
+            "SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi, " +
+            "COUNT(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN 1 ELSE NULL END) AS SoHoaDon " +
+            "FROM PhieuThuChi AS ptc " +
+            "JOIN LoaiThuChi AS ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi " +
+            "WHERE ptc.NgayLap BETWEEN @TuNgay AND @DenNgay " +
+            "GROUP BY {0} " +
+            "ORDER BY MIN(ptc.NgayLap)", groupField);
+
+            // Truyền tham số trực tiếp vào câu truy vấn mà không sử dụng SqlParameter
+            object[] parameters = new object[]
+            {
+                tuNgay,
+                denNgay
+            };
+
+            // Trả về dữ liệu kết quả
+            return DataProvider.ExecuteQuery(query, parameters);
+        }
+
 
     }
 }

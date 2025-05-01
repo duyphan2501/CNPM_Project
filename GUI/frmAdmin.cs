@@ -92,6 +92,7 @@ namespace GUI
         private void btnLoinhuan_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnLoinhuan);
+            ShowFormInPanel(new frmLoiNhuan());
         }
 
         private void btnMathangbanchay_Click(object sender, EventArgs e)

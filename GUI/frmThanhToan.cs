@@ -256,7 +256,7 @@ namespace GUI
                                 chiTietPhieuXuatKho.AddExportDetail(maPhieuXuat, maNguyenLieu, tongSoLuongTru); 
                             }
                         }
-                        
+
                         // Kiểm tra xem chi tiết đơn hàng đã được thêm thành công hay chưa
                         if (isDetailAdded == 0)
                         {
@@ -264,8 +264,29 @@ namespace GUI
                             return;
                         }
                     }
+
+                    // update trạng thái thẻ thành rảnh
                     BUS_TheRung therung = new BUS_TheRung();
                     therung.UpdateStateTheRung(1, maThe);
+
+                    // In hoá đơn và phiếu bếp
+                    DataTable hoadon = new BUS_DonHang().SelectHoaDon(maDonhang);
+                    ReportHelper.PreviewReport("Invoice.rdlc", hoadon);
+                    DialogResult result = General.ShowConfirm("Bạn có muốn in phiếp chế biến không?", this);
+                    if (result == DialogResult.Yes)
+                    {
+                        ReportHelper.PreviewReport("PhieuBep.rdlc", hoadon);
+                    }
+
+                    // Thêm phiếu thu từ đơn hàng
+                    BUS_PhieuThuChi phieuChi = new BUS_PhieuThuChi();
+                    string maPhieuChi = phieuChi.GenerateID(false);
+                    int affectedRow = new BUS_PhieuThuChi().AddReceipt(maPhieuChi, tenDangNhap, tongTien, "C01", "");
+
+                    if (affectedRow == 0)
+                    {
+                        General.ShowError("Lỗi thêm phiếu chi", this);
+                    }
                 } else
                 {
                     General.ShowError("Lỗi khi thêm đơn hàng", this);

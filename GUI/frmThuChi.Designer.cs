@@ -366,7 +366,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
+            label1.BackColor = Color.FromArgb(221, 222, 224);
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
             label1.Location = new Point(292, 39);
@@ -425,7 +425,9 @@
             dateTungay.BorderRadius = 5;
             dateTungay.Checked = true;
             dateTungay.CustomizableEdges = customizableEdges21;
+            dateTungay.FillColor = Color.FromArgb(244, 129, 17);
             dateTungay.Font = new Font("Segoe UI", 9F);
+            dateTungay.ForeColor = Color.White;
             dateTungay.Format = DateTimePickerFormat.Long;
             dateTungay.Location = new Point(743, 34);
             dateTungay.Margin = new Padding(2);
@@ -442,7 +444,9 @@
             dateDenngay.BorderRadius = 5;
             dateDenngay.Checked = true;
             dateDenngay.CustomizableEdges = customizableEdges23;
+            dateDenngay.FillColor = Color.FromArgb(244, 129, 17);
             dateDenngay.Font = new Font("Segoe UI", 9F);
+            dateDenngay.ForeColor = Color.White;
             dateDenngay.Format = DateTimePickerFormat.Long;
             dateDenngay.Location = new Point(1181, 34);
             dateDenngay.Margin = new Padding(2);
@@ -457,7 +461,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.Control;
+            label3.BackColor = Color.FromArgb(221, 222, 224);
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(244, 103, 0);
             label3.Location = new Point(657, 39);
@@ -470,7 +474,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.Control;
+            label5.BackColor = Color.FromArgb(221, 222, 224);
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(244, 103, 0);
             label5.Location = new Point(1084, 39);
@@ -484,6 +488,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(221, 222, 224);
             ClientSize = new Size(1520, 880);
             Controls.Add(dateDenngay);
             Controls.Add(dateTungay);

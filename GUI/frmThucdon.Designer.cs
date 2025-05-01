@@ -160,7 +160,7 @@
             // 
             pnlMasanpham.BackColor = Color.White;
             pnlMasanpham.BorderColor = Color.FromArgb(224, 224, 224);
-            pnlMasanpham.BorderThickness = 2;
+            pnlMasanpham.BorderRadius = 5;
             pnlMasanpham.Controls.Add(txtMasanpham);
             pnlMasanpham.Controls.Add(label1);
             pnlMasanpham.CustomizableEdges = customizableEdges5;
@@ -190,7 +190,7 @@
             txtMasanpham.PlaceholderText = "";
             txtMasanpham.SelectedText = "";
             txtMasanpham.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtMasanpham.Size = new Size(308, 49);
+            txtMasanpham.Size = new Size(308, 44);
             txtMasanpham.TabIndex = 21;
             // 
             // label3
@@ -345,7 +345,7 @@
             txtTensanpham.PlaceholderText = "";
             txtTensanpham.SelectedText = "";
             txtTensanpham.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            txtTensanpham.Size = new Size(304, 49);
+            txtTensanpham.Size = new Size(304, 41);
             txtTensanpham.TabIndex = 21;
             // 
             // btnClose
@@ -358,16 +358,16 @@
             btnClose.DisabledState.CustomBorderColor = Color.DarkGray;
             btnClose.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnClose.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnClose.FillColor = Color.White;
+            btnClose.FillColor = Color.Transparent;
             btnClose.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.Black;
+            btnClose.Image = Properties.Resources.exit2;
             btnClose.Location = new Point(10, 6);
             btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
             btnClose.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btnClose.Size = new Size(42, 30);
             btnClose.TabIndex = 20;
-            btnClose.Text = "X";
             btnClose.Click += btnClose_Click;
             // 
             // pnlHinhanh
@@ -525,8 +525,8 @@
             btnDinhluong.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnDinhluong.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnDinhluong.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnDinhluong.FillColor = Color.FromArgb(244, 103, 0);
-            btnDinhluong.FillColor2 = Color.DarkOrange;
+            btnDinhluong.FillColor = Color.DodgerBlue;
+            btnDinhluong.FillColor2 = Color.Navy;
             btnDinhluong.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnDinhluong.ForeColor = Color.White;
             btnDinhluong.Location = new Point(288, 811);
@@ -606,7 +606,7 @@
             // pnlThongtinSP
             // 
             pnlThongtinSP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            pnlThongtinSP.BackColor = SystemColors.ButtonHighlight;
+            pnlThongtinSP.BackColor = Color.FromArgb(245, 151, 29);
             pnlThongtinSP.BorderColor = Color.Black;
             pnlThongtinSP.Controls.Add(pnlHinhanh);
             pnlThongtinSP.Controls.Add(btnClose);
@@ -645,7 +645,7 @@
             gridThucDon.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             gridThucDon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 103, 0);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(217, 98, 0);
@@ -714,7 +714,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = SystemColors.Control;
+            BackColor = Color.FromArgb(221, 222, 224);
             ClientSize = new Size(1537, 874);
             Controls.Add(pnlThongtinSP);
             Controls.Add(gridThucDon);

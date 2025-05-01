@@ -248,7 +248,7 @@ namespace GUI
         {
             LoadIngredients();
             DataView dv = ((DataTable)gridDsNguyenlieu.DataSource).DefaultView;
-            
+
 
             // Lọc dữ liệu theo loại phiếu
             if (cboLocNL.Text == "Tất cả")
@@ -266,6 +266,18 @@ namespace GUI
 
             // Cập nhật lại DataSource với bộ lọc
             gridDsNguyenlieu.DataSource = dv.ToTable();  // Dùng ToTable để chuyển DataView thành DataTable
+        }
+
+        private void btnXuatNhapKho_Click(object sender, EventArgs e)
+        {
+            frmXuatNhapKho frm = new frmXuatNhapKho();
+            General.ShowDialogWithBlur(frm);
+        }
+
+        private void btnLichSu_Click(object sender, EventArgs e)
+        {
+            frmLichSuXuatNhap frm = new frmLichSuXuatNhap();
+            General.ShowDialogWithBlur(frm);
         }
     }
 }

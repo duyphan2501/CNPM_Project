@@ -24,18 +24,18 @@ namespace GUI
         {
             dateStop.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
             dateStart.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
-            ThongKeSanPham(5);
+            numSosanpham.Value = 5;
+            ThongKeSanPham();
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            // Lấy số lượng sản phẩm muốn thống kê
-            int soluong = Convert.ToInt32(numSosanpham.Value);
-            ThongKeSanPham(soluong);
+            ThongKeSanPham();
         }
 
-        private void ThongKeSanPham(int soluong)
+        private void ThongKeSanPham()
         {
+            int soluong = (int)numSosanpham.Value;
             DateTime tungay = dateStart.Value.Date;
             DateTime denngay = dateStop.Value.Date;
 
@@ -52,35 +52,54 @@ namespace GUI
 
         private void DrawPieChart(DataTable data)
         {
-            // Tạo biểu đồ pie
             Chart pieChart = new Chart();
-            pieChart.Dock = DockStyle.Fill; // Đảm bảo biểu đồ chiếm hết diện tích trong Panel
+            pieChart.Dock = DockStyle.Fill;
 
-            // Tạo một ChartArea cho biểu đồ
             ChartArea chartArea = new ChartArea();
             pieChart.ChartAreas.Add(chartArea);
 
-            // Thêm các dữ liệu vào biểu đồ pie
             Series pieSeries = new Series("Best Selling Products")
             {
-                ChartType = SeriesChartType.Pie,  // Loại biểu đồ là Pie
-                IsValueShownAsLabel = true,  // Hiển thị giá trị trên mỗi phần của pie
-                BorderWidth = 2 
+                ChartType = SeriesChartType.Pie,
+                IsValueShownAsLabel = false, // Không hiện gì trên lát
+                BorderWidth = 2
             };
 
             foreach (DataRow row in data.Rows)
             {
-                string productName = row["Tên sản phẩm"].ToString();  // Tên sản phẩm (tên cột trong DataTable)
-                decimal salesQuantity = Convert.ToDecimal(row["Tổng số lượng bán"]);  // Số lượng bán được (tên cột trong DataTable)
-                pieSeries.Points.AddXY(productName, salesQuantity);  // Thêm dữ liệu vào Pie chart
+                string productName = row["Tên sản phẩm"].ToString();
+                decimal salesQuantity = Convert.ToDecimal(row["Tổng số lượng bán"]);
+
+                pieSeries.Points.Add(Convert.ToDouble(salesQuantity));
+                var dataPoint = pieSeries.Points[pieSeries.Points.Count - 1];
+
+                dataPoint.Label = "#PERCENT"; // 👉 Chỉ hiện phần trăm trên lát
+                dataPoint.LegendText = productName; // 👉 Chú thích chỉ hiện tên sản phẩm
+                dataPoint.Font = new Font("Arial", 10, FontStyle.Bold); // 👁 Làm phần trăm rõ hơn
+                dataPoint.LabelForeColor = Color.Black;
             }
 
-            // Thêm Series vào biểu đồ
             pieChart.Series.Add(pieSeries);
 
-            // Thêm biểu đồ vào Panel
-            pnlBieuDo.Controls.Clear();  // Xóa các điều khiển cũ trong Panel trước khi vẽ mới
-            pnlBieuDo.Controls.Add(pieChart);  // Thêm biểu đồ mới vào Panel
+            pieChart.Titles.Add(new Title()
+            {
+                Text = "BIỂU ĐỒ TOP SẢN PHẨM BÁN CHẠY",
+                Font = new Font("Arial", 14, FontStyle.Bold),
+                ForeColor = Color.DarkBlue,
+                Alignment = ContentAlignment.TopCenter
+            });
+
+            // 👉 Chú thích nằm bên phải
+            Legend legend = new Legend()
+            {
+                Docking = Docking.Bottom,
+                Font = new Font("Arial", 11, FontStyle.Regular)
+            };
+            pieChart.Legends.Add(legend);
+
+            pnlBieuDo.Controls.Clear();
+            pnlBieuDo.Controls.Add(pieChart);
         }
+
     }
 }

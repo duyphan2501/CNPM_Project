@@ -102,15 +102,16 @@
             guna2Panel1.Controls.Add(txtHoten);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges3;
-            guna2Panel1.Location = new Point(56, 202);
-            guna2Panel1.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel1.Location = new Point(45, 162);
+            guna2Panel1.Margin = new Padding(2, 3, 2, 3);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Panel1.Size = new Size(506, 169);
+            guna2Panel1.Size = new Size(405, 135);
             guna2Panel1.TabIndex = 0;
             // 
             // txtHoten
             // 
+            txtHoten.BorderRadius = 5;
             txtHoten.Cursor = Cursors.IBeam;
             txtHoten.CustomizableEdges = customizableEdges1;
             txtHoten.DefaultText = "";
@@ -121,22 +122,23 @@
             txtHoten.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtHoten.Font = new Font("Microsoft YaHei", 10F);
             txtHoten.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtHoten.Location = new Point(62, 86);
-            txtHoten.Margin = new Padding(6);
+            txtHoten.Location = new Point(50, 69);
+            txtHoten.Margin = new Padding(5, 5, 5, 5);
             txtHoten.Name = "txtHoten";
             txtHoten.PlaceholderText = "";
             txtHoten.SelectedText = "";
             txtHoten.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtHoten.Size = new Size(376, 49);
+            txtHoten.Size = new Size(301, 39);
             txtHoten.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(57, 29);
+            label1.Location = new Point(46, 23);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(79, 27);
+            label1.Size = new Size(69, 24);
             label1.TabIndex = 0;
             label1.Text = "Họ tên";
             // 
@@ -145,15 +147,16 @@
             guna2Panel2.Controls.Add(txtTendangnhap);
             guna2Panel2.Controls.Add(label2);
             guna2Panel2.CustomizableEdges = customizableEdges7;
-            guna2Panel2.Location = new Point(56, 379);
-            guna2Panel2.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel2.Location = new Point(45, 303);
+            guna2Panel2.Margin = new Padding(2, 3, 2, 3);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel2.Size = new Size(506, 169);
+            guna2Panel2.Size = new Size(405, 135);
             guna2Panel2.TabIndex = 0;
             // 
             // txtTendangnhap
             // 
+            txtTendangnhap.BorderRadius = 5;
             txtTendangnhap.Cursor = Cursors.IBeam;
             txtTendangnhap.CustomizableEdges = customizableEdges5;
             txtTendangnhap.DefaultText = "";
@@ -164,22 +167,23 @@
             txtTendangnhap.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTendangnhap.Font = new Font("Microsoft YaHei", 10F);
             txtTendangnhap.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTendangnhap.Location = new Point(62, 86);
-            txtTendangnhap.Margin = new Padding(6);
+            txtTendangnhap.Location = new Point(50, 69);
+            txtTendangnhap.Margin = new Padding(5, 5, 5, 5);
             txtTendangnhap.Name = "txtTendangnhap";
             txtTendangnhap.PlaceholderText = "";
             txtTendangnhap.SelectedText = "";
             txtTendangnhap.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtTendangnhap.Size = new Size(376, 49);
+            txtTendangnhap.Size = new Size(301, 39);
             txtTendangnhap.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(57, 29);
+            label2.Location = new Point(46, 23);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(165, 27);
+            label2.Size = new Size(141, 24);
             label2.TabIndex = 0;
             label2.Text = "Tên đăng nhập";
             // 
@@ -188,15 +192,16 @@
             guna2Panel3.Controls.Add(txtMatkhau);
             guna2Panel3.Controls.Add(label3);
             guna2Panel3.CustomizableEdges = customizableEdges11;
-            guna2Panel3.Location = new Point(56, 555);
-            guna2Panel3.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel3.Location = new Point(45, 444);
+            guna2Panel3.Margin = new Padding(2, 3, 2, 3);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Panel3.Size = new Size(506, 169);
+            guna2Panel3.Size = new Size(405, 135);
             guna2Panel3.TabIndex = 0;
             // 
             // txtMatkhau
             // 
+            txtMatkhau.BorderRadius = 5;
             txtMatkhau.Cursor = Cursors.IBeam;
             txtMatkhau.CustomizableEdges = customizableEdges9;
             txtMatkhau.DefaultText = "";
@@ -207,22 +212,23 @@
             txtMatkhau.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMatkhau.Font = new Font("Microsoft YaHei", 10F);
             txtMatkhau.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtMatkhau.Location = new Point(62, 86);
-            txtMatkhau.Margin = new Padding(6);
+            txtMatkhau.Location = new Point(50, 69);
+            txtMatkhau.Margin = new Padding(5, 5, 5, 5);
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.PlaceholderText = "";
             txtMatkhau.SelectedText = "";
             txtMatkhau.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtMatkhau.Size = new Size(376, 49);
+            txtMatkhau.Size = new Size(301, 39);
             txtMatkhau.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(57, 29);
+            label3.Location = new Point(46, 23);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(109, 27);
+            label3.Size = new Size(95, 24);
             label3.TabIndex = 0;
             label3.Text = "Mật khẩu";
             // 
@@ -231,15 +237,16 @@
             guna2Panel4.Controls.Add(txtEmail);
             guna2Panel4.Controls.Add(label4);
             guna2Panel4.CustomizableEdges = customizableEdges15;
-            guna2Panel4.Location = new Point(568, 202);
-            guna2Panel4.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel4.Location = new Point(454, 162);
+            guna2Panel4.Margin = new Padding(2, 3, 2, 3);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Panel4.Size = new Size(506, 169);
+            guna2Panel4.Size = new Size(405, 135);
             guna2Panel4.TabIndex = 0;
             // 
             // txtEmail
             // 
+            txtEmail.BorderRadius = 5;
             txtEmail.Cursor = Cursors.IBeam;
             txtEmail.CustomizableEdges = customizableEdges13;
             txtEmail.DefaultText = "";
@@ -250,13 +257,13 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Microsoft YaHei", 10F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(89, 86);
-            txtEmail.Margin = new Padding(6);
+            txtEmail.Location = new Point(71, 69);
+            txtEmail.Margin = new Padding(5, 5, 5, 5);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            txtEmail.Size = new Size(376, 49);
+            txtEmail.Size = new Size(301, 39);
             txtEmail.TabIndex = 1;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
@@ -264,9 +271,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 29);
+            label4.Location = new Point(21, 23);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(67, 27);
+            label4.Size = new Size(57, 24);
             label4.TabIndex = 0;
             label4.Text = "Email";
             // 
@@ -277,20 +285,21 @@
             guna2Panel5.Controls.Add(label5);
             guna2Panel5.Controls.Add(btnToggleSwitchTrangThai);
             guna2Panel5.CustomizableEdges = customizableEdges19;
-            guna2Panel5.Location = new Point(568, 555);
-            guna2Panel5.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel5.Location = new Point(454, 444);
+            guna2Panel5.Margin = new Padding(2, 3, 2, 3);
             guna2Panel5.Name = "guna2Panel5";
             guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2Panel5.Size = new Size(506, 169);
+            guna2Panel5.Size = new Size(405, 135);
             guna2Panel5.TabIndex = 0;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.Location = new Point(354, 99);
+            label9.Location = new Point(283, 79);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(109, 24);
+            label9.Size = new Size(92, 20);
             label9.TabIndex = 4;
             label9.Text = "có hiệu lực";
             // 
@@ -298,9 +307,10 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 10F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label8.Location = new Point(70, 99);
+            label8.Location = new Point(56, 79);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(75, 24);
+            label8.Size = new Size(62, 20);
             label8.TabIndex = 4;
             label8.Text = "vô hiệu";
             // 
@@ -308,24 +318,26 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(26, 29);
+            label5.Location = new Point(21, 23);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(116, 27);
+            label5.Size = new Size(100, 24);
             label5.TabIndex = 0;
             label5.Text = "Trạng thái";
             // 
             // btnToggleSwitchTrangThai
             // 
+            btnToggleSwitchTrangThai.Checked = true;
             btnToggleSwitchTrangThai.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            btnToggleSwitchTrangThai.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            btnToggleSwitchTrangThai.CheckedState.FillColor = Color.FromArgb(113, 181, 108);
             btnToggleSwitchTrangThai.CheckedState.InnerBorderColor = Color.White;
             btnToggleSwitchTrangThai.CheckedState.InnerColor = Color.White;
             btnToggleSwitchTrangThai.CustomizableEdges = customizableEdges17;
-            btnToggleSwitchTrangThai.Location = new Point(192, 91);
-            btnToggleSwitchTrangThai.Margin = new Padding(3, 4, 3, 4);
+            btnToggleSwitchTrangThai.Location = new Point(154, 73);
+            btnToggleSwitchTrangThai.Margin = new Padding(2, 3, 2, 3);
             btnToggleSwitchTrangThai.Name = "btnToggleSwitchTrangThai";
             btnToggleSwitchTrangThai.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            btnToggleSwitchTrangThai.Size = new Size(134, 44);
+            btnToggleSwitchTrangThai.Size = new Size(107, 35);
             btnToggleSwitchTrangThai.TabIndex = 3;
             btnToggleSwitchTrangThai.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
             btnToggleSwitchTrangThai.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
@@ -338,16 +350,17 @@
             guna2Panel6.Controls.Add(cboVaitro);
             guna2Panel6.Controls.Add(label6);
             guna2Panel6.CustomizableEdges = customizableEdges23;
-            guna2Panel6.Location = new Point(568, 379);
-            guna2Panel6.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel6.Location = new Point(454, 303);
+            guna2Panel6.Margin = new Padding(2, 3, 2, 3);
             guna2Panel6.Name = "guna2Panel6";
             guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2Panel6.Size = new Size(506, 169);
+            guna2Panel6.Size = new Size(405, 135);
             guna2Panel6.TabIndex = 0;
             // 
             // cboVaitro
             // 
             cboVaitro.BackColor = Color.Transparent;
+            cboVaitro.BorderRadius = 5;
             cboVaitro.CustomizableEdges = customizableEdges21;
             cboVaitro.DrawMode = DrawMode.OwnerDrawFixed;
             cboVaitro.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -357,20 +370,21 @@
             cboVaitro.ForeColor = Color.FromArgb(68, 88, 112);
             cboVaitro.ItemHeight = 30;
             cboVaitro.Items.AddRange(new object[] { "quản lý", "thu ngân" });
-            cboVaitro.Location = new Point(89, 79);
-            cboVaitro.Margin = new Padding(3, 4, 3, 4);
+            cboVaitro.Location = new Point(71, 63);
+            cboVaitro.Margin = new Padding(2, 3, 2, 3);
             cboVaitro.Name = "cboVaitro";
             cboVaitro.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            cboVaitro.Size = new Size(376, 36);
+            cboVaitro.Size = new Size(302, 36);
             cboVaitro.TabIndex = 1;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(26, 29);
+            label6.Location = new Point(21, 23);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(79, 27);
+            label6.Size = new Size(67, 24);
             label6.TabIndex = 0;
             label6.Text = "Vai trò";
             // 
@@ -382,10 +396,10 @@
             guna2Panel7.CustomizableEdges = customizableEdges27;
             guna2Panel7.Dock = DockStyle.Top;
             guna2Panel7.Location = new Point(0, 0);
-            guna2Panel7.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel7.Margin = new Padding(2, 3, 2, 3);
             guna2Panel7.Name = "guna2Panel7";
             guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2Panel7.Size = new Size(1141, 171);
+            guna2Panel7.Size = new Size(913, 137);
             guna2Panel7.TabIndex = 1;
             // 
             // guna2PictureBox1
@@ -394,11 +408,11 @@
             guna2PictureBox1.CustomizableEdges = customizableEdges25;
             guna2PictureBox1.Image = Properties.Resources._326497_account_circle_icon;
             guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(56, 15);
-            guna2PictureBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2PictureBox1.Location = new Point(45, 12);
+            guna2PictureBox1.Margin = new Padding(2, 3, 2, 3);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            guna2PictureBox1.Size = new Size(154, 141);
+            guna2PictureBox1.Size = new Size(123, 113);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 1;
             guna2PictureBox1.TabStop = false;
@@ -408,9 +422,10 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(351, 61);
+            label7.Location = new Point(281, 49);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(429, 46);
+            label7.Size = new Size(362, 39);
             label7.TabIndex = 0;
             label7.Text = "THÔNG TIN TÀI KHOẢN";
             // 
@@ -420,10 +435,10 @@
             panel1.Controls.Add(btnHuy);
             panel1.Controls.Add(btnLuu);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 816);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(0, 653);
+            panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1141, 148);
+            panel1.Size = new Size(913, 118);
             panel1.TabIndex = 2;
             // 
             // btnHuy
@@ -439,11 +454,11 @@
             btnHuy.FillColor2 = Color.DarkOrange;
             btnHuy.Font = new Font("Times New Roman", 14F, FontStyle.Bold);
             btnHuy.ForeColor = Color.White;
-            btnHuy.Location = new Point(599, 38);
-            btnHuy.Margin = new Padding(3, 5, 3, 5);
+            btnHuy.Location = new Point(479, 30);
+            btnHuy.Margin = new Padding(2, 4, 2, 4);
             btnHuy.Name = "btnHuy";
             btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            btnHuy.Size = new Size(193, 69);
+            btnHuy.Size = new Size(154, 55);
             btnHuy.TabIndex = 2;
             btnHuy.Text = "HỦY";
             btnHuy.Click += btnHuy_Click;
@@ -461,21 +476,21 @@
             btnLuu.FillColor2 = Color.DarkOrange;
             btnLuu.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(338, 38);
-            btnLuu.Margin = new Padding(3, 5, 3, 5);
+            btnLuu.Location = new Point(270, 30);
+            btnLuu.Margin = new Padding(2, 4, 2, 4);
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            btnLuu.Size = new Size(193, 69);
+            btnLuu.Size = new Size(154, 55);
             btnLuu.TabIndex = 2;
             btnLuu.Text = "LƯU";
             btnLuu.Click += btnLuu_Click;
             // 
             // frmThem_SuaTaiKhoan
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1141, 964);
+            ClientSize = new Size(913, 771);
             Controls.Add(panel1);
             Controls.Add(guna2Panel7);
             Controls.Add(guna2Panel6);
@@ -485,7 +500,7 @@
             Controls.Add(guna2Panel4);
             Controls.Add(guna2Panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "frmThem_SuaTaiKhoan";
             Text = "frmThemTaiKhoan";
             Load += frmThemTaiKhoan_Load;
