@@ -61,7 +61,7 @@ namespace GUI
 
         private void frmThemPhieuThuChi_Load(object sender, EventArgs e)
         {
-            txtMaphieu.Text = phieu.GenerateID();
+            txtMaphieu.Text = phieu.GenerateID(true);
             txtMaphieu.ReadOnly = true;
         }
 

@@ -159,7 +159,6 @@
             cboLoaiPhieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboLoaiPhieu.Size = new Size(235, 36);
             cboLoaiPhieu.TabIndex = 9;
-            cboLoaiPhieu.SelectedIndexChanged += cboLoaiPhieu_SelectedIndexChanged;
             // 
             // btnThemphieu
             // 
@@ -175,11 +174,11 @@
             btnThemphieu.FillColor2 = Color.DarkOrange;
             btnThemphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemphieu.ForeColor = Color.White;
-            btnThemphieu.Location = new Point(59, 22);
+            btnThemphieu.Location = new Point(63, 22);
             btnThemphieu.Margin = new Padding(3, 4, 3, 4);
             btnThemphieu.Name = "btnThemphieu";
             btnThemphieu.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnThemphieu.Size = new Size(150, 69);
+            btnThemphieu.Size = new Size(150, 49);
             btnThemphieu.TabIndex = 13;
             btnThemphieu.Text = "Thêm Phiếu";
             btnThemphieu.Click += btnThemphieu_Click;

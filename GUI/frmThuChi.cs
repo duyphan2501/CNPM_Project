@@ -19,10 +19,6 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
-            grbXuatNhapKho.Visible = false;
-            LoadLoaiPhieu();
-
-            btnLuu.Enabled = false;
             gridDsThuchi.RowTemplate.Height = 50;
             LoadReceipt();
           
