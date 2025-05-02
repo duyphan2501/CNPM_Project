@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             lblSoDHDangPV = new Label();
             lblDangPhucVu = new Label();
@@ -69,6 +69,7 @@
             // 
             // guna2GroupBox2
             // 
+            guna2GroupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2GroupBox2.Controls.Add(lblSoDHDangPV);
             guna2GroupBox2.Controls.Add(lblDangPhucVu);
             guna2GroupBox2.Controls.Add(label4);
@@ -79,12 +80,12 @@
             guna2GroupBox2.Controls.Add(label13);
             guna2GroupBox2.Controls.Add(label3);
             guna2GroupBox2.CustomBorderColor = Color.Orange;
-            guna2GroupBox2.CustomizableEdges = customizableEdges9;
+            guna2GroupBox2.CustomizableEdges = customizableEdges1;
             guna2GroupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             guna2GroupBox2.ForeColor = Color.White;
             guna2GroupBox2.Location = new Point(481, 100);
             guna2GroupBox2.Name = "guna2GroupBox2";
-            guna2GroupBox2.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2GroupBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2GroupBox2.Size = new Size(433, 193);
             guna2GroupBox2.TabIndex = 1;
             guna2GroupBox2.Text = "Đơn hàng";
@@ -208,6 +209,7 @@
             // 
             // guna2GroupBox4
             // 
+            guna2GroupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2GroupBox4.Controls.Add(lblGiaTriTon);
             guna2GroupBox4.Controls.Add(lblDinhMuc);
             guna2GroupBox4.Controls.Add(label9);
@@ -215,12 +217,12 @@
             guna2GroupBox4.Controls.Add(label8);
             guna2GroupBox4.Controls.Add(label7);
             guna2GroupBox4.CustomBorderColor = Color.Orange;
-            guna2GroupBox4.CustomizableEdges = customizableEdges11;
+            guna2GroupBox4.CustomizableEdges = customizableEdges3;
             guna2GroupBox4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             guna2GroupBox4.ForeColor = Color.White;
             guna2GroupBox4.Location = new Point(956, 100);
             guna2GroupBox4.Name = "guna2GroupBox4";
-            guna2GroupBox4.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2GroupBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2GroupBox4.Size = new Size(433, 193);
             guna2GroupBox4.TabIndex = 2;
             guna2GroupBox4.Text = "Nguyên liệu";
@@ -312,12 +314,12 @@
             guna2GroupBox1.Controls.Add(lblDoanhThu);
             guna2GroupBox1.Controls.Add(label1);
             guna2GroupBox1.CustomBorderColor = Color.Orange;
-            guna2GroupBox1.CustomizableEdges = customizableEdges13;
+            guna2GroupBox1.CustomizableEdges = customizableEdges5;
             guna2GroupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             guna2GroupBox1.ForeColor = Color.White;
             guna2GroupBox1.Location = new Point(33, 100);
             guna2GroupBox1.Name = "guna2GroupBox1";
-            guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2GroupBox1.Size = new Size(409, 193);
             guna2GroupBox1.TabIndex = 0;
             guna2GroupBox1.Text = "Tiền trong ngày";
@@ -403,10 +405,10 @@
             // pnlBieuDo
             // 
             pnlBieuDo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlBieuDo.CustomizableEdges = customizableEdges15;
+            pnlBieuDo.CustomizableEdges = customizableEdges7;
             pnlBieuDo.Location = new Point(33, 320);
             pnlBieuDo.Name = "pnlBieuDo";
-            pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges8;
             pnlBieuDo.Size = new Size(1356, 414);
             pnlBieuDo.TabIndex = 3;
             // 

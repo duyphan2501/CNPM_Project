@@ -37,11 +37,10 @@ namespace DAL
             return DataProvider.ExecuteQuery(query);
         }
 
-
         public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
-            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, Loai, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
-            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,loai,ghichu };
+            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, MaLoaiThuChi, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
+            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien, maloaithuchi,ghichu };
             return DataProvider.ExecuteNonQuery(query, parem);
         }
 
@@ -96,12 +95,13 @@ namespace DAL
             "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuDonHang, " +
             "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai != N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuKhac, " +
             "SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi, " +
-            "COUNT(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN 1 ELSE NULL END) AS SoHoaDon " +
+            "COUNT(CASE WHEN ltc.Loai = 'Thu' AND ltc.MaLoaiThuChi = 'T01' THEN 1 ELSE NULL END) AS SoHoaDon " +
             "FROM PhieuThuChi AS ptc " +
             "JOIN LoaiThuChi AS ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi " +
             "WHERE ptc.NgayLap BETWEEN @TuNgay AND @DenNgay " +
             "GROUP BY {0} " +
             "ORDER BY MIN(ptc.NgayLap)", groupField);
+
 
             // Truyền tham số trực tiếp vào câu truy vấn mà không sử dụng SqlParameter
             object[] parameters = new object[]
@@ -117,14 +117,14 @@ namespace DAL
         public DataTable SelectThuChiTrongNgay()
         {
             string query = @"
-                SELECT
-                    SUM(CASE WHEN ltc.Loai = 'Thu' THEN ptc.SoTien ELSE 0 END) AS DoanhThu,
-                    SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi
-                FROM PhieuThuChi ptc
-                JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi";
+            SELECT
+                SUM(CASE WHEN ltc.Loai = 'Thu' THEN ptc.SoTien ELSE 0 END) AS DoanhThu,
+                SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi
+            FROM PhieuThuChi ptc
+            JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi
+            WHERE CONVERT(date, ptc.NgayLap) = CONVERT(date, GETDATE())";
 
             return DataProvider.ExecuteQuery(query);
         }
-
     }
 }

@@ -21,11 +21,6 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(cboLoaiPhieu.Text))
@@ -38,8 +33,17 @@ namespace GUI
                 General.ShowWarning("Vui lòng nhập số tiền!");
                 return;
             }
-            
-            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value),cboLoaiPhieu.Text, txtGhichu.Text);
+
+            string maLoai = cboLoaiThuChi.SelectedValue?.ToString() ?? "";
+            // lưu vào db
+            phieu.AddReceipt(
+                txtMaphieu.Text,
+                Program.account.Rows[0]["TenDangNhap"].ToString(),
+                Convert.ToInt32(numSotien.Value),
+                maLoai,
+                txtGhichu.Text
+            );
+
             btnLuu.Enabled = false;
 
             numSotien.Value = 0;
@@ -70,17 +74,43 @@ namespace GUI
                 txtMaphieu.Text = phieu.GenerateID(false);
             }
         }
+
         private void frmThemPhieuThuChi_Load(object sender, EventArgs e)
         {
             txtMaphieu.ReadOnly = true;
+            cboLoaiPhieu.Items.Clear();
+            cboLoaiPhieu.Items.Add("Thu");
+            cboLoaiPhieu.Items.Add("Chi");
+            cboLoaiPhieu.SelectedIndex = -1;
+            LoadCboLoaiThuChi();
         }
 
-        
-
-       
         private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
         {
             GenerateID();
+            LoadCboLoaiThuChi();
+        }
+
+        private void LoadCboLoaiThuChi()
+        {
+            cboLoaiThuChi.DataSource = null;
+            cboLoaiThuChi.Items.Clear();
+
+            // Lấy giá trị từ SelectedItem thay vì SelectedValue
+            if (cboLoaiPhieu.SelectedItem == null) return;
+
+            string loai = cboLoaiPhieu.SelectedItem.ToString(); // "Thu" hoặc "Chi"
+
+            DataTable dt = loaithuchi.LoadType(loai);
+            cboLoaiThuChi.DataSource = dt;
+            cboLoaiThuChi.DisplayMember = "TenLoai";       // Tên loại hiển thị
+            cboLoaiThuChi.ValueMember = "MaLoaiThuChi";    // Giá trị gốc
+            cboLoaiThuChi.SelectedIndex = -1;
+        }
+
+        private void picThemLoai_Click(object sender, EventArgs e)
+        {
+            General.ShowDialogWithBlur(new frmLoaiThuChi());
         }
     }
 }

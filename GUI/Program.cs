@@ -21,9 +21,8 @@ namespace GUI
             ApplicationConfiguration.Initialize();
             ////Application.Run(new frmConfig());
             //Application.Run(new frmTaiKhoan());
-            //Application.Run(new frmLogin());
-            Application.Run(new frmBaoCaoChotCa());
-
+            Application.Run(new frmLogin());
+            //Application.Run(new frmBaoCaoChotCa());
             //Application.Run(new frmLoiNhuan());
             //Application.Run(new frmHangBanChay());
             //Application.Run(new frmAdmin());

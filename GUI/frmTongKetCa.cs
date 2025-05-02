@@ -23,15 +23,22 @@ namespace GUI
         {
             InitializeComponent();
             maCa = maCaLam;
+            // Đăng nhập từ admin
             if (!isCashier)
             {
+                // tắt các control
                 btnChotCa.Visible = false;
                 txtGhiChu.Enabled = false;
                 txtTienThucTe.Enabled = false;
 
+                // gán thông tin ca làm
                 DataTable informationShift = new BUS_CaLamViec().GetInformationShift(maCa);
                 txtTienThucTe.Text = informationShift.Rows[0]["TienCuoiCa"].ToString();
                 txtGhiChu.Text = informationShift.Rows[0]["GhiChu"].ToString();
+            }
+            else // từ thu ngân
+            {
+                maCa = Program.shift.Rows[0]["MaCaLam"].ToString();
             }
         }
 
@@ -40,33 +47,45 @@ namespace GUI
             int tienDauCa = new BUS_CaLamViec().GetTienDauCa(maCa);
             lblMaCaLam.Text = maCa;
             lblTienDauCa.Text = General.FormatMoney(tienDauCa);
-
+            
+            // Lấy số hoá đơn đã xử lí trong ca
             DataTable donhang = new BUS_DonHang().SelectOrderOfShift(maCa);
 
+            // đếm hàng để lấy số hđ
             int soHoaDon = donhang.Rows.Count;
+
+            // MaCaThanhToan là null -> chưua thanh toán
             int soDonChuaThanhToan = donhang.AsEnumerable()
                 .Count(row => string.IsNullOrEmpty(row.Field<string>("MaCaThanhToan")));
             int soDonDaThanhToan = soHoaDon - soDonChuaThanhToan;
 
+            // loaiThanhToan = 1 -> chuyển khoản
             int tienChuyenKhoan = donhang.AsEnumerable()
                 .Where(row => row.Field<byte?>("LoaiThanhToan") == 1)
                 .Sum(row => row.Field<int?>("TongTien") ?? 0);
 
+            // loaiThanhToan = 0 -> tiền mặt
             int tienMat = donhang.AsEnumerable()
                 .Where(row => row.Field<byte?>("LoaiThanhToan") == 0)
                 .Sum(row => row.Field<int?>("TongTien") ?? 0);
 
+            // tongtien đã là tiền sau giảm giá
+            int tongGiamGia = donhang.AsEnumerable()
+            .Sum(row =>
+            {
+                int tongTien = row.Field<int>("TongTien");
+                byte giamGia = row.Field<byte>("GiamGia");
+                if (giamGia == 0) return 0;
+
+                // Tính tiền gốc rồi suy ra số tiền giảm
+                double tongTienTruocGiam = tongTien / (1 - giamGia / 100.0);
+                return (int)Math.Round(tongTienTruocGiam - tongTien);
+            });
+
             int doanhThuNet = donhang.AsEnumerable()
                 .Sum(row => row.Field<int>("TongTien"));
-            int tongGiamGia = donhang.AsEnumerable()
-                .Sum(row =>
-                {
-                    int tongTien = row.Field<int>("TongTien");
-                    byte giamGia = row.Field<byte>("GiamGia");
-                    return tongTien * giamGia / 100;
-                });
-            int tongDoanhThu = doanhThuNet - tongGiamGia;
 
+            int tongDoanhThu = doanhThuNet + tongGiamGia;
 
             // Gán vào label
             lblSoHoaDon.Text = soHoaDon.ToString();

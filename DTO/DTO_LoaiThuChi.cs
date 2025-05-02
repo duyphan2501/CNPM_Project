@@ -20,5 +20,7 @@ namespace DTO
             this.TenLoai = tenloai;
             this.Loai = loai;
         }
+
+        public DTO_LoaiThuChi() { }
     }
 }
