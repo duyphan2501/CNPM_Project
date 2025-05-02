@@ -170,7 +170,7 @@
             // 
             // pnlTrangthai
             // 
-            pnlTrangthai.BackColor = Color.White;
+            pnlTrangthai.BackColor = Color.WhiteSmoke;
             pnlTrangthai.Controls.Add(txtDonvitinh);
             pnlTrangthai.Controls.Add(label8);
             pnlTrangthai.CustomizableEdges = customizableEdges5;
@@ -205,7 +205,7 @@
             // 
             // pnlTensanpham
             // 
-            pnlTensanpham.BackColor = Color.White;
+            pnlTensanpham.BackColor = Color.WhiteSmoke;
             pnlTensanpham.Controls.Add(txtTenNguyenLieu);
             pnlTensanpham.Controls.Add(label3);
             pnlTensanpham.CustomizableEdges = customizableEdges9;
@@ -259,8 +259,8 @@
             btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLuu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnLuu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLuu.FillColor = Color.FromArgb(4, 59, 100);
-            btnLuu.FillColor2 = Color.FromArgb(4, 59, 100);
+            btnLuu.FillColor = Color.FromArgb(0, 92, 191);
+            btnLuu.FillColor2 = Color.FromArgb(0, 92, 191);
             btnLuu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnLuu.ForeColor = Color.White;
             btnLuu.Location = new Point(77, 724);
@@ -286,7 +286,7 @@
             // 
             // pnlMasanpham
             // 
-            pnlMasanpham.BackColor = Color.White;
+            pnlMasanpham.BackColor = Color.WhiteSmoke;
             pnlMasanpham.BorderColor = Color.FromArgb(224, 224, 224);
             pnlMasanpham.Controls.Add(txtMaNguyenLieu);
             pnlMasanpham.Controls.Add(label1);
@@ -321,7 +321,7 @@
             // 
             // guna2Panel1
             // 
-            guna2Panel1.BackColor = Color.White;
+            guna2Panel1.BackColor = Color.WhiteSmoke;
             guna2Panel1.Controls.Add(numMucondinh);
             guna2Panel1.Controls.Add(label5);
             guna2Panel1.CustomizableEdges = customizableEdges19;
@@ -338,7 +338,6 @@
             numMucondinh.BorderRadius = 5;
             numMucondinh.Cursor = Cursors.IBeam;
             numMucondinh.CustomizableEdges = customizableEdges17;
-            numMucondinh.FillColor = Color.WhiteSmoke;
             numMucondinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             numMucondinh.Location = new Point(21, 52);
             numMucondinh.Margin = new Padding(3, 5, 3, 5);
@@ -363,7 +362,7 @@
             // 
             // pnlGiaban
             // 
-            pnlGiaban.BackColor = Color.White;
+            pnlGiaban.BackColor = Color.WhiteSmoke;
             pnlGiaban.Controls.Add(numMuctoithieu);
             pnlGiaban.Controls.Add(label4);
             pnlGiaban.CustomizableEdges = customizableEdges23;
@@ -380,7 +379,6 @@
             numMuctoithieu.BorderRadius = 5;
             numMuctoithieu.Cursor = Cursors.IBeam;
             numMuctoithieu.CustomizableEdges = customizableEdges21;
-            numMuctoithieu.FillColor = Color.WhiteSmoke;
             numMuctoithieu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             numMuctoithieu.Location = new Point(21, 52);
             numMuctoithieu.Margin = new Padding(3, 5, 3, 5);
@@ -405,7 +403,7 @@
             // 
             // pnlTenloai
             // 
-            pnlTenloai.BackColor = Color.White;
+            pnlTenloai.BackColor = Color.WhiteSmoke;
             pnlTenloai.Controls.Add(picThemLoai);
             pnlTenloai.Controls.Add(cboTenloai);
             pnlTenloai.Controls.Add(label2);
@@ -439,7 +437,6 @@
             cboTenloai.CustomizableEdges = customizableEdges27;
             cboTenloai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTenloai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTenloai.FillColor = Color.WhiteSmoke;
             cboTenloai.FocusedColor = Color.FromArgb(94, 148, 255);
             cboTenloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             cboTenloai.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
@@ -467,7 +464,7 @@
             // pnlThongtinNL
             // 
             pnlThongtinNL.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            pnlThongtinNL.BackColor = Color.FromArgb(245, 151, 29);
+            pnlThongtinNL.BackColor = Color.WhiteSmoke;
             pnlThongtinNL.Controls.Add(btnHuy);
             pnlThongtinNL.Controls.Add(btnClose);
             pnlThongtinNL.Controls.Add(guna2Panel1);
@@ -560,14 +557,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsNguyenlieu.DefaultCellStyle = dataGridViewCellStyle3;
             gridDsNguyenlieu.GridColor = Color.White;
-            gridDsNguyenlieu.Location = new Point(11, 111);
+            gridDsNguyenlieu.Location = new Point(27, 111);
             gridDsNguyenlieu.Margin = new Padding(2, 4, 2, 4);
             gridDsNguyenlieu.Name = "gridDsNguyenlieu";
             gridDsNguyenlieu.ReadOnly = true;
             gridDsNguyenlieu.RowHeadersVisible = false;
             gridDsNguyenlieu.RowHeadersWidth = 51;
             gridDsNguyenlieu.RowTemplate.Height = 40;
-            gridDsNguyenlieu.Size = new Size(1470, 756);
+            gridDsNguyenlieu.Size = new Size(1463, 756);
             gridDsNguyenlieu.TabIndex = 0;
             gridDsNguyenlieu.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridDsNguyenlieu.ThemeStyle.AlternatingRowsStyle.Font = null;

@@ -22,6 +22,7 @@ namespace GUI
             ////Application.Run(new frmConfig());
             //Application.Run(new frmTaiKhoan());
             Application.Run(new frmLogin());
+            //Application.Run(new frmBaoCaoChotCa());
             //Application.Run(new frmLoiNhuan());
             //Application.Run(new frmHangBanChay());
             //Application.Run(new frmAdmin());
@@ -34,7 +35,6 @@ namespace GUI
             //Application.Run(new frmXuatNhapKho());
             //Application.Run(new frmTheRung());
             //Application.Run(new frmTonKho());
-
         }
     }
 }

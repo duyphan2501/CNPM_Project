@@ -25,7 +25,7 @@ namespace GUI
         {
             LoadCboKieuThongKe();
             dtpTuNgay.Value = DateTime.Now.AddDays(-120);
-            dtpDenNgay.Value = DateTime.Now;
+            dtpDenNgay.Value = DateTime.Now.AddDays(1);
             LoadDataAndCreateChart();
         }
 

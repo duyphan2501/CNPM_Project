@@ -34,7 +34,6 @@ namespace GUI
             else
                 gridDsTaikhoan.DataSource = taiKhoanBus.LoadDisabledAccounts();
 
-            gridDsTaikhoan.RowTemplate.Height = 50;
             cboTrangthai.SelectedItem = status;
         }
 

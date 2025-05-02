@@ -19,11 +19,15 @@ namespace GUI
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
+            lblHovaTen.Text = Program.account.Rows[0]["HoTen"].ToString();
+            lblVaiTro.Text = Program.account.Rows[0]["VaiTro"].ToString();
+
             pnlKho.Height = btnDashboard.Height + 31;
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
             General.SetFullScreen(this);
             //pnlBanHang.Visible = false;
-
+            SetActiveButton(btnDashboard);
+            ShowFormInPanel(new frmDashboard());
         }
 
         private void ResetAllButtons(Control parent)
@@ -56,8 +60,8 @@ namespace GUI
             ResetAllButtons(this);
 
             // Gán màu Gradient cho nút đang được chọn
-            clickedButton.FillColor = Color.FromArgb(248, 92, 7);     // Màu trái
-            clickedButton.FillColor2 = Color.FromArgb(255, 128, 0);   // Màu phải
+            clickedButton.FillColor = Color.Orange;  
+            clickedButton.FillColor2 = Color.Orange;   
             clickedButton.ForeColor = Color.Black;
             clickedButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
         }
@@ -169,6 +173,7 @@ namespace GUI
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnDashboard);
+            ShowFormInPanel(new frmDashboard());
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)

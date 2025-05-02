@@ -86,5 +86,10 @@ namespace BUS
         {
             return nguyenlieudal.LayDonvi(maNL);
         }
+
+        public DataTable SelectNguyenLieu()
+        {
+            return nguyenlieudal.SelectNguyenLieu();
+        }
     }
 }

@@ -24,24 +24,32 @@ namespace DAL
 
         public DataTable LoadReceipt()
         {
-            string query = "select MaPhieu as 'Mã Phiếu', TenDangNhap as 'Tên đăng nhập', Loai as 'Loại phiếu', SoTien as 'Số tiền', GhiChu as 'Ghi chú', NgayLap as 'Ngày lập' from PhieuThuChi";
+            string query =
+                "SELECT ptc.TenDangNhap AS N'Tài khoản lập phiếu', " +
+                "ltc.Loai AS N'Loại phiếu', " +
+                "ltc.TenLoai AS N'Loại thu chi', " +
+                "ptc.SoTien AS N'Số tiền', " +
+                "ptc.GhiChu AS N'Ghi chú', " +
+                "FORMAT(ptc.NgayLap, 'dd/MM/yyyy HH:mm:ss') AS N'Ngày lập' " + // Định dạng ngày
+                "FROM PhieuThuChi ptc " +
+                "JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi " +
+                "ORDER BY ptc.NgayLap DESC";
             return DataProvider.ExecuteQuery(query);
         }
 
-        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string loai, string ghichu)
+        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
-            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, Loai, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
-            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,loai,ghichu };
+            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, MaLoaiThuChi, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
+            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien, maloaithuchi,ghichu };
             return DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        // lấy mã phiếu thu cho lớn nhất theo từng loại mã
+        // lấy mã phiếu thu cho lớn nhất
         public string MaxID(bool isExpense)
         {
             string prefix = isExpense ? "PC" : "PT";
-            string query = $"select top 1 MaPhieu from PhieuThuChi where MaPhieu like '{prefix}%' order by MaPhieu desc";
-            string maxMaphieu = (string)DataProvider.ExecuteScalar(query);
-            return maxMaphieu;
+            string query = $"SELECT TOP 1 MaPhieu FROM PhieuThuChi WHERE MaPhieu LIKE '{prefix}%' ORDER BY MaPhieu DESC";
+            return (string)DataProvider.ExecuteScalar(query);
         }
 
 
@@ -87,12 +95,13 @@ namespace DAL
             "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuDonHang, " +
             "SUM(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai != N'Thu từ đơn hàng' THEN ptc.SoTien ELSE 0 END) AS DoanhThuKhac, " +
             "SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi, " +
-            "COUNT(CASE WHEN ltc.Loai = 'Thu' AND ltc.TenLoai = N'Thu từ đơn hàng' THEN 1 ELSE NULL END) AS SoHoaDon " +
+            "COUNT(CASE WHEN ltc.Loai = 'Thu' AND ltc.MaLoaiThuChi = 'T01' THEN 1 ELSE NULL END) AS SoHoaDon " +
             "FROM PhieuThuChi AS ptc " +
             "JOIN LoaiThuChi AS ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi " +
             "WHERE ptc.NgayLap BETWEEN @TuNgay AND @DenNgay " +
             "GROUP BY {0} " +
             "ORDER BY MIN(ptc.NgayLap)", groupField);
+
 
             // Truyền tham số trực tiếp vào câu truy vấn mà không sử dụng SqlParameter
             object[] parameters = new object[]
@@ -105,6 +114,17 @@ namespace DAL
             return DataProvider.ExecuteQuery(query, parameters);
         }
 
+        public DataTable SelectThuChiTrongNgay()
+        {
+            string query = @"
+            SELECT
+                SUM(CASE WHEN ltc.Loai = 'Thu' THEN ptc.SoTien ELSE 0 END) AS DoanhThu,
+                SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi
+            FROM PhieuThuChi ptc
+            JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi
+            WHERE CONVERT(date, ptc.NgayLap) = CONVERT(date, GETDATE())";
 
+            return DataProvider.ExecuteQuery(query);
+        }
     }
 }

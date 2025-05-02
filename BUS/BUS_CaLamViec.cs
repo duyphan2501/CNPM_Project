@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DTO;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,6 +59,31 @@ namespace BUS
         public int ChotCaLamViec(string maCaLam, int tienCuoiCa, string ghiChu)
         {
             return calamViec.ChotCaLamViec(maCaLam, tienCuoiCa, ghiChu);
+        }
+
+        public DataTable SelectAllShift()
+        {
+            return calamViec.SelectAllShift();
+        }
+
+        public int GetToTalShifts()
+        {
+            return calamViec.GetToTalShifts();
+        }
+
+        public DataTable SelectCaLamOnPage(int page, int pageSize)
+        {
+            return calamViec.SelectCaLamOnPage(page, pageSize);
+        }
+
+        public int GetTienDauCa(string maCa)
+        {
+            return calamViec.GetTienDauCa(maCa);
+        }
+
+        public DataTable GetInformationShift(string maCa)
+        {
+            return calamViec.GetInformationShift(maCa);
         }
     }
 }

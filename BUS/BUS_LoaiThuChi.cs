@@ -17,6 +17,11 @@ namespace BUS
             loaithuchidal = new DAL_LoaiThuChi(maloaithuchi,tenloai,loai);
         }
 
+        public BUS_LoaiThuChi()
+        {
+            loaithuchidal = new DAL_LoaiThuChi();
+        }
+
         public void AddType(string maloaithuchi, string tenloai, string loai)
         {
             loaithuchidal.AddType(maloaithuchi, tenloai, loai);
@@ -34,12 +39,12 @@ namespace BUS
             if (maxMaloai != null)
             {
                 int ma = int.Parse(maxMaloai.Substring(2)) + 1;
-                string maloai = "ML" + ma.ToString("D3");
+                string maloai = "TC" + ma.ToString("D2");
                 return maloai;
             }
             else
             {
-                return "ML001";
+                return "TC01";
             }
         }
     }

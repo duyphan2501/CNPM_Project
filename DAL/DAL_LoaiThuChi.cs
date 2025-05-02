@@ -17,6 +17,11 @@ namespace DAL
             loaithuchidto = new DTO_LoaiThuChi(maloaithuchi,tenloai,loai);
         }
 
+        public DAL_LoaiThuChi()
+        {
+            loaithuchidto = new DTO_LoaiThuChi();
+        }
+
         public void AddType(string maloaithuchi, string tenloai, string loai)
         {
             string query = "insert into LoaiThuChi values (@_MaLoaiThuChi, @_TenLoai,@_Loai)";

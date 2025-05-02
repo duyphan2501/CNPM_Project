@@ -304,6 +304,8 @@
             gridDsPhieu.ThemeStyle.RowsStyle.Height = 35;
             gridDsPhieu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsPhieu.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            gridDsPhieu.CellBeginEdit += griDsPhieu_CellBeginEdit;
+            gridDsPhieu.CellContentClick += gridDsPhieu_CellContentClick;
             gridDsPhieu.CellValueChanged += gridDsPhieu_CellValueChanged;
             // 
             // guna2ShadowPanel1

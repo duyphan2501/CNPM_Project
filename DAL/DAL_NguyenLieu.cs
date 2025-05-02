@@ -26,7 +26,7 @@ namespace DAL
         //Tải nguyên liệu lên datagridview
         public DataTable LoadIngredients()
         {
-            string query = "select nl.MaNL as 'Mã nguyên liệu',lnl.TenLoai as 'Tên loại',nl.TenNL as 'Tên nguyên liệu',nl.DonVi as 'Đơn vị tính',nl.SoLuongTon as 'Số lượng tồn',nl.MucToiThieu as 'Mức tối thiểu', nl.MucOnDinh as 'Mức ổn định' from NguyenLieu nl,LoaiNguyenLieu lnl " +
+            string query = "select nl.MaNL as 'Mã nguyên liệu',lnl.TenLoai as 'Tên loại',nl.TenNL as 'Tên nguyên liệu',nl.DonVi as 'Đơn vị tính',nl.SoLuongTon as 'Số lượng tồn', nl.GiaNhap as 'Giá nhập', nl.MucToiThieu as 'Mức tối thiểu', nl.MucOnDinh as 'Mức ổn định' from NguyenLieu nl,LoaiNguyenLieu lnl " +
                             "where nl.MaLoaiNL = lnl.MaLoaiNL";
             return DataProvider.ExecuteQuery(query);
         }
@@ -98,6 +98,12 @@ namespace DAL
             string query = "select donvi from nguyenlieu where manl = @maNl";
             object result = DataProvider.ExecuteScalar(query, new object[] { maNL });
             return result != null ? result.ToString() : "";
+        }
+
+        public DataTable SelectNguyenLieu()
+        {
+            string query = "Select * from NguyenLieu";
+            return DataProvider.ExecuteQuery(query);
         }
 
     }

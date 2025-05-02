@@ -77,5 +77,14 @@ namespace GUI
             btn.Click += onClick;
             return btn;
         }
+
+        public static int GetPageSizeFromGridView(Guna2DataGridView gridview)
+        {
+            // Trừ đi độ cao của header để lấy vùng hiển thị cho dòng dữ liệu
+            int gridHeight = gridview.ClientSize.Height - gridview.ColumnHeadersHeight;
+            int rowHeight = gridview.RowTemplate.Height;
+
+            return Math.Max(1, gridHeight / rowHeight); // Đảm bảo tối thiểu 1 dòng
+        }
     }
 }

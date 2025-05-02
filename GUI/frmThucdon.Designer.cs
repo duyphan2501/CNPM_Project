@@ -161,6 +161,7 @@
             pnlMasanpham.BackColor = Color.White;
             pnlMasanpham.BorderColor = Color.FromArgb(224, 224, 224);
             pnlMasanpham.BorderRadius = 5;
+            pnlMasanpham.BorderThickness = 2;
             pnlMasanpham.Controls.Add(txtMasanpham);
             pnlMasanpham.Controls.Add(label1);
             pnlMasanpham.CustomizableEdges = customizableEdges5;
@@ -261,7 +262,7 @@
             cboTenloai.ForeColor = Color.Black;
             cboTenloai.ItemHeight = 30;
             cboTenloai.Items.AddRange(new object[] { "cafe" });
-            cboTenloai.Location = new Point(21, 48);
+            cboTenloai.Location = new Point(25, 48);
             cboTenloai.Margin = new Padding(2, 3, 2, 3);
             cboTenloai.Name = "cboTenloai";
             cboTenloai.ShadowDecoration.CustomizableEdges = customizableEdges10;
@@ -302,12 +303,12 @@
             numGiaban.Cursor = Cursors.IBeam;
             numGiaban.CustomizableEdges = customizableEdges13;
             numGiaban.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            numGiaban.Location = new Point(21, 52);
+            numGiaban.Location = new Point(25, 51);
             numGiaban.Margin = new Padding(3, 5, 3, 5);
             numGiaban.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numGiaban.Name = "numGiaban";
             numGiaban.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            numGiaban.Size = new Size(312, 34);
+            numGiaban.Size = new Size(308, 34);
             numGiaban.TabIndex = 2;
             numGiaban.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
             // 
@@ -339,7 +340,7 @@
             txtTensanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtTensanpham.ForeColor = Color.Black;
             txtTensanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTensanpham.Location = new Point(29, 54);
+            txtTensanpham.Location = new Point(25, 48);
             txtTensanpham.Margin = new Padding(5, 6, 5, 6);
             txtTensanpham.Name = "txtTensanpham";
             txtTensanpham.PlaceholderText = "";
@@ -479,8 +480,8 @@
             btnLuu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLuu.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnLuu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLuu.FillColor = Color.FromArgb(4, 59, 100);
-            btnLuu.FillColor2 = Color.FromArgb(4, 59, 100);
+            btnLuu.FillColor = Color.FromArgb(0, 92, 191);
+            btnLuu.FillColor2 = Color.FromArgb(0, 92, 191);
             btnLuu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnLuu.ForeColor = Color.White;
             btnLuu.Location = new Point(50, 811);
@@ -547,8 +548,8 @@
             btnThemmon.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnThemmon.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnThemmon.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnThemmon.FillColor = Color.FromArgb(244, 103, 0);
-            btnThemmon.FillColor2 = Color.DarkOrange;
+            btnThemmon.FillColor = Color.FromArgb(0, 92, 191);
+            btnThemmon.FillColor2 = Color.FromArgb(0, 92, 191);
             btnThemmon.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemmon.ForeColor = Color.White;
             btnThemmon.Location = new Point(31, 52);
@@ -606,7 +607,7 @@
             // pnlThongtinSP
             // 
             pnlThongtinSP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            pnlThongtinSP.BackColor = Color.FromArgb(245, 151, 29);
+            pnlThongtinSP.BackColor = Color.WhiteSmoke;
             pnlThongtinSP.BorderColor = Color.Black;
             pnlThongtinSP.Controls.Add(pnlHinhanh);
             pnlThongtinSP.Controls.Add(btnClose);

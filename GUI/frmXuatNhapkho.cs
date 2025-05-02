@@ -34,12 +34,58 @@ namespace GUI
             //cboLoaiphieu.Text = "Phiếu nhập";
         }
 
+        // Đảm bảo cột btnDelete luôn ở cuối cùng
+        private void MoveDeleteColumnToEnd()
+        {
+            var col = gridDsPhieu.Columns["btnDelete"];
+            if (col != null && col.DisplayIndex != gridDsPhieu.ColumnCount - 1)
+            {
+                col.DisplayIndex = gridDsPhieu.ColumnCount - 1;
+            }
+        }
+
+
         public void LoadIngredients_name()
         {
             cboTenNguyenlieu.DataSource = phieunhap.LoadIngredients_name();
             cboTenNguyenlieu.DisplayMember = "TenNL";
             cboTenNguyenlieu.ValueMember = "MaNL";
         }
+
+        private void griDsPhieu_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            string columnName = gridDsPhieu.Columns[e.ColumnIndex].Name;
+            if (columnName != "soluong" && columnName != "gianhap")
+            {
+                e.Cancel = true; // Không cho sửa các cột khác
+            }
+        }
+
+        private void gridDsPhieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gridDsPhieu.Columns[e.ColumnIndex].Name == "btnDelete" && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show("Bạn có chắc muốn xoá dòng này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
+                    if (laNhap)
+                    {
+                        int thanhtien = Convert.ToInt32(gridDsPhieu.Rows[e.RowIndex].Cells["thanhtien"].Value);
+                        tong -= thanhtien;
+                        lblTongTien.Text = tong.ToString();
+                    }
+
+                    gridDsPhieu.Rows.RemoveAt(e.RowIndex);
+
+                    if (gridDsPhieu.Rows.Count == 0)
+                    {
+                        btnLuuphieu.Enabled = false;
+                        cboLoaiphieu.Enabled = true;
+                    }
+                }
+            }
+        }
+
 
         public void LoadReceipt()
         {
@@ -113,11 +159,12 @@ namespace GUI
         int tong = 0; //tạo biến lưu tổng tiền
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cboLoaiphieu.Text)) // chưa chọn loại phiếu
+            if (string.IsNullOrWhiteSpace(cboLoaiphieu.Text))
             {
                General.ShowWarning("Vui lòng chọn loại phiếu!", this);
                 return;
             }
+
             string manl = cboTenNguyenlieu.SelectedValue.ToString();
             string nguyenlieu = cboTenNguyenlieu.Text;
             int soluong = Convert.ToInt32(numSoluong.Value);
@@ -125,8 +172,7 @@ namespace GUI
             
 
             if (IsDuplicateIngredient(manl)) return;
-
-            if (laNhap) //check thông tin phiếu nhập kho
+            if (laNhap)
             {
                 int gianhap = Convert.ToInt32(numGianhap.Value);
                 if (CheckInput_GoodsReceipt(soluong, gianhap)) return;
@@ -139,13 +185,13 @@ namespace GUI
 
                 //Thêm nguyên liệu vào phiếu nhập
                 int thanhtien = soluong * gianhap;
-                gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
+                gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien, Properties.Resources.recyclebin);
                 tong += thanhtien;
                 lblTongTien.Text = tong.ToString();
                 btnLuuphieu.Enabled = true; //cho phép lưu phiếu
                 
             }
-            else //check thông tin phiếu xuất kho
+            else
             {
                 if (CheckInput_DeliveryReceipt(nguyenlieu, soluong)) return;
 
@@ -162,9 +208,11 @@ namespace GUI
                 cboLoaiphieu.Enabled = false;
             }
 
+            btnLuuphieu.Enabled = true;
             numGianhap.Value = 0;
             numSoluong.Value = 0;
         }
+
 
         private void btnLuuphieu_Click(object sender, EventArgs e)
         {
@@ -244,6 +292,59 @@ namespace GUI
             }
         }
 
+        private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;  // Không xử lý nếu là tiêu đề cột
+
+            // Kiểm tra cột có tồn tại không
+            var colGiaNhap = gridDsPhieu.Columns["gianhap"];
+            var colSoLuong = gridDsPhieu.Columns["soluong"];
+            var colThanhTien = gridDsPhieu.Columns["thanhtien"];
+
+            if (colGiaNhap == null || colSoLuong == null || colThanhTien == null)
+            {
+                MessageBox.Show("Một hoặc nhiều cột không tồn tại.", "Lỗi cấu trúc bảng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Chỉ xử lý nếu sửa ở cột gianhap hoặc soluong
+            if (e.ColumnIndex == colGiaNhap.Index || e.ColumnIndex == colSoLuong.Index)
+            {
+                DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
+
+                int gianhap = 0;
+                int soluong = 0;
+
+                if (int.TryParse(row.Cells["gianhap"].Value?.ToString(), out gianhap) && gianhap > 0
+                    && int.TryParse(row.Cells["soluong"].Value?.ToString(), out soluong) && soluong > 0)
+                {
+                    int thanhtien = gianhap * soluong;
+                    row.Cells["thanhtien"].Value = thanhtien;
+
+                    // Cập nhật tổng tiền
+                    tong = 0;
+                    foreach (DataGridViewRow r in gridDsPhieu.Rows)
+                    {
+                        int temp = 0;
+                        int.TryParse(r.Cells["thanhtien"]?.Value?.ToString(), out temp);
+                        tong += temp;
+                    }
+
+                    lblTongTien.Text = tong.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá nhập và số lượng phải là số dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (e.ColumnIndex == colGiaNhap.Index)
+                        row.Cells["gianhap"].Value = 0;
+                    else if (e.ColumnIndex == colSoLuong.Index)
+                        row.Cells["soluong"].Value = 1;
+                }
+            }
+        }
+
+
         private void ResetForm()
         {
             cboLoaiphieu.Enabled = true;
@@ -263,15 +364,35 @@ namespace GUI
         {
             gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
             gridDsPhieu.ThemeStyle.RowsStyle.ForeColor = Color.Black;
+
             gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
             gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
             gridDsPhieu.Columns.Add("soluong", laNhap ? "Số lượng nhập" : "Số lượng xuất");
+            // ko cho chỉnh mã và tên nl, thành tiền
+            gridDsPhieu.Columns["manl"].ReadOnly = true;
+            gridDsPhieu.Columns["nguyenlieu"].ReadOnly = true;
             if (laNhap)
             {
                 gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
                 gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
+                gridDsPhieu.Columns["thanhtien"].ReadOnly = true;
             }
+
+            // Cột xoá
+            DataGridViewImageColumn deleteColumn = new DataGridViewImageColumn();
+            deleteColumn.Name = "btnDelete";
+            deleteColumn.HeaderText = "";
+            deleteColumn.Image = Properties.Resources.recyclebin;
+            deleteColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            deleteColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deleteColumn.Width = 30;
+
+            gridDsPhieu.Columns.Add(deleteColumn);
+
+            // Đảm bảo cột nằm ở cuối
+            MoveDeleteColumnToEnd();
         }
+
 
         //Kiểm tra xem nguyên liệu đã có trong phiếu chưa
         private bool IsDuplicateIngredient(string manl)
@@ -378,29 +499,6 @@ namespace GUI
 
             // Hiển thị tổng tiền lên TextBox
             lblTongTien.Text = tongTien.ToString();
-        }
-
-        private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (cboLoaiphieu.Text == "Phiếu nhập")
-            {
-                // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
-                if (e.RowIndex >= 0 && (gridDsPhieu.Columns[e.ColumnIndex].Name == "soluong" || gridDsPhieu.Columns[e.ColumnIndex].Name == "gianhap"))
-                {
-                    // Lấy dòng hiện tại
-                    DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
-
-                    // Lấy giá trị "Số lượng" và "Giá nhập"
-                    int soluong = row.Cells["soluong"].Value != null ? Convert.ToInt32(row.Cells["soluong"].Value) : 0;
-                    int gianhap = row.Cells["gianhap"].Value != null ? Convert.ToInt32(row.Cells["gianhap"].Value) : 0;
-
-                    // Tính lại "Thành tiền"
-                    row.Cells["thanhtien"].Value = soluong * gianhap;
-
-                    // Cập nhật tổng tiền
-                    UpdateTongTien();
-                }
-            }
         }
 
         private void btnTonKho_Click(object sender, EventArgs e)

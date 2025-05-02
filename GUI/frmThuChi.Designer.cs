@@ -28,20 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             gridDsThuchi = new Guna.UI2.WinForms.Guna2DataGridView();
             label1 = new Label();
             cboLoaiPhieu = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -50,27 +47,8 @@
             dateDenngay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             label3 = new Label();
             label5 = new Label();
-            guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridDsThuchi).BeginInit();
             SuspendLayout();
-            // 
-            // guna2GroupBox1
-            // 
-            guna2GroupBox1.BackColor = SystemColors.Control;
-            guna2GroupBox1.BorderRadius = 5;
-            guna2GroupBox1.BorderThickness = 0;
-            guna2GroupBox1.Controls.Add(gridDsThuchi);
-            guna2GroupBox1.CustomBorderThickness = new Padding(0);
-            guna2GroupBox1.CustomizableEdges = customizableEdges1;
-            guna2GroupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2GroupBox1.ForeColor = Color.Black;
-            guna2GroupBox1.Location = new Point(30, 118);
-            guna2GroupBox1.Margin = new Padding(2, 5, 2, 5);
-            guna2GroupBox1.Name = "guna2GroupBox1";
-            guna2GroupBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2GroupBox1.Size = new Size(2322, 1210);
-            guna2GroupBox1.TabIndex = 8;
-            guna2GroupBox1.Text = "Danh sách thu chi";
             // 
             // gridDsThuchi
             // 
@@ -78,6 +56,7 @@
             gridDsThuchi.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             gridDsThuchi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            gridDsThuchi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -91,20 +70,20 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 167, 73);
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsThuchi.DefaultCellStyle = dataGridViewCellStyle3;
             gridDsThuchi.GridColor = Color.White;
-            gridDsThuchi.Location = new Point(14, 66);
-            gridDsThuchi.Margin = new Padding(2, 5, 2, 5);
+            gridDsThuchi.Location = new Point(20, 112);
+            gridDsThuchi.Margin = new Padding(2, 3, 2, 3);
             gridDsThuchi.Name = "gridDsThuchi";
             gridDsThuchi.ReadOnly = true;
             gridDsThuchi.RowHeadersVisible = false;
             gridDsThuchi.RowHeadersWidth = 51;
-            gridDsThuchi.RowTemplate.Height = 35;
-            gridDsThuchi.Size = new Size(1841, 845);
+            gridDsThuchi.RowTemplate.Height = 40;
+            gridDsThuchi.Size = new Size(1178, 550);
             gridDsThuchi.TabIndex = 0;
             gridDsThuchi.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridDsThuchi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -124,7 +103,7 @@
             gridDsThuchi.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             gridDsThuchi.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gridDsThuchi.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-            gridDsThuchi.ThemeStyle.RowsStyle.Height = 35;
+            gridDsThuchi.ThemeStyle.RowsStyle.Height = 40;
             gridDsThuchi.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsThuchi.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
@@ -134,17 +113,17 @@
             label1.BackColor = Color.FromArgb(221, 222, 224);
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(365, 49);
+            label1.Location = new Point(275, 52);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(119, 30);
+            label1.Size = new Size(100, 25);
             label1.TabIndex = 10;
             label1.Text = "Loại Phiếu";
             // 
             // cboLoaiPhieu
             // 
             cboLoaiPhieu.BackColor = Color.Transparent;
-            cboLoaiPhieu.CustomizableEdges = customizableEdges3;
+            cboLoaiPhieu.CustomizableEdges = customizableEdges1;
             cboLoaiPhieu.DrawMode = DrawMode.OwnerDrawFixed;
             cboLoaiPhieu.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLoaiPhieu.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -153,19 +132,18 @@
             cboLoaiPhieu.ForeColor = Color.Black;
             cboLoaiPhieu.ItemHeight = 30;
             cboLoaiPhieu.Items.AddRange(new object[] { "Tất cả", "Phiếu thu", "Phiếu chi" });
-            cboLoaiPhieu.Location = new Point(495, 44);
-            cboLoaiPhieu.Margin = new Padding(2, 5, 2, 5);
+            cboLoaiPhieu.Location = new Point(379, 48);
+            cboLoaiPhieu.Margin = new Padding(2, 4, 2, 4);
             cboLoaiPhieu.Name = "cboLoaiPhieu";
-            cboLoaiPhieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            cboLoaiPhieu.Size = new Size(293, 36);
+            cboLoaiPhieu.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            cboLoaiPhieu.Size = new Size(189, 36);
             cboLoaiPhieu.TabIndex = 9;
-            cboLoaiPhieu.SelectedIndexChanged += cboLoaiPhieu_SelectedIndexChanged;
             // 
             // btnThemphieu
             // 
             btnThemphieu.AutoRoundedCorners = true;
             btnThemphieu.BackColor = Color.Transparent;
-            btnThemphieu.CustomizableEdges = customizableEdges5;
+            btnThemphieu.CustomizableEdges = customizableEdges3;
             btnThemphieu.DisabledState.BorderColor = Color.DarkGray;
             btnThemphieu.DisabledState.CustomBorderColor = Color.DarkGray;
             btnThemphieu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -175,11 +153,11 @@
             btnThemphieu.FillColor2 = Color.DarkOrange;
             btnThemphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemphieu.ForeColor = Color.White;
-            btnThemphieu.Location = new Point(79, 28);
-            btnThemphieu.Margin = new Padding(4, 5, 4, 5);
+            btnThemphieu.Location = new Point(46, 35);
+            btnThemphieu.Margin = new Padding(3, 4, 3, 4);
             btnThemphieu.Name = "btnThemphieu";
-            btnThemphieu.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnThemphieu.Size = new Size(188, 61);
+            btnThemphieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnThemphieu.Size = new Size(120, 39);
             btnThemphieu.TabIndex = 13;
             btnThemphieu.Text = "Thêm Phiếu";
             btnThemphieu.Click += btnThemphieu_Click;
@@ -188,17 +166,17 @@
             // 
             dateTungay.BorderRadius = 5;
             dateTungay.Checked = true;
-            dateTungay.CustomizableEdges = customizableEdges7;
+            dateTungay.CustomizableEdges = customizableEdges5;
             dateTungay.Font = new Font("Segoe UI", 9F);
             dateTungay.ForeColor = Color.White;
             dateTungay.Format = DateTimePickerFormat.Long;
-            dateTungay.Location = new Point(929, 42);
+            dateTungay.Location = new Point(726, 47);
             dateTungay.Margin = new Padding(2);
             dateTungay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTungay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateTungay.Name = "dateTungay";
-            dateTungay.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            dateTungay.Size = new Size(345, 58);
+            dateTungay.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            dateTungay.Size = new Size(221, 37);
             dateTungay.TabIndex = 14;
             dateTungay.Value = new DateTime(2025, 4, 26, 22, 2, 45, 400);
             // 
@@ -206,17 +184,17 @@
             // 
             dateDenngay.BorderRadius = 5;
             dateDenngay.Checked = true;
-            dateDenngay.CustomizableEdges = customizableEdges9;
+            dateDenngay.CustomizableEdges = customizableEdges7;
             dateDenngay.Font = new Font("Segoe UI", 9F);
             dateDenngay.ForeColor = Color.White;
             dateDenngay.Format = DateTimePickerFormat.Long;
-            dateDenngay.Location = new Point(1476, 42);
+            dateDenngay.Location = new Point(1164, 47);
             dateDenngay.Margin = new Padding(2);
             dateDenngay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateDenngay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateDenngay.Name = "dateDenngay";
-            dateDenngay.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            dateDenngay.Size = new Size(345, 58);
+            dateDenngay.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            dateDenngay.Size = new Size(221, 37);
             dateDenngay.TabIndex = 14;
             dateDenngay.Value = new DateTime(2025, 4, 26, 22, 2, 45, 400);
             // 
@@ -226,10 +204,10 @@
             label3.BackColor = Color.FromArgb(221, 222, 224);
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(244, 103, 0);
-            label3.Location = new Point(821, 49);
+            label3.Location = new Point(640, 52);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(98, 30);
+            label3.Size = new Size(82, 25);
             label3.TabIndex = 10;
             label3.Text = "Từ ngày";
             // 
@@ -239,19 +217,20 @@
             label5.BackColor = Color.FromArgb(221, 222, 224);
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(244, 103, 0);
-            label5.Location = new Point(1355, 49);
+            label5.Location = new Point(1067, 52);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(111, 30);
+            label5.Size = new Size(93, 25);
             label5.TabIndex = 10;
             label5.Text = "Đến ngày";
             // 
             // frmThuChi
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(221, 222, 224);
-            ClientSize = new Size(1900, 1100);
+            ClientSize = new Size(1216, 704);
+            Controls.Add(gridDsThuchi);
             Controls.Add(dateDenngay);
             Controls.Add(dateTungay);
             Controls.Add(btnThemphieu);
@@ -259,21 +238,17 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(cboLoaiPhieu);
-            Controls.Add(guna2GroupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "frmThuChi";
             Text = "frmThuChi";
             Load += frmThuChi_Load;
-            guna2GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridDsThuchi).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2DataGridView gridDsThuchi;
         private Label label1;
         private Guna.UI2.WinForms.Guna2ComboBox cboLoaiPhieu;
