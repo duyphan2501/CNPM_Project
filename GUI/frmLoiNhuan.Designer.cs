@@ -51,8 +51,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlBieuDo = new Guna.UI2.WinForms.Guna2Panel();
             dtpTuNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dtpDenNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -87,7 +85,6 @@
             label3 = new Label();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             label6 = new Label();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2ShadowPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             guna2ShadowPanel2.SuspendLayout();
@@ -109,7 +106,7 @@
             pnlBieuDo.Location = new Point(39, 290);
             pnlBieuDo.Name = "pnlBieuDo";
             pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlBieuDo.Size = new Size(1363, 489);
+            pnlBieuDo.Size = new Size(1415, 513);
             pnlBieuDo.TabIndex = 0;
             // 
             // dtpTuNgay
@@ -189,17 +186,18 @@
             // 
             // guna2ShadowPanel1
             // 
+            guna2ShadowPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel1.BackColor = Color.Transparent;
             guna2ShadowPanel1.Controls.Add(guna2CirclePictureBox1);
             guna2ShadowPanel1.Controls.Add(lblDoanhThu);
             guna2ShadowPanel1.Controls.Add(label1);
             guna2ShadowPanel1.FillColor = Color.DodgerBlue;
-            guna2ShadowPanel1.Location = new Point(52, 21);
+            guna2ShadowPanel1.Location = new Point(3, 22);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             guna2ShadowPanel1.Radius = 5;
             guna2ShadowPanel1.ShadowColor = Color.Black;
             guna2ShadowPanel1.ShadowShift = 2;
-            guna2ShadowPanel1.Size = new Size(228, 85);
+            guna2ShadowPanel1.Size = new Size(233, 85);
             guna2ShadowPanel1.TabIndex = 5;
             // 
             // guna2CirclePictureBox1
@@ -234,24 +232,25 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(90, 12);
             label1.Name = "label1";
-            label1.Size = new Size(104, 25);
+            label1.Size = new Size(89, 25);
             label1.TabIndex = 0;
-            label1.Text = "Doanh thu ";
+            label1.Text = "Bán hàng";
             // 
             // guna2ShadowPanel2
             // 
+            guna2ShadowPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel2.BackColor = Color.Transparent;
             guna2ShadowPanel2.Controls.Add(guna2CirclePictureBox2);
             guna2ShadowPanel2.Controls.Add(lblChiPhi);
             guna2ShadowPanel2.Controls.Add(label5);
             guna2ShadowPanel2.Controls.Add(label4);
             guna2ShadowPanel2.FillColor = Color.Indigo;
-            guna2ShadowPanel2.Location = new Point(561, 21);
+            guna2ShadowPanel2.Location = new Point(551, 22);
             guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             guna2ShadowPanel2.Radius = 5;
             guna2ShadowPanel2.ShadowColor = Color.Black;
             guna2ShadowPanel2.ShadowShift = 2;
-            guna2ShadowPanel2.Size = new Size(228, 85);
+            guna2ShadowPanel2.Size = new Size(247, 85);
             guna2ShadowPanel2.TabIndex = 6;
             // 
             // guna2CirclePictureBox2
@@ -303,18 +302,19 @@
             // 
             // guna2ShadowPanel3
             // 
+            guna2ShadowPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel3.BackColor = Color.Transparent;
             guna2ShadowPanel3.Controls.Add(guna2PictureBox1);
             guna2ShadowPanel3.Controls.Add(lblLoiNhuan);
             guna2ShadowPanel3.Controls.Add(label7);
             guna2ShadowPanel3.Controls.Add(label8);
             guna2ShadowPanel3.FillColor = Color.ForestGreen;
-            guna2ShadowPanel3.Location = new Point(818, 21);
+            guna2ShadowPanel3.Location = new Point(830, 22);
             guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             guna2ShadowPanel3.Radius = 5;
             guna2ShadowPanel3.ShadowColor = Color.Black;
             guna2ShadowPanel3.ShadowShift = 2;
-            guna2ShadowPanel3.Size = new Size(228, 85);
+            guna2ShadowPanel3.Size = new Size(253, 85);
             guna2ShadowPanel3.TabIndex = 7;
             // 
             // guna2PictureBox1
@@ -366,18 +366,19 @@
             // 
             // guna2ShadowPanel4
             // 
+            guna2ShadowPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel4.BackColor = Color.Transparent;
             guna2ShadowPanel4.Controls.Add(guna2PictureBox2);
             guna2ShadowPanel4.Controls.Add(lblThuKhac);
             guna2ShadowPanel4.Controls.Add(label10);
             guna2ShadowPanel4.Controls.Add(label11);
             guna2ShadowPanel4.FillColor = Color.FromArgb(113, 181, 108);
-            guna2ShadowPanel4.Location = new Point(305, 21);
+            guna2ShadowPanel4.Location = new Point(272, 21);
             guna2ShadowPanel4.Name = "guna2ShadowPanel4";
             guna2ShadowPanel4.Radius = 5;
             guna2ShadowPanel4.ShadowColor = Color.Black;
             guna2ShadowPanel4.ShadowShift = 2;
-            guna2ShadowPanel4.Size = new Size(228, 85);
+            guna2ShadowPanel4.Size = new Size(244, 85);
             guna2ShadowPanel4.TabIndex = 8;
             // 
             // guna2PictureBox2
@@ -429,18 +430,19 @@
             // 
             // guna2ShadowPanel5
             // 
+            guna2ShadowPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel5.BackColor = Color.Transparent;
             guna2ShadowPanel5.Controls.Add(guna2PictureBox3);
             guna2ShadowPanel5.Controls.Add(lblSoHoaDon);
             guna2ShadowPanel5.Controls.Add(label13);
             guna2ShadowPanel5.Controls.Add(label14);
             guna2ShadowPanel5.FillColor = Color.Orange;
-            guna2ShadowPanel5.Location = new Point(1075, 22);
+            guna2ShadowPanel5.Location = new Point(1117, 23);
             guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             guna2ShadowPanel5.Radius = 5;
             guna2ShadowPanel5.ShadowColor = Color.Black;
             guna2ShadowPanel5.ShadowShift = 2;
-            guna2ShadowPanel5.Size = new Size(228, 84);
+            guna2ShadowPanel5.Size = new Size(247, 84);
             guna2ShadowPanel5.TabIndex = 8;
             // 
             // guna2PictureBox3
@@ -476,9 +478,9 @@
             label13.ForeColor = Color.White;
             label13.Location = new Point(96, 15);
             label13.Name = "label13";
-            label13.Size = new Size(106, 25);
+            label13.Size = new Size(117, 25);
             label13.TabIndex = 0;
-            label13.Text = "Số hoá đơn";
+            label13.Text = "Số đơn hàng";
             // 
             // label14
             // 
@@ -502,7 +504,7 @@
             guna2Panel1.Location = new Point(39, 159);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2Panel1.Size = new Size(1363, 125);
+            guna2Panel1.Size = new Size(1415, 125);
             guna2Panel1.TabIndex = 9;
             // 
             // label2
@@ -541,7 +543,7 @@
             guna2Panel2.Location = new Point(39, 64);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel2.Size = new Size(1363, 89);
+            guna2Panel2.Size = new Size(1415, 89);
             guna2Panel2.TabIndex = 10;
             // 
             // label6
@@ -555,29 +557,11 @@
             label6.TabIndex = 0;
             label6.Text = "Theo:";
             // 
-            // guna2Button1
-            // 
-            guna2Button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            guna2Button1.CustomizableEdges = customizableEdges23;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(1177, 799);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2Button1.Size = new Size(225, 56);
-            guna2Button1.TabIndex = 11;
-            guna2Button1.Text = "guna2Button1";
-            // 
             // frmLoiNhuan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1440, 867);
-            Controls.Add(guna2Button1);
+            ClientSize = new Size(1492, 867);
             Controls.Add(guna2Panel2);
             Controls.Add(guna2Panel1);
             Controls.Add(pnlBieuDo);
@@ -642,6 +626,5 @@
         private Label label3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Label label6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

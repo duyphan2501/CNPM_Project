@@ -282,21 +282,28 @@ namespace GUI
         {
             if (e.RowIndex < 0) return;  // Không xử lý nếu là tiêu đề cột
 
-            // Lấy dòng đang sửa
-            DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
+            // Kiểm tra cột có tồn tại không
+            var colGiaNhap = gridDsPhieu.Columns["gianhap"];
+            var colSoLuong = gridDsPhieu.Columns["soluong"];
+            var colThanhTien = gridDsPhieu.Columns["thanhtien"];
 
-            // Kiểm tra các cột cần thiết
-            if (e.ColumnIndex == gridDsPhieu.Columns["gianhap"].Index || e.ColumnIndex == gridDsPhieu.Columns["soluong"].Index)
+            if (colGiaNhap == null || colSoLuong == null || colThanhTien == null)
             {
-                // Kiểm tra giá trị của giá nhập và số lượng
+                MessageBox.Show("Một hoặc nhiều cột không tồn tại.", "Lỗi cấu trúc bảng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Chỉ xử lý nếu sửa ở cột gianhap hoặc soluong
+            if (e.ColumnIndex == colGiaNhap.Index || e.ColumnIndex == colSoLuong.Index)
+            {
+                DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
+
                 int gianhap = 0;
                 int soluong = 0;
 
-                // Kiểm tra giá trị nhập vào có phải là số hợp lệ hay không
                 if (int.TryParse(row.Cells["gianhap"].Value?.ToString(), out gianhap) && gianhap > 0
                     && int.TryParse(row.Cells["soluong"].Value?.ToString(), out soluong) && soluong > 0)
                 {
-                    // Tính lại thành tiền
                     int thanhtien = gianhap * soluong;
                     row.Cells["thanhtien"].Value = thanhtien;
 
@@ -315,15 +322,10 @@ namespace GUI
                 {
                     MessageBox.Show("Giá nhập và số lượng phải là số dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    // Khôi phục lại giá trị trước khi sửa
-                    if (e.ColumnIndex == gridDsPhieu.Columns["gianhap"].Index)
-                    {
-                        row.Cells["gianhap"].Value = 0; // Hoặc giá trị ban đầu
-                    }
-                    else if (e.ColumnIndex == gridDsPhieu.Columns["soluong"].Index)
-                    {
-                        row.Cells["soluong"].Value = 1; // Hoặc giá trị ban đầu
-                    }
+                    if (e.ColumnIndex == colGiaNhap.Index)
+                        row.Cells["gianhap"].Value = 0;
+                    else if (e.ColumnIndex == colSoLuong.Index)
+                        row.Cells["soluong"].Value = 1;
                 }
             }
         }

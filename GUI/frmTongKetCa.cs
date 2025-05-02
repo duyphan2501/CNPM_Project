@@ -19,11 +19,25 @@ namespace GUI
             InitializeComponent();
         }
 
+        public frmTongKetCa(string maCaLam, bool isCashier)
+        {
+            InitializeComponent();
+            maCa = maCaLam;
+            if (!isCashier)
+            {
+                btnChotCa.Visible = false;
+                txtGhiChu.Enabled = false;
+                txtTienThucTe.Enabled = false;
+
+                DataTable informationShift = new BUS_CaLamViec().GetInformationShift(maCa);
+                txtTienThucTe.Text = informationShift.Rows[0]["TienCuoiCa"].ToString();
+                txtGhiChu.Text = informationShift.Rows[0]["GhiChu"].ToString();
+            }
+        }
+
         private void frmTongKetCa_Load(object sender, EventArgs e)
         {
-            maCa = Program.shift.Rows[0]["MaCaLam"].ToString();
-            int tienDauCa = int.Parse(Program.shift.Rows[0]["TienDauCa"].ToString());
-
+            int tienDauCa = new BUS_CaLamViec().GetTienDauCa(maCa);
             lblMaCaLam.Text = maCa;
             lblTienDauCa.Text = General.FormatMoney(tienDauCa);
 

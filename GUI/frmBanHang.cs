@@ -467,7 +467,8 @@ namespace GUI
 
         private void btnTongKetCa_Click(object sender, EventArgs e)
         {
-            frmTongKetCa frmTongKetCa = new frmTongKetCa();
+            string maCa = Program.shift.Columns["MaCaLam"].ToString();
+            frmTongKetCa frmTongKetCa = new frmTongKetCa(maCa, true);
             frmTongKetCa.ShiftClosed += (s, ev) =>
             {
                 CheckShiftOpening(); // Gọi lại kiểm tra mở ca khi frmTongKetCa báo đã chốt xong

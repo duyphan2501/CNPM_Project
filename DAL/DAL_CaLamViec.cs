@@ -72,5 +72,51 @@ namespace DAL
             };
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
+
+        public DataTable SelectAllShift()
+        {
+            string query = "select * from CaLamViec order by macalam desc";
+            return DataProvider.ExecuteQuery(query);
+        }
+
+        public int GetToTalShifts()
+        {
+            string query = "select count(MaCaLam) from CaLamViec";
+            object result = DataProvider.ExecuteScalar(query);
+            return result != null ? (int)result: 0;       
+        }
+
+        public DataTable SelectCaLamOnPage(int page, int pageSize)
+        {
+            string query = @"
+                SELECT * 
+                FROM CaLamViec
+                ORDER BY MaCaLam DESC
+                OFFSET @Offset ROWS 
+                FETCH NEXT @PageSize ROWS ONLY";
+
+            int offset = (page - 1) * pageSize;
+
+            return DataProvider.ExecuteQuery(query, new object[] { offset, pageSize });
+        }
+
+        public int GetTienDauCa(string maCa)
+        {
+            string query = "SELECT TienDauCa FROM CaLamViec WHERE MaCaLam = @MaCaLam";
+            object result = DataProvider.ExecuteScalar(query, new object[] { maCa });
+
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+
+            return 0; // hoặc bạn có thể trả về -1 nếu muốn đánh dấu lỗi
+        }
+
+        public DataTable GetInformationShift(string maCa)
+        {
+            string query = "select TienCuoiCa, GhiChu from calamviec where macalam = @macalam";
+            return DataProvider.ExecuteQuery(query, new object[] {maCa});
+        }
     }
 }
