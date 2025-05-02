@@ -60,14 +60,14 @@ namespace GUI
             ResetAllButtons(this);
 
             // Gán màu Gradient cho nút đang được chọn
-            clickedButton.FillColor = Color.Orange;  
-            clickedButton.FillColor2 = Color.Orange;   
+            clickedButton.FillColor = Color.Orange;
+            clickedButton.FillColor2 = Color.Orange;
             clickedButton.ForeColor = Color.Black;
             clickedButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
         }
 
 
-        
+
 
         private void btnLoinhuan_Click(object sender, EventArgs e)
         {
@@ -93,7 +93,7 @@ namespace GUI
             {
                 //btnKho.FillColor = Color.FromArgb(128, 64, 0);     //Tô màu nút đang được xổ
                 isOpenBaocao = true;
-                for (int i = pnlBaocaoTK.Height; i <= (3 * btnBaocaoTK.Height) + 37; i += 10)
+                for (int i = pnlBaocaoTK.Height; i <= (4 * btnBaocaoTK.Height) + 37; i += 10)
                 {
                     pnlBaocaoTK.Height = i;
                     await Task.Delay(1);         // Dừng 5ms để tạo hiệu ứng mượt
@@ -150,7 +150,7 @@ namespace GUI
             ShowFormInPanel(new frmTaiKhoan());
         }
 
-       
+
 
         private void btnThuchi_Click(object sender, EventArgs e)
         {
@@ -181,6 +181,13 @@ namespace GUI
             SetActiveButton(btnDonHang);
             frmOrderList frmOrder = new frmOrderList("admin");
             ShowFormInPanel(frmOrder);
+        }
+
+        private void btnBaocaoketca_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(btnBaocaoketca);
+            frmBaoCaoChotCa frm = new frmBaoCaoChotCa();
+            ShowFormInPanel(frm);
         }
     }
 }

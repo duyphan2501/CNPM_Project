@@ -53,6 +53,9 @@ namespace GUI
                 pageSize = GetPageSizeFromGridView();
                 totalPages = (int)Math.Ceiling((double)new BUS_DonHang().GetToTalNumberDonHang() / pageSize);
                 LoadDonHangPage(currentPage);
+                btnHoanThanh.Visible = false;
+                btnThanhToan.Visible = false;
+                btnDoiThe.Visible = false;
             }
 
             // không cho chỉnh sửa 
