@@ -24,12 +24,21 @@ namespace DAL
 
         public DataTable LoadDeliveryReceipt()
         {
-            string query = "SELECT ph.MaPhieuXuat AS N'Mã phiếu xuất', nl.TenNL AS N'Nguyên liệu',    ct.SoLuong AS N'Số lượng xuất', nl.Donvi as N'Đơn vị',    ph.NgayXuat AS N'Ngày lập',    ph.GhiChu AS N'Ghi chú'" +
-                            " FROM PhieuXuatKho ph " +
-                            "JOIN ChiTietXuatKho ct ON ph.MaPhieuXuat = ct.MaPhieuXuat " +
-                            "JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL;";
+            string query =
+                "SELECT ph.MaPhieuXuat AS N'Mã phiếu xuất', " +
+                "nl.TenNL AS N'Nguyên liệu', " +
+                "ct.SoLuong AS N'Số lượng xuất', " +
+                "nl.Donvi AS N'Đơn vị', " +
+                "FORMAT(ph.NgayXuat, 'dd/MM/yyyy HH:mm:ss') AS N'Ngày lập', " +  // Định dạng ngày
+                "ph.GhiChu AS N'Ghi chú' " +
+                "FROM PhieuXuatKho ph " +
+                "JOIN ChiTietXuatKho ct ON ph.MaPhieuXuat = ct.MaPhieuXuat " +
+                "JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL " +
+                "ORDER BY ph.NgayXuat DESC;";
+
             return DataProvider.ExecuteQuery(query);
         }
+
 
         public DataTable TaiMaPhieuXuat()
         {

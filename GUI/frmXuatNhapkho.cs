@@ -278,6 +278,57 @@ namespace GUI
             }
         }
 
+        private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;  // Không xử lý nếu là tiêu đề cột
+
+            // Lấy dòng đang sửa
+            DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
+
+            // Kiểm tra các cột cần thiết
+            if (e.ColumnIndex == gridDsPhieu.Columns["gianhap"].Index || e.ColumnIndex == gridDsPhieu.Columns["soluong"].Index)
+            {
+                // Kiểm tra giá trị của giá nhập và số lượng
+                int gianhap = 0;
+                int soluong = 0;
+
+                // Kiểm tra giá trị nhập vào có phải là số hợp lệ hay không
+                if (int.TryParse(row.Cells["gianhap"].Value?.ToString(), out gianhap) && gianhap > 0
+                    && int.TryParse(row.Cells["soluong"].Value?.ToString(), out soluong) && soluong > 0)
+                {
+                    // Tính lại thành tiền
+                    int thanhtien = gianhap * soluong;
+                    row.Cells["thanhtien"].Value = thanhtien;
+
+                    // Cập nhật tổng tiền
+                    tong = 0;
+                    foreach (DataGridViewRow r in gridDsPhieu.Rows)
+                    {
+                        int temp = 0;
+                        int.TryParse(r.Cells["thanhtien"]?.Value?.ToString(), out temp);
+                        tong += temp;
+                    }
+
+                    lblTongTien.Text = tong.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Giá nhập và số lượng phải là số dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // Khôi phục lại giá trị trước khi sửa
+                    if (e.ColumnIndex == gridDsPhieu.Columns["gianhap"].Index)
+                    {
+                        row.Cells["gianhap"].Value = 0; // Hoặc giá trị ban đầu
+                    }
+                    else if (e.ColumnIndex == gridDsPhieu.Columns["soluong"].Index)
+                    {
+                        row.Cells["soluong"].Value = 1; // Hoặc giá trị ban đầu
+                    }
+                }
+            }
+        }
+
+
         private void ResetForm()
         {
             cboLoaiphieu.Enabled = true;
@@ -301,12 +352,14 @@ namespace GUI
             gridDsPhieu.Columns.Add("manl", "Mã nguyên liệu");
             gridDsPhieu.Columns.Add("nguyenlieu", "Tên nguyên liệu");
             gridDsPhieu.Columns.Add("soluong", laNhap ? "Số lượng nhập" : "Số lượng xuất");
-            gridDsPhieu.Columns["soluong"].ReadOnly = false;
+            // ko cho chỉnh mã và tên nl, thành tiền
+            gridDsPhieu.Columns["manl"].ReadOnly = true;
+            gridDsPhieu.Columns["nguyenlieu"].ReadOnly = true;
             if (laNhap)
             {
                 gridDsPhieu.Columns.Add("gianhap", "Giá nhập");
                 gridDsPhieu.Columns.Add("thanhtien", "Thành tiền");
-                gridDsPhieu.Columns["gianhap"].ReadOnly = false;
+                gridDsPhieu.Columns["thanhtien"].ReadOnly = true;
             }
 
             // Cột xoá
@@ -430,29 +483,6 @@ namespace GUI
 
             // Hiển thị tổng tiền lên TextBox
             lblTongTien.Text = tongTien.ToString();
-        }
-
-        private void gridDsPhieu_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (cboLoaiphieu.Text == "Phiếu nhập")
-            {
-                // Kiểm tra nếu cột bị thay đổi là "Số lượng" hoặc "Giá nhập"
-                if (e.RowIndex >= 0 && (gridDsPhieu.Columns[e.ColumnIndex].Name == "soluong" || gridDsPhieu.Columns[e.ColumnIndex].Name == "gianhap"))
-                {
-                    // Lấy dòng hiện tại
-                    DataGridViewRow row = gridDsPhieu.Rows[e.RowIndex];
-
-                    // Lấy giá trị "Số lượng" và "Giá nhập"
-                    int soluong = row.Cells["soluong"].Value != null ? Convert.ToInt32(row.Cells["soluong"].Value) : 0;
-                    int gianhap = row.Cells["gianhap"].Value != null ? Convert.ToInt32(row.Cells["gianhap"].Value) : 0;
-
-                    // Tính lại "Thành tiền"
-                    row.Cells["thanhtien"].Value = soluong * gianhap;
-
-                    // Cập nhật tổng tiền
-                    UpdateTongTien();
-                }
-            }
         }
 
         private void btnTonKho_Click(object sender, EventArgs e)

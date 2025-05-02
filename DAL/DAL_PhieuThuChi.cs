@@ -24,11 +24,19 @@ namespace DAL
 
         public DataTable LoadReceipt()
         {
-            string query = "select ptc.TenDangNhap as 'Tài khoản lập phiếu', ltc.Loai as 'Loại phiếu', ltc.TenLoai as 'Loại thu chi', ptc.SoTien as 'Số tiền', ptc.GhiChu as 'Ghi chú', ptc.NgayLap as 'Ngày lập' " +
-                            "from PhieuThuChi ptc, LoaiThuChi ltc " +
-                            "where ptc.MaLoaiThuChi = ltc.MaLoaiThuChi";
+            string query =
+                "SELECT ptc.TenDangNhap AS N'Tài khoản lập phiếu', " +
+                "ltc.Loai AS N'Loại phiếu', " +
+                "ltc.TenLoai AS N'Loại thu chi', " +
+                "ptc.SoTien AS N'Số tiền', " +
+                "ptc.GhiChu AS N'Ghi chú', " +
+                "FORMAT(ptc.NgayLap, 'dd/MM/yyyy HH:mm:ss') AS N'Ngày lập' " + // Định dạng ngày
+                "FROM PhieuThuChi ptc " +
+                "JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi " +
+                "ORDER BY ptc.NgayLap DESC";
             return DataProvider.ExecuteQuery(query);
         }
+
 
         public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {

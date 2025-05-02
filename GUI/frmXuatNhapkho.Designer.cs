@@ -278,7 +278,6 @@
             gridDsPhieu.Location = new Point(25, 357);
             gridDsPhieu.Margin = new Padding(2, 4, 2, 4);
             gridDsPhieu.Name = "gridDsPhieu";
-            gridDsPhieu.ReadOnly = true;
             gridDsPhieu.RowHeadersVisible = false;
             gridDsPhieu.RowHeadersWidth = 51;
             gridDsPhieu.RowTemplate.Height = 35;
@@ -297,7 +296,7 @@
             gridDsPhieu.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             gridDsPhieu.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             gridDsPhieu.ThemeStyle.HeaderStyle.Height = 40;
-            gridDsPhieu.ThemeStyle.ReadOnly = true;
+            gridDsPhieu.ThemeStyle.ReadOnly = false;
             gridDsPhieu.ThemeStyle.RowsStyle.BackColor = Color.White;
             gridDsPhieu.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             gridDsPhieu.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
