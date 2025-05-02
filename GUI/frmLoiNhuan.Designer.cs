@@ -117,9 +117,9 @@
             dtpTuNgay.BorderRadius = 5;
             dtpTuNgay.Checked = true;
             dtpTuNgay.CustomizableEdges = customizableEdges3;
-            dtpTuNgay.FillColor = Color.LightGray;
+            dtpTuNgay.FillColor = Color.Orange;
             dtpTuNgay.Font = new Font("Segoe UI", 9F);
-            dtpTuNgay.ForeColor = Color.Black;
+            dtpTuNgay.ForeColor = Color.White;
             dtpTuNgay.Format = DateTimePickerFormat.Long;
             dtpTuNgay.Location = new Point(134, 22);
             dtpTuNgay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -135,9 +135,9 @@
             dtpDenNgay.BorderRadius = 5;
             dtpDenNgay.Checked = true;
             dtpDenNgay.CustomizableEdges = customizableEdges5;
-            dtpDenNgay.FillColor = Color.LightGray;
+            dtpDenNgay.FillColor = Color.Orange;
             dtpDenNgay.Font = new Font("Segoe UI", 9F);
-            dtpDenNgay.ForeColor = Color.Black;
+            dtpDenNgay.ForeColor = Color.White;
             dtpDenNgay.Format = DateTimePickerFormat.Long;
             dtpDenNgay.Location = new Point(539, 22);
             dtpDenNgay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -429,7 +429,6 @@
             // 
             // guna2ShadowPanel5
             // 
-            guna2ShadowPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2ShadowPanel5.BackColor = Color.Transparent;
             guna2ShadowPanel5.Controls.Add(guna2PictureBox3);
             guna2ShadowPanel5.Controls.Add(lblSoHoaDon);

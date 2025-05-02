@@ -123,7 +123,7 @@
             txtHoten.Font = new Font("Microsoft YaHei", 10F);
             txtHoten.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtHoten.Location = new Point(50, 69);
-            txtHoten.Margin = new Padding(5, 5, 5, 5);
+            txtHoten.Margin = new Padding(5);
             txtHoten.Name = "txtHoten";
             txtHoten.PlaceholderText = "";
             txtHoten.SelectedText = "";
@@ -168,7 +168,7 @@
             txtTendangnhap.Font = new Font("Microsoft YaHei", 10F);
             txtTendangnhap.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTendangnhap.Location = new Point(50, 69);
-            txtTendangnhap.Margin = new Padding(5, 5, 5, 5);
+            txtTendangnhap.Margin = new Padding(5);
             txtTendangnhap.Name = "txtTendangnhap";
             txtTendangnhap.PlaceholderText = "";
             txtTendangnhap.SelectedText = "";
@@ -213,7 +213,7 @@
             txtMatkhau.Font = new Font("Microsoft YaHei", 10F);
             txtMatkhau.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMatkhau.Location = new Point(50, 69);
-            txtMatkhau.Margin = new Padding(5, 5, 5, 5);
+            txtMatkhau.Margin = new Padding(5);
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.PlaceholderText = "";
             txtMatkhau.SelectedText = "";
@@ -258,7 +258,7 @@
             txtEmail.Font = new Font("Microsoft YaHei", 10F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Location = new Point(71, 69);
-            txtEmail.Margin = new Padding(5, 5, 5, 5);
+            txtEmail.Margin = new Padding(5);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "";
             txtEmail.SelectedText = "";
@@ -327,9 +327,8 @@
             // 
             // btnToggleSwitchTrangThai
             // 
-            btnToggleSwitchTrangThai.Checked = true;
             btnToggleSwitchTrangThai.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            btnToggleSwitchTrangThai.CheckedState.FillColor = Color.FromArgb(113, 181, 108);
+            btnToggleSwitchTrangThai.CheckedState.FillColor = Color.FromArgb(244, 129, 17);
             btnToggleSwitchTrangThai.CheckedState.InnerBorderColor = Color.White;
             btnToggleSwitchTrangThai.CheckedState.InnerColor = Color.White;
             btnToggleSwitchTrangThai.CustomizableEdges = customizableEdges17;

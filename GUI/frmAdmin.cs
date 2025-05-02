@@ -23,7 +23,8 @@ namespace GUI
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
             General.SetFullScreen(this);
             //pnlBanHang.Visible = false;
-
+            SetActiveButton(btnDashboard);
+            ShowFormInPanel(new frmDashboard());
         }
 
         private void ResetAllButtons(Control parent)
@@ -198,6 +199,7 @@ namespace GUI
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnDashboard);
+            ShowFormInPanel(new frmDashboard());
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)

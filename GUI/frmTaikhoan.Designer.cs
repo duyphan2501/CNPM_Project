@@ -95,11 +95,11 @@
             dataGridViewCellStyle1.BackColor = Color.White;
             gridDsTaikhoan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 103, 0);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(217, 98, 0);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             gridDsTaikhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             gridDsTaikhoan.ColumnHeadersHeight = 40;
@@ -107,10 +107,10 @@
             gridDsTaikhoan.Columns.AddRange(new DataGridViewColumn[] { btnUpdate });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 167, 73);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsTaikhoan.DefaultCellStyle = dataGridViewCellStyle3;
             gridDsTaikhoan.GridColor = Color.White;
@@ -120,7 +120,7 @@
             gridDsTaikhoan.ReadOnly = true;
             gridDsTaikhoan.RowHeadersVisible = false;
             gridDsTaikhoan.RowHeadersWidth = 51;
-            gridDsTaikhoan.RowTemplate.Height = 24;
+            gridDsTaikhoan.RowTemplate.Height = 40;
             gridDsTaikhoan.Size = new Size(1442, 676);
             gridDsTaikhoan.TabIndex = 0;
             gridDsTaikhoan.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -141,7 +141,7 @@
             gridDsTaikhoan.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             gridDsTaikhoan.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gridDsTaikhoan.ThemeStyle.RowsStyle.ForeColor = Color.Black;
-            gridDsTaikhoan.ThemeStyle.RowsStyle.Height = 24;
+            gridDsTaikhoan.ThemeStyle.RowsStyle.Height = 40;
             gridDsTaikhoan.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             gridDsTaikhoan.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             gridDsTaikhoan.CellClick += gridDsTaikhoan_CellClick;

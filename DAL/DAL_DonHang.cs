@@ -175,5 +175,59 @@ namespace DAL
             };
             return DataProvider.ExecuteNonQuery(query, parameters);
         }
+
+        public DataTable GetDanhSachDonHangTrongNgay()
+        {
+            string query = @"
+                SELECT 
+                    MaDonHang,
+                    TongTien
+                FROM DonHang
+                WHERE CAST(NgayLap AS DATE) = CAST(GETDATE() AS DATE)";
+            return DataProvider.ExecuteQuery(query);
+        }
+
+        public DataTable GetHoaDonDaThanhToanTrongNgay()
+        {
+            string query = @"
+            SELECT 
+                MaDonHang,
+                TongTien
+            FROM DonHang 
+            WHERE MaCaThanhToan IS NOT NULL
+             AND CAST(NgayLap AS DATE) = CAST(GETDATE() AS DATE)";
+
+            return DataProvider.ExecuteQuery(query);
+        }
+
+        public DataTable GetHoaDonChuaThanhToanTrongNgay()
+        {
+            string query = @"
+            SELECT 
+                 MaDonHang,
+                TongTien
+            FROM DonHang 
+            WHERE MaCaThanhToan IS NULL
+              AND CAST(NgayLap AS DATE) = CAST(GETDATE() AS DATE)";
+
+            return DataProvider.ExecuteQuery(query);
+        }
+
+        public DataTable GetThongKeDonHangTheoGio()
+        {
+            string query = @"
+            SELECT 
+                DATEPART(HOUR, NgayLap) AS Gio,
+                COUNT(*) AS SoDon
+            FROM DonHang
+            WHERE CAST(NgayLap AS DATE) = CAST(GETDATE() AS DATE)
+            GROUP BY DATEPART(HOUR, NgayLap)
+            ORDER BY Gio";
+
+            return DataProvider.ExecuteQuery(query);
+        }
+
+
+
     }
 }

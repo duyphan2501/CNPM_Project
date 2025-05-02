@@ -38,11 +38,11 @@ namespace DAL
         }
 
         // lấy mã phiếu thu cho lớn nhất
-        public string MaxID()
+        public string MaxID(bool isExpense)
         {
-            string query = "select top 1 MaPhieu from PhieuThuChi order by MaPhieu desc";
-            string maxMaphieu = (string)DataProvider.ExecuteScalar(query);
-            return maxMaphieu;
+            string prefix = isExpense ? "PC" : "PT";
+            string query = $"SELECT TOP 1 MaPhieu FROM PhieuThuChi WHERE MaPhieu LIKE '{prefix}%' ORDER BY MaPhieu DESC";
+            return (string)DataProvider.ExecuteScalar(query);
         }
 
         public DataTable LayDoanhThuTheoThang()
@@ -105,6 +105,17 @@ namespace DAL
             return DataProvider.ExecuteQuery(query, parameters);
         }
 
+        public DataTable SelectThuChiTrongNgay()
+        {
+            string query = @"
+                SELECT
+                    SUM(CASE WHEN ltc.Loai = 'Thu' THEN ptc.SoTien ELSE 0 END) AS DoanhThu,
+                    SUM(CASE WHEN ltc.Loai = 'Chi' THEN ptc.SoTien ELSE 0 END) AS ChiPhi
+                FROM PhieuThuChi ptc
+                JOIN LoaiThuChi ltc ON ptc.MaLoaiThuChi = ltc.MaLoaiThuChi";
+
+            return DataProvider.ExecuteQuery(query);
+        }
 
     }
 }

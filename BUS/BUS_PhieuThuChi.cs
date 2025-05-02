@@ -35,20 +35,15 @@ namespace BUS
         //Phát sinh mã phiếu tự động
         public string GenerateID(bool isExpense)
         {
-            // lấy mã phiếu lớn nhất
-            string maphieu = phieuthuchidal.MaxID();
-            string start = isExpense ? "PC": "PT";
-            // nếu mã phiếu lớn nhất là null thì gán mã phiếu đầu tiên là PH0001
-            if (maphieu == null)
+            string maphieu = phieuthuchidal.MaxID(isExpense);
+            string start = isExpense ? "PC" : "PT";
+
+            if (maphieu != null && int.TryParse(maphieu.Substring(2), out int num))
             {
-                return start + "0001";
-            }
-            else
-            {
-                // lấy số sau SP
-                int num = int.Parse(maphieu.Substring(2)) + 1;
+                num++;
                 return start + num.ToString("D4");
             }
+            return start + "0001";
         }
 
         public DataTable LayDoanhThuTheoThang()
@@ -59,6 +54,11 @@ namespace BUS
         public DataTable LayDuLieuThongKe(string kieu, DateTime tuNgay, DateTime denNgay)
         {
             return phieuthuchidal.LayDuLieuThongKe(kieu, tuNgay, denNgay);
+        }
+
+        public DataTable SelectThuChiTrongNgay()
+        {
+            return phieuthuchidal.SelectThuChiTrongNgay();
         }
 
     }

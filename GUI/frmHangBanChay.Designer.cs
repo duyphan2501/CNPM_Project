@@ -60,7 +60,7 @@
             // 
             // grbXuatNhapKho
             // 
-            grbXuatNhapKho.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            grbXuatNhapKho.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             grbXuatNhapKho.Controls.Add(dateStop);
             grbXuatNhapKho.Controls.Add(dateStart);
             grbXuatNhapKho.Controls.Add(btnThongKe);
@@ -217,14 +217,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridHangbanchay.DefaultCellStyle = dataGridViewCellStyle3;
             gridHangbanchay.GridColor = Color.White;
-            gridHangbanchay.Location = new Point(29, 276);
+            gridHangbanchay.Location = new Point(29, 218);
             gridHangbanchay.Margin = new Padding(2, 4, 2, 4);
             gridHangbanchay.Name = "gridHangbanchay";
             gridHangbanchay.ReadOnly = true;
             gridHangbanchay.RowHeadersVisible = false;
             gridHangbanchay.RowHeadersWidth = 51;
             gridHangbanchay.RowTemplate.Height = 35;
-            gridHangbanchay.Size = new Size(739, 573);
+            gridHangbanchay.Size = new Size(739, 631);
             gridHangbanchay.TabIndex = 0;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.Font = null;

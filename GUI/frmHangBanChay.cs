@@ -22,7 +22,7 @@ namespace GUI
 
         private void frmHangBanChay_Load(object sender, EventArgs e)
         {
-            dateStop.Value = DateTime.Now;  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
+            dateStop.Value = DateTime.Now.AddDays(1);  // Đặt giá trị mặc định cho dateDenngay là ngày hiện tại 
             dateStart.Value = DateTime.Now.AddDays(-7); //mặc định là 7 ngày trước
             numSosanpham.Value = 5;
             ThongKeSanPham();

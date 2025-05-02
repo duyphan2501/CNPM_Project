@@ -117,5 +117,25 @@ namespace BUS
         {
             return donhang.UpdateMaTheDonHang(maDonHang, maThe);
         }
+
+        public DataTable GetDanhSachDonHangTrongNgay()
+        {
+            return donhang.GetDanhSachDonHangTrongNgay();
+        }
+
+        public DataTable GetHoaDonDaThanhToanTrongNgay()
+        {
+            return donhang.GetHoaDonDaThanhToanTrongNgay();
+        }
+
+        public DataTable GetHoaDonChuaThanhToanTrongNgay()
+        {
+            return donhang.GetHoaDonChuaThanhToanTrongNgay();
+        }
+
+        public DataTable GetThongKeDonHangTheoGio()
+        {
+            return donhang.GetThongKeDonHangTheoGio();
+        }
     } 
 }
