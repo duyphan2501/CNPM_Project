@@ -13,11 +13,6 @@ namespace GUI
     public static class General
     {
 
-        //Hàm hiển thị thông báo lỗi
-        public static void ShowWarning(string message)
-        {
-            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
 
         //chuyển hình ảnh sang byte[];
         public static byte[] ImageToByteArray(Image img)
@@ -151,6 +146,9 @@ namespace GUI
                 MessageBox.Show(parent, text, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+
 
         public static DialogResult ShowConfirm(string text, Form parent)
         {

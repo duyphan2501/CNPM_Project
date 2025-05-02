@@ -48,6 +48,7 @@ namespace GUI
                 // Đảm bảo ảnh hiển thị vừa với PictureBox
                 picAnhsanpham.SizeMode = PictureBoxSizeMode.Zoom;
             }
+            txtMasanpham.Enabled = false; //không cho phép sửa mã sản phẩm 
         }
 
         private void frmThucdon_Load(object sender, EventArgs e)
@@ -173,12 +174,12 @@ namespace GUI
                     if (!txtMasanpham.Enabled) // Đang ở chế độ cập nhật
                     {
                         sanpham.UpdateProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
-                        MessageBox.Show("Cập nhật thông tin món thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        General.ShowInformation("Cập nhật món thành công", this);
                     }
                     else
                     {
                         sanpham.AddProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
-                        MessageBox.Show("Thêm món thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        General.ShowInformation("Thêm món thành công", this);
                     }
 
                     LoadProduct();
@@ -199,7 +200,7 @@ namespace GUI
 
                 if (tenMon == tenSP.ToLower() && maMon != maSP) //so sánh ko phân biệt hoa thường
                 {
-                    MessageBox.Show("Đã có sản phẩm này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Tên sản phẩm đã tồn tại", this);
                     return true;
                 }
             }
@@ -210,22 +211,22 @@ namespace GUI
         {
             if (string.IsNullOrEmpty(tenSanPham))
             {
-                MessageBox.Show("Vui lòng nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng nhập tên sản phẩm",this);
                 return false;
             }
             if (giaBan == 0)
             {
-                MessageBox.Show("Vui lòng nhập giá bán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng nhập giá bán", this);
                 return false;
             }
             if (string.IsNullOrEmpty(trangThai))
             {
-                MessageBox.Show("Vui lòng chọn trạng thái.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng chọn trạng thái", this);
                 return false;
             }
             if (anhSanPham == null)
             {
-                MessageBox.Show("Vui lòng thêm ảnh sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng thêm ảnh sản phẩm", this);
                 return false;
             }
             return true;

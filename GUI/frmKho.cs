@@ -108,7 +108,7 @@ namespace GUI
             //// Kiểm tra tên nguyên liệu có trùng không
             if (IsDuplicateIngredient(tennl, manl))
             {
-                MessageBox.Show("Đã tồn tại tên nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Tên nguyên liệu đã tồn tại!", this);
                 return;
             }
             // Kiểm tra các thông tin nhập vào
@@ -130,31 +130,31 @@ namespace GUI
         {
             if (string.IsNullOrEmpty(tenloai))
             {
-                General.ShowWarning("Vui lòng chọn tên loại");
+                General.ShowWarning("Vui lòng chọn tên loại",this);
                 return false;
             }
 
             if (string.IsNullOrEmpty(tennl))
             {
-                General.ShowWarning("Vui lòng nhập tên nguyên liệu");
+                General.ShowWarning("Vui lòng nhập tên nguyên liệu",this);
                 return false;
             }
 
             if (string.IsNullOrEmpty(donvi))
             {
-                General.ShowWarning("Vui lòng nhập đơn vị tính");
+                General.ShowWarning("Vui lòng nhập đơn vị tính",this);
                 return false;
             }
 
             if (muctoithieu == 0)
             {
-                General.ShowWarning("Vui lòng nhập mức tối thiểu");
+                General.ShowWarning("Vui lòng nhập mức tối thiểu",this);
                 return false;
             }
 
             if (mucondinh == 0)
             {
-                General.ShowWarning("Vui lòng nhập mức ổn định");
+                General.ShowWarning("Vui lòng nhập mức ổn định",this);
                 return false;
             }
 

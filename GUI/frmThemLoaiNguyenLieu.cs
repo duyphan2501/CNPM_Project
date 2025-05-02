@@ -24,7 +24,7 @@ namespace GUI
         {
             if (string.IsNullOrWhiteSpace(txtTenloai.Text))
             {
-                General.ShowWarning("Vui lòng nhập tên loại nguyên liệu!");
+                General.ShowWarning("Vui lòng nhập tên loại nguyên liệu!",this);
                 return;
             }
             if (IsDuplicate(txtTenloai.Text))  //Kiểm tra có trùng tên loại nguyên liệu hay không
@@ -61,7 +61,7 @@ namespace GUI
 
                 if (TenLoai == tenloai.ToLower()) //so sánh ko phân biệt hoa thường
                 {
-                    MessageBox.Show("Đã có loại nguyên liệu này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Tên loại nguyên liệu đã tồn tại!", this);
                     return true;
                 }
             }

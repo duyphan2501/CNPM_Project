@@ -79,44 +79,44 @@ namespace GUI
         {
             if (!isUpdateMode && IsUsernameExists(txtTendangnhap.Text))
             {
-                General.ShowWarning("Tên đăng nhập đã tồn tại.");
+                General.ShowWarning("Tên đăng nhập đã tồn tại.",this);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtHoten.Text))
             {
-                General.ShowWarning("Vui lòng nhập họ tên.");
+                General.ShowWarning("Vui lòng nhập họ tên.",this);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtTendangnhap.Text))
             {
-                General.ShowWarning("Vui lòng nhập tên đăng nhập.");
+                General.ShowWarning("Vui lòng nhập tên đăng nhập.",this);
                 return false;
             }
 
             if (txtMatkhau.Enabled && string.IsNullOrWhiteSpace(txtMatkhau.Text))
             {
-                General.ShowWarning("Vui lòng nhập mật khẩu.");
+                General.ShowWarning("Vui lòng nhập mật khẩu.",this);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                General.ShowWarning("Vui lòng nhập email.");
+                General.ShowWarning("Vui lòng nhập email.",this);
                 return false;
             }
 
             if (!IsValidEmail(txtEmail.Text))
             {
-                General.ShowWarning("Email không hợp lệ.");
+                General.ShowWarning("Email không hợp lệ.",this);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(cboVaitro.Text))
             {
                 
-                General.ShowWarning("Vui lòng chọn vai trò.");
+                General.ShowWarning("Vui lòng chọn vai trò.",this);
                 return false;
             }
             return true;
@@ -130,13 +130,13 @@ namespace GUI
             if (isUpdateMode) //Nếu trạng thái cập nhật khoản
             {
                 taikhoanbus.UpdateAccount(txtTendangnhap.Text, trangThai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
-                MessageBox.Show("Cập nhật tài khoản thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                General.ShowInformation("Cập nhật tài khoản thành công", this);
 
             }
             else  //Nếu trạng thái thêm tài khoản
             {
                 taikhoanbus.AddAccount(txtTendangnhap.Text, txtMatkhau.Text, trangThai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
-                MessageBox.Show("Tạo tài khoản thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                General.ShowInformation("Tạo tài khoản thành công", this);
 
             }
 

@@ -30,12 +30,12 @@ namespace GUI
         {
             if (string.IsNullOrEmpty(cboLoaiPhieu.Text))
             {
-                General.ShowWarning("Vui chọn loại phiếu!");
+                General.ShowWarning("Vui chọn loại phiếu!",this);
                 return;
             }
             if (numSotien.Value == 0)
             {
-                General.ShowWarning("Vui lòng nhập số tiền!");
+                General.ShowWarning("Vui lòng nhập số tiền!",this);
                 return;
             }
             
@@ -52,7 +52,7 @@ namespace GUI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn hủy phiếu này không?", "Xác nhận hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = General.ShowConfirm("Bạn có chắc chắn muốn hủy không?", this);
             if (result == DialogResult.Yes)
             {
                 this.Close();

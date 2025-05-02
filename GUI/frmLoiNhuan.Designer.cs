@@ -205,7 +205,7 @@
             // guna2CirclePictureBox1
             // 
             guna2CirclePictureBox1.BackColor = Color.Transparent;
-            guna2CirclePictureBox1.Image = Properties.Resources.revenue;
+           
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.Location = new Point(9, 9);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
@@ -321,7 +321,7 @@
             // 
             guna2PictureBox1.CustomizableEdges = customizableEdges13;
             guna2PictureBox1.FillColor = Color.Transparent;
-            guna2PictureBox1.Image = Properties.Resources.profit;
+           
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.InitialImage = (Image)resources.GetObject("guna2PictureBox1.InitialImage");
             guna2PictureBox1.Location = new Point(19, 15);

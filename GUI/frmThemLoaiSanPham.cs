@@ -28,7 +28,7 @@ namespace GUI
             }
             if (string.IsNullOrWhiteSpace(txtTenloai.Text))
             {
-                General.ShowWarning("Vui lòng nhập tên loại sản phẩm");
+                General.ShowWarning("Vui lòng nhập tên loại sản phẩm",this);
                 return;
             }
             loaisanphambus.AddProduct_type(txtMaloai.Text, txtTenloai.Text);
@@ -62,7 +62,7 @@ namespace GUI
 
                 if (TenLoai == tenloai.ToLower()) //so sánh ko phân biệt hoa thường
                 {
-                    MessageBox.Show("Đã có loại sản phẩm này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Tên loại sản phẩm đã tồn tại!", this);
                     return true;
                 }
             }

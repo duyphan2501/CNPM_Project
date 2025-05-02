@@ -115,18 +115,14 @@ namespace GUI
         {
             if (string.IsNullOrWhiteSpace(cboLoaiphieu.Text)) // chưa chọn loại phiếu
             {
-                MessageBox.Show("Vui lòng chọn loại phiếu trước khi thêm nguyên liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               General.ShowWarning("Vui lòng chọn loại phiếu!", this);
                 return;
             }
             string manl = cboTenNguyenlieu.SelectedValue.ToString();
             string nguyenlieu = cboTenNguyenlieu.Text;
             int soluong = Convert.ToInt32(numSoluong.Value);
             bool laNhap = cboLoaiphieu.Text == "Phiếu nhập";
-            if (cboLoaiphieu.Enabled)
-            {
-                AddColumnGrid(laNhap);
-                cboLoaiphieu.Enabled = false;
-            }
+            
 
             if (IsDuplicateIngredient(manl)) return;
 
@@ -135,18 +131,35 @@ namespace GUI
                 int gianhap = Convert.ToInt32(numGianhap.Value);
                 if (CheckInput_GoodsReceipt(soluong, gianhap)) return;
 
+                if (cboLoaiphieu.Enabled)
+                {
+                    AddColumnGrid(laNhap);
+                    cboLoaiphieu.Enabled = false;
+                }
+
+                //Thêm nguyên liệu vào phiếu nhập
                 int thanhtien = soluong * gianhap;
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong, gianhap, thanhtien);
                 tong += thanhtien;
                 lblTongTien.Text = tong.ToString();
                 btnLuuphieu.Enabled = true; //cho phép lưu phiếu
+                
             }
             else //check thông tin phiếu xuất kho
             {
                 if (CheckInput_DeliveryReceipt(nguyenlieu, soluong)) return;
+
+                if (cboLoaiphieu.Enabled) 
+                {
+                    AddColumnGrid(laNhap);
+                    cboLoaiphieu.Enabled = false;
+                }
+
+                //Thêm nguyên liệu vào phiếu xuất
                 gridDsPhieu.Rows.Add(manl, nguyenlieu, soluong);
                 txtGhichu.Enabled = false;
                 btnLuuphieu.Enabled = true; //cho phép lưu phiếu
+                cboLoaiphieu.Enabled = false;
             }
 
             numGianhap.Value = 0;
@@ -158,11 +171,11 @@ namespace GUI
             // kiểm tra có thêm nguyên liệu nào chưua
             if (gridDsPhieu.Rows.Count == 0)
             {
-                MessageBox.Show("Vui lòng thêm nguyên liệu vào phiếu trước khi lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               General.ShowWarning("Vui lòng thêm nguyên liệu vào phiếu!", this);
                 return;
             }
 
-            if (MessageBox.Show("Bạn có chắc chắn muốn lưu phiếu này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            DialogResult result = General.ShowConfirm("Bạn có chắc chắn muốn lưu phiếu không?", this);
             {
                 SaveReceipt();
                 ResetForm();
@@ -267,7 +280,7 @@ namespace GUI
             {
                 if (row.Cells["manl"].Value?.ToString() == manl)
                 {
-                    MessageBox.Show("Phiếu đã có nguyên liệu này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Nguyên liệu đã có trong phiếu!", this);
                     return true;
                 }
             }
@@ -279,12 +292,12 @@ namespace GUI
         {
             if (soluong == 0)
             {
-                MessageBox.Show("Vui lòng nhập số lượng nhập kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng nhập số lượng nhập kho", this);
                 return true;
             }
             if (gianhap == 0)
             {
-                MessageBox.Show("Vui lòng nhập giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng nhập giá nhập", this);
                 return true;
             }
             return false;
@@ -295,7 +308,7 @@ namespace GUI
         {
             if (soluong == 0)
             {
-                MessageBox.Show("Vui lòng nhập số lượng xuất kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Vui lòng nhập số lượng xuất kho", this);
                 return true;
             }
 
@@ -310,12 +323,12 @@ namespace GUI
                 {
                     if (soluong > ton)
                     {
-                        MessageBox.Show("Xuất quá số lượng tồn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        General.ShowWarning("Số lượng xuất lớn hơn số lượng tồn!", this);
                         return true;
                     }
                     if (ton - soluong < muctoithieu)
                     {
-                        DialogResult confirm = MessageBox.Show("Xuất quá mức tối thiểu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult confirm = General.ShowConfirm("Số lượng tồn sau khi xuất sẽ nhỏ hơn mức tối thiểu. Bạn có muốn tiếp tục không?", this);
                         return confirm == DialogResult.No;
                     }
                 }

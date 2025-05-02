@@ -38,7 +38,8 @@ namespace GUI
         {
             gridDsDinhluong.RowTemplate.Height = 35;
             gridDsDinhluong.DataSource = dinhluong.LoadRecipe(txtTenSp.Text);
-            gridDsDinhluong.Columns["btnUpdate"].DisplayIndex = gridDsDinhluong.Columns.Count - 1; //đưa button về cuối
+            gridDsDinhluong.Columns["btnUpdate"].DisplayIndex = gridDsDinhluong.Columns.Count - 2; //đưa button về cuối
+            gridDsDinhluong.Columns["btnXoadinhluong"].DisplayIndex = gridDsDinhluong.Columns.Count - 1; //đưa button về cuối
 
         }
 
@@ -48,7 +49,6 @@ namespace GUI
             LoadRecipe();
             btnThem.Enabled = true;
             btnSua.Enabled = false;
-            btnXoa.Enabled = false;
             LoadRecipe_name();
         }
 
@@ -77,7 +77,7 @@ namespace GUI
 
             if (IsIngredientDuplicated(tennl))
             {
-                MessageBox.Show("Nguyên liệu này đã có trong định lượng.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                General.ShowWarning("Nguyên liệu này đã có trong định lượng", this);
                 return;
             }
 
@@ -97,46 +97,49 @@ namespace GUI
         private void gridDsDinhluong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // không làm gì khi click vào header hoặc các cột khác ngoài cột btnUpdate
-            if (e.RowIndex < 0 || e.ColumnIndex != gridDsDinhluong.Columns["btnUpdate"].Index)
+            //if (e.RowIndex < 0 || e.ColumnIndex != gridDsDinhluong.Columns["btnUpdate"].Index)
+            //{
+            //    return;
+            //}
+            if (e.ColumnIndex == gridDsDinhluong.Columns["btnUpdate"].Index)
             {
-                return;
-            }
-            DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
-            cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
-            numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
+                DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
+                cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
+                numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
 
-            btnThem.Enabled = false;
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
-            cboTenNguyenLieu.Enabled = false; //Không cho sửa tên nguyên liệu
+                btnThem.Enabled = false;
+                btnSua.Enabled = true;
+                cboTenNguyenLieu.Enabled = false; //Không cho sửa tên nguyên liệu
+            }
+            if (e.ColumnIndex == gridDsDinhluong.Columns["btnXoadinhluong"].Index)  //Xóa định lượng
+            {
+                DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
+                cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
+                numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
+                DialogResult result = General.ShowConfirm("Bạn có chắc chắn muốn xóa nguyên liệu này khỏi định lượng không?", this);
+                if (result == DialogResult.Yes)
+                {
+                    dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
+                    General.ShowInformation("Đã xóa nguyên liệu khỏi định lượng", this);
+                }
+
+                frmDinhLuong_Load(sender, e);
+
+            }
+
         }
 
         //Sửa đinh lượng
         private void btnSua_Click(object sender, EventArgs e)
         {
             dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
-            MessageBox.Show("Cập nhật thông tin thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            General.ShowInformation("Cập nhật định lượng thành công", this);
             cboTenNguyenLieu.Enabled = true;
             LoadRecipe();
             frmDinhLuong_Load(sender, e);
         }
 
-        //Khi xóa định lượng
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(   //Thông báo xuất quá mức tối thiểu
-                                "Bạn có chắc chắn xóa định lượng không?",
-                                "Xác nhận xóa",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                dinhluong.DeleteRecipe(txtTenSp.Text, cboTenNguyenLieu.Text);
-                MessageBox.Show("Đã xóa nguyên liệu khỏi định lượng", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            frmDinhLuong_Load(sender, e);
-        }
+        
 
         private void cboTenNguyenLieu_SelectedIndexChanged(object sender, EventArgs e)
         {

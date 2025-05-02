@@ -58,7 +58,7 @@ namespace GUI
 
                 if (TenLoai == tenloai.ToLower() ) //so sánh ko phân biệt hoa thường
                 {
-                    MessageBox.Show("Đã có tên loại này rồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    General.ShowWarning("Tên loại thu chi đã tồn tại",this);
                     return true;
                 }
             }
@@ -69,12 +69,12 @@ namespace GUI
         {
             if (string.IsNullOrWhiteSpace(txtTenloai.Text))
             {
-                General.ShowWarning("Vui lòng nhập tên loại thu chi");
+                General.ShowWarning("Vui lòng nhập tên loại thu chi",this);
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(cboLoai.Text))
             {
-                General.ShowWarning("Vui lòng chọn loại phiếu");
+                General.ShowWarning("Vui lòng chọn loại phiếu",this);
                 return false;
             }
             return true;
