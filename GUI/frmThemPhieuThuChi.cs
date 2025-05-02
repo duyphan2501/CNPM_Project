@@ -39,7 +39,7 @@ namespace GUI
                 return;
             }
             
-            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value), cboLoaithuchi.SelectedValue.ToString(), txtGhichu.Text);
+            phieu.AddReceipt(txtMaphieu.Text, Program.account.Rows[0]["TenDangNhap"].ToString(), Convert.ToInt32(numSotien.Value),cboLoaiPhieu.Text, txtGhichu.Text);
             btnLuu.Enabled = false;
 
             numSotien.Value = 0;
@@ -59,29 +59,28 @@ namespace GUI
             }
         }
 
+        public void GenerateID()
+        {
+            if (cboLoaiPhieu.Text == "Chi")
+            {
+                txtMaphieu.Text = phieu.GenerateID(true);
+            }
+            else
+            {
+                txtMaphieu.Text = phieu.GenerateID(false);
+            }
+        }
         private void frmThemPhieuThuChi_Load(object sender, EventArgs e)
         {
-            txtMaphieu.Text = phieu.GenerateID(true);
             txtMaphieu.ReadOnly = true;
         }
 
-        private void picThemLoai_Click(object sender, EventArgs e)
-        {
-            frmLoaiThuChi themloai = new frmLoaiThuChi();
-            General.ShowDialogWithBlur(themloai);
-            LoadType();
-        }
+        
 
-        public void LoadType()
-        {
-            cboLoaithuchi.DataSource = loaithuchi.LoadType(cboLoaiPhieu.Text);
-            cboLoaithuchi.DisplayMember = "TenLoai";
-            cboLoaithuchi.ValueMember = "MaLoaiThuChi";
-        }
-
+       
         private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadType();
+            GenerateID();
         }
     }
 }

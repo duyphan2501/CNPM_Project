@@ -27,9 +27,9 @@ namespace BUS
             return phieuthuchidal.LoadReceipt();
         }
 
-        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
+        public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string loai, string ghichu)
         {
-            return phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu);
+            return phieuthuchidal.AddReceipt(maphieuthuchi,tendangnhap,sotien,loai,ghichu);
         }
 
         //Phát sinh mã phiếu tự động
@@ -45,6 +45,7 @@ namespace BUS
             }
             return start + "0001";
         }
+
 
         public DataTable LayDoanhThuTheoThang()
         {

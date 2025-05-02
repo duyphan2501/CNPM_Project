@@ -40,8 +40,8 @@ namespace DAL
 
         public int AddReceipt(string maphieuthuchi, string tendangnhap, int sotien, string maloaithuchi, string ghichu)
         {
-            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, MaLoaiThuChi, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_MaLoaiThuChi,@_GhiChu)";
-            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,maloaithuchi,ghichu };
+            string query = "insert into PhieuThuChi (MaPhieu, TenDangNhap, SoTien, Loai, GhiChu) values (@_MaPhieuThuChi,@_TenDangNhap,@_SoTien,@_Loai,@_GhiChu)";
+            object[] parem = new object[] {maphieuthuchi,tendangnhap,sotien,loai,ghichu };
             return DataProvider.ExecuteNonQuery(query, parem);
         }
 
@@ -52,6 +52,7 @@ namespace DAL
             string query = $"SELECT TOP 1 MaPhieu FROM PhieuThuChi WHERE MaPhieu LIKE '{prefix}%' ORDER BY MaPhieu DESC";
             return (string)DataProvider.ExecuteScalar(query);
         }
+
 
         public DataTable LayDoanhThuTheoThang()
         {

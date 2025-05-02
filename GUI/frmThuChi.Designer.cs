@@ -112,10 +112,10 @@
             label1.BackColor = Color.FromArgb(221, 222, 224);
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(292, 39);
+            label1.Location = new Point(365, 49);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(100, 25);
+            label1.Size = new Size(119, 30);
             label1.TabIndex = 10;
             label1.Text = "Loại Phiếu";
             // 
@@ -131,12 +131,13 @@
             cboLoaiPhieu.ForeColor = Color.Black;
             cboLoaiPhieu.ItemHeight = 30;
             cboLoaiPhieu.Items.AddRange(new object[] { "Tất cả", "Phiếu thu", "Phiếu chi" });
-            cboLoaiPhieu.Location = new Point(396, 35);
-            cboLoaiPhieu.Margin = new Padding(2, 4, 2, 4);
+            cboLoaiPhieu.Location = new Point(495, 44);
+            cboLoaiPhieu.Margin = new Padding(2, 5, 2, 5);
             cboLoaiPhieu.Name = "cboLoaiPhieu";
             cboLoaiPhieu.ShadowDecoration.CustomizableEdges = customizableEdges2;
             cboLoaiPhieu.Size = new Size(235, 36);
             cboLoaiPhieu.TabIndex = 9;
+            cboLoaiPhieu.SelectedIndexChanged += cboLoaiPhieu_SelectedIndexChanged;
             // 
             // btnThemphieu
             // 
@@ -152,8 +153,8 @@
             btnThemphieu.FillColor2 = Color.DarkOrange;
             btnThemphieu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemphieu.ForeColor = Color.White;
-            btnThemphieu.Location = new Point(63, 22);
-            btnThemphieu.Margin = new Padding(3, 4, 3, 4);
+            btnThemphieu.Location = new Point(79, 28);
+            btnThemphieu.Margin = new Padding(4, 5, 4, 5);
             btnThemphieu.Name = "btnThemphieu";
             btnThemphieu.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnThemphieu.Size = new Size(150, 49);
@@ -169,7 +170,7 @@
             dateTungay.Font = new Font("Segoe UI", 9F);
             dateTungay.ForeColor = Color.White;
             dateTungay.Format = DateTimePickerFormat.Long;
-            dateTungay.Location = new Point(743, 34);
+            dateTungay.Location = new Point(929, 42);
             dateTungay.Margin = new Padding(2);
             dateTungay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTungay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -187,7 +188,7 @@
             dateDenngay.Font = new Font("Segoe UI", 9F);
             dateDenngay.ForeColor = Color.White;
             dateDenngay.Format = DateTimePickerFormat.Long;
-            dateDenngay.Location = new Point(1181, 34);
+            dateDenngay.Location = new Point(1476, 42);
             dateDenngay.Margin = new Padding(2);
             dateDenngay.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateDenngay.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -203,10 +204,10 @@
             label3.BackColor = Color.FromArgb(221, 222, 224);
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(244, 103, 0);
-            label3.Location = new Point(657, 39);
+            label3.Location = new Point(821, 49);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(82, 25);
+            label3.Size = new Size(98, 30);
             label3.TabIndex = 10;
             label3.Text = "Từ ngày";
             // 
@@ -216,16 +217,16 @@
             label5.BackColor = Color.FromArgb(221, 222, 224);
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(244, 103, 0);
-            label5.Location = new Point(1084, 39);
+            label5.Location = new Point(1355, 49);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(93, 25);
+            label5.Size = new Size(111, 30);
             label5.TabIndex = 10;
             label5.Text = "Đến ngày";
             // 
             // frmThuChi
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(221, 222, 224);
             ClientSize = new Size(1520, 880);
