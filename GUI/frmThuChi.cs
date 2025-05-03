@@ -73,11 +73,11 @@ namespace GUI
             string loaiFilter = "";
             if (cboLoaiPhieu.Text == "Phiếu thu")
             {
-                loaiFilter = "[Loại phiếu] LIKE '%Phiếu thu%'";
+                loaiFilter = "[Loại phiếu] LIKE '%Thu%'";
             }
             else if (cboLoaiPhieu.Text == "Phiếu chi")
             {
-                loaiFilter = "[Loại phiếu] LIKE '%Phiếu chi%'";
+                loaiFilter = "[Loại phiếu] LIKE '%Chi%'";
             }
 
             // Kết hợp cả hai filter nếu cần
@@ -99,6 +99,11 @@ namespace GUI
             }
 
             gridDsThuchi.DataSource = dv.ToTable();
+        }
+
+        private void cboLoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

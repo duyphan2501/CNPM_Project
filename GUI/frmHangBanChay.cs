@@ -100,6 +100,5 @@ namespace GUI
             pnlBieuDo.Controls.Clear();
             pnlBieuDo.Controls.Add(pieChart);
         }
-
     }
 }

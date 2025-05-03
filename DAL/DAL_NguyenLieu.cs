@@ -45,7 +45,7 @@ namespace DAL
 
         public void AddIngredients(string manl, string tenloainl, string tennl, string donvi, int muctoithieu, int mucondinh)
         {
-            string query = "insert into NguyenLieu values (@MaNL,dbo.LayMaloaiNLTheoTenloaiNL(@MaLoaiNL),@TenNL,@DonVi,0,@MucToiThieu,@MucOnDinh)";
+            string query = "insert into NguyenLieu (MaNL, MaLoaiNL, TenNL, DonVi, MucToiThieu, MucOnDinh) values (@MaNL,dbo.LayMaloaiNLTheoTenloaiNL(@MaLoaiNL),@TenNL,@DonVi,@MucToiThieu,@MucOnDinh)";
             object[] parem = new object[] { manl, tenloainl, tennl, donvi,muctoithieu,mucondinh};
             DataProvider.ExecuteNonQuery(query, parem);
         }

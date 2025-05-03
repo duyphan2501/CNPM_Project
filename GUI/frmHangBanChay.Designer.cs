@@ -72,11 +72,11 @@
             grbXuatNhapKho.CustomizableEdges = customizableEdges9;
             grbXuatNhapKho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbXuatNhapKho.ForeColor = Color.White;
-            grbXuatNhapKho.Location = new Point(29, 40);
-            grbXuatNhapKho.Margin = new Padding(3, 4, 3, 4);
+            grbXuatNhapKho.Location = new Point(36, 50);
+            grbXuatNhapKho.Margin = new Padding(4, 5, 4, 5);
             grbXuatNhapKho.Name = "grbXuatNhapKho";
             grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            grbXuatNhapKho.Size = new Size(1484, 148);
+            grbXuatNhapKho.Size = new Size(1855, 185);
             grbXuatNhapKho.TabIndex = 20;
             grbXuatNhapKho.Text = "Thống kê mặt hàng bán chạy nhất";
             // 
@@ -87,13 +87,13 @@
             dateStop.CustomizableEdges = customizableEdges1;
             dateStop.Font = new Font("Segoe UI", 9F);
             dateStop.Format = DateTimePickerFormat.Long;
-            dateStop.Location = new Point(653, 83);
+            dateStop.Location = new Point(816, 104);
             dateStop.Margin = new Padding(2);
             dateStop.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStop.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStop.Name = "dateStop";
             dateStop.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            dateStop.Size = new Size(240, 40);
+            dateStop.Size = new Size(300, 50);
             dateStop.TabIndex = 14;
             dateStop.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
             // 
@@ -104,13 +104,13 @@
             dateStart.CustomizableEdges = customizableEdges3;
             dateStart.Font = new Font("Segoe UI", 9F);
             dateStart.Format = DateTimePickerFormat.Long;
-            dateStart.Location = new Point(319, 83);
+            dateStart.Location = new Point(399, 104);
             dateStart.Margin = new Padding(2);
             dateStart.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStart.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStart.Name = "dateStart";
             dateStart.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            dateStart.Size = new Size(240, 43);
+            dateStart.Size = new Size(300, 54);
             dateStart.TabIndex = 14;
             dateStart.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
             // 
@@ -130,11 +130,11 @@
             btnThongKe.FillColor2 = Color.Transparent;
             btnThongKe.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThongKe.ForeColor = Color.FromArgb(239, 119, 18);
-            btnThongKe.Location = new Point(961, 72);
-            btnThongKe.Margin = new Padding(3, 4, 3, 4);
+            btnThongKe.Location = new Point(1201, 90);
+            btnThongKe.Margin = new Padding(4, 5, 4, 5);
             btnThongKe.Name = "btnThongKe";
             btnThongKe.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnThongKe.Size = new Size(115, 51);
+            btnThongKe.Size = new Size(144, 64);
             btnThongKe.TabIndex = 13;
             btnThongKe.Text = "Thống kê";
             btnThongKe.Click += btnThongKe_Click;
@@ -146,12 +146,12 @@
             numSosanpham.Cursor = Cursors.IBeam;
             numSosanpham.CustomizableEdges = customizableEdges7;
             numSosanpham.Font = new Font("Segoe UI", 9F);
-            numSosanpham.Location = new Point(29, 83);
-            numSosanpham.Margin = new Padding(3, 5, 3, 5);
+            numSosanpham.Location = new Point(36, 104);
+            numSosanpham.Margin = new Padding(4, 6, 4, 6);
             numSosanpham.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             numSosanpham.Name = "numSosanpham";
             numSosanpham.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            numSosanpham.Size = new Size(204, 40);
+            numSosanpham.Size = new Size(255, 50);
             numSosanpham.TabIndex = 13;
             numSosanpham.UpDownButtonFillColor = Color.FromArgb(239, 119, 18);
             // 
@@ -161,9 +161,10 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(244, 103, 0);
-            label2.Location = new Point(653, 54);
+            label2.Location = new Point(816, 68);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(86, 23);
+            label2.Size = new Size(106, 30);
             label2.TabIndex = 10;
             label2.Text = "Đến ngày";
             // 
@@ -173,9 +174,10 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(319, 54);
+            label1.Location = new Point(399, 68);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(75, 23);
+            label1.Size = new Size(93, 30);
             label1.TabIndex = 10;
             label1.Text = "Từ ngày";
             // 
@@ -185,9 +187,10 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.FromArgb(244, 103, 0);
-            label9.Location = new Point(27, 54);
+            label9.Location = new Point(34, 68);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(112, 23);
+            label9.Size = new Size(139, 30);
             label9.TabIndex = 10;
             label9.Text = "Số sản phẩm";
             // 
@@ -217,14 +220,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridHangbanchay.DefaultCellStyle = dataGridViewCellStyle3;
             gridHangbanchay.GridColor = Color.White;
-            gridHangbanchay.Location = new Point(29, 218);
-            gridHangbanchay.Margin = new Padding(2, 4, 2, 4);
+            gridHangbanchay.Location = new Point(36, 272);
+            gridHangbanchay.Margin = new Padding(2, 5, 2, 5);
             gridHangbanchay.Name = "gridHangbanchay";
             gridHangbanchay.ReadOnly = true;
             gridHangbanchay.RowHeadersVisible = false;
             gridHangbanchay.RowHeadersWidth = 51;
             gridHangbanchay.RowTemplate.Height = 35;
-            gridHangbanchay.Size = new Size(739, 631);
+            gridHangbanchay.Size = new Size(924, 789);
             gridHangbanchay.TabIndex = 0;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -253,18 +256,19 @@
             pnlBieuDo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlBieuDo.BackColor = Color.Transparent;
             pnlBieuDo.CustomizableEdges = customizableEdges11;
-            pnlBieuDo.Location = new Point(793, 218);
+            pnlBieuDo.Location = new Point(1116, 272);
+            pnlBieuDo.Margin = new Padding(4);
             pnlBieuDo.Name = "pnlBieuDo";
             pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pnlBieuDo.Size = new Size(720, 631);
+            pnlBieuDo.Size = new Size(775, 776);
             pnlBieuDo.TabIndex = 1;
             // 
             // frmHangBanChay
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(221, 222, 224);
-            ClientSize = new Size(1536, 882);
+            ClientSize = new Size(1920, 1102);
             Controls.Add(gridHangbanchay);
             Controls.Add(pnlBieuDo);
             Controls.Add(grbXuatNhapKho);

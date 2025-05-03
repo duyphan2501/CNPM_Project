@@ -47,16 +47,16 @@ namespace BUS
         {
             // lấy mã sp lớn nhất
             string masp = sanphamdal.MaxID();
-            // nếu mã sp lớn nhất là null thì gán mã sp đầu tiên là SP0001
+            // nếu mã sp lớn nhất là null thì gán mã sp đầu tiên là SP001
             if (masp == null)
             {
-                return "SP0001";
+                return "SP001";
             }
             else
             {
                 // lấy số sau SP
                 int num = int.Parse(masp.Substring(2)) + 1;
-                return "SP" + num.ToString("D4");
+                return "SP" + num.ToString("D3");
             }
         }
 

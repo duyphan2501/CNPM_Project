@@ -74,6 +74,7 @@ namespace GUI
         {
             // ẩn chi tiết đơn hàng
             pnlOrderDetail.Visible = false;
+            frmOrderList_Load(sender, e);
         }
 
         private void DefaultControlButton()

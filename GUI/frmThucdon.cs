@@ -48,7 +48,7 @@ namespace GUI
                 // Đảm bảo ảnh hiển thị vừa với PictureBox
                 picAnhsanpham.SizeMode = PictureBoxSizeMode.Zoom;
             }
-            txtMasanpham.Enabled = false; //không cho phép sửa mã sản phẩm 
+            
         }
 
         private void frmThucdon_Load(object sender, EventArgs e)
