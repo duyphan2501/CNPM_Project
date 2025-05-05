@@ -14,9 +14,13 @@ namespace GUI
 {
     public partial class frmQuenMatKhau : Form
     {
-        public frmQuenMatKhau()
+        public frmQuenMatKhau(string username = null)
         {
             InitializeComponent();
+            if (username != null)
+            {
+                txtUsername.Text = username;
+            }
         }
 
         string resetCode;
@@ -24,9 +28,22 @@ namespace GUI
 
         private void btnSendCode_Click(object sender, EventArgs e)
         {
-            // Lấy email của tài khoản
+            // Lấy thông tin tài khoản
             taikhoan = new BUS_TaiKhoan(txtUsername.Text);
-            string email = taikhoan.SelectOneAccount().Rows[0]["email"].ToString();
+            DataTable dtAccount = taikhoan.SelectOneAccount();
+
+            // Kiểm tra tài khoản có tồn tại không
+            if (dtAccount.Rows.Count == 0)
+            {
+                messageDialog.Caption = "Thông báo";
+                messageDialog.Text = "Tài khoản không tồn tại.";
+                messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Warning;
+                messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                messageDialog.Show();
+                return;
+            }
+            // Lấy email từ tài khoản
+            string email = dtAccount.Rows[0]["email"].ToString();
 
             // Tạo mã 6 chữ số
             Random rand = new Random();
@@ -100,6 +117,18 @@ namespace GUI
             txtPassword.Focus();
         }
 
+        //Hàm kiểm tra mật khẩu mạnh
+        private bool IsStrongPassword(string password)
+        {
+            if (password.Length < 6)
+                return false;
+
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasDigit = password.Any(char.IsDigit);
+
+            return hasUpperCase && hasDigit;
+        }
+
         private void btnComfirmPass_Click(object sender, EventArgs e)
         {
             string password = txtPassword.Text.Trim();
@@ -125,6 +154,10 @@ namespace GUI
                 messageDialog.Show();
                 txtConfirmPass.Clear();
                 txtConfirmPass.Focus();
+            }
+            else if (!IsStrongPassword(password))
+            {
+                General.ShowWarning("Mật khẩu phải có ít nhất 6 ký tự, 1 chữ in hoa và 1 chữ số.", this);
             }
             else
             {

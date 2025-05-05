@@ -225,7 +225,6 @@ namespace GUI
             numSoluong.Value = 0;
         }
 
-
         private void btnLuuphieu_Click(object sender, EventArgs e)
         {
             // kiểm tra có thêm nguyên liệu nào chưua
@@ -262,8 +261,8 @@ namespace GUI
                 BUS_PhieuThuChi phieuThuChi = new BUS_PhieuThuChi();
                 string maPhieuChi = phieuThuChi.GenerateID(true);
                 int sotien = General.FormatMoneyToInt(lblTongTien.Text);
-                string maLoaiChi = "C01";
-                string ghiChu = "";
+                string maLoaiChi = "TC02";
+                string ghiChu = txtMaphieu.Text;
 
                 affectedRows = phieuThuChi.AddReceipt(maPhieuChi, tenDangNhap, sotien, maLoaiChi, ghiChu);
                 if (affectedRows == 0)

@@ -148,6 +148,7 @@ namespace GUI
 
             // Cập nhật thông tin đơn hàng
             txtGhiChu.Text = donhang.LayGhiChu(viewDetailMaDonHang);
+            numGiamGia.Value = Convert.ToInt32(viewDetailRow.Cells["GiamGia"].Value);
             pnlOrderDetail.Visible = true;
             CapNhatTongTienVaGiamGia(); // Hiển thị tổng tiền
         }

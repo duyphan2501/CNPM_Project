@@ -30,7 +30,11 @@ namespace GUI
                 cboVaitro.Text = vaiTro;
                 txtHoten.Text = hoTen;
                 txtEmail.Text = email;
-
+                if (tenDangNhap == "admin")
+                {
+                    cboVaitro.Enabled = false;
+                    btnToggleSwitchTrangThai.Enabled = false;
+                }
                 txtTendangnhap.ReadOnly = true;
                 txtMatkhau.Enabled = false;
             }
@@ -73,17 +77,6 @@ namespace GUI
             return false;
         }
 
-        //Hàm kiểm tra mật khẩu mạnh
-        private bool IsStrongPassword(string password)
-        {
-            if (password.Length < 6)
-                return false;
-
-            bool hasUpperCase = password.Any(char.IsUpper);
-            bool hasDigit = password.Any(char.IsDigit);
-
-            return hasUpperCase && hasDigit;
-        }
 
         //Hàm kiểm tra các lỗi nhập liêu
         private bool ValidateInput()
@@ -111,11 +104,6 @@ namespace GUI
                 General.ShowWarning("Vui lòng nhập mật khẩu.", this);
                 return false;
             }
-            else if (txtMatkhau.Enabled && !IsStrongPassword(txtMatkhau.Text))
-            {
-                General.ShowWarning("Mật khẩu phải có ít nhất 6 ký tự, 1 chữ in hoa và 1 chữ số.", this);
-                return false;
-            }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
@@ -129,10 +117,27 @@ namespace GUI
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(cboVaitro.Text))
+            if (string.IsNullOrWhiteSpace(cboVaitro.Text) && txtTendangnhap.Text != "admin")
             {
-                
                 General.ShowWarning("Vui lòng chọn vai trò.",this);
+                return false;
+            }
+
+            if (txtTendangnhap.Text.Length > 20)
+            {
+                General.ShowWarning("Tên đăng nhập không được vượt quá 20 ký tự.", this);
+                return false;
+            }
+
+            if (txtHoten.Text.Length > 50)
+            {
+                General.ShowWarning("Họ tên không được vượt quá 50 ký tự.", this);
+                return false;
+            }
+
+            if (txtEmail.Text.Length > 100)
+            {
+                General.ShowWarning("Email không được vượt quá 100 ký tự.", this);
                 return false;
             }
             return true;
@@ -147,7 +152,6 @@ namespace GUI
             {
                 taikhoanbus.UpdateAccount(txtTendangnhap.Text, trangThai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
                 General.ShowInformation("Cập nhật tài khoản thành công", this);
-
             }
             else  //Nếu trạng thái thêm tài khoản
             {

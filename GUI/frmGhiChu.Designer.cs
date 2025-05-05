@@ -93,7 +93,7 @@
             txtGhiChu.SelectedText = "";
             txtGhiChu.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtGhiChu.Size = new Size(433, 165);
-            txtGhiChu.TabIndex = 2;
+            txtGhiChu.TabIndex = 0;
             // 
             // btnLuu
             // 
@@ -110,7 +110,7 @@
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnLuu.Size = new Size(114, 42);
-            btnLuu.TabIndex = 3;
+            btnLuu.TabIndex = 1;
             btnLuu.Text = "Lưu";
             btnLuu.Click += btnLuu_Click;
             // 
@@ -129,8 +129,8 @@
             btnHuy.Name = "btnHuy";
             btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnHuy.Size = new Size(114, 42);
-            btnHuy.TabIndex = 3;
-            btnHuy.Text = "Huỷ";
+            btnHuy.TabIndex = 2;
+            btnHuy.Text = "Xoá";
             btnHuy.Click += btnHuy_Click;
             // 
             // frmGhiChu

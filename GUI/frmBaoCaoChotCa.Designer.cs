@@ -62,8 +62,13 @@
             // 
             // gridCaLam
             // 
+            gridCaLam.AllowUserToAddRows = false;
+            gridCaLam.AllowUserToDeleteRows = false;
+            gridCaLam.AllowUserToResizeColumns = false;
+            gridCaLam.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             gridCaLam.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            gridCaLam.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -85,10 +90,11 @@
             gridCaLam.GridColor = Color.FromArgb(231, 229, 255);
             gridCaLam.Location = new Point(36, 100);
             gridCaLam.Name = "gridCaLam";
+            gridCaLam.ReadOnly = true;
             gridCaLam.RowHeadersVisible = false;
             gridCaLam.RowHeadersWidth = 51;
             gridCaLam.RowTemplate.Height = 40;
-            gridCaLam.Size = new Size(1162, 583);
+            gridCaLam.Size = new Size(1162, 722);
             gridCaLam.TabIndex = 1;
             gridCaLam.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridCaLam.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -103,7 +109,7 @@
             gridCaLam.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             gridCaLam.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             gridCaLam.ThemeStyle.HeaderStyle.Height = 40;
-            gridCaLam.ThemeStyle.ReadOnly = false;
+            gridCaLam.ThemeStyle.ReadOnly = true;
             gridCaLam.ThemeStyle.RowsStyle.BackColor = Color.White;
             gridCaLam.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             gridCaLam.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
@@ -115,7 +121,7 @@
             // pnlPagination
             // 
             pnlPagination.CustomizableEdges = customizableEdges3;
-            pnlPagination.Location = new Point(36, 700);
+            pnlPagination.Location = new Point(36, 834);
             pnlPagination.Name = "pnlPagination";
             pnlPagination.ShadowDecoration.CustomizableEdges = customizableEdges4;
             pnlPagination.Size = new Size(1029, 55);
@@ -125,7 +131,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1235, 774);
+            ClientSize = new Size(1235, 899);
             Controls.Add(pnlPagination);
             Controls.Add(gridCaLam);
             Controls.Add(btnViewDetail);

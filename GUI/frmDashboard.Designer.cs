@@ -36,6 +36,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             lblSoDHDangPV = new Label();
             lblDangPhucVu = new Label();
@@ -62,9 +64,11 @@
             label1 = new Label();
             pnlBieuDo = new Guna.UI2.WinForms.Guna2Panel();
             label5 = new Label();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2GroupBox2.SuspendLayout();
             guna2GroupBox4.SuspendLayout();
             guna2GroupBox1.SuspendLayout();
+            guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
             // guna2GroupBox2
@@ -92,12 +96,11 @@
             // 
             // lblSoDHDangPV
             // 
-            lblSoDHDangPV.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSoDHDangPV.AutoSize = true;
             lblSoDHDangPV.BackColor = Color.Transparent;
             lblSoDHDangPV.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSoDHDangPV.ForeColor = Color.Black;
-            lblSoDHDangPV.Location = new Point(202, 145);
+            lblSoDHDangPV.Location = new Point(221, 145);
             lblSoDHDangPV.Name = "lblSoDHDangPV";
             lblSoDHDangPV.Size = new Size(22, 25);
             lblSoDHDangPV.TabIndex = 0;
@@ -115,7 +118,6 @@
             lblDangPhucVu.Size = new Size(126, 25);
             lblDangPhucVu.TabIndex = 0;
             lblDangPhucVu.Text = "Đang phục vụ";
-            lblDangPhucVu.TextAlign = ContentAlignment.TopRight;
             // 
             // label4
             // 
@@ -131,12 +133,11 @@
             // 
             // lblSoDonHang
             // 
-            lblSoDonHang.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSoDonHang.AutoSize = true;
             lblSoDonHang.BackColor = Color.Transparent;
             lblSoDonHang.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSoDonHang.ForeColor = Color.Black;
-            lblSoDonHang.Location = new Point(195, 63);
+            lblSoDonHang.Location = new Point(221, 63);
             lblSoDonHang.Name = "lblSoDonHang";
             lblSoDonHang.Size = new Size(29, 25);
             lblSoDonHang.TabIndex = 0;
@@ -144,12 +145,11 @@
             // 
             // lblSoDHDaTT
             // 
-            lblSoDHDaTT.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSoDHDaTT.AutoSize = true;
             lblSoDHDaTT.BackColor = Color.Transparent;
             lblSoDHDaTT.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSoDHDaTT.ForeColor = Color.Black;
-            lblSoDHDaTT.Location = new Point(195, 102);
+            lblSoDHDaTT.Location = new Point(221, 102);
             lblSoDHDaTT.Name = "lblSoDHDaTT";
             lblSoDHDaTT.Size = new Size(29, 25);
             lblSoDHDaTT.TabIndex = 0;
@@ -167,7 +167,6 @@
             lblDonHang.Size = new Size(129, 25);
             lblDonHang.TabIndex = 0;
             lblDonHang.Text = "Đã thanh toán";
-            lblDonHang.TextAlign = ContentAlignment.TopRight;
             // 
             // lblDaThanhToan
             // 
@@ -181,7 +180,6 @@
             lblDaThanhToan.Size = new Size(129, 25);
             lblDaThanhToan.TabIndex = 0;
             lblDaThanhToan.Text = "Đã thanh toán";
-            lblDaThanhToan.TextAlign = ContentAlignment.TopRight;
             // 
             // label13
             // 
@@ -239,7 +237,6 @@
             lblGiaTriTon.Size = new Size(59, 25);
             lblGiaTriTon.TabIndex = 0;
             lblGiaTriTon.Text = "12323";
-            lblGiaTriTon.TextAlign = ContentAlignment.TopRight;
             // 
             // lblDinhMuc
             // 
@@ -248,12 +245,11 @@
             lblDinhMuc.BackColor = Color.Transparent;
             lblDinhMuc.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDinhMuc.ForeColor = Color.Black;
-            lblDinhMuc.Location = new Point(274, 145);
+            lblDinhMuc.Location = new Point(350, 145);
             lblDinhMuc.Name = "lblDinhMuc";
-            lblDinhMuc.Size = new Size(135, 25);
+            lblDinhMuc.Size = new Size(22, 25);
             lblDinhMuc.TabIndex = 0;
-            lblDinhMuc.Text = "Vượt định mức";
-            lblDinhMuc.TextAlign = ContentAlignment.TopRight;
+            lblDinhMuc.Text = "0";
             // 
             // label9
             // 
@@ -274,12 +270,11 @@
             lblToiThieu.BackColor = Color.Transparent;
             lblToiThieu.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblToiThieu.ForeColor = Color.Black;
-            lblToiThieu.Location = new Point(281, 105);
+            lblToiThieu.Location = new Point(350, 102);
             lblToiThieu.Name = "lblToiThieu";
-            lblToiThieu.Size = new Size(128, 25);
+            lblToiThieu.Size = new Size(22, 25);
             lblToiThieu.TabIndex = 0;
-            lblToiThieu.Text = "Dưới tối thiểu";
-            lblToiThieu.TextAlign = ContentAlignment.TopRight;
+            lblToiThieu.Text = "0";
             // 
             // label8
             // 
@@ -360,7 +355,6 @@
             lblLoiNhuan.Size = new Size(89, 25);
             lblLoiNhuan.TabIndex = 0;
             lblLoiNhuan.Text = "Bán hàng";
-            lblLoiNhuan.TextAlign = ContentAlignment.TopRight;
             // 
             // lblChiPhi
             // 
@@ -374,7 +368,6 @@
             lblChiPhi.Size = new Size(89, 25);
             lblChiPhi.TabIndex = 0;
             lblChiPhi.Text = "Bán hàng";
-            lblChiPhi.TextAlign = ContentAlignment.TopRight;
             // 
             // lblDoanhThu
             // 
@@ -388,7 +381,6 @@
             lblDoanhThu.Size = new Size(89, 25);
             lblDoanhThu.TabIndex = 0;
             lblDoanhThu.Text = "Bán hàng";
-            lblDoanhThu.TextAlign = ContentAlignment.TopRight;
             // 
             // label1
             // 
@@ -416,18 +408,31 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(42, 41);
+            label5.Location = new Point(28, 9);
             label5.Name = "label5";
             label5.Size = new Size(322, 31);
             label5.TabIndex = 4;
             label5.Text = "Tình hình bán hàng hôm nay";
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            guna2Panel1.BackColor = Color.Orange;
+            guna2Panel1.Controls.Add(label5);
+            guna2Panel1.CustomizableEdges = customizableEdges9;
+            guna2Panel1.ForeColor = Color.White;
+            guna2Panel1.Location = new Point(33, 32);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Panel1.Size = new Size(1356, 50);
+            guna2Panel1.TabIndex = 5;
             // 
             // frmDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1424, 765);
-            Controls.Add(label5);
+            Controls.Add(guna2Panel1);
             Controls.Add(pnlBieuDo);
             Controls.Add(guna2GroupBox1);
             Controls.Add(guna2GroupBox4);
@@ -442,8 +447,9 @@
             guna2GroupBox4.PerformLayout();
             guna2GroupBox1.ResumeLayout(false);
             guna2GroupBox1.PerformLayout();
+            guna2Panel1.ResumeLayout(false);
+            guna2Panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -473,5 +479,6 @@
         private Label label13;
         private Guna.UI2.WinForms.Guna2Panel pnlBieuDo;
         private Label label5;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

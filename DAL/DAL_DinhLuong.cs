@@ -68,8 +68,5 @@ namespace DAL
                            "where dl.MaSp = @MaSp";
             return DataProvider.ExecuteQuery(query, new object[] { maSp });
         }
-
-
-
     }
 }

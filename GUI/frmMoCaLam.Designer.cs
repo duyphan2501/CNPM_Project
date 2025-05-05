@@ -147,7 +147,7 @@
             txtTienDauCa.SelectedText = "";
             txtTienDauCa.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtTienDauCa.Size = new Size(197, 37);
-            txtTienDauCa.TabIndex = 2;
+            txtTienDauCa.TabIndex = 0;
             txtTienDauCa.KeyPress += txtTienDauCa_KeyPress;
             // 
             // label6
@@ -175,7 +175,7 @@
             btnLogout.Name = "btnLogout";
             btnLogout.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnLogout.Size = new Size(139, 45);
-            btnLogout.TabIndex = 3;
+            btnLogout.TabIndex = 2;
             btnLogout.Text = "Đăng xuất";
             btnLogout.Click += btnLogout_Click;
             // 
@@ -193,7 +193,7 @@
             btnMoCaLam.Name = "btnMoCaLam";
             btnMoCaLam.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnMoCaLam.Size = new Size(139, 45);
-            btnMoCaLam.TabIndex = 3;
+            btnMoCaLam.TabIndex = 1;
             btnMoCaLam.Text = "Mở ca";
             btnMoCaLam.Click += btnMoCaLam_Click;
             // 

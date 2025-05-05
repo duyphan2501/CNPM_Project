@@ -56,9 +56,9 @@
             cboTrangthai.CustomizableEdges = customizableEdges1;
             cboTrangthai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboTrangthai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTrangthai.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            cboTrangthai.FocusedColor = Color.FromArgb(244, 129, 17);
+            cboTrangthai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
+            cboTrangthai.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;
             cboTrangthai.Items.AddRange(new object[] { "Hoạt Động", "Vô Hiệu" });
@@ -92,6 +92,8 @@
             // 
             gridDsTaikhoan.AllowUserToAddRows = false;
             gridDsTaikhoan.AllowUserToDeleteRows = false;
+            gridDsTaikhoan.AllowUserToResizeColumns = false;
+            gridDsTaikhoan.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             gridDsTaikhoan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -113,7 +115,7 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridDsTaikhoan.DefaultCellStyle = dataGridViewCellStyle3;
-            gridDsTaikhoan.GridColor = Color.White;
+            gridDsTaikhoan.GridColor = Color.FromArgb(231, 229, 255);
             gridDsTaikhoan.Location = new Point(14, 54);
             gridDsTaikhoan.Margin = new Padding(2, 4, 2, 4);
             gridDsTaikhoan.Name = "gridDsTaikhoan";
@@ -129,7 +131,7 @@
             gridDsTaikhoan.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             gridDsTaikhoan.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             gridDsTaikhoan.ThemeStyle.BackColor = Color.White;
-            gridDsTaikhoan.ThemeStyle.GridColor = Color.White;
+            gridDsTaikhoan.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             gridDsTaikhoan.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             gridDsTaikhoan.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             gridDsTaikhoan.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -191,8 +193,8 @@
             btnTaotaikhoan.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnTaotaikhoan.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnTaotaikhoan.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnTaotaikhoan.FillColor = Color.FromArgb(244, 103, 0);
-            btnTaotaikhoan.FillColor2 = Color.DarkOrange;
+            btnTaotaikhoan.FillColor = Color.FromArgb(0, 92, 191);
+            btnTaotaikhoan.FillColor2 = Color.FromArgb(0, 92, 191);
             btnTaotaikhoan.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnTaotaikhoan.ForeColor = Color.White;
             btnTaotaikhoan.Location = new Point(25, 39);

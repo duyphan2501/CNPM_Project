@@ -401,7 +401,7 @@
             txtTienThucTe.SelectedText = "";
             txtTienThucTe.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtTienThucTe.Size = new Size(157, 36);
-            txtTienThucTe.TabIndex = 6;
+            txtTienThucTe.TabIndex = 0;
             txtTienThucTe.TextChanged += txtTienThucTe_TextChanged;
             txtTienThucTe.KeyPress += txtTienDauCa_KeyPress;
             // 
@@ -430,7 +430,7 @@
             btnChotCa.Name = "btnChotCa";
             btnChotCa.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnChotCa.Size = new Size(397, 53);
-            btnChotCa.TabIndex = 8;
+            btnChotCa.TabIndex = 2;
             btnChotCa.Text = "Chốt Ca";
             btnChotCa.Click += btnChotCa_Click;
             // 
@@ -537,12 +537,13 @@
             txtGhiChu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtGhiChu.Location = new Point(111, 121);
             txtGhiChu.Margin = new Padding(3, 4, 3, 4);
+            txtGhiChu.MaxLength = 1000;
             txtGhiChu.Name = "txtGhiChu";
             txtGhiChu.PlaceholderText = "";
             txtGhiChu.SelectedText = "";
             txtGhiChu.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtGhiChu.Size = new Size(673, 36);
-            txtGhiChu.TabIndex = 7;
+            txtGhiChu.TabIndex = 1;
             // 
             // label13
             // 

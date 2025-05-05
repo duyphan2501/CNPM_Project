@@ -34,14 +34,14 @@ namespace DAL
         //Tải danh sách tài khoản có hiệu lực 
         public DataTable LoadAccount()
         {
-            string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Trạng thái', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '1'";
+            string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Hoạt động', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '1'";
             return DataProvider.ExecuteQuery(query);
         }
 
         //Tải danh sách tài khoản vô hiệu hóa
         public DataTable LoadDisabledAccounts()
         {
-            string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Trạng thái', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '0'";
+            string query = "select HoTen as 'Họ tên', TenDangNhap as 'Tên đăng nhập', TrangThai as 'Hoạt động', VaiTro as 'Vai trò',  Email from TaiKhoan where TrangThai = '0'";
             return DataProvider.ExecuteQuery(query);
         }
 

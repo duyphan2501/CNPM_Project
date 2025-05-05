@@ -81,7 +81,7 @@
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLuu.Size = new Size(154, 55);
-            btnLuu.TabIndex = 2;
+            btnLuu.TabIndex = 1;
             btnLuu.Text = "LƯU";
             btnLuu.Click += btnLuu_Click;
             // 
@@ -145,6 +145,7 @@
             // 
             // txtTenloai
             // 
+            txtTenloai.BorderRadius = 5;
             txtTenloai.Cursor = Cursors.IBeam;
             txtTenloai.CustomizableEdges = customizableEdges5;
             txtTenloai.DefaultText = "";
@@ -152,17 +153,17 @@
             txtTenloai.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtTenloai.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtTenloai.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtTenloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenloai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTenloai.Font = new Font("Microsoft YaHei", 10F);
             txtTenloai.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTenloai.Location = new Point(50, 69);
-            txtTenloai.Margin = new Padding(5, 5, 5, 5);
+            txtTenloai.Margin = new Padding(5);
             txtTenloai.Name = "txtTenloai";
             txtTenloai.PlaceholderText = "";
             txtTenloai.SelectedText = "";
             txtTenloai.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtTenloai.Size = new Size(301, 39);
-            txtTenloai.TabIndex = 1;
+            txtTenloai.TabIndex = 0;
             // 
             // label2
             // 
@@ -205,6 +206,7 @@
             // 
             // txtMaloai
             // 
+            txtMaloai.BorderRadius = 5;
             txtMaloai.Cursor = Cursors.IBeam;
             txtMaloai.CustomizableEdges = customizableEdges13;
             txtMaloai.DefaultText = "";
@@ -212,17 +214,17 @@
             txtMaloai.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtMaloai.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtMaloai.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtMaloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtMaloai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtMaloai.Font = new Font("Microsoft YaHei", 10F);
             txtMaloai.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMaloai.Location = new Point(50, 69);
-            txtMaloai.Margin = new Padding(5, 5, 5, 5);
+            txtMaloai.Margin = new Padding(5);
             txtMaloai.Name = "txtMaloai";
             txtMaloai.PlaceholderText = "";
             txtMaloai.SelectedText = "";
             txtMaloai.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtMaloai.Size = new Size(301, 39);
-            txtMaloai.TabIndex = 1;
+            txtMaloai.TabIndex = 10;
             // 
             // label1
             // 
@@ -257,7 +259,7 @@
             Controls.Add(guna2Panel7);
             Controls.Add(guna2Panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "frmThemLoaiNguyenLieu";
             Text = "frmThemLoaiNguyenLieu";
             Load += frmThemLoaiNguyenLieu_Load;

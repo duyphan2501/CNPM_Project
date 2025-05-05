@@ -47,12 +47,12 @@ namespace GUI
         private void LoadCaLamIntoGrid(DataTable dt)
         {
             gridCaLam.DataSource = null;
-            gridCaLam.Rows.Clear();
-            gridCaLam.Columns.Clear();
+            gridCaLam.Columns.Clear(); 
 
             gridCaLam.DataSource = dt;
+            gridCaLam.AllowUserToAddRows = false;
 
-            // Cài đặt tiêu đề cột nếu cần tùy chỉnh lại
+            // Thiết lập tiêu đề cột
             gridCaLam.Columns["MaCaLam"].HeaderText = "Mã Ca Làm";
             gridCaLam.Columns["TenDangNhap"].HeaderText = "Người Mở Ca";
             gridCaLam.Columns["TgBatDau"].HeaderText = "Giờ Mở Ca";
@@ -61,37 +61,39 @@ namespace GUI
             gridCaLam.Columns["TienCuoiCa"].HeaderText = "Tiền Cuối Ca";
             gridCaLam.Columns["GhiChu"].HeaderText = "Ghi Chú";
 
-            // Tuỳ chọn hiển thị, căn chỉnh
             gridCaLam.Columns["TgBatDau"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             gridCaLam.Columns["TgKetThuc"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-
-            // Thiết lập độ rộng cột
-            foreach (DataGridViewColumn col in gridCaLam.Columns)
-            {
-                if (col.Name == "GhiChu")
-                {
-                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                else
-                {
-                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                }
-            }
-
         }
+
 
         private void btnViewDetail_Click(object sender, EventArgs e)
         {
             if (gridCaLam.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một CaLam.");
+                MessageBox.Show("Vui lòng chọn một Ca làm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             DataGridViewRow selectedRow = gridCaLam.SelectedRows[0];
-            string maCaLam = selectedRow.Cells["MaCaLam"].Value?.ToString();
+
+            // Kiểm tra cột "MaCaLam" có tồn tại và có giá trị hay không
+            if (selectedRow.Cells["MaCaLam"].Value == null)
+            {
+                MessageBox.Show("Dữ liệu Ca làm không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string maCaLam = selectedRow.Cells["MaCaLam"].Value.ToString().Trim();
+
+            if (string.IsNullOrEmpty(maCaLam))
+            {
+                MessageBox.Show("Mã Ca làm không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             frmTongKetCa frm = new frmTongKetCa(maCaLam, false);
             General.ShowDialogWithBlur(frm);
         }
+
     }
 }

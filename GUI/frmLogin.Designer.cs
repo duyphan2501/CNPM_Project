@@ -34,6 +34,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -64,11 +65,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(244, 103, 0);
-            label2.Location = new Point(126, 19);
+            label2.Location = new Point(22, 18);
             label2.Name = "label2";
-            label2.Size = new Size(197, 41);
+            label2.Size = new Size(392, 41);
             label2.TabIndex = 10;
-            label2.Text = "USER LOGIN";
+            label2.Text = "ĐĂNG NHẬP TÀI KHOẢN";
             // 
             // lblForgotpassword
             // 
@@ -76,11 +77,11 @@
             lblForgotpassword.Cursor = Cursors.Hand;
             lblForgotpassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblForgotpassword.ForeColor = Color.DarkGray;
-            lblForgotpassword.Location = new Point(219, 231);
+            lblForgotpassword.Location = new Point(249, 226);
             lblForgotpassword.Name = "lblForgotpassword";
-            lblForgotpassword.Size = new Size(162, 28);
+            lblForgotpassword.Size = new Size(165, 28);
             lblForgotpassword.TabIndex = 4;
-            lblForgotpassword.Text = "Quên mật khẩu?";
+            lblForgotpassword.Text = "Đặt lại mật khẩu";
             lblForgotpassword.Click += lblForgotpassword_Click;
             // 
             // btnLogin
@@ -101,7 +102,7 @@
             btnLogin.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLogin.Size = new Size(388, 65);
             btnLogin.TabIndex = 2;
-            btnLogin.Text = "Login";
+            btnLogin.Text = "Đăng nhập";
             btnLogin.Click += btnLogin_Click;
             btnLogin.Enter += btnLogin_Enter;
             btnLogin.Leave += btnLogin_Leave;
@@ -116,17 +117,19 @@
             guna2GradientPanel1.Controls.Add(lblForgotpassword);
             guna2GradientPanel1.Controls.Add(label2);
             guna2GradientPanel1.CustomizableEdges = customizableEdges9;
-            guna2GradientPanel1.Location = new Point(364, 57);
+            guna2GradientPanel1.Location = new Point(361, 58);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2GradientPanel1.Size = new Size(427, 403);
+            guna2GradientPanel1.Size = new Size(436, 403);
             guna2GradientPanel1.TabIndex = 16;
             // 
             // picShowPass
             // 
             picShowPass.BackColor = Color.Transparent;
+            picShowPass.Cursor = Cursors.Hand;
             picShowPass.CustomizableEdges = customizableEdges3;
             picShowPass.FillColor = Color.FromArgb(229, 229, 229);
+            picShowPass.Image = (Image)resources.GetObject("picShowPass.Image");
             picShowPass.ImageRotate = 0F;
             picShowPass.Location = new Point(370, 174);
             picShowPass.Name = "picShowPass";
@@ -165,6 +168,7 @@
             txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtUsername.Size = new Size(388, 47);
             txtUsername.TabIndex = 0;
+            txtUsername.KeyDown += txtPassword_KeyDown;
             // 
             // txtPassword
             // 

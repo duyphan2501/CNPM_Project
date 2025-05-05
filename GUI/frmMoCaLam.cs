@@ -56,21 +56,7 @@ namespace GUI
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Program.account.Clear();
-
-            // Đóng tất cả các form ngoài frmLogin
-            foreach (Form frm in Application.OpenForms.Cast<Form>().ToList())
-            {
-                if (!(frm is frmLogin)) // Chỉ giữ lại frmLogin
-                    frm.Close();
-            }
-
-            // Tạo và hiển thị lại frmLogin
-            frmLogin loginForm = new frmLogin();
-            loginForm.Show(); // Mở lại frmLogin
-            loginForm.BringToFront(); // Đưa frmLogin lên phía trước
-
-            // Đóng form hiện tại (có thể là frmBanHang, frmAdmin,...)
-            this.Close();
+            Application.Restart();
         }
 
 

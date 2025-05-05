@@ -20,7 +20,6 @@ namespace GUI
 
         private void frmThuChi_Load(object sender, EventArgs e)
         {
-            gridDsThuchi.RowTemplate.Height = 50;
             cboLoaiPhieu.Text = "Tất cả";
             dateDenngay.Value = DateTime.Now.AddDays(1);
             dateTungay.Value = DateTime.Now.AddDays(-7);

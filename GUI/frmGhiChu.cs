@@ -22,11 +22,16 @@ namespace GUI
         {
             InitializeComponent();
             txtGhiChu.Text = ghiChu;
+            txtGhiChu.MaxLength = 500;
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            txtGhiChu.Text = "";
+            var result = General.ShowConfirm("Có chắc muốn xoá ghi chú", this);
+            if (result == DialogResult.Yes)
+            {
+                txtGhiChu.Text = "";
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

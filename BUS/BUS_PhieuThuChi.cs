@@ -41,9 +41,9 @@ namespace BUS
             if (maphieu != null && int.TryParse(maphieu.Substring(2), out int num))
             {
                 num++;
-                return start + num.ToString("D4");
+                return start + num.ToString("D8");
             }
-            return start + "0001";
+            return start + "00000001";
         }
 
 

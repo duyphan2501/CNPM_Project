@@ -215,7 +215,8 @@ namespace GUI
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            frmQuenMatKhau frmQuenMatKhau = new frmQuenMatKhau();
+            string username = Program.account.Rows[0]["TenDangNhap"].ToString();
+            frmQuenMatKhau frmQuenMatKhau = new frmQuenMatKhau(username);
             General.ShowDialogWithBlur(frmQuenMatKhau);
         }
 

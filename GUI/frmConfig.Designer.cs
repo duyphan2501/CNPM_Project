@@ -106,7 +106,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = Color.DarkOrange;
+            groupBox1.BackColor = Color.FromArgb(221, 222, 224);
             groupBox1.Controls.Add(cboDatabase);
             groupBox1.Controls.Add(txtPassword);
             groupBox1.Controls.Add(txtUID);
@@ -115,7 +115,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
-            groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = Color.Black;
             groupBox1.Location = new Point(12, 15);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
@@ -129,6 +129,7 @@
             // cboDatabase
             // 
             cboDatabase.BackColor = Color.Transparent;
+            cboDatabase.BorderRadius = 5;
             cboDatabase.CustomizableEdges = customizableEdges1;
             cboDatabase.DrawMode = DrawMode.OwnerDrawFixed;
             cboDatabase.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -141,11 +142,12 @@
             cboDatabase.Name = "cboDatabase";
             cboDatabase.ShadowDecoration.CustomizableEdges = customizableEdges2;
             cboDatabase.Size = new Size(337, 36);
-            cboDatabase.TabIndex = 2;
-            cboDatabase.MouseClick += this.cboDatabase_MouseClick;
+            cboDatabase.TabIndex = 1;
+            cboDatabase.MouseClick += cboDatabase_MouseClick;
             // 
             // txtPassword
             // 
+            txtPassword.BorderRadius = 5;
             txtPassword.CustomizableEdges = customizableEdges3;
             txtPassword.DefaultText = "";
             txtPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -162,10 +164,11 @@
             txtPassword.SelectedText = "";
             txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtPassword.Size = new Size(337, 43);
-            txtPassword.TabIndex = 4;
+            txtPassword.TabIndex = 3;
             // 
             // txtUID
             // 
+            txtUID.BorderRadius = 5;
             txtUID.CustomizableEdges = customizableEdges5;
             txtUID.DefaultText = "";
             txtUID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -182,10 +185,11 @@
             txtUID.SelectedText = "";
             txtUID.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtUID.Size = new Size(337, 43);
-            txtUID.TabIndex = 3;
+            txtUID.TabIndex = 2;
             // 
             // txtServer
             // 
+            txtServer.BorderRadius = 5;
             txtServer.CustomizableEdges = customizableEdges7;
             txtServer.DefaultText = "";
             txtServer.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -202,7 +206,7 @@
             txtServer.SelectedText = "";
             txtServer.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtServer.Size = new Size(337, 43);
-            txtServer.TabIndex = 1;
+            txtServer.TabIndex = 0;
             // 
             // guna2BorderlessForm1
             // 
@@ -212,52 +216,58 @@
             // 
             // btnCheck
             // 
+            btnCheck.BorderRadius = 10;
             btnCheck.CustomizableEdges = customizableEdges13;
             btnCheck.DisabledState.BorderColor = Color.DarkGray;
             btnCheck.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCheck.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnCheck.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCheck.FillColor = Color.FromArgb(0, 92, 191);
             btnCheck.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCheck.ForeColor = Color.White;
             btnCheck.Location = new Point(407, 412);
             btnCheck.Name = "btnCheck";
             btnCheck.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnCheck.Size = new Size(150, 56);
-            btnCheck.TabIndex = 0;
+            btnCheck.TabIndex = 5;
             btnCheck.Text = "Kiểm tra";
             btnCheck.Click += btnCheck_Click;
             // 
             // btnExit
             // 
+            btnExit.BorderRadius = 10;
             btnExit.CustomizableEdges = customizableEdges11;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnExit.FillColor = Color.FromArgb(0, 92, 191);
             btnExit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
             btnExit.Location = new Point(12, 412);
             btnExit.Name = "btnExit";
             btnExit.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnExit.Size = new Size(150, 56);
-            btnExit.TabIndex = 2;
+            btnExit.TabIndex = 7;
             btnExit.Text = "Thoát";
             btnExit.Click += btnExit_Click;
             // 
             // btnSave
             // 
+            btnSave.BorderRadius = 10;
             btnSave.CustomizableEdges = customizableEdges9;
             btnSave.DisabledState.BorderColor = Color.DarkGray;
             btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSave.FillColor = Color.FromArgb(0, 92, 191);
             btnSave.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(215, 412);
             btnSave.Name = "btnSave";
             btnSave.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnSave.Size = new Size(150, 56);
-            btnSave.TabIndex = 1;
+            btnSave.TabIndex = 6;
             btnSave.Text = "Lưu";
             btnSave.Click += btnSave_Click;
             // 
@@ -270,11 +280,12 @@
             chkWindowAuth.CheckedState.BorderThickness = 0;
             chkWindowAuth.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             chkWindowAuth.CheckState = CheckState.Checked;
+            chkWindowAuth.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkWindowAuth.ForeColor = Color.White;
             chkWindowAuth.Location = new Point(50, 356);
             chkWindowAuth.Name = "chkWindowAuth";
-            chkWindowAuth.Size = new Size(187, 24);
-            chkWindowAuth.TabIndex = 9;
+            chkWindowAuth.Size = new Size(249, 32);
+            chkWindowAuth.TabIndex = 4;
             chkWindowAuth.Text = "Window Authentication";
             chkWindowAuth.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
             chkWindowAuth.UncheckedState.BorderRadius = 0;
@@ -286,7 +297,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(244, 103, 0);
+            BackColor = Color.Orange;
             ClientSize = new Size(569, 480);
             Controls.Add(chkWindowAuth);
             Controls.Add(btnSave);

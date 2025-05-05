@@ -61,6 +61,7 @@
             // grbXuatNhapKho
             // 
             grbXuatNhapKho.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            grbXuatNhapKho.BackColor = Color.FromArgb(244, 129, 17);
             grbXuatNhapKho.Controls.Add(dateStop);
             grbXuatNhapKho.Controls.Add(dateStart);
             grbXuatNhapKho.Controls.Add(btnThongKe);
@@ -68,50 +69,54 @@
             grbXuatNhapKho.Controls.Add(label2);
             grbXuatNhapKho.Controls.Add(label1);
             grbXuatNhapKho.Controls.Add(label9);
-            grbXuatNhapKho.CustomBorderColor = Color.FromArgb(239, 119, 18);
+            grbXuatNhapKho.CustomBorderColor = Color.FromArgb(244, 129, 17);
             grbXuatNhapKho.CustomizableEdges = customizableEdges9;
             grbXuatNhapKho.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grbXuatNhapKho.ForeColor = Color.White;
-            grbXuatNhapKho.Location = new Point(36, 50);
-            grbXuatNhapKho.Margin = new Padding(4, 5, 4, 5);
+            grbXuatNhapKho.Location = new Point(29, 40);
+            grbXuatNhapKho.Margin = new Padding(3, 4, 3, 4);
             grbXuatNhapKho.Name = "grbXuatNhapKho";
             grbXuatNhapKho.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            grbXuatNhapKho.Size = new Size(1855, 185);
+            grbXuatNhapKho.Size = new Size(1484, 148);
             grbXuatNhapKho.TabIndex = 20;
             grbXuatNhapKho.Text = "Thống kê mặt hàng bán chạy nhất";
             // 
             // dateStop
             // 
+            dateStop.BackColor = Color.Transparent;
             dateStop.BorderRadius = 5;
             dateStop.Checked = true;
             dateStop.CustomizableEdges = customizableEdges1;
+            dateStop.FillColor = Color.Orange;
             dateStop.Font = new Font("Segoe UI", 9F);
             dateStop.Format = DateTimePickerFormat.Long;
-            dateStop.Location = new Point(816, 104);
+            dateStop.Location = new Point(601, 83);
             dateStop.Margin = new Padding(2);
             dateStop.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStop.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStop.Name = "dateStop";
             dateStop.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            dateStop.Size = new Size(300, 50);
-            dateStop.TabIndex = 14;
+            dateStop.Size = new Size(284, 43);
+            dateStop.TabIndex = 2;
             dateStop.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
             // 
             // dateStart
             // 
+            dateStart.BackColor = Color.Transparent;
             dateStart.BorderRadius = 5;
             dateStart.Checked = true;
             dateStart.CustomizableEdges = customizableEdges3;
+            dateStart.FillColor = Color.Orange;
             dateStart.Font = new Font("Segoe UI", 9F);
             dateStart.Format = DateTimePickerFormat.Long;
-            dateStart.Location = new Point(399, 104);
+            dateStart.Location = new Point(292, 83);
             dateStart.Margin = new Padding(2);
             dateStart.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateStart.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateStart.Name = "dateStart";
             dateStart.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            dateStart.Size = new Size(300, 54);
-            dateStart.TabIndex = 14;
+            dateStart.Size = new Size(282, 43);
+            dateStart.TabIndex = 1;
             dateStart.Value = new DateTime(2025, 4, 26, 17, 51, 15, 852);
             // 
             // btnThongKe
@@ -119,7 +124,7 @@
             btnThongKe.AutoRoundedCorners = true;
             btnThongKe.BackColor = Color.Transparent;
             btnThongKe.BorderColor = Color.FromArgb(239, 119, 18);
-            btnThongKe.BorderThickness = 1;
+            btnThongKe.BorderThickness = 2;
             btnThongKe.CustomizableEdges = customizableEdges5;
             btnThongKe.DisabledState.BorderColor = Color.DarkGray;
             btnThongKe.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -130,12 +135,12 @@
             btnThongKe.FillColor2 = Color.Transparent;
             btnThongKe.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThongKe.ForeColor = Color.FromArgb(239, 119, 18);
-            btnThongKe.Location = new Point(1201, 90);
-            btnThongKe.Margin = new Padding(4, 5, 4, 5);
+            btnThongKe.Location = new Point(961, 75);
+            btnThongKe.Margin = new Padding(3, 4, 3, 4);
             btnThongKe.Name = "btnThongKe";
             btnThongKe.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnThongKe.Size = new Size(144, 64);
-            btnThongKe.TabIndex = 13;
+            btnThongKe.Size = new Size(128, 48);
+            btnThongKe.TabIndex = 3;
             btnThongKe.Text = "Thống kê";
             btnThongKe.Click += btnThongKe_Click;
             // 
@@ -146,14 +151,14 @@
             numSosanpham.Cursor = Cursors.IBeam;
             numSosanpham.CustomizableEdges = customizableEdges7;
             numSosanpham.Font = new Font("Segoe UI", 9F);
-            numSosanpham.Location = new Point(36, 104);
-            numSosanpham.Margin = new Padding(4, 6, 4, 6);
+            numSosanpham.Location = new Point(29, 83);
+            numSosanpham.Margin = new Padding(3, 5, 3, 5);
             numSosanpham.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
             numSosanpham.Name = "numSosanpham";
             numSosanpham.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            numSosanpham.Size = new Size(255, 50);
-            numSosanpham.TabIndex = 13;
-            numSosanpham.UpDownButtonFillColor = Color.FromArgb(239, 119, 18);
+            numSosanpham.Size = new Size(204, 40);
+            numSosanpham.TabIndex = 0;
+            numSosanpham.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
             // 
             // label2
             // 
@@ -161,10 +166,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(244, 103, 0);
-            label2.Location = new Point(816, 68);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(601, 54);
             label2.Name = "label2";
-            label2.Size = new Size(106, 30);
+            label2.Size = new Size(86, 23);
             label2.TabIndex = 10;
             label2.Text = "Đến ngày";
             // 
@@ -174,10 +178,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(399, 68);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(292, 54);
             label1.Name = "label1";
-            label1.Size = new Size(93, 30);
+            label1.Size = new Size(75, 23);
             label1.TabIndex = 10;
             label1.Text = "Từ ngày";
             // 
@@ -187,10 +190,9 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.FromArgb(244, 103, 0);
-            label9.Location = new Point(34, 68);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(27, 54);
             label9.Name = "label9";
-            label9.Size = new Size(139, 30);
+            label9.Size = new Size(112, 23);
             label9.TabIndex = 10;
             label9.Text = "Số sản phẩm";
             // 
@@ -219,15 +221,15 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridHangbanchay.DefaultCellStyle = dataGridViewCellStyle3;
-            gridHangbanchay.GridColor = Color.White;
-            gridHangbanchay.Location = new Point(36, 272);
-            gridHangbanchay.Margin = new Padding(2, 5, 2, 5);
+            gridHangbanchay.GridColor = Color.FromArgb(231, 229, 255);
+            gridHangbanchay.Location = new Point(29, 218);
+            gridHangbanchay.Margin = new Padding(2, 4, 2, 4);
             gridHangbanchay.Name = "gridHangbanchay";
             gridHangbanchay.ReadOnly = true;
             gridHangbanchay.RowHeadersVisible = false;
             gridHangbanchay.RowHeadersWidth = 51;
             gridHangbanchay.RowTemplate.Height = 35;
-            gridHangbanchay.Size = new Size(924, 789);
+            gridHangbanchay.Size = new Size(739, 621);
             gridHangbanchay.TabIndex = 0;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -235,7 +237,7 @@
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             gridHangbanchay.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             gridHangbanchay.ThemeStyle.BackColor = Color.White;
-            gridHangbanchay.ThemeStyle.GridColor = Color.White;
+            gridHangbanchay.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             gridHangbanchay.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             gridHangbanchay.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             gridHangbanchay.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -256,19 +258,18 @@
             pnlBieuDo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlBieuDo.BackColor = Color.Transparent;
             pnlBieuDo.CustomizableEdges = customizableEdges11;
-            pnlBieuDo.Location = new Point(1116, 272);
-            pnlBieuDo.Margin = new Padding(4);
+            pnlBieuDo.Location = new Point(893, 218);
             pnlBieuDo.Name = "pnlBieuDo";
             pnlBieuDo.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pnlBieuDo.Size = new Size(775, 776);
+            pnlBieuDo.Size = new Size(620, 621);
             pnlBieuDo.TabIndex = 1;
             // 
             // frmHangBanChay
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(221, 222, 224);
-            ClientSize = new Size(1920, 1102);
+            ClientSize = new Size(1536, 882);
             Controls.Add(gridHangbanchay);
             Controls.Add(pnlBieuDo);
             Controls.Add(grbXuatNhapKho);

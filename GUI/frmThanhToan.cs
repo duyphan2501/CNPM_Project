@@ -293,7 +293,7 @@ namespace GUI
                 // Thêm phiếu thu từ đơn hàng
                 BUS_PhieuThuChi phieuChi = new BUS_PhieuThuChi();
                 string maPhieuChi = phieuChi.GenerateID(false);
-                int affectedRow = new BUS_PhieuThuChi().AddReceipt(maPhieuChi, tenDangNhap, tongTien, "T01", maDonhang.ToString());
+                int affectedRow = new BUS_PhieuThuChi().AddReceipt(maPhieuChi, tenDangNhap, tongTien, "TC01", maDonhang.ToString());
 
                 if (affectedRow == 0)
                 {

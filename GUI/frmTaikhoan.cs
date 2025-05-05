@@ -62,7 +62,7 @@ namespace GUI
             }
             DataGridViewRow hangduocchon = gridDsTaikhoan.SelectedRows[0];
             string tendangnhap = hangduocchon.Cells["Tên đăng nhập"].Value.ToString();
-            string trangthai = hangduocchon.Cells["Trạng thái"].Value.ToString();
+            string trangthai = hangduocchon.Cells["Hoạt động"].Value.ToString();
             string vaitro = hangduocchon.Cells["Vai trò"].Value.ToString();
             string hoten = hangduocchon.Cells["Họ tên"].Value.ToString();
             string email = hangduocchon.Cells["Email"].Value.ToString();
