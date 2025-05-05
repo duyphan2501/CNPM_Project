@@ -48,7 +48,7 @@ namespace GUI
                 // Đảm bảo ảnh hiển thị vừa với PictureBox
                 picAnhsanpham.SizeMode = PictureBoxSizeMode.Zoom;
             }
-            
+
         }
 
         private void frmThucdon_Load(object sender, EventArgs e)
@@ -175,6 +175,7 @@ namespace GUI
                     {
                         sanpham.UpdateProduct(maSanPham, maLoai, tenSanPham, anhSanPham, giaBan, trangThai);
                         General.ShowInformation("Cập nhật món thành công", this);
+                        txtMasanpham.Enabled = true;
                     }
                     else
                     {
@@ -185,9 +186,9 @@ namespace GUI
                     LoadProduct();
                     frmThucdon_Load(sender, e);
                 }
-                txtMasanpham.Enabled = true;
+               
             }
-            
+
         }
 
         private bool IsDuplicateProduct(string maSP, string tenSP) //kiểm tra trùng tên sản phẩm mà khác chính nó
@@ -211,10 +212,10 @@ namespace GUI
         {
             if (string.IsNullOrEmpty(tenSanPham))
             {
-                General.ShowWarning("Vui lòng nhập tên sản phẩm",this);
+                General.ShowWarning("Vui lòng nhập tên sản phẩm", this);
                 return false;
             }
-            if (giaBan == 0)
+            if (giaBan == 0 || giaBan == null)
             {
                 General.ShowWarning("Vui lòng nhập giá bán", this);
                 return false;

@@ -134,13 +134,13 @@
             txtTimkiem.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTimkiem.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtTimkiem.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTimkiem.Location = new Point(353, 68);
-            txtTimkiem.Margin = new Padding(4, 5, 4, 5);
+            txtTimkiem.Location = new Point(441, 85);
+            txtTimkiem.Margin = new Padding(5, 6, 5, 6);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.PlaceholderText = "Nhập thông tin sản phẩm";
             txtTimkiem.SelectedText = "";
             txtTimkiem.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtTimkiem.Size = new Size(342, 39);
+            txtTimkiem.Size = new Size(428, 49);
             txtTimkiem.TabIndex = 7;
             txtTimkiem.TextChanged += txtTimkiem_TextChanged;
             // 
@@ -149,10 +149,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(16, 11);
+            label1.Location = new Point(20, 14);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(117, 23);
+            label1.Size = new Size(145, 30);
             label1.TabIndex = 0;
             label1.Text = "Mã sản phẩm";
             // 
@@ -165,11 +165,11 @@
             pnlMasanpham.Controls.Add(txtMasanpham);
             pnlMasanpham.Controls.Add(label1);
             pnlMasanpham.CustomizableEdges = customizableEdges5;
-            pnlMasanpham.Location = new Point(50, 56);
-            pnlMasanpham.Margin = new Padding(2, 3, 2, 3);
+            pnlMasanpham.Location = new Point(62, 70);
+            pnlMasanpham.Margin = new Padding(2, 4, 2, 4);
             pnlMasanpham.Name = "pnlMasanpham";
             pnlMasanpham.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            pnlMasanpham.Size = new Size(358, 111);
+            pnlMasanpham.Size = new Size(448, 139);
             pnlMasanpham.TabIndex = 14;
             // 
             // txtMasanpham
@@ -185,13 +185,13 @@
             txtMasanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtMasanpham.ForeColor = Color.Black;
             txtMasanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtMasanpham.Location = new Point(25, 53);
-            txtMasanpham.Margin = new Padding(5, 6, 5, 6);
+            txtMasanpham.Location = new Point(31, 66);
+            txtMasanpham.Margin = new Padding(6, 8, 6, 8);
             txtMasanpham.Name = "txtMasanpham";
             txtMasanpham.PlaceholderText = "";
             txtMasanpham.SelectedText = "";
             txtMasanpham.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtMasanpham.Size = new Size(308, 44);
+            txtMasanpham.Size = new Size(385, 55);
             txtMasanpham.TabIndex = 21;
             // 
             // label3
@@ -199,10 +199,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.FromArgb(244, 103, 0);
-            label3.Location = new Point(21, 19);
+            label3.Location = new Point(26, 24);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(119, 23);
+            label3.Size = new Size(148, 30);
             label3.TabIndex = 0;
             label3.Text = "Tên sản phẩm";
             // 
@@ -211,10 +211,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(244, 103, 0);
-            label2.Location = new Point(23, 16);
+            label2.Location = new Point(29, 20);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(75, 23);
+            label2.Size = new Size(94, 30);
             label2.TabIndex = 0;
             label2.Text = "Tên Loại";
             // 
@@ -227,11 +227,11 @@
             pnlTenloai.Controls.Add(cboTenloai);
             pnlTenloai.Controls.Add(label2);
             pnlTenloai.CustomizableEdges = customizableEdges11;
-            pnlTenloai.Location = new Point(50, 174);
-            pnlTenloai.Margin = new Padding(2, 3, 2, 3);
+            pnlTenloai.Location = new Point(62, 218);
+            pnlTenloai.Margin = new Padding(2, 4, 2, 4);
             pnlTenloai.Name = "pnlTenloai";
             pnlTenloai.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pnlTenloai.Size = new Size(358, 111);
+            pnlTenloai.Size = new Size(448, 139);
             pnlTenloai.TabIndex = 10;
             // 
             // picThemLoai
@@ -239,11 +239,11 @@
             picThemLoai.CustomizableEdges = customizableEdges7;
             picThemLoai.Image = Properties.Resources.them;
             picThemLoai.ImageRotate = 0F;
-            picThemLoai.Location = new Point(288, 48);
-            picThemLoai.Margin = new Padding(2, 3, 2, 3);
+            picThemLoai.Location = new Point(360, 60);
+            picThemLoai.Margin = new Padding(2, 4, 2, 4);
             picThemLoai.Name = "picThemLoai";
             picThemLoai.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            picThemLoai.Size = new Size(45, 36);
+            picThemLoai.Size = new Size(56, 45);
             picThemLoai.SizeMode = PictureBoxSizeMode.Zoom;
             picThemLoai.TabIndex = 2;
             picThemLoai.TabStop = false;
@@ -262,11 +262,11 @@
             cboTenloai.ForeColor = Color.Black;
             cboTenloai.ItemHeight = 30;
             cboTenloai.Items.AddRange(new object[] { "cafe" });
-            cboTenloai.Location = new Point(25, 48);
-            cboTenloai.Margin = new Padding(2, 3, 2, 3);
+            cboTenloai.Location = new Point(31, 60);
+            cboTenloai.Margin = new Padding(2, 4, 2, 4);
             cboTenloai.Name = "cboTenloai";
             cboTenloai.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            cboTenloai.Size = new Size(263, 36);
+            cboTenloai.Size = new Size(328, 36);
             cboTenloai.TabIndex = 1;
             // 
             // label4
@@ -274,10 +274,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(244, 103, 0);
-            label4.Location = new Point(16, 23);
+            label4.Location = new Point(20, 29);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(71, 23);
+            label4.Size = new Size(88, 30);
             label4.TabIndex = 0;
             label4.Text = "Giá bán";
             // 
@@ -289,11 +289,11 @@
             pnlGiaban.Controls.Add(numGiaban);
             pnlGiaban.Controls.Add(label4);
             pnlGiaban.CustomizableEdges = customizableEdges15;
-            pnlGiaban.Location = new Point(50, 408);
-            pnlGiaban.Margin = new Padding(2, 3, 2, 3);
+            pnlGiaban.Location = new Point(62, 510);
+            pnlGiaban.Margin = new Padding(2, 4, 2, 4);
             pnlGiaban.Name = "pnlGiaban";
             pnlGiaban.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            pnlGiaban.Size = new Size(358, 111);
+            pnlGiaban.Size = new Size(448, 139);
             pnlGiaban.TabIndex = 9;
             // 
             // numGiaban
@@ -303,12 +303,12 @@
             numGiaban.Cursor = Cursors.IBeam;
             numGiaban.CustomizableEdges = customizableEdges13;
             numGiaban.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            numGiaban.Location = new Point(25, 51);
-            numGiaban.Margin = new Padding(3, 5, 3, 5);
+            numGiaban.Location = new Point(31, 64);
+            numGiaban.Margin = new Padding(4, 6, 4, 6);
             numGiaban.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numGiaban.Name = "numGiaban";
             numGiaban.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            numGiaban.Size = new Size(308, 34);
+            numGiaban.Size = new Size(385, 42);
             numGiaban.TabIndex = 2;
             numGiaban.UpDownButtonFillColor = Color.FromArgb(244, 129, 17);
             // 
@@ -320,11 +320,11 @@
             pnlTensanpham.Controls.Add(txtTensanpham);
             pnlTensanpham.Controls.Add(label3);
             pnlTensanpham.CustomizableEdges = customizableEdges19;
-            pnlTensanpham.Location = new Point(50, 291);
-            pnlTensanpham.Margin = new Padding(2, 3, 2, 3);
+            pnlTensanpham.Location = new Point(62, 364);
+            pnlTensanpham.Margin = new Padding(2, 4, 2, 4);
             pnlTensanpham.Name = "pnlTensanpham";
             pnlTensanpham.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            pnlTensanpham.Size = new Size(358, 111);
+            pnlTensanpham.Size = new Size(448, 139);
             pnlTensanpham.TabIndex = 12;
             // 
             // txtTensanpham
@@ -340,13 +340,13 @@
             txtTensanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtTensanpham.ForeColor = Color.Black;
             txtTensanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTensanpham.Location = new Point(25, 48);
-            txtTensanpham.Margin = new Padding(5, 6, 5, 6);
+            txtTensanpham.Location = new Point(31, 60);
+            txtTensanpham.Margin = new Padding(6, 8, 6, 8);
             txtTensanpham.Name = "txtTensanpham";
             txtTensanpham.PlaceholderText = "";
             txtTensanpham.SelectedText = "";
             txtTensanpham.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            txtTensanpham.Size = new Size(304, 41);
+            txtTensanpham.Size = new Size(380, 51);
             txtTensanpham.TabIndex = 21;
             // 
             // btnClose
@@ -363,11 +363,11 @@
             btnClose.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.Black;
             btnClose.Image = Properties.Resources.exit2;
-            btnClose.Location = new Point(10, 6);
+            btnClose.Location = new Point(12, 8);
             btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
             btnClose.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            btnClose.Size = new Size(42, 30);
+            btnClose.Size = new Size(52, 38);
             btnClose.TabIndex = 20;
             btnClose.Click += btnClose_Click;
             // 
@@ -379,11 +379,11 @@
             pnlHinhanh.Controls.Add(btnThemAnh);
             pnlHinhanh.Controls.Add(picAnhsanpham);
             pnlHinhanh.CustomizableEdges = customizableEdges27;
-            pnlHinhanh.Location = new Point(50, 642);
-            pnlHinhanh.Margin = new Padding(2, 3, 2, 3);
+            pnlHinhanh.Location = new Point(62, 802);
+            pnlHinhanh.Margin = new Padding(2, 4, 2, 4);
             pnlHinhanh.Name = "pnlHinhanh";
             pnlHinhanh.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            pnlHinhanh.Size = new Size(358, 138);
+            pnlHinhanh.Size = new Size(448, 172);
             pnlHinhanh.TabIndex = 8;
             // 
             // btnThemAnh
@@ -400,11 +400,11 @@
             btnThemAnh.FillColor = Color.White;
             btnThemAnh.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnThemAnh.ForeColor = Color.FromArgb(244, 103, 0);
-            btnThemAnh.Location = new Point(38, 41);
-            btnThemAnh.Margin = new Padding(2, 3, 2, 3);
+            btnThemAnh.Location = new Point(48, 51);
+            btnThemAnh.Margin = new Padding(2, 4, 2, 4);
             btnThemAnh.Name = "btnThemAnh";
             btnThemAnh.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            btnThemAnh.Size = new Size(119, 52);
+            btnThemAnh.Size = new Size(149, 65);
             btnThemAnh.TabIndex = 1;
             btnThemAnh.Text = "Thêm ảnh";
             btnThemAnh.Click += btnThemAnh_Click;
@@ -415,11 +415,11 @@
             picAnhsanpham.BorderStyle = BorderStyle.Fixed3D;
             picAnhsanpham.CustomizableEdges = customizableEdges25;
             picAnhsanpham.ImageRotate = 0F;
-            picAnhsanpham.Location = new Point(196, 8);
-            picAnhsanpham.Margin = new Padding(2, 3, 2, 3);
+            picAnhsanpham.Location = new Point(245, 10);
+            picAnhsanpham.Margin = new Padding(2, 4, 2, 4);
             picAnhsanpham.Name = "picAnhsanpham";
             picAnhsanpham.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            picAnhsanpham.Size = new Size(137, 121);
+            picAnhsanpham.Size = new Size(170, 150);
             picAnhsanpham.SizeMode = PictureBoxSizeMode.Zoom;
             picAnhsanpham.TabIndex = 0;
             picAnhsanpham.TabStop = false;
@@ -432,11 +432,11 @@
             pnlTrangthai.Controls.Add(cboTrangthai);
             pnlTrangthai.Controls.Add(label8);
             pnlTrangthai.CustomizableEdges = customizableEdges31;
-            pnlTrangthai.Location = new Point(50, 525);
-            pnlTrangthai.Margin = new Padding(2, 3, 2, 3);
+            pnlTrangthai.Location = new Point(62, 656);
+            pnlTrangthai.Margin = new Padding(2, 4, 2, 4);
             pnlTrangthai.Name = "pnlTrangthai";
             pnlTrangthai.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            pnlTrangthai.Size = new Size(358, 111);
+            pnlTrangthai.Size = new Size(448, 139);
             pnlTrangthai.TabIndex = 8;
             // 
             // cboTrangthai
@@ -452,11 +452,11 @@
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;
             cboTrangthai.Items.AddRange(new object[] { "Còn bán", "Ngưng bán" });
-            cboTrangthai.Location = new Point(21, 49);
-            cboTrangthai.Margin = new Padding(2, 3, 2, 3);
+            cboTrangthai.Location = new Point(26, 61);
+            cboTrangthai.Margin = new Padding(2, 4, 2, 4);
             cboTrangthai.Name = "cboTrangthai";
             cboTrangthai.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            cboTrangthai.Size = new Size(312, 36);
+            cboTrangthai.Size = new Size(389, 36);
             cboTrangthai.TabIndex = 2;
             // 
             // label8
@@ -464,10 +464,10 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label8.ForeColor = Color.FromArgb(244, 103, 0);
-            label8.Location = new Point(16, 17);
+            label8.Location = new Point(20, 21);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(92, 23);
+            label8.Size = new Size(112, 30);
             label8.TabIndex = 0;
             label8.Text = "Trạng thái";
             // 
@@ -484,11 +484,11 @@
             btnLuu.FillColor2 = Color.FromArgb(0, 92, 191);
             btnLuu.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(50, 811);
-            btnLuu.Margin = new Padding(2, 4, 2, 4);
+            btnLuu.Location = new Point(62, 1014);
+            btnLuu.Margin = new Padding(2, 5, 2, 5);
             btnLuu.Name = "btnLuu";
             btnLuu.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            btnLuu.Size = new Size(104, 55);
+            btnLuu.Size = new Size(130, 69);
             btnLuu.TabIndex = 19;
             btnLuu.Text = "Lưu";
             btnLuu.Click += btnLuu_Click;
@@ -508,11 +508,11 @@
             btnHuy.FillColor2 = Color.FromArgb(255, 236, 209);
             btnHuy.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnHuy.ForeColor = Color.Black;
-            btnHuy.Location = new Point(170, 811);
-            btnHuy.Margin = new Padding(2, 4, 2, 4);
+            btnHuy.Location = new Point(212, 1014);
+            btnHuy.Margin = new Padding(2, 5, 2, 5);
             btnHuy.Name = "btnHuy";
             btnHuy.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            btnHuy.Size = new Size(104, 55);
+            btnHuy.Size = new Size(130, 69);
             btnHuy.TabIndex = 19;
             btnHuy.Text = "Hủy";
             btnHuy.Click += btnHuy_Click;
@@ -530,11 +530,11 @@
             btnDinhluong.FillColor2 = Color.Navy;
             btnDinhluong.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnDinhluong.ForeColor = Color.White;
-            btnDinhluong.Location = new Point(288, 811);
-            btnDinhluong.Margin = new Padding(2, 4, 2, 4);
+            btnDinhluong.Location = new Point(360, 1014);
+            btnDinhluong.Margin = new Padding(2, 5, 2, 5);
             btnDinhluong.Name = "btnDinhluong";
             btnDinhluong.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            btnDinhluong.Size = new Size(123, 55);
+            btnDinhluong.Size = new Size(154, 69);
             btnDinhluong.TabIndex = 19;
             btnDinhluong.Text = "Định lượng";
             btnDinhluong.Click += btnDinhluong_Click;
@@ -552,11 +552,11 @@
             btnThemmon.FillColor2 = Color.FromArgb(0, 92, 191);
             btnThemmon.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             btnThemmon.ForeColor = Color.White;
-            btnThemmon.Location = new Point(31, 52);
-            btnThemmon.Margin = new Padding(2, 4, 2, 4);
+            btnThemmon.Location = new Point(39, 65);
+            btnThemmon.Margin = new Padding(2, 5, 2, 5);
             btnThemmon.Name = "btnThemmon";
             btnThemmon.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            btnThemmon.Size = new Size(143, 55);
+            btnThemmon.Size = new Size(179, 69);
             btnThemmon.TabIndex = 19;
             btnThemmon.Text = "Thêm món";
             btnThemmon.Click += btnThemmon_Click;
@@ -570,16 +570,16 @@
             dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             dataGridViewImageColumn1.Resizable = DataGridViewTriState.True;
             dataGridViewImageColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            dataGridViewImageColumn1.Width = 125;
+            dataGridViewImageColumn1.Width = 150;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(772, 37);
+            label5.Location = new Point(965, 46);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(92, 23);
+            label5.Size = new Size(112, 30);
             label5.TabIndex = 0;
             label5.Text = "Trạng thái";
             // 
@@ -596,11 +596,11 @@
             cboLoctrangthai.ForeColor = Color.FromArgb(68, 88, 112);
             cboLoctrangthai.ItemHeight = 30;
             cboLoctrangthai.Items.AddRange(new object[] { "Tất cả", "Còn bán", "Ngưng bán" });
-            cboLoctrangthai.Location = new Point(772, 68);
-            cboLoctrangthai.Margin = new Padding(2, 3, 2, 3);
+            cboLoctrangthai.Location = new Point(965, 85);
+            cboLoctrangthai.Margin = new Padding(2, 4, 2, 4);
             cboLoctrangthai.Name = "cboLoctrangthai";
             cboLoctrangthai.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            cboLoctrangthai.Size = new Size(263, 36);
+            cboLoctrangthai.Size = new Size(328, 36);
             cboLoctrangthai.TabIndex = 2;
             cboLoctrangthai.SelectedIndexChanged += cboLoctrangthai_SelectedIndexChanged;
             // 
@@ -620,21 +620,21 @@
             pnlThongtinSP.Controls.Add(btnHuy);
             pnlThongtinSP.Controls.Add(btnDinhluong);
             pnlThongtinSP.CustomizableEdges = customizableEdges43;
-            pnlThongtinSP.Location = new Point(1075, 1);
+            pnlThongtinSP.Location = new Point(1344, 1);
             pnlThongtinSP.Margin = new Padding(2);
             pnlThongtinSP.Name = "pnlThongtinSP";
             pnlThongtinSP.ShadowDecoration.CustomizableEdges = customizableEdges44;
-            pnlThongtinSP.Size = new Size(461, 874);
+            pnlThongtinSP.Size = new Size(576, 1092);
             pnlThongtinSP.TabIndex = 20;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(353, 37);
+            label6.Location = new Point(441, 46);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(86, 23);
+            label6.Size = new Size(104, 30);
             label6.TabIndex = 0;
             label6.Text = "Tìm kiếm";
             // 
@@ -665,14 +665,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             gridThucDon.DefaultCellStyle = dataGridViewCellStyle3;
             gridThucDon.GridColor = Color.White;
-            gridThucDon.Location = new Point(31, 125);
-            gridThucDon.Margin = new Padding(2, 4, 2, 4);
+            gridThucDon.Location = new Point(39, 156);
+            gridThucDon.Margin = new Padding(2, 5, 2, 5);
             gridThucDon.Name = "gridThucDon";
             gridThucDon.ReadOnly = true;
             gridThucDon.RowHeadersVisible = false;
             gridThucDon.RowHeadersWidth = 51;
             gridThucDon.RowTemplate.Height = 100;
-            gridThucDon.Size = new Size(1475, 731);
+            gridThucDon.Size = new Size(1844, 914);
             gridThucDon.TabIndex = 0;
             gridThucDon.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             gridThucDon.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -712,11 +712,11 @@
             // 
             // frmThucdon
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(221, 222, 224);
-            ClientSize = new Size(1537, 874);
+            ClientSize = new Size(1921, 1092);
             Controls.Add(pnlThongtinSP);
             Controls.Add(gridThucDon);
             Controls.Add(cboLoctrangthai);
@@ -725,7 +725,7 @@
             Controls.Add(txtTimkiem);
             Controls.Add(btnThemmon);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2, 4, 2, 4);
             Name = "frmThucdon";
             StartPosition = FormStartPosition.Manual;
             Text = "frmThucdon";

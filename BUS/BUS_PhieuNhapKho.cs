@@ -39,9 +39,9 @@ namespace BUS
             return phieunhapkhodal.TaiMaPhieuNhap();
         }
 
-        public int Restocking(string tennl)
+        public int Restocking(string tennl, int trangthai)
         {
-            return phieunhapkhodal.Restocking(tennl);
+            return phieunhapkhodal.Restocking(tennl, trangthai);
         }
 
         public int AddGoodsReceipt(string maPhieuNhap, string tenDangNhap, DateTime ngayNhap, string ghiChu)

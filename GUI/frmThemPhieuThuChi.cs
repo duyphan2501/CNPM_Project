@@ -28,6 +28,11 @@ namespace GUI
                 General.ShowWarning("Vui chọn loại phiếu!",this);
                 return;
             }
+            if (string.IsNullOrEmpty(cboLoaiThuChi.Text))
+            {
+                General.ShowWarning("Vui chọn loại thu chi!", this);
+                return;
+            }
             if (numSotien.Value == 0)
             {
                 General.ShowWarning("Vui lòng nhập số tiền!",this);

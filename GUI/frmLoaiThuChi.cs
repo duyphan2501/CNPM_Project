@@ -22,21 +22,21 @@ namespace GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (IsDuplicate(txtTenloai.Text,cboLoai.Text))
+            if (IsDuplicate(txtTenloai.Text, cboLoai.Text))
             {
                 return;
             }
-            if(!CheckInput())
+            if (!CheckInput())
             {
                 return;
             }
             loaithuchi.AddType(txtMaloai.Text, txtTenloai.Text, cboLoai.Text);
-            General.ShowInformation("Thêm loại thu chi thành công",this);
+            General.ShowInformation("Thêm loại thu chi thành công", this);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
-       
+
         private void frmLoaiThuChi_Load(object sender, EventArgs e)
         {
             txtMaloai.Text = loaithuchi.GenerateID();
@@ -56,9 +56,9 @@ namespace GUI
             {
                 string TenLoai = row["TenLoai"].ToString().ToLower();
 
-                if (TenLoai == tenloai.ToLower() ) //so sánh ko phân biệt hoa thường
+                if (TenLoai == tenloai.ToLower()) //so sánh ko phân biệt hoa thường
                 {
-                    General.ShowWarning("Tên loại thu chi đã tồn tại",this);
+                    General.ShowWarning("Tên loại thu chi đã tồn tại", this);
                     return true;
                 }
             }
@@ -69,15 +69,20 @@ namespace GUI
         {
             if (string.IsNullOrWhiteSpace(txtTenloai.Text))
             {
-                General.ShowWarning("Vui lòng nhập tên loại thu chi",this);
+                General.ShowWarning("Vui lòng nhập tên loại thu chi", this);
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(cboLoai.Text))
             {
-                General.ShowWarning("Vui lòng chọn loại phiếu",this);
+                General.ShowWarning("Vui lòng chọn loại phiếu", this);
                 return false;
             }
             return true;
+        }
+
+        private void cboLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -70,14 +70,18 @@ namespace DAL
         }
 
         // lấy số lượng cần nhập thêm để đạt ổn định
-        public int Restocking(string tennl)
+        public int Restocking(string tennl, int trangthai)
         {
             string query = "select * from NguyenLieu where TenNL = @TenNL";
             DataTable result = DataProvider.ExecuteQuery(query, new object[] { tennl });
 
-            if (result.Rows.Count > 0)
+            if (result.Rows.Count > 0 && trangthai == 0) 
             {
                 return Convert.ToInt32(result.Rows[0]["MucOnDinh"]) - Convert.ToInt32(result.Rows[0]["SoLuongTon"]);
+            }
+            else if(result.Rows.Count > 0 && trangthai == 1)
+            {
+                return Convert.ToInt32(result.Rows[0]["SoLuongTon"]);
             }
             else
             {

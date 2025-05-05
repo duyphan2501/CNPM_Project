@@ -134,6 +134,17 @@ namespace GUI
 
         private void cboLoaiphieu_SelectedIndexChanged(object sender, EventArgs e) //Khi loại phiếu thay đổi thì tự phát sinh mã
         {
+            if (cboLoaiphieu.Text == "Phiếu nhập")
+            {
+                numGianhap.Visible = true;
+                lblGianhap.Visible = true;
+                lblHienthi.Text = "cần nhập";
+            }
+            else {
+                numGianhap.Visible = false;
+                lblGianhap.Visible = false;
+                lblHienthi.Text = "tồn kho";
+            }
             GenerateID();
             Restocking(); //Đưa số lượng lên textbox
         }
@@ -141,14 +152,15 @@ namespace GUI
         //Số lượng cần nhập thêm
         public void Restocking()
         {
-            int muccannhap = phieunhap.Restocking(cboTenNguyenlieu.Text);
+            int muccannhap = phieunhap.Restocking(cboTenNguyenlieu.Text,0);
+            int tonkho = phieunhap.Restocking(cboTenNguyenlieu.Text, 1);
             if (cboLoaiphieu.Text == "Phiếu nhập" && muccannhap > 0)
             {
-                lblCanNhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text).ToString();
+                lblCanNhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text,0).ToString();
             }
-            else if (cboLoaiphieu.Text == "Phiếu xuất")
+            else if (cboLoaiphieu.Text == "Phiếu xuất" && tonkho > 0)
             {
-                lblCanNhap.Text = null;
+                lblCanNhap.Text = phieunhap.Restocking(cboTenNguyenlieu.Text, 1).ToString(); ;
             }
             else
             {
