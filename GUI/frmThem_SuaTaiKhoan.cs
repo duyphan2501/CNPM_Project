@@ -73,6 +73,17 @@ namespace GUI
             return false;
         }
 
+        //Hàm kiểm tra mật khẩu mạnh
+        private bool IsStrongPassword(string password)
+        {
+            if (password.Length < 6)
+                return false;
+
+            bool hasUpperCase = password.Any(char.IsUpper);
+            bool hasDigit = password.Any(char.IsDigit);
+
+            return hasUpperCase && hasDigit;
+        }
 
         //Hàm kiểm tra các lỗi nhập liêu
         private bool ValidateInput()
@@ -97,7 +108,12 @@ namespace GUI
 
             if (txtMatkhau.Enabled && string.IsNullOrWhiteSpace(txtMatkhau.Text))
             {
-                General.ShowWarning("Vui lòng nhập mật khẩu.",this);
+                General.ShowWarning("Vui lòng nhập mật khẩu.", this);
+                return false;
+            }
+            else if (txtMatkhau.Enabled && !IsStrongPassword(txtMatkhau.Text))
+            {
+                General.ShowWarning("Mật khẩu phải có ít nhất 6 ký tự, 1 chữ in hoa và 1 chữ số.", this);
                 return false;
             }
 
@@ -137,7 +153,6 @@ namespace GUI
             {
                 taikhoanbus.AddAccount(txtTendangnhap.Text, txtMatkhau.Text, trangThai, cboVaitro.Text, txtHoten.Text, txtEmail.Text);
                 General.ShowInformation("Tạo tài khoản thành công", this);
-
             }
 
             this.DialogResult = DialogResult.OK;

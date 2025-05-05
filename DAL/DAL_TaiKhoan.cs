@@ -57,7 +57,7 @@ namespace DAL
         //Sửa thông tin tài khoản
         public void UpdateAccount(string tendangnhap, string trangthai, string vaitro, string hoten, string email)
         {
-            string query = "UPDATE TaiKhoan SET trangthai = @_TrangThai, vaitro = @_VaiTro, hoten = @_HoTen, email = @_Email WHERE tendangnhap = @_TenDangNhap";
+            string query = "UPDATE TaiKhoan SET  trangthai = @_TrangThai, vaitro = @_VaiTro, hoten = @_HoTen, email = @_Email WHERE tendangnhap = @_TenDangNhap";
             object[] parem = new object[] {trangthai, vaitro, hoten, email, tendangnhap };
             DataProvider.ExecuteNonQuery(query, parem);
         }

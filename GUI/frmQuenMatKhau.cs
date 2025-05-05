@@ -130,25 +130,30 @@ namespace GUI
             {
                 // thành công
                 messageDialog.Caption = "Thành công";
-                messageDialog.Text = "Đặt lại mật khẩu thành công.";
+                messageDialog.Text = "Đặt lại mật khẩu thành công. Vui lòng đăng nhập lại!";
                 messageDialog.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
                 messageDialog.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
                 messageDialog.Show();
                 // update lại trong db
                 taikhoan.UpdatePassword(txtUsername.Text, password);
                 // trở về login
-                this.Close();
-                frmLogin frmLogin = new frmLogin();
-                frmLogin.Show();
+                Application.Restart();
             }
 
         }
 
         private void picReturn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmLogin frmLogin = new frmLogin(); 
-            frmLogin.Show();
+            if (this.Modal)
+            {
+                this.Close();
+            }
+            else 
+            { 
+                this.Close();
+                frmLogin frmLogin = new frmLogin();
+                frmLogin.Show();
+            }
         }
     }
 }
