@@ -51,7 +51,7 @@ namespace GUI
             btnThem.Enabled = true;
             btnSua.Enabled = false;
             LoadRecipe_name();
-           
+
         }
 
         private bool IsIngredientDuplicated(string tennl) //Kiểm tra trùng nguyên liệu
@@ -142,7 +142,7 @@ namespace GUI
         //Sửa đinh lượng
         private void btnSua_Click(object sender, EventArgs e)
         {
-            
+
             // Cập nhật định lượng
             dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToDecimal(txtSoluong.Text));
             General.ShowInformation("Cập nhật định lượng thành công", this);
@@ -153,7 +153,7 @@ namespace GUI
             frmDinhLuong_Load(sender, e);
         }
 
-        
+
 
         private void cboTenNguyenLieu_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -162,6 +162,37 @@ namespace GUI
                 string maNL = cboTenNguyenLieu.SelectedValue.ToString();
                 string donvi = new BUS_NguyenLieu().LayDonvi(maNL);
                 lblDonvi.Text = donvi;
+            }
+        }
+
+        private void txtSoluong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập số và phím điều khiển (backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Chặn ký tự không hợp lệ
+            }
+
+            // Kiểm tra giá trị sau khi người dùng nhập một ký tự mới
+            string currentText = txtSoluong.Text + e.KeyChar;
+            if (long.TryParse(currentText, out long result))
+            {
+                if (result > 100000000) // Giới hạn giá trị 
+                {
+                    e.Handled = true; // Không cho phép nhập khi vượt quá giới hạn
+                    General.ShowError("Số tiền vượt quá giới hạn. Vui lòng nhập lại!", this);
+                }
+            }
+        }
+
+        private void txtSoluong_TextChanged(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtSoluong.Text.Trim(), out int soTien) && txtSoluong.Text != "")
+            {
+                General.ShowError("Số lượng không hợp lệ. Vui lòng nhập lại.", this);
+                txtSoluong.Text = "";
+                txtSoluong.Focus();
+                return;
             }
         }
     }
