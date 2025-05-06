@@ -69,6 +69,13 @@ namespace GUI
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (!decimal.TryParse(txtSoluong.Text.Trim(), out decimal soTien))
+            {
+                General.ShowError("Số lượng không hợp lệ. Vui lòng nhập lại.", this);
+                txtSoluong.Text = "";
+                txtSoluong.Focus();
+                return;
+            }
             // Lấy số lượng nguyên liệu từ numSoluongNL
             Decimal soLuong = Convert.ToDecimal(txtSoluong.Text);
 
@@ -76,6 +83,12 @@ namespace GUI
             if (soLuong == 0)
             {
                 General.ShowWarning("Vui lòng nhập số lượng nguyên liệu", this);
+                return;
+            }
+
+            if (cboTenNguyenLieu.SelectedIndex == -1)
+            {
+                General.ShowWarning("Vui lòng chọn nguyên liệu", this);
                 return;
             }
 
