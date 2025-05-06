@@ -248,9 +248,9 @@ namespace GUI
                             {
                                 string maNguyenLieu = row["MaNL"].ToString();
                                 // số lượng cần cho 1 sản phẩm
-                                int soLuongCan = Convert.ToInt32(row["SoLuong"]);
+                                Decimal soLuongCan = Convert.ToDecimal(row["SoLuong"]);
                                 // tổng lượng cần trừ theo số lượng bán
-                                int tongSoLuongTru = soLuongCan * item.SoLuong;
+                                Decimal tongSoLuongTru = soLuongCan * item.SoLuong;
 
                                 // thêm chi tiết phiếu xuất
                                 chiTietPhieuXuatKho.AddExportDetail(maPhieuXuat, maNguyenLieu, tongSoLuongTru); 

@@ -22,12 +22,12 @@ namespace BUS
         }
 
         //Thêm định lượng
-        public void AddRecipe(string masp, string manl, int soluong)
+        public void AddRecipe(string masp, string manl, decimal soluong)
         {
             dinhluongbus.AddRecipe(masp, manl, soluong);
         }
 
-        public void UpdateRecipe(string masp, string manl, int soluong)
+        public void UpdateRecipe(string masp, string manl, decimal soluong)
         {
             dinhluongbus.UpdateRecipe(masp, manl, soluong);
         }

@@ -288,7 +288,7 @@ namespace GUI
                 if (!row.IsNewRow)
                 {
                     string manl = row.Cells["manl"].Value?.ToString();
-                    int soluong = Convert.ToInt32(row.Cells["soluong"].Value);
+                    decimal soluong = Convert.ToInt32(row.Cells["soluong"].Value);
 
                     if (laNhap)  //Thêm chi tiết nhập kho
                     {

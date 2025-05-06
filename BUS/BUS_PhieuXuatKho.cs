@@ -64,9 +64,9 @@ namespace BUS
             return phieuxuatdal.GetMaPhieuXuat(maDonHang);
         }
 
-        public Dictionary<string, int> GetRecipeFromPhieuXuat(string maPhieuXuat)
+        public Dictionary<string, decimal> GetRecipeFromPhieuXuat(string maPhieuXuat)
         {
-            Dictionary<string, int> recipe = new Dictionary<string, int>();
+            Dictionary<string, decimal> recipe = new Dictionary<string, decimal>();
 
             DataTable dt = phieuxuatdal.SelectCtPhieuXuat(maPhieuXuat);
 

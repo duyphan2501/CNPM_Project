@@ -20,7 +20,7 @@ namespace DAL
         public DAL_DinhLuong(){ dinhluongdal = new DTO_DinhLuong(); }
 
         //Thêm định lượng vào database
-        public void AddRecipe(string masp, string manl, int soluong)
+        public void AddRecipe(string masp, string manl, decimal soluong)
         {
             string query = "insert into DinhLuong values (@_MaSp,dbo.LayMaNlTheoTenNl(@_MaNL),@_SoLuong)";
             object[] parem = new object[] { masp, manl, soluong };
@@ -28,7 +28,7 @@ namespace DAL
         }
 
         //Sửa thông tin định lượng
-        public void UpdateRecipe(string masp, string manl, int soluong)
+        public void UpdateRecipe(string masp, string manl, decimal soluong)
         {
             string query = "update DinhLuong set soluong = @_SoLuong where masp = dbo.LayMaSpTheoTenSp(@_MaSp) and manl = dbo.LayMaNlTheoTenNl(@_MaNL)"; 
             object[] parem = new object[] {soluong, masp, manl};

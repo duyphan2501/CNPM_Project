@@ -22,14 +22,14 @@ namespace DAL
         }
 
         //Thêm chi tiết nhập kho
-        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)
+        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, decimal soluong)
         {
             string query = "insert into ChiTietNhapKho values (@_MaPhieuNhap,@_MaNL,@_GiaNhap,@_SoLuong)";
             object[] parem = new object[] { maphieunhap, manl, gianhap, soluong};
             DataProvider.ExecuteNonQuery(query, parem);
         }
 
-        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, int soluong)
+        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, decimal soluong)
         {
             string query = "update ChiTietNhapKho set manl = dbo.LayMaNlTheoTenNl(@_MaNL), gianhap = @_GiaNhap, soluong = @_SoLuong where maphieunhap = @_MaPhieuNhap";
             object[] parem = new object[] {manl, gianhap, soluong, maphieunhap};

@@ -22,12 +22,12 @@ namespace BUS
             chitietxuat = new DAL_ChiTietXuatKho();
         }
 
-        public void AddExportDetail(string maphieuxuat, string manl, int soluong)
+        public void AddExportDetail(string maphieuxuat, string manl, decimal soluong)
         {
             chitietxuat.AddExportDetail(maphieuxuat, manl, soluong);
         }
 
-        public void UpdateDetailst(string maphieuxuat, string manl, int soluong)
+        public void UpdateDetailst(string maphieuxuat, string manl, decimal soluong)
         {
             chitietxuat.UpdateDetailst(maphieuxuat, manl, soluong);
         }

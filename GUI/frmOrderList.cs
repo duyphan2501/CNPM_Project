@@ -262,10 +262,10 @@ namespace GUI
             if (!string.IsNullOrEmpty(maPhieuXuat))
             {
                 // 1. Lấy nguyên liệu cũ
-                Dictionary<string, int> oldRecipe = new BUS_PhieuXuatKho().GetRecipeFromPhieuXuat(maPhieuXuat);
+                Dictionary<string, decimal> oldRecipe = new BUS_PhieuXuatKho().GetRecipeFromPhieuXuat(maPhieuXuat);
 
                 // 2. Tính nguyên liệu mới
-                Dictionary<string, int> newRecipe = new Dictionary<string, int>();
+                Dictionary<string, decimal> newRecipe = new Dictionary<string, decimal>();
 
                 foreach (DataGridViewRow row in gridOrderDetail.Rows)
                 {
@@ -279,8 +279,8 @@ namespace GUI
                     foreach (DataRow r in recipe.Rows)
                     {
                         string maNL = r["MaNL"].ToString();
-                        int soLuongCan = Convert.ToInt32(r["SoLuong"]);
-                        int tongSoLuong = soLuongCan * soLuong;
+                        decimal soLuongCan = Convert.ToDecimal(r["SoLuong"]);
+                        decimal tongSoLuong = soLuongCan * soLuong;
 
                         if (newRecipe.ContainsKey(maNL))
                             newRecipe[maNL] += tongSoLuong;
@@ -290,16 +290,16 @@ namespace GUI
                 }
 
                 // 3. So sánh và điều chỉnh kho
-                List<(string maNL, int soLuong)> listXuatThem = new List<(string, int)>();
-                List<(string maNL, int soLuong)> listNhapLai = new List<(string, int)>();
+                List<(string maNL, decimal soLuong)> listXuatThem = new List<(string, decimal)>();
+                List<(string maNL, decimal soLuong)> listNhapLai = new List<(string, decimal)>();
 
                 foreach (var kvp in newRecipe)
                 {
                     string maNL = kvp.Key;
-                    int soLuongMoi = kvp.Value;
+                    decimal soLuongMoi = kvp.Value;
 
-                    int soLuongCu = oldRecipe.ContainsKey(maNL) ? oldRecipe[maNL] : 0;
-                    int chenhlech = soLuongMoi - soLuongCu;
+                    decimal soLuongCu = oldRecipe.ContainsKey(maNL) ? oldRecipe[maNL] : 0;
+                    decimal chenhlech = soLuongMoi - soLuongCu;
 
                     if (chenhlech > 0)
                         listXuatThem.Add((maNL, chenhlech)); // xuất thêm

@@ -20,12 +20,12 @@ namespace BUS
             chitietnhap = new DAL_ChiTietNhapKho();
         }
 
-        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, int soluong)
+        public void AddEntryDetail(string maphieunhap, string manl, int gianhap, decimal soluong)
         {
             chitietnhap.AddEntryDetail(maphieunhap, manl, gianhap, soluong);
         }
 
-        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, int soluong)
+        public void UpdateDetailst(string maphieunhap, string manl, int gianhap, decimal soluong)
         {
             chitietnhap.UpdateDetailst(maphieunhap, manl, gianhap, soluong);
         }

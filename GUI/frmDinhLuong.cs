@@ -50,6 +50,7 @@ namespace GUI
             btnThem.Enabled = true;
             btnSua.Enabled = false;
             LoadRecipe_name();
+           
         }
 
         private bool IsIngredientDuplicated(string tennl) //Kiểm tra trùng nguyên liệu
@@ -67,23 +68,31 @@ namespace GUI
         //Nút thêm để thêm định lượng vào database
         private void btnThem_Click(object sender, EventArgs e)
         {
-            int soLuong = Convert.ToInt32(numSoluongNL.Value);
+            // Lấy số lượng nguyên liệu từ numSoluongNL
+            Decimal soLuong = Convert.ToDecimal(txtSoluong.Text);
+
+            // Kiểm tra xem số lượng có bằng 0 không
             if (soLuong == 0)
             {
                 General.ShowWarning("Vui lòng nhập số lượng nguyên liệu", this);
                 return;
             }
+
             string tennl = cboTenNguyenLieu.Text;
 
+            // Kiểm tra trùng nguyên liệu
             if (IsIngredientDuplicated(tennl))
             {
                 General.ShowWarning("Nguyên liệu này đã có trong định lượng", this);
                 return;
             }
 
+            // Thêm định lượng vào database
             dinhluong.AddRecipe(Masp, tennl, soLuong);
-            numSoluongNL.Value = 0;
-            LoadRecipe();
+
+            // Reset lại giá trị của NumericUpDown
+            txtSoluong.Text = "0";
+            LoadRecipe(); // Load lại danh sách định lượng
         }
 
         //Nhấn nút xong khi đã thêm đủ danh sách định lượng
@@ -105,7 +114,7 @@ namespace GUI
             {
                 DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
                 cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
-                numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
+                txtSoluong.Text = (hangduocchon.Cells["Số lượng"].Value).ToString();
 
                 btnThem.Enabled = false;
                 btnSua.Enabled = true;
@@ -115,7 +124,7 @@ namespace GUI
             {
                 DataGridViewRow hangduocchon = gridDsDinhluong.SelectedRows[0];
                 cboTenNguyenLieu.Text = hangduocchon.Cells["Tên nguyên liệu"].Value.ToString();
-                numSoluongNL.Value = (int)hangduocchon.Cells["Số lượng"].Value;
+                txtSoluong.Text = (hangduocchon.Cells["Số lượng"].Value).ToString();
                 DialogResult result = General.ShowConfirm("Bạn có chắc chắn muốn xóa nguyên liệu này khỏi định lượng không?", this);
                 if (result == DialogResult.Yes)
                 {
@@ -132,8 +141,12 @@ namespace GUI
         //Sửa đinh lượng
         private void btnSua_Click(object sender, EventArgs e)
         {
-            dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToInt32(numSoluongNL.Value));
+            
+            // Cập nhật định lượng
+            dinhluong.UpdateRecipe(txtTenSp.Text, cboTenNguyenLieu.Text, Convert.ToDecimal(txtSoluong.Text));
             General.ShowInformation("Cập nhật định lượng thành công", this);
+
+            // Đổi trạng thái button và load lại danh sách
             cboTenNguyenLieu.Enabled = true;
             LoadRecipe();
             frmDinhLuong_Load(sender, e);
