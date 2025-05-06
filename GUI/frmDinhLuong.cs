@@ -168,7 +168,7 @@ namespace GUI
         private void txtSoluong_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép nhập số và phím điều khiển (backspace)
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true; // Chặn ký tự không hợp lệ
             }
@@ -187,7 +187,7 @@ namespace GUI
 
         private void txtSoluong_TextChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtSoluong.Text.Trim(), out int soTien) && txtSoluong.Text != "")
+            if (!decimal.TryParse(txtSoluong.Text.Trim(), out decimal soTien) && txtSoluong.Text != "")
             {
                 General.ShowError("Số lượng không hợp lệ. Vui lòng nhập lại.", this);
                 txtSoluong.Text = "";
