@@ -21,6 +21,7 @@ namespace GUI
         BUS_ChiTietNhapKho chitietnhap = new BUS_ChiTietNhapKho("", "", 0, 0);
         BUS_ChiTietXuatKho chitietxuat = new BUS_ChiTietXuatKho("", "", 0);
         BUS_NguyenLieu nguyenlieubus = new BUS_NguyenLieu("", "", "", "", 0, 0, 0);
+        public event EventHandler DataChanged;
         public frmXuatNhapKho()
         {
             InitializeComponent();
@@ -239,6 +240,7 @@ namespace GUI
                 SaveReceipt();
                 ResetForm();
                 MessageBox.Show("Lưu phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 

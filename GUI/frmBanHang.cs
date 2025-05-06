@@ -360,7 +360,10 @@ namespace GUI
 
         private void btnHuyDon_Click(object sender, EventArgs e)
         {
-            ClearFormBanHang();
+            if (General.ShowConfirm("Bạn có chắc muốn huỷ đơn?", this) == DialogResult.Yes)
+            {
+                ClearFormBanHang();
+            }
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)
@@ -437,6 +440,13 @@ namespace GUI
                 }
                 BUS_TheRung therung = new BUS_TheRung();
                 therung.UpdateStateTheRung(1, maThe);
+                // In hoá đơn và phiếu bếp
+                DataTable hoadon = new BUS_DonHang().SelectHoaDon(lblMaDonHang.Text);
+                DialogResult result = General.ShowConfirm("Bạn có muốn phiếu chế biến không?", this);
+                if (result == DialogResult.Yes)
+                {
+                    ReportHelper.PreviewReport("PhieuBep.rdlc", hoadon);
+                }
                 ClearFormBanHang();
             }
             else
@@ -500,6 +510,11 @@ namespace GUI
         {
             LoadProductCateGory();
             LoadProducts();
+        }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

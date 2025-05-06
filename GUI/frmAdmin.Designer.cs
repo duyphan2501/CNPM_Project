@@ -71,19 +71,22 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges58 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlMenu = new Guna.UI2.WinForms.Guna2Panel();
             pnlTK = new Guna.UI2.WinForms.Guna2Panel();
             btnTaiKhoan = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -107,9 +110,8 @@
             btnDashboard = new Guna.UI2.WinForms.Guna2GradientButton();
             pnlTop = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            label4 = new Label();
-            label5 = new Label();
-            guna2CirclePictureBox3 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
+            guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             lblHovaTen = new Label();
@@ -133,7 +135,6 @@
             pnlAccount.SuspendLayout();
             pnlTop.SuspendLayout();
             guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox3).BeginInit();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
@@ -152,11 +153,11 @@
             pnlMenu.Controls.Add(pnlDashboard);
             pnlMenu.CustomizableEdges = customizableEdges41;
             pnlMenu.Dock = DockStyle.Left;
-            pnlMenu.Location = new Point(0, 110);
+            pnlMenu.Location = new Point(0, 88);
             pnlMenu.Margin = new Padding(2);
             pnlMenu.Name = "pnlMenu";
             pnlMenu.ShadowDecoration.CustomizableEdges = customizableEdges42;
-            pnlMenu.Size = new Size(374, 992);
+            pnlMenu.Size = new Size(299, 794);
             pnlMenu.TabIndex = 1;
             // 
             // pnlTK
@@ -164,11 +165,11 @@
             pnlTK.Controls.Add(btnTaiKhoan);
             pnlTK.CustomizableEdges = customizableEdges3;
             pnlTK.Dock = DockStyle.Top;
-            pnlTK.Location = new Point(0, 866);
-            pnlTK.Margin = new Padding(2, 5, 2, 5);
+            pnlTK.Location = new Point(0, 692);
+            pnlTK.Margin = new Padding(2, 4, 2, 4);
             pnlTK.Name = "pnlTK";
             pnlTK.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pnlTK.Size = new Size(374, 119);
+            pnlTK.Size = new Size(299, 95);
             pnlTK.TabIndex = 5;
             // 
             // btnTaiKhoan
@@ -191,11 +192,11 @@
             btnTaiKhoan.ImageAlign = HorizontalAlignment.Left;
             btnTaiKhoan.ImageOffset = new Point(10, 0);
             btnTaiKhoan.ImageSize = new Size(30, 30);
-            btnTaiKhoan.Location = new Point(6, 31);
-            btnTaiKhoan.Margin = new Padding(2, 5, 2, 5);
+            btnTaiKhoan.Location = new Point(5, 25);
+            btnTaiKhoan.Margin = new Padding(2, 4, 2, 4);
             btnTaiKhoan.Name = "btnTaiKhoan";
             btnTaiKhoan.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnTaiKhoan.Size = new Size(364, 88);
+            btnTaiKhoan.Size = new Size(291, 70);
             btnTaiKhoan.TabIndex = 0;
             btnTaiKhoan.Text = "Tài khoản";
             btnTaiKhoan.TextAlign = HorizontalAlignment.Left;
@@ -210,11 +211,11 @@
             pnlBaocaoTK.Controls.Add(btnBaocaoTK);
             pnlBaocaoTK.CustomizableEdges = customizableEdges13;
             pnlBaocaoTK.Dock = DockStyle.Top;
-            pnlBaocaoTK.Location = new Point(0, 747);
-            pnlBaocaoTK.Margin = new Padding(2, 5, 2, 5);
+            pnlBaocaoTK.Location = new Point(0, 597);
+            pnlBaocaoTK.Margin = new Padding(2, 4, 2, 4);
             pnlBaocaoTK.Name = "pnlBaocaoTK";
             pnlBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            pnlBaocaoTK.Size = new Size(374, 119);
+            pnlBaocaoTK.Size = new Size(299, 95);
             pnlBaocaoTK.TabIndex = 3;
             // 
             // btnBaocaoketca
@@ -237,11 +238,11 @@
             btnBaocaoketca.ImageAlign = HorizontalAlignment.Left;
             btnBaocaoketca.ImageOffset = new Point(10, 0);
             btnBaocaoketca.ImageSize = new Size(30, 30);
-            btnBaocaoketca.Location = new Point(2, 302);
-            btnBaocaoketca.Margin = new Padding(2, 5, 2, 5);
+            btnBaocaoketca.Location = new Point(2, 242);
+            btnBaocaoketca.Margin = new Padding(2, 4, 2, 4);
             btnBaocaoketca.Name = "btnBaocaoketca";
             btnBaocaoketca.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnBaocaoketca.Size = new Size(364, 88);
+            btnBaocaoketca.Size = new Size(291, 70);
             btnBaocaoketca.TabIndex = 0;
             btnBaocaoketca.Text = "Báo cáo kết thúc ca";
             btnBaocaoketca.TextAlign = HorizontalAlignment.Left;
@@ -268,11 +269,11 @@
             btnMathangbanchay.ImageAlign = HorizontalAlignment.Left;
             btnMathangbanchay.ImageOffset = new Point(10, 0);
             btnMathangbanchay.ImageSize = new Size(30, 30);
-            btnMathangbanchay.Location = new Point(5, 212);
-            btnMathangbanchay.Margin = new Padding(2, 5, 2, 5);
+            btnMathangbanchay.Location = new Point(4, 170);
+            btnMathangbanchay.Margin = new Padding(2, 4, 2, 4);
             btnMathangbanchay.Name = "btnMathangbanchay";
             btnMathangbanchay.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnMathangbanchay.Size = new Size(364, 88);
+            btnMathangbanchay.Size = new Size(291, 70);
             btnMathangbanchay.TabIndex = 0;
             btnMathangbanchay.Text = "Mặt hàng bán chạy";
             btnMathangbanchay.TextAlign = HorizontalAlignment.Left;
@@ -299,11 +300,11 @@
             btnLoinhuan.ImageAlign = HorizontalAlignment.Left;
             btnLoinhuan.ImageOffset = new Point(10, 0);
             btnLoinhuan.ImageSize = new Size(30, 30);
-            btnLoinhuan.Location = new Point(5, 121);
-            btnLoinhuan.Margin = new Padding(2, 5, 2, 5);
+            btnLoinhuan.Location = new Point(4, 97);
+            btnLoinhuan.Margin = new Padding(2, 4, 2, 4);
             btnLoinhuan.Name = "btnLoinhuan";
             btnLoinhuan.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnLoinhuan.Size = new Size(364, 88);
+            btnLoinhuan.Size = new Size(291, 70);
             btnLoinhuan.TabIndex = 0;
             btnLoinhuan.Text = "Lợi nhuận";
             btnLoinhuan.TextAlign = HorizontalAlignment.Left;
@@ -330,11 +331,11 @@
             btnBaocaoTK.ImageAlign = HorizontalAlignment.Left;
             btnBaocaoTK.ImageOffset = new Point(10, 0);
             btnBaocaoTK.ImageSize = new Size(30, 30);
-            btnBaocaoTK.Location = new Point(5, 31);
-            btnBaocaoTK.Margin = new Padding(2, 5, 2, 5);
+            btnBaocaoTK.Location = new Point(4, 25);
+            btnBaocaoTK.Margin = new Padding(2, 4, 2, 4);
             btnBaocaoTK.Name = "btnBaocaoTK";
             btnBaocaoTK.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnBaocaoTK.Size = new Size(364, 88);
+            btnBaocaoTK.Size = new Size(291, 70);
             btnBaocaoTK.TabIndex = 0;
             btnBaocaoTK.Text = "Báo cáo - Thống kê     ▽";
             btnBaocaoTK.TextAlign = HorizontalAlignment.Left;
@@ -346,11 +347,11 @@
             pnlThuChi.Controls.Add(btnThuchi);
             pnlThuChi.CustomizableEdges = customizableEdges17;
             pnlThuChi.Dock = DockStyle.Top;
-            pnlThuChi.Location = new Point(0, 628);
-            pnlThuChi.Margin = new Padding(2, 5, 2, 5);
+            pnlThuChi.Location = new Point(0, 502);
+            pnlThuChi.Margin = new Padding(2, 4, 2, 4);
             pnlThuChi.Name = "pnlThuChi";
             pnlThuChi.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            pnlThuChi.Size = new Size(374, 119);
+            pnlThuChi.Size = new Size(299, 95);
             pnlThuChi.TabIndex = 4;
             // 
             // btnThuchi
@@ -373,11 +374,11 @@
             btnThuchi.ImageAlign = HorizontalAlignment.Left;
             btnThuchi.ImageOffset = new Point(10, 0);
             btnThuchi.ImageSize = new Size(30, 30);
-            btnThuchi.Location = new Point(6, 31);
-            btnThuchi.Margin = new Padding(2, 5, 2, 5);
+            btnThuchi.Location = new Point(5, 25);
+            btnThuchi.Margin = new Padding(2, 4, 2, 4);
             btnThuchi.Name = "btnThuchi";
             btnThuchi.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnThuchi.Size = new Size(364, 88);
+            btnThuchi.Size = new Size(291, 70);
             btnThuchi.TabIndex = 0;
             btnThuchi.Text = "Thu chi";
             btnThuchi.TextAlign = HorizontalAlignment.Left;
@@ -389,11 +390,11 @@
             pnlKho.Controls.Add(btnTonkho);
             pnlKho.CustomizableEdges = customizableEdges21;
             pnlKho.Dock = DockStyle.Top;
-            pnlKho.Location = new Point(0, 509);
-            pnlKho.Margin = new Padding(2, 5, 2, 5);
+            pnlKho.Location = new Point(0, 407);
+            pnlKho.Margin = new Padding(2, 4, 2, 4);
             pnlKho.Name = "pnlKho";
             pnlKho.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            pnlKho.Size = new Size(374, 119);
+            pnlKho.Size = new Size(299, 95);
             pnlKho.TabIndex = 4;
             // 
             // btnTonkho
@@ -410,17 +411,17 @@
             btnTonkho.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTonkho.FillColor = Color.Transparent;
             btnTonkho.FillColor2 = Color.Transparent;
-            btnTonkho.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnTonkho.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTonkho.ForeColor = Color.Black;
             btnTonkho.Image = Properties.Resources.inventory_management;
             btnTonkho.ImageAlign = HorizontalAlignment.Left;
             btnTonkho.ImageOffset = new Point(10, 0);
             btnTonkho.ImageSize = new Size(30, 30);
-            btnTonkho.Location = new Point(5, 31);
-            btnTonkho.Margin = new Padding(2, 5, 2, 5);
+            btnTonkho.Location = new Point(4, 25);
+            btnTonkho.Margin = new Padding(2, 4, 2, 4);
             btnTonkho.Name = "btnTonkho";
             btnTonkho.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnTonkho.Size = new Size(364, 88);
+            btnTonkho.Size = new Size(291, 70);
             btnTonkho.TabIndex = 0;
             btnTonkho.Text = "Tồn kho";
             btnTonkho.TextAlign = HorizontalAlignment.Left;
@@ -432,11 +433,11 @@
             pnlThucDon.Controls.Add(btnThucDon);
             pnlThucDon.CustomizableEdges = customizableEdges25;
             pnlThucDon.Dock = DockStyle.Top;
-            pnlThucDon.Location = new Point(0, 390);
-            pnlThucDon.Margin = new Padding(2, 5, 2, 5);
+            pnlThucDon.Location = new Point(0, 312);
+            pnlThucDon.Margin = new Padding(2, 4, 2, 4);
             pnlThucDon.Name = "pnlThucDon";
             pnlThucDon.ShadowDecoration.CustomizableEdges = customizableEdges26;
-            pnlThucDon.Size = new Size(374, 119);
+            pnlThucDon.Size = new Size(299, 95);
             pnlThucDon.TabIndex = 4;
             // 
             // btnThucDon
@@ -459,11 +460,11 @@
             btnThucDon.ImageAlign = HorizontalAlignment.Left;
             btnThucDon.ImageOffset = new Point(10, 0);
             btnThucDon.ImageSize = new Size(30, 30);
-            btnThucDon.Location = new Point(6, 31);
-            btnThucDon.Margin = new Padding(2, 5, 2, 5);
+            btnThucDon.Location = new Point(5, 25);
+            btnThucDon.Margin = new Padding(2, 4, 2, 4);
             btnThucDon.Name = "btnThucDon";
             btnThucDon.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            btnThucDon.Size = new Size(364, 88);
+            btnThucDon.Size = new Size(291, 70);
             btnThucDon.TabIndex = 0;
             btnThucDon.Text = "Thực đơn";
             btnThucDon.TextAlign = HorizontalAlignment.Left;
@@ -475,11 +476,11 @@
             pnlBanHang.Controls.Add(btnDonHang);
             pnlBanHang.CustomizableEdges = customizableEdges29;
             pnlBanHang.Dock = DockStyle.Top;
-            pnlBanHang.Location = new Point(0, 271);
-            pnlBanHang.Margin = new Padding(2, 5, 2, 5);
+            pnlBanHang.Location = new Point(0, 217);
+            pnlBanHang.Margin = new Padding(2, 4, 2, 4);
             pnlBanHang.Name = "pnlBanHang";
             pnlBanHang.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            pnlBanHang.Size = new Size(374, 119);
+            pnlBanHang.Size = new Size(299, 95);
             pnlBanHang.TabIndex = 6;
             // 
             // btnDonHang
@@ -502,11 +503,11 @@
             btnDonHang.ImageAlign = HorizontalAlignment.Left;
             btnDonHang.ImageOffset = new Point(10, 0);
             btnDonHang.ImageSize = new Size(30, 30);
-            btnDonHang.Location = new Point(6, 31);
-            btnDonHang.Margin = new Padding(2, 5, 2, 5);
+            btnDonHang.Location = new Point(5, 25);
+            btnDonHang.Margin = new Padding(2, 4, 2, 4);
             btnDonHang.Name = "btnDonHang";
             btnDonHang.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            btnDonHang.Size = new Size(364, 88);
+            btnDonHang.Size = new Size(291, 70);
             btnDonHang.TabIndex = 0;
             btnDonHang.Text = "Đơn hàng";
             btnDonHang.TextAlign = HorizontalAlignment.Left;
@@ -520,10 +521,10 @@
             pnlDashboard.CustomizableEdges = customizableEdges39;
             pnlDashboard.Dock = DockStyle.Top;
             pnlDashboard.Location = new Point(0, 0);
-            pnlDashboard.Margin = new Padding(2, 5, 2, 5);
+            pnlDashboard.Margin = new Padding(2, 4, 2, 4);
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.ShadowDecoration.CustomizableEdges = customizableEdges40;
-            pnlDashboard.Size = new Size(374, 271);
+            pnlDashboard.Size = new Size(299, 217);
             pnlDashboard.TabIndex = 0;
             // 
             // pnlAccount
@@ -535,9 +536,10 @@
             pnlAccount.Controls.Add(btnDoiMK);
             pnlAccount.CustomizableEdges = customizableEdges35;
             pnlAccount.Location = new Point(0, 0);
+            pnlAccount.Margin = new Padding(2);
             pnlAccount.Name = "pnlAccount";
             pnlAccount.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            pnlAccount.Size = new Size(374, 241);
+            pnlAccount.Size = new Size(299, 193);
             pnlAccount.TabIndex = 0;
             // 
             // btnDangxuat
@@ -561,11 +563,11 @@
             btnDangxuat.ImageAlign = HorizontalAlignment.Left;
             btnDangxuat.ImageOffset = new Point(10, 0);
             btnDangxuat.ImageSize = new Size(30, 30);
-            btnDangxuat.Location = new Point(2, 141);
-            btnDangxuat.Margin = new Padding(2, 5, 2, 5);
+            btnDangxuat.Location = new Point(2, 113);
+            btnDangxuat.Margin = new Padding(2, 4, 2, 4);
             btnDangxuat.Name = "btnDangxuat";
             btnDangxuat.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            btnDangxuat.Size = new Size(370, 88);
+            btnDangxuat.Size = new Size(296, 70);
             btnDangxuat.TabIndex = 0;
             btnDangxuat.Text = "Đăng xuất";
             btnDangxuat.TextAlign = HorizontalAlignment.Left;
@@ -593,11 +595,11 @@
             btnDoiMK.ImageAlign = HorizontalAlignment.Left;
             btnDoiMK.ImageOffset = new Point(10, 0);
             btnDoiMK.ImageSize = new Size(30, 30);
-            btnDoiMK.Location = new Point(2, 43);
-            btnDoiMK.Margin = new Padding(2, 5, 2, 5);
+            btnDoiMK.Location = new Point(2, 34);
+            btnDoiMK.Margin = new Padding(2, 4, 2, 4);
             btnDoiMK.Name = "btnDoiMK";
             btnDoiMK.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            btnDoiMK.Size = new Size(370, 88);
+            btnDoiMK.Size = new Size(296, 70);
             btnDoiMK.TabIndex = 0;
             btnDoiMK.Text = "Đổi mật khẩu";
             btnDoiMK.TextAlign = HorizontalAlignment.Left;
@@ -624,11 +626,11 @@
             btnDashboard.ImageAlign = HorizontalAlignment.Left;
             btnDashboard.ImageOffset = new Point(10, 0);
             btnDashboard.ImageSize = new Size(30, 30);
-            btnDashboard.Location = new Point(6, 31);
-            btnDashboard.Margin = new Padding(2, 5, 2, 5);
+            btnDashboard.Location = new Point(5, 25);
+            btnDashboard.Margin = new Padding(2, 4, 2, 4);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            btnDashboard.Size = new Size(364, 88);
+            btnDashboard.Size = new Size(291, 70);
             btnDashboard.TabIndex = 0;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextAlign = HorizontalAlignment.Left;
@@ -641,78 +643,64 @@
             pnlTop.BackColor = Color.AliceBlue;
             pnlTop.Controls.Add(guna2Panel1);
             pnlTop.Controls.Add(btnExit);
-            pnlTop.CustomizableEdges = customizableEdges52;
+            pnlTop.CustomizableEdges = customizableEdges55;
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
-            pnlTop.Margin = new Padding(2, 5, 2, 5);
+            pnlTop.Margin = new Padding(2, 4, 2, 4);
             pnlTop.Name = "pnlTop";
-            pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges53;
-            pnlTop.Size = new Size(1942, 110);
+            pnlTop.ShadowDecoration.CustomizableEdges = customizableEdges56;
+            pnlTop.Size = new Size(1554, 88);
             pnlTop.TabIndex = 2;
             // 
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.Black;
-            guna2Panel1.Controls.Add(label4);
-            guna2Panel1.Controls.Add(label5);
-            guna2Panel1.Controls.Add(guna2CirclePictureBox3);
+            guna2Panel1.Controls.Add(guna2ControlBox2);
+            guna2Panel1.Controls.Add(guna2ControlBox1);
             guna2Panel1.Controls.Add(guna2Panel2);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(lblCafeLogo);
             guna2Panel1.Controls.Add(guna2CirclePictureBox1);
-            guna2Panel1.CustomizableEdges = customizableEdges48;
+            guna2Panel1.CustomizableEdges = customizableEdges51;
             guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.FillColor = Color.FromArgb(244, 129, 17);
             guna2Panel1.Location = new Point(0, 0);
-            guna2Panel1.Margin = new Padding(4);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges49;
-            guna2Panel1.Size = new Size(1942, 110);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges52;
+            guna2Panel1.Size = new Size(1554, 88);
             guna2Panel1.TabIndex = 2;
             // 
-            // label4
+            // guna2ControlBox2
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(1825, 54);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 30);
-            label4.TabIndex = 7;
-            label4.Text = "Café";
+            guna2ControlBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            guna2ControlBox2.CustomizableEdges = customizableEdges43;
+            guna2ControlBox2.FillColor = Color.FromArgb(244, 129, 17);
+            guna2ControlBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            guna2ControlBox2.ForeColor = SystemColors.ActiveCaptionText;
+            guna2ControlBox2.IconColor = Color.White;
+            guna2ControlBox2.Location = new Point(1446, 19);
+            guna2ControlBox2.Margin = new Padding(3, 4, 3, 4);
+            guna2ControlBox2.Name = "guna2ControlBox2";
+            guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            guna2ControlBox2.Size = new Size(45, 36);
+            guna2ControlBox2.TabIndex = 6;
             // 
-            // label5
+            // guna2ControlBox1
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(1825, 19);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(92, 30);
-            label5.TabIndex = 6;
-            label5.Text = "BigChill";
-            // 
-            // guna2CirclePictureBox3
-            // 
-            guna2CirclePictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2CirclePictureBox3.BackColor = Color.Transparent;
-            guna2CirclePictureBox3.Image = Properties.Resources.Capture;
-            guna2CirclePictureBox3.ImageRotate = 0F;
-            guna2CirclePictureBox3.Location = new Point(1732, 19);
-            guna2CirclePictureBox3.Margin = new Padding(4);
-            guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
-            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges43;
-            guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox3.Size = new Size(85, 70);
-            guna2CirclePictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2CirclePictureBox3.TabIndex = 5;
-            guna2CirclePictureBox3.TabStop = false;
+            guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            guna2ControlBox1.CustomizableEdges = customizableEdges45;
+            guna2ControlBox1.FillColor = Color.FromArgb(244, 129, 17);
+            guna2ControlBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            guna2ControlBox1.ForeColor = SystemColors.ActiveCaptionText;
+            guna2ControlBox1.IconColor = Color.White;
+            guna2ControlBox1.Location = new Point(1497, 19);
+            guna2ControlBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2ControlBox1.Name = "guna2ControlBox1";
+            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges46;
+            guna2ControlBox1.Size = new Size(45, 36);
+            guna2ControlBox1.TabIndex = 5;
+            guna2ControlBox1.Click += guna2ControlBox1_Click;
             // 
             // guna2Panel2
             // 
@@ -724,24 +712,22 @@
             guna2Panel2.Controls.Add(lblVaiTro);
             guna2Panel2.Controls.Add(label3);
             guna2Panel2.Controls.Add(lblHoTen);
-            guna2Panel2.CustomizableEdges = customizableEdges45;
-            guna2Panel2.Location = new Point(15, 15);
-            guna2Panel2.Margin = new Padding(4);
+            guna2Panel2.CustomizableEdges = customizableEdges48;
+            guna2Panel2.Location = new Point(12, 12);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges46;
-            guna2Panel2.Size = new Size(679, 86);
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges49;
+            guna2Panel2.Size = new Size(543, 69);
             guna2Panel2.TabIndex = 4;
             // 
             // guna2CirclePictureBox2
             // 
             guna2CirclePictureBox2.Image = (Image)resources.GetObject("guna2CirclePictureBox2.Image");
             guna2CirclePictureBox2.ImageRotate = 0F;
-            guna2CirclePictureBox2.Location = new Point(4, 9);
-            guna2CirclePictureBox2.Margin = new Padding(4);
+            guna2CirclePictureBox2.Location = new Point(3, 7);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges47;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox2.Size = new Size(84, 62);
+            guna2CirclePictureBox2.Size = new Size(67, 50);
             guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2CirclePictureBox2.TabIndex = 1;
             guna2CirclePictureBox2.TabStop = false;
@@ -752,10 +738,9 @@
             lblHovaTen.AutoSize = true;
             lblHovaTen.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHovaTen.ForeColor = Color.White;
-            lblHovaTen.Location = new Point(199, 0);
-            lblHovaTen.Margin = new Padding(4, 0, 4, 0);
+            lblHovaTen.Location = new Point(159, 0);
             lblHovaTen.Name = "lblHovaTen";
-            lblHovaTen.Size = new Size(19, 30);
+            lblHovaTen.Size = new Size(17, 25);
             lblHovaTen.TabIndex = 3;
             lblHovaTen.Text = " ";
             // 
@@ -764,10 +749,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(100, 42);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(80, 34);
             label2.Name = "label2";
-            label2.Size = new Size(84, 30);
+            label2.Size = new Size(73, 25);
             label2.TabIndex = 3;
             label2.Text = "Vai Trò:";
             // 
@@ -776,10 +760,9 @@
             lblVaiTro.AutoSize = true;
             lblVaiTro.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVaiTro.ForeColor = Color.White;
-            lblVaiTro.Location = new Point(199, 42);
-            lblVaiTro.Margin = new Padding(4, 0, 4, 0);
+            lblVaiTro.Location = new Point(159, 34);
             lblVaiTro.Name = "lblVaiTro";
-            lblVaiTro.Size = new Size(19, 30);
+            lblVaiTro.Size = new Size(17, 25);
             lblVaiTro.TabIndex = 3;
             lblVaiTro.Text = " ";
             // 
@@ -788,10 +771,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(99, 0);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(79, 0);
             label3.Name = "label3";
-            label3.Size = new Size(88, 30);
+            label3.Size = new Size(74, 25);
             label3.TabIndex = 3;
             label3.Text = "Họ Tên:";
             // 
@@ -800,10 +782,9 @@
             lblHoTen.AutoSize = true;
             lblHoTen.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHoTen.ForeColor = Color.White;
-            lblHoTen.Location = new Point(199, 0);
-            lblHoTen.Margin = new Padding(4, 0, 4, 0);
+            lblHoTen.Location = new Point(159, 0);
             lblHoTen.Name = "lblHoTen";
-            lblHoTen.Size = new Size(19, 30);
+            lblHoTen.Size = new Size(17, 25);
             lblHoTen.TabIndex = 3;
             lblHoTen.Text = " ";
             // 
@@ -813,10 +794,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(3506, 58);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(2805, 46);
             label1.Name = "label1";
-            label1.Size = new Size(59, 30);
+            label1.Size = new Size(50, 25);
             label1.TabIndex = 2;
             label1.Text = "Café";
             // 
@@ -826,10 +806,9 @@
             lblCafeLogo.AutoSize = true;
             lblCafeLogo.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             lblCafeLogo.ForeColor = Color.White;
-            lblCafeLogo.Location = new Point(3506, 22);
-            lblCafeLogo.Margin = new Padding(4, 0, 4, 0);
+            lblCafeLogo.Location = new Point(2805, 18);
             lblCafeLogo.Name = "lblCafeLogo";
-            lblCafeLogo.Size = new Size(92, 30);
+            lblCafeLogo.Size = new Size(77, 25);
             lblCafeLogo.TabIndex = 2;
             lblCafeLogo.Text = "BigChill";
             // 
@@ -838,30 +817,29 @@
             guna2CirclePictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CirclePictureBox1.Image = Properties.Resources.Capture;
             guna2CirclePictureBox1.ImageRotate = 0F;
-            guna2CirclePictureBox1.Location = new Point(3414, 22);
-            guna2CirclePictureBox1.Margin = new Padding(4);
+            guna2CirclePictureBox1.Location = new Point(2731, 18);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges47;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges50;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox1.Size = new Size(85, 70);
+            guna2CirclePictureBox1.Size = new Size(68, 56);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2CirclePictureBox1.TabIndex = 1;
             guna2CirclePictureBox1.TabStop = false;
             // 
             // btnExit
             // 
-            btnExit.CustomizableEdges = customizableEdges50;
+            btnExit.CustomizableEdges = customizableEdges53;
             btnExit.DisabledState.BorderColor = Color.DarkGray;
             btnExit.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnExit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnExit.Font = new Font("Segoe UI", 9F);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(2195, 29);
+            btnExit.Location = new Point(1756, 23);
             btnExit.Margin = new Padding(2);
             btnExit.Name = "btnExit";
-            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges51;
-            btnExit.Size = new Size(88, 56);
+            btnExit.ShadowDecoration.CustomizableEdges = customizableEdges54;
+            btnExit.Size = new Size(70, 45);
             btnExit.TabIndex = 1;
             btnExit.Text = "exit";
             btnExit.Click += btnExit_Click;
@@ -871,22 +849,22 @@
             pnlFormcon.AutoSize = true;
             pnlFormcon.BackColor = Color.FromArgb(221, 222, 224);
             pnlFormcon.BorderRadius = 5;
-            pnlFormcon.CustomizableEdges = customizableEdges54;
+            pnlFormcon.CustomizableEdges = customizableEdges57;
             pnlFormcon.Dock = DockStyle.Fill;
-            pnlFormcon.Location = new Point(374, 110);
+            pnlFormcon.Location = new Point(299, 88);
             pnlFormcon.Margin = new Padding(2);
             pnlFormcon.Name = "pnlFormcon";
-            pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges55;
-            pnlFormcon.Size = new Size(1568, 992);
+            pnlFormcon.ShadowDecoration.CustomizableEdges = customizableEdges58;
+            pnlFormcon.Size = new Size(1255, 794);
             pnlFormcon.TabIndex = 3;
             // 
             // frmAdmin
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.White;
-            ClientSize = new Size(1942, 1102);
+            ClientSize = new Size(1554, 882);
             Controls.Add(pnlFormcon);
             Controls.Add(pnlMenu);
             Controls.Add(pnlTop);
@@ -908,7 +886,6 @@
             pnlTop.ResumeLayout(false);
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox3).EndInit();
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
@@ -947,14 +924,13 @@
         private Label label1;
         private Label lblCafeLogo;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private Label label4;
-        private Label label5;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox3;
         private Guna.UI2.WinForms.Guna2Panel pnlKho;
         private Guna.UI2.WinForms.Guna2GradientButton btnTonkho;
         private Guna.UI2.WinForms.Guna2GradientButton btnBaocaoketca;
         private Guna.UI2.WinForms.Guna2Panel pnlAccount;
         private Guna.UI2.WinForms.Guna2GradientButton btnDoiMK;
         private Guna.UI2.WinForms.Guna2GradientButton btnDangxuat;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

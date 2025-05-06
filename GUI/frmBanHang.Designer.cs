@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -59,6 +62,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
+            guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             label2 = new Label();
@@ -68,9 +73,6 @@
             lblThoiGian = new Label();
             lblMaCaLam = new Label();
             lb1 = new Label();
-            label1 = new Label();
-            lblCafeLogo = new Label();
-            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             pnlSidebar = new Guna.UI2.WinForms.Guna2ShadowPanel();
             btnLogout = new Guna.UI2.WinForms.Guna2Button();
             btnTongKetCa = new Guna.UI2.WinForms.Guna2Button();
@@ -102,7 +104,6 @@
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             pnlSidebar.SuspendLayout();
             guna2ShadowPanel2.SuspendLayout();
             guna2ShadowPanel3.SuspendLayout();
@@ -118,20 +119,53 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.Black;
+            guna2Panel1.Controls.Add(guna2ControlBox2);
+            guna2Panel1.Controls.Add(guna2ControlBox1);
             guna2Panel1.Controls.Add(guna2Panel2);
             guna2Panel1.Controls.Add(lblThoiGian);
             guna2Panel1.Controls.Add(lblMaCaLam);
             guna2Panel1.Controls.Add(lb1);
-            guna2Panel1.Controls.Add(label1);
-            guna2Panel1.Controls.Add(lblCafeLogo);
-            guna2Panel1.Controls.Add(guna2CirclePictureBox1);
-            guna2Panel1.CustomizableEdges = customizableEdges26;
+            guna2Panel1.CustomizableEdges = customizableEdges29;
             guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges27;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2Panel1.Size = new Size(1554, 88);
             guna2Panel1.TabIndex = 0;
+            // 
+            // guna2ControlBox2
+            // 
+            guna2ControlBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            guna2ControlBox2.CustomizableEdges = customizableEdges22;
+            guna2ControlBox2.FillColor = Color.Transparent;
+            guna2ControlBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            guna2ControlBox2.ForeColor = SystemColors.ActiveCaptionText;
+            guna2ControlBox2.HoverState.FillColor = Color.Gray;
+            guna2ControlBox2.IconColor = Color.White;
+            guna2ControlBox2.Location = new Point(1443, 19);
+            guna2ControlBox2.Margin = new Padding(3, 4, 3, 4);
+            guna2ControlBox2.Name = "guna2ControlBox2";
+            guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges23;
+            guna2ControlBox2.Size = new Size(45, 36);
+            guna2ControlBox2.TabIndex = 8;
+            // 
+            // guna2ControlBox1
+            // 
+            guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            guna2ControlBox1.CustomizableEdges = customizableEdges24;
+            guna2ControlBox1.FillColor = Color.Transparent;
+            guna2ControlBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            guna2ControlBox1.ForeColor = SystemColors.ActiveCaptionText;
+            guna2ControlBox1.HoverState.FillColor = Color.Gray;
+            guna2ControlBox1.IconColor = Color.White;
+            guna2ControlBox1.Location = new Point(1494, 19);
+            guna2ControlBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2ControlBox1.Name = "guna2ControlBox1";
+            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            guna2ControlBox1.Size = new Size(45, 36);
+            guna2ControlBox1.TabIndex = 7;
+            guna2ControlBox1.Click += guna2ControlBox1_Click;
             // 
             // guna2Panel2
             // 
@@ -141,10 +175,10 @@
             guna2Panel2.Controls.Add(lblVaiTro);
             guna2Panel2.Controls.Add(label3);
             guna2Panel2.Controls.Add(lblHoTen);
-            guna2Panel2.CustomizableEdges = customizableEdges23;
+            guna2Panel2.CustomizableEdges = customizableEdges27;
             guna2Panel2.Location = new Point(14, 12);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges28;
             guna2Panel2.Size = new Size(383, 60);
             guna2Panel2.TabIndex = 4;
             // 
@@ -154,7 +188,7 @@
             guna2CirclePictureBox2.ImageRotate = 0F;
             guna2CirclePictureBox2.Location = new Point(3, 7);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox2.Size = new Size(67, 50);
             guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -237,44 +271,6 @@
             lb1.Size = new Size(67, 25);
             lb1.TabIndex = 3;
             lb1.Text = "Mã Ca:";
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(1451, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 25);
-            label1.TabIndex = 2;
-            label1.Text = "Café";
-            // 
-            // lblCafeLogo
-            // 
-            lblCafeLogo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblCafeLogo.AutoSize = true;
-            lblCafeLogo.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            lblCafeLogo.ForeColor = Color.White;
-            lblCafeLogo.Location = new Point(1451, 18);
-            lblCafeLogo.Name = "lblCafeLogo";
-            lblCafeLogo.Size = new Size(77, 25);
-            lblCafeLogo.TabIndex = 2;
-            lblCafeLogo.Text = "BigChill";
-            // 
-            // guna2CirclePictureBox1
-            // 
-            guna2CirclePictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2CirclePictureBox1.Image = Properties.Resources.Capture;
-            guna2CirclePictureBox1.ImageRotate = 0F;
-            guna2CirclePictureBox1.Location = new Point(1377, 18);
-            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox1.Size = new Size(68, 56);
-            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2CirclePictureBox1.TabIndex = 1;
-            guna2CirclePictureBox1.TabStop = false;
             // 
             // pnlSidebar
             // 
@@ -739,7 +735,6 @@
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             pnlSidebar.ResumeLayout(false);
             guna2ShadowPanel2.ResumeLayout(false);
             guna2ShadowPanel2.PerformLayout();
@@ -753,9 +748,6 @@
 
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private Label lblCafeLogo;
-        private Label label1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private Label label2;
         private Label label3;
@@ -793,5 +785,7 @@
         private System.Windows.Forms.Timer timer;
         private Guna.UI2.WinForms.Guna2CircleButton btnGhiChu;
         private Guna.UI2.WinForms.Guna2Button btnReload;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

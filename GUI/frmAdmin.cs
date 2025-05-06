@@ -21,6 +21,10 @@ namespace GUI
         {
             lblHovaTen.Text = Program.account.Rows[0]["HoTen"].ToString();
             lblVaiTro.Text = Program.account.Rows[0]["VaiTro"].ToString();
+            if (lblVaiTro.Text != "admin")
+            {
+                pnlTK.Visible = false;
+            }
 
             pnlKho.Height = btnDashboard.Height + 31;
             pnlBaocaoTK.Height = btnDashboard.Height + 31;
@@ -231,6 +235,11 @@ namespace GUI
             {
                 pnlDashboard.Height = pnlKho.Height;
             }
+        }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

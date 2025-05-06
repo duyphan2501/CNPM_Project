@@ -184,7 +184,7 @@
             txtMasanpham.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtMasanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtMasanpham.ForeColor = Color.Black;
-            txtMasanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtMasanpham.HoverState.BorderColor = Color.FromArgb(244, 129, 17);
             txtMasanpham.Location = new Point(25, 53);
             txtMasanpham.Margin = new Padding(5, 6, 5, 6);
             txtMasanpham.Name = "txtMasanpham";
@@ -257,8 +257,8 @@
             cboTenloai.CustomizableEdges = customizableEdges9;
             cboTenloai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTenloai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTenloai.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboTenloai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboTenloai.FocusedColor = Color.FromArgb(244, 129, 17);
+            cboTenloai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             cboTenloai.Font = new Font("Segoe UI", 10.2F);
             cboTenloai.ForeColor = Color.Black;
             cboTenloai.ItemHeight = 30;
@@ -343,7 +343,7 @@
             txtTensanpham.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTensanpham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtTensanpham.ForeColor = Color.Black;
-            txtTensanpham.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTensanpham.HoverState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTensanpham.Location = new Point(25, 48);
             txtTensanpham.Margin = new Padding(5, 6, 5, 6);
             txtTensanpham.Name = "txtTensanpham";
@@ -452,8 +452,8 @@
             cboTrangthai.CustomizableEdges = customizableEdges29;
             cboTrangthai.DrawMode = DrawMode.OwnerDrawFixed;
             cboTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTrangthai.FocusedColor = Color.FromArgb(94, 148, 255);
-            cboTrangthai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cboTrangthai.FocusedColor = Color.FromArgb(244, 129, 17);
+            cboTrangthai.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             cboTrangthai.Font = new Font("Segoe UI", 10.2F);
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;

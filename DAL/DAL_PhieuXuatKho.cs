@@ -76,11 +76,16 @@ namespace DAL
             return result != null ? result.ToString() : null;
         }
 
-        public DataTable SelectCtPhieuXuat(string maPhieuXuat)
+        public DataTable GetAllExportDetailsOfOrder(string maDonHang)
         {
-            string query = "SELECT MaNL, SoLuong FROM ChiTietXuatKho WHERE MaPhieuXuat = @MaPhieuXuat";
-            DataTable dt = DataProvider.ExecuteQuery(query, new object[] { maPhieuXuat });
-            return DataProvider.ExecuteQuery(query, new object[] { maPhieuXuat });
+            string query =
+                "SELECT cxk.MaNL, SUM(cxk.SoLuong) AS SoLuong " +
+                "FROM PhieuXuatKho pxk " +
+                "JOIN ChiTietXuatKho cxk ON pxk.MaPhieuXuat = cxk.MaPhieuXuat " +
+                "WHERE pxk.GhiChu LIKE '%" + maDonHang + "%' " +  // Tìm kiếm trong GhiChu để liên kết với MaDonHang
+                "GROUP BY cxk.MaNL";
+
+            return DataProvider.ExecuteQuery(query);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace GUI
             cboTenNguyenLieu.DataSource = dinhluong.LoadRecipe_name();
             cboTenNguyenLieu.DisplayMember = "TenNL";
             cboTenNguyenLieu.ValueMember = "MaNL";
+            cboTenNguyenLieu.SelectedIndex = -1;
         }
 
         //Load lại danh sách định lượng theo tên sản phẩm trên griview

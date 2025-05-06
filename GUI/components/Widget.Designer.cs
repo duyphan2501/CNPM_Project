@@ -46,11 +46,11 @@
             picSanPham.CustomizableEdges = customizableEdges1;
             picSanPham.Image = Properties.Resources.nuocam;
             picSanPham.ImageRotate = 0F;
-            picSanPham.Location = new Point(4, 0);
+            picSanPham.Location = new Point(4, 4);
             picSanPham.Margin = new Padding(3, 4, 3, 4);
             picSanPham.Name = "picSanPham";
             picSanPham.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            picSanPham.Size = new Size(240, 151);
+            picSanPham.Size = new Size(240, 147);
             picSanPham.SizeMode = PictureBoxSizeMode.Zoom;
             picSanPham.TabIndex = 1;
             picSanPham.TabStop = false;

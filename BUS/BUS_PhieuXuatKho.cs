@@ -64,16 +64,15 @@ namespace BUS
             return phieuxuatdal.GetMaPhieuXuat(maDonHang);
         }
 
-        public Dictionary<string, decimal> GetRecipeFromPhieuXuat(string maPhieuXuat)
+        public Dictionary<string, decimal> GetRecipeFromPhieuXuat(string maDonHang)
         {
             Dictionary<string, decimal> recipe = new Dictionary<string, decimal>();
-
-            DataTable dt = phieuxuatdal.SelectCtPhieuXuat(maPhieuXuat);
+            DataTable dt = phieuxuatdal.GetAllExportDetailsOfOrder(maDonHang);
 
             foreach (DataRow row in dt.Rows)
             {
                 string maNL = row["MaNL"].ToString();
-                int soLuong = Convert.ToInt32(row["SoLuong"]);
+                decimal soLuong = Convert.ToDecimal(row["SoLuong"]);
 
                 if (!recipe.ContainsKey(maNL))
                 {

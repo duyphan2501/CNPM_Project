@@ -51,6 +51,7 @@
             // 
             // cboTrangthai
             // 
+            cboTrangthai.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboTrangthai.BackColor = Color.Transparent;
             cboTrangthai.BorderRadius = 5;
             cboTrangthai.CustomizableEdges = customizableEdges1;
@@ -62,7 +63,7 @@
             cboTrangthai.ForeColor = Color.Black;
             cboTrangthai.ItemHeight = 30;
             cboTrangthai.Items.AddRange(new object[] { "Hoạt Động", "Vô Hiệu" });
-            cboTrangthai.Location = new Point(1228, 58);
+            cboTrangthai.Location = new Point(1309, 58);
             cboTrangthai.Margin = new Padding(2, 4, 2, 4);
             cboTrangthai.Name = "cboTrangthai";
             cboTrangthai.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -72,6 +73,7 @@
             // 
             // guna2GroupBox1
             // 
+            guna2GroupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2GroupBox1.BackColor = SystemColors.Control;
             guna2GroupBox1.BorderRadius = 5;
             guna2GroupBox1.BorderThickness = 0;
@@ -96,6 +98,7 @@
             gridDsTaikhoan.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             gridDsTaikhoan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            gridDsTaikhoan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(244, 129, 17);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -163,11 +166,12 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(244, 103, 0);
-            label1.Location = new Point(1100, 58);
+            label1.Location = new Point(1193, 58);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(112, 28);

@@ -283,8 +283,12 @@ namespace GUI
             {
                 // In hoá đơn và phiếu bếp
                 DataTable hoadon = new BUS_DonHang().SelectHoaDon(maDonhang);
-                ReportHelper.PreviewReport("Invoice.rdlc", hoadon);
-                DialogResult result = General.ShowConfirm("Bạn có muốn in phiếp chế biến không?", this);
+                DialogResult result = General.ShowConfirm("Bạn có muốn in hoá đơn không?", this);
+                if (result == DialogResult.Yes)
+                {
+                    ReportHelper.PreviewReport("Invoice.rdlc", hoadon);
+                }
+                result = General.ShowConfirm("Bạn có muốn phiếu chế biến không?", this);
                 if (result == DialogResult.Yes)
                 {
                     ReportHelper.PreviewReport("PhieuBep.rdlc", hoadon);

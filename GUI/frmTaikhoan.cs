@@ -30,7 +30,7 @@ namespace GUI
         private void LoadAccountsByStatus(string status)
         {
             if (status == "Hoạt Động")
-                gridDsTaikhoan.DataSource = taiKhoanBus.LoadAccount();
+                gridDsTaikhoan.DataSource = taiKhoanBus.LoadActiveAccount();
             else
                 gridDsTaikhoan.DataSource = taiKhoanBus.LoadDisabledAccounts();
 

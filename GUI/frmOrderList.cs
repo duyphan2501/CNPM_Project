@@ -229,20 +229,19 @@ namespace GUI
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string viewDetailMaDonHang = viewDetailRow.Cells["MaDonHang"].Value.ToString();
-            // xoá tất cả chi tiết đơn hàng hiện tại
+
+            // Xoá toàn bộ chi tiết đơn hàng cũ
             ctDonHang.DeleteAllCTDonHang(viewDetailMaDonHang);
 
-            // thêm chi tiết đơn hàng trong gridview
+            // Thêm lại chi tiết đơn hàng mới từ grid
             foreach (DataGridViewRow row in gridOrderDetail.Rows)
             {
                 if (row.IsNewRow) continue;
 
-                // lấy thông tin để thêm ctđh
                 string maSP = row.Cells["MaSP"].Value?.ToString();
                 int donGia = General.FormatMoneyToInt(row.Cells["DonGia"].Value.ToString());
                 int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
 
-                // thêm chi tiết đơn hàng
                 ctDonHang = new BUS_ChiTietDonHang(viewDetailMaDonHang, maSP, donGia, soLuong);
                 if (ctDonHang.InsertOrderDetail() == 0)
                 {
@@ -251,97 +250,90 @@ namespace GUI
                 }
             }
 
-            // cập nhật đơn hàng
+            // Cập nhật thông tin đơn hàng
             int giamGia = (int)numGiamGia.Value;
             string ghiChu = txtGhiChu.Text.Trim();
             int tongTien = General.FormatMoneyToInt(lblTongTien.Text);
             donhang.UpdateDonHang(viewDetailMaDonHang, giamGia, tongTien, ghiChu);
 
-            // cập nhật nguyên liệu
-            string maPhieuXuat = new BUS_PhieuXuatKho().GetMaPhieuXuat(viewDetailMaDonHang);
-            if (!string.IsNullOrEmpty(maPhieuXuat))
+            // Tính lại nguyên liệu đã xuất (cũ)
+            Dictionary<string, decimal> oldRecipe = new BUS_PhieuXuatKho().GetRecipeFromPhieuXuat(viewDetailMaDonHang);
+
+            // Tính nguyên liệu cần xuất mới theo sản phẩm trong đơn
+            Dictionary<string, decimal> newRecipe = new Dictionary<string, decimal>();
+            foreach (DataGridViewRow row in gridOrderDetail.Rows)
             {
-                // 1. Lấy nguyên liệu cũ
-                Dictionary<string, decimal> oldRecipe = new BUS_PhieuXuatKho().GetRecipeFromPhieuXuat(maPhieuXuat);
+                if (row.IsNewRow) continue;
 
-                // 2. Tính nguyên liệu mới
-                Dictionary<string, decimal> newRecipe = new Dictionary<string, decimal>();
+                string maSP = row.Cells["MaSP"].Value.ToString();
+                int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
 
-                foreach (DataGridViewRow row in gridOrderDetail.Rows)
+                // Lấy định lượng của sản phẩm
+                DataTable recipe = new BUS_DinhLuong().SelectRecipeOfProduct(maSP);
+                foreach (DataRow r in recipe.Rows)
                 {
-                    if (row.IsNewRow) continue;
+                    string maNL = r["MaNL"].ToString();
+                    decimal soLuongCan = Convert.ToDecimal(r["SoLuong"]);
+                    decimal tongSoLuong = soLuongCan * soLuong;
 
-                    string maSP = row.Cells["MaSP"].Value.ToString();
-                    int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
-
-                    // lấy định lượng nguyên liệu cho sản phẩm
-                    DataTable recipe = new BUS_DinhLuong().SelectRecipeOfProduct(maSP);
-                    foreach (DataRow r in recipe.Rows)
-                    {
-                        string maNL = r["MaNL"].ToString();
-                        decimal soLuongCan = Convert.ToDecimal(r["SoLuong"]);
-                        decimal tongSoLuong = soLuongCan * soLuong;
-
-                        if (newRecipe.ContainsKey(maNL))
-                            newRecipe[maNL] += tongSoLuong;
-                        else
-                            newRecipe.Add(maNL, tongSoLuong);
-                    }
+                    if (newRecipe.ContainsKey(maNL))
+                        newRecipe[maNL] += tongSoLuong;
+                    else
+                        newRecipe.Add(maNL, tongSoLuong);
                 }
+            }
 
-                // 3. So sánh và điều chỉnh kho
-                List<(string maNL, decimal soLuong)> listXuatThem = new List<(string, decimal)>();
-                List<(string maNL, decimal soLuong)> listNhapLai = new List<(string, decimal)>();
+            // So sánh nguyên liệu mới và cũ
+            List<(string maNL, decimal soLuong)> listXuatThem = new List<(string, decimal)>();
+            List<(string maNL, decimal soLuong)> listNhapLai = new List<(string, decimal)>();
 
-                foreach (var kvp in newRecipe)
+            foreach (var kvp in newRecipe)
+            {
+                string maNL = kvp.Key;
+                decimal soLuongMoi = kvp.Value;
+
+                decimal soLuongCu = oldRecipe.ContainsKey(maNL) ? oldRecipe[maNL] : 0;
+                decimal chenhlech = soLuongMoi - soLuongCu;
+
+                if (chenhlech > 0)
+                    listXuatThem.Add((maNL, chenhlech));
+                else if (chenhlech < 0)
+                    listNhapLai.Add((maNL, -chenhlech));
+            }
+
+            // Xử lý xuất thêm nếu có
+            if (listXuatThem.Count > 0)
+            {
+                BUS_PhieuXuatKho phieuXuat = new BUS_PhieuXuatKho();
+                string maPhieuXuatMoi = phieuXuat.GenerateID();
+
+                phieuXuat.AddDeliveryReceip(maPhieuXuatMoi, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, "Điều chỉnh đơn hàng " + viewDetailMaDonHang);
+
+                BUS_ChiTietXuatKho chiTietXuat = new BUS_ChiTietXuatKho();
+                foreach (var item in listXuatThem)
                 {
-                    string maNL = kvp.Key;
-                    decimal soLuongMoi = kvp.Value;
-
-                    decimal soLuongCu = oldRecipe.ContainsKey(maNL) ? oldRecipe[maNL] : 0;
-                    decimal chenhlech = soLuongMoi - soLuongCu;
-
-                    if (chenhlech > 0)
-                        listXuatThem.Add((maNL, chenhlech)); // xuất thêm
-                    else if (chenhlech < 0)
-                        listNhapLai.Add((maNL, -chenhlech)); // nhập lại
+                    chiTietXuat.AddExportDetail(maPhieuXuatMoi, item.maNL, item.soLuong);
                 }
+            }
 
-                // 4. Nếu có phát sinh xuất thêm
-                if (listXuatThem.Count > 0)
+            // Xử lý nhập lại nếu có
+            if (listNhapLai.Count > 0)
+            {
+                BUS_PhieuNhapKho phieuNhap = new BUS_PhieuNhapKho();
+                string maPhieuNhapMoi = phieuNhap.GenerateID();
+
+                phieuNhap.AddGoodsReceipt(maPhieuNhapMoi, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, "Điều chỉnh đơn hàng " + viewDetailMaDonHang);
+
+                BUS_ChiTietNhapKho chiTietNhap = new BUS_ChiTietNhapKho();
+                foreach (var item in listNhapLai)
                 {
-                    BUS_PhieuXuatKho phieuXuat = new BUS_PhieuXuatKho();
-                    string maPhieuXuatMoi = phieuXuat.GenerateID();
-
-                    phieuXuat.AddDeliveryReceip(maPhieuXuatMoi, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, "Điều chỉnh đơn hàng " + viewDetailMaDonHang);
-
-                    BUS_ChiTietXuatKho chiTietXuat = new BUS_ChiTietXuatKho();
-                    foreach (var item in listXuatThem)
-                    {
-                        chiTietXuat.AddExportDetail(maPhieuXuatMoi, item.maNL, item.soLuong);
-                    }
-                }
-
-                // 5. Nếu có phát sinh nhập lại
-                if (listNhapLai.Count > 0)
-                {
-                    BUS_PhieuNhapKho phieuNhap = new BUS_PhieuNhapKho();
-                    string maPhieuNhapMoi = phieuNhap.GenerateID();
-
-                    phieuNhap.AddGoodsReceipt(maPhieuNhapMoi, Program.account.Rows[0]["TenDangNhap"].ToString(), DateTime.Now, "Điều chỉnh đơn hàng " + viewDetailMaDonHang);
-
-                    int giaNhap = new BUS_NguyenLieu().GetGiaNhap(listNhapLai[0].maNL);
-
-                    BUS_ChiTietNhapKho chiTietNhap = new BUS_ChiTietNhapKho();
-                    foreach (var item in listNhapLai)
-                    {
-                        chiTietNhap.AddEntryDetail(maPhieuNhapMoi, item.maNL, giaNhap, item.soLuong);
-                    }
+                    int giaNhap = new BUS_NguyenLieu().GetGiaNhap(item.maNL);
+                    chiTietNhap.AddEntryDetail(maPhieuNhapMoi, item.maNL, giaNhap, item.soLuong);
                 }
             }
 
             // cập nhật lại cả 2 gridview 
-            General.ShowInformation("Lưu đơn hàng thành công!", this);
+            General.ShowInformation("Cập nhật đơn hàng thành công!", this);
             EnableEditing(false);
             LoadOrderDetail();
             UpdateviewDetailRow();

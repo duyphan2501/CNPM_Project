@@ -171,6 +171,7 @@
             // pnlTrangthai
             // 
             pnlTrangthai.BackColor = Color.WhiteSmoke;
+            pnlTrangthai.BorderColor = Color.FromArgb(224, 224, 224);
             pnlTrangthai.BorderRadius = 5;
             pnlTrangthai.BorderThickness = 2;
             pnlTrangthai.Controls.Add(txtDonvitinh);
@@ -195,7 +196,7 @@
             txtDonvitinh.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtDonvitinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtDonvitinh.ForeColor = Color.Black;
-            txtDonvitinh.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDonvitinh.HoverState.BorderColor = Color.FromArgb(244, 129, 17);
             txtDonvitinh.Location = new Point(23, 43);
             txtDonvitinh.Margin = new Padding(4, 5, 4, 5);
             txtDonvitinh.Name = "txtDonvitinh";
@@ -208,6 +209,7 @@
             // pnlTensanpham
             // 
             pnlTensanpham.BackColor = Color.WhiteSmoke;
+            pnlTensanpham.BorderColor = Color.FromArgb(224, 224, 224);
             pnlTensanpham.BorderRadius = 5;
             pnlTensanpham.BorderThickness = 2;
             pnlTensanpham.Controls.Add(txtTenNguyenLieu);
@@ -232,7 +234,7 @@
             txtTenNguyenLieu.FocusedState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTenNguyenLieu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtTenNguyenLieu.ForeColor = Color.Black;
-            txtTenNguyenLieu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtTenNguyenLieu.HoverState.BorderColor = Color.FromArgb(244, 129, 17);
             txtTenNguyenLieu.Location = new Point(23, 44);
             txtTenNguyenLieu.Margin = new Padding(4, 5, 4, 5);
             txtTenNguyenLieu.Name = "txtTenNguyenLieu";
@@ -329,6 +331,7 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.WhiteSmoke;
+            guna2Panel1.BorderColor = Color.FromArgb(224, 224, 224);
             guna2Panel1.BorderRadius = 5;
             guna2Panel1.BorderThickness = 2;
             guna2Panel1.Controls.Add(numMucondinh);
@@ -372,6 +375,7 @@
             // pnlGiaban
             // 
             pnlGiaban.BackColor = Color.WhiteSmoke;
+            pnlGiaban.BorderColor = Color.FromArgb(224, 224, 224);
             pnlGiaban.BorderRadius = 5;
             pnlGiaban.BorderThickness = 2;
             pnlGiaban.Controls.Add(numMuctoithieu);
@@ -415,6 +419,7 @@
             // pnlTenloai
             // 
             pnlTenloai.BackColor = Color.WhiteSmoke;
+            pnlTenloai.BorderColor = Color.FromArgb(224, 224, 224);
             pnlTenloai.BorderRadius = 5;
             pnlTenloai.BorderThickness = 2;
             pnlTenloai.Controls.Add(picThemLoai);

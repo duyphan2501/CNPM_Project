@@ -307,7 +307,7 @@
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(62, 20);
-            label8.TabIndex = 4;
+            label8.TabIndex = 0;
             label8.Text = "vô hiệu";
             // 
             // label5
@@ -418,7 +418,7 @@
             panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(913, 118);
-            panel1.TabIndex = 2;
+            panel1.TabIndex = 0;
             // 
             // btnHuy
             // 

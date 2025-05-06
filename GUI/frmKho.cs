@@ -271,7 +271,15 @@ namespace GUI
         private void btnXuatNhapKho_Click(object sender, EventArgs e)
         {
             frmXuatNhapKho frm = new frmXuatNhapKho();
+            frm.DataChanged += FormCon_DataChanged; 
             General.ShowDialogWithBlur(frm);
+        }
+
+        // Xử lý sự kiện khi dữ liệu thay đổi
+        private void FormCon_DataChanged(object sender, EventArgs e)
+        {
+            // Cập nhật lại GridView hoặc DataGridView
+            LoadIngredients();
         }
 
         private void btnLichSu_Click(object sender, EventArgs e)

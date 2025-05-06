@@ -37,6 +37,11 @@ namespace BUS
             return taikhoandal.LoadAccount();
         }
 
+        public DataTable LoadActiveAccount()
+        {
+            return taikhoandal.LoadActiveAccount();
+        }
+
         //Tải tài khoản vô hiệu hóa
         public DataTable LoadDisabledAccounts()
         {

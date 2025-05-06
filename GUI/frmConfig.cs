@@ -17,6 +17,8 @@ namespace GUI
 
         private void frmConfig_Load(object sender, EventArgs e)
         {
+            txtUID.Enabled = false;
+            txtPassword.Enabled = false;
             txtServer.Focus();
         }
 
